@@ -9,10 +9,10 @@ namespace KeepTalkingForOrgansGame {
     public class VisionSpan : MonoBehaviour {
 
         const int MAX_SEGMENT_LIMIT = 200;
-        const int TOTAL_EDGES_RESOLVE_ITERATIONS_LIMIT = 200;
+        const int TOTAL_EDGES_RESOLVE_ITERATIONS_LIMIT = 500;
         const float SAME_SIDE_CHECK_DOT_VALUE_TOLERANCE = 0.0003f;
 
-        public static float MaxSegmentGapAngle = 1.8f;
+        public static float maxSegmentGapAngle = 1.8f;
 
         static int currentEdgesResolveIterationsCount = 0;
         static int maxEdgesResolveIterationsCount = 0;
@@ -20,9 +20,8 @@ namespace KeepTalkingForOrgansGame {
         /// ============================================= ///
 
         [Header("Properties")]
-        public float visionDistance;
-        public float fovAngle;
-        public float cutInObstacleDistance;
+        public SpanProps spanProps;
+        public float     cutInObstacleDistance;
 
         [Header("Statues")]
         public bool isBlind = false;
@@ -32,6 +31,7 @@ namespace KeepTalkingForOrgansGame {
         public LayerMask visionLayerMask;
         public int       edgeResolveIterations;
         public bool      showDebugLines;
+        public bool      showVisionEdgeLines;
 
         [Header("Output Shows")]
         public int segmentCountShows;
@@ -41,7 +41,7 @@ namespace KeepTalkingForOrgansGame {
         public Vector2 FacingDirection => _dir;
 
 
-        Vector2 _dir                 = Vector2.up;
+        Vector2 _dir = Vector2.up;
 
 
 
@@ -53,7 +53,16 @@ namespace KeepTalkingForOrgansGame {
 
         }
 
+
         void LateUpdate () {
+
+            if (showVisionEdgeLines) {
+                for (int i = -1 ; i <= 1 ; i += 2) {
+                    Debug.DrawLine(transform.position, transform.position + Quaternion.AngleAxis(i * spanProps.fov / 2, Vector3.forward) * _dir * spanProps.distance, Color.red);
+                }
+            }
+
+
             if (isShowingVisionArea) {
                 DrawVisionArea();
             }
@@ -75,7 +84,7 @@ namespace KeepTalkingForOrgansGame {
             Vector2 toDir = to.normalized;
             float   toDistance = Vector2.Dot(to, toDir);
 
-            if (IsDirInSightRange(to) && toDistance < visionDistance) {
+            if (IsDirInSightRange(to) && toDistance < spanProps.distance) {
 
                 RaycastHit2D hit = Physics2D.Raycast(Origin, toDir, toDistance, visionLayerMask);
 
@@ -90,7 +99,7 @@ namespace KeepTalkingForOrgansGame {
             if (isBlind && direction == Vector2.zero)
                 return false;
 
-            if (Vector2.Angle(direction, _dir) < fovAngle / 2) {
+            if (Vector2.Angle(direction, _dir) < spanProps.fov / 2) {
                 return true;
             }
 
@@ -105,7 +114,7 @@ namespace KeepTalkingForOrgansGame {
             GlobalManager.current.visionSpansMaxEdgesResolveIterationsSoFar = maxEdgesResolveIterationsCount;
             currentEdgesResolveIterationsCount = 0;
 
-            int segmentCount = MaxSegmentGapAngle > 0 ? Math.Min( Mathf.CeilToInt(fovAngle / MaxSegmentGapAngle), MAX_SEGMENT_LIMIT ) : 0;
+            int segmentCount = maxSegmentGapAngle > 0 ? Math.Min( Mathf.CeilToInt(spanProps.fov / maxSegmentGapAngle), MAX_SEGMENT_LIMIT ) : 0;
             int rayCount = segmentCount + 1;
 
 
@@ -114,7 +123,7 @@ namespace KeepTalkingForOrgansGame {
 
             for (int i = 0 ; i < rayCount ; i++) {
 
-                float   angle     = (i - segmentCount / 2f) * fovAngle / segmentCount;
+                float   angle     = (i - segmentCount / 2f) * spanProps.fov / segmentCount;
                 Vector2 direction = Quaternion.AngleAxis(angle, Vector3.forward) * _dir;
 
                 ViewCastInfo cast = ViewCast(direction);
@@ -193,12 +202,12 @@ namespace KeepTalkingForOrgansGame {
 
 
         ViewCastInfo ViewCast (Vector2 direction) {
-            RaycastHit2D hit = Physics2D.Raycast(Origin, direction, visionDistance, visionLayerMask);
+            RaycastHit2D hit = Physics2D.Raycast(Origin, direction, spanProps.distance, visionLayerMask);
 
             if (hit.collider != null)
                 return new ViewCastInfo(direction, hit.collider, hit.distance, hit.point, hit.normal);
             else
-                return new ViewCastInfo(direction, hit.collider, visionDistance, Origin + direction * visionDistance, Vector2.zero);
+                return new ViewCastInfo(direction, hit.collider, spanProps.distance, Origin + direction * spanProps.distance, Vector2.zero);
         }
 
         List<EdgeInfo> FindEdges (ViewCastInfo castA, ViewCastInfo castB) {
@@ -251,6 +260,12 @@ namespace KeepTalkingForOrgansGame {
             vertices.Add(transform.InverseTransformPoint(worldPos));
         }
 
+
+        [System.Serializable]
+        public struct SpanProps {
+            public float distance;
+            public float fov;
+        }
 
         struct ViewCastInfo {
             // public Vector2    origin;

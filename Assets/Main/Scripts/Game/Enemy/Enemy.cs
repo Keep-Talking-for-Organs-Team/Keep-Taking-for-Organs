@@ -1,5 +1,7 @@
 using UnityEngine;
 
+using DG.Tweening;
+
 namespace KeepTalkingForOrgansGame {
 
     public class Enemy : MonoBehaviour {
@@ -9,7 +11,7 @@ namespace KeepTalkingForOrgansGame {
         public float awareRateDecreaseSpeed;
         public bool  invisiableWhenOutOfSight;
 
-        public Vector2 initDir = Vector2.up;
+        public Vector2 defaultDir = Vector2.up;
 
         [Header("REFS")]
         public SpriteRenderer sr;
@@ -19,7 +21,7 @@ namespace KeepTalkingForOrgansGame {
         public float awareRateShows;
 
 
-        public Vector2 FacingDirection => transform.rotation * initDir;
+        public Vector2 FacingDirection => transform.rotation * defaultDir;
 
 
         // Components
@@ -28,7 +30,6 @@ namespace KeepTalkingForOrgansGame {
         EnemyAttackManager _attackManager;
 
 
-        bool    _isSpottingPlayer = false;
         float   _awareRate = 0f;
 
 
@@ -47,6 +48,21 @@ namespace KeepTalkingForOrgansGame {
 
         void FixedUpdate () {
 
+            // foreach (TargetedByEnemies target in TargetedByEnemies.list) {
+            //     // Has spotted target?
+            //     if (visionSpan.IsInSight(target.transform.position)) {
+            //
+            //         if (!_isSpottingPlayer)
+            //             print(string.Format("The target \"{0}\" go into the enemy's sight", target.name));
+            //
+            //         _isSpottingPlayer = true;
+            //     }
+            //     else {
+            //         _isSpottingPlayer = false;
+            //     }
+            // }
+
+
             if (Player.current != null) {
                 Player player = Player.current;
 
@@ -60,57 +76,37 @@ namespace KeepTalkingForOrgansGame {
                     }
                 }
 
-
                 // Has spotted player?
-                if (visionSpan.IsInSight(player.transform.position)) {
+                if (visionSpan.IsInSight(player.transform.position) && !player.IsHiding) {
 
-                    if (!_isSpottingPlayer)
-                        print("The player go into the enemy's sight");
+                    if (_awareRate >= 1) {
 
-                    _isSpottingPlayer = true;
-                }
-                else {
-                    _isSpottingPlayer = false;
-                }
+                        if (_attackManager != null) {
 
-
-                if (_isSpottingPlayer) {
+                            if (_attackManager.IsInRange(player.transform.position)) {
+                                _attackManager.TryToAttack();
+                            }
+                            else {
+                                if (_moveManager != null)
+                                    _moveManager.Chase(player.transform.position, Time.fixedDeltaTime, Time.timeScale);
+                            }
+                        }
+                    }
+                    else {
+                        _awareRate = Mathf.Min(_awareRate + awareRateIncreaseSpeed * Time.timeScale * Time.fixedDeltaTime, 1f);
+                    }
 
                     _visionManager.Target(player.transform.position, Time.fixedDeltaTime, Time.timeScale);
                     _moveManager.Target(player.transform.position, Time.fixedDeltaTime, Time.timeScale);
 
-
-                    if (_awareRate < 1) {
-                        _awareRate = Mathf.Min(_awareRate + awareRateIncreaseSpeed * Time.timeScale * Time.fixedDeltaTime, 1f);
-                    }
-
                 }
                 else {
-
                     if (_awareRate > 0) {
                         _awareRate = Mathf.Max(_awareRate - awareRateDecreaseSpeed * Time.timeScale * Time.fixedDeltaTime, 0f);
                     }
-
-                }
-
-                if (_awareRate == 1) {
-
-                    if (_attackManager != null) {
-
-                        if (_attackManager.IsInRange(player.transform.position)) {
-                            _attackManager.TryToAttack();
-                        }
-                        else {
-                            if (_moveManager != null)
-                                _moveManager.Chase(player.transform.position, Time.fixedDeltaTime, Time.timeScale);
-                        }
-                    }
                 }
 
 
-            }
-            else {
-                Hide();
             }
 
 

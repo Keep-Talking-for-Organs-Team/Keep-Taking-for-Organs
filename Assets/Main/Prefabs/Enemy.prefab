@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5230942923774515304}
   - component: {fileID: 6595830024689968406}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.4
 --- !u!1 &4423601870345542194
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,9 +59,10 @@ GameObject:
   - component: {fileID: 4423601870345542197}
   - component: {fileID: 4423601870345542217}
   - component: {fileID: 4423601870345542198}
+  - component: {fileID: 1984596174840681932}
   - component: {fileID: 4423601870345542199}
   - component: {fileID: 9194131719174694894}
-  m_Layer: 0
+  m_Layer: 20
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +77,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4423601870345542194}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.13, y: -4.38, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4423601871196682349}
@@ -99,8 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   awareRateIncreaseSpeed: 0.87
   awareRateDecreaseSpeed: 0.87
-  invisiableWhenOutOfSight: 1
-  initDir: {x: 0, y: 1}
+  invisiableWhenOutOfSight: 0
+  defaultDir: {x: 0, y: 1}
   sr: {fileID: 4423601871196682348}
   visionSpan: {fileID: 283753608623382913}
   awareRateShows: 0
@@ -138,6 +139,22 @@ MonoBehaviour:
   maxTurningSpeed: 150
   chaseSpeed: 4.5
   defaultState: 0
+--- !u!114 &1984596174840681932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4423601870345542194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96f39b8d3c6e96d4cb3f78ed5bfffd9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 2.1
+  turningSpeed: 143
+  waitingTimeOnNode: 0.8
+  path: {fileID: 0}
 --- !u!114 &4423601870345542199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 763580bc4f7da2b49aabc409365b525d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 8.7
+  attackDistance: 7.8
   attackCooldownTime: 1.5
 --- !u!50 &9194131719174694894
 Rigidbody2D:

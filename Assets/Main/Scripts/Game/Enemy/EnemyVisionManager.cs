@@ -23,8 +23,9 @@ namespace KeepTalkingForOrgansGame {
         [Header("State")]
         public State defaultState;
 
-
+        // Components
         Enemy        _enemy;
+
         State        _state;
         ShakingState _shakingState;
 
@@ -36,10 +37,12 @@ namespace KeepTalkingForOrgansGame {
                 animSeq = null,
                 currentRotAngle = 0f
             };
-
-            _state = defaultState;
         }
 
+        void Start () {
+            _state = defaultState;
+            _enemy.visionSpan.SetFacingDirection(_enemy.FacingDirection);
+        }
 
 
         void FixedUpdate () {
@@ -78,7 +81,7 @@ namespace KeepTalkingForOrgansGame {
                     _shakingState.animSeq = null;
                 }
             }
-            
+
             _state = defaultState;
 
         }

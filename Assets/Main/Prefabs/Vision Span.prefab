@@ -92,6 +92,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0460b886dd42043439dc4edb25c89b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spanProps:
+    distance: 10
+    fov: 70
   visionDistance: 10
   fovAngle: 70
   cutInObstacleDistance: 0
@@ -102,4 +105,5 @@ MonoBehaviour:
     m_Bits: 256
   edgeResolveIterations: 8
   showDebugLines: 0
+  showVisionEdgeLines: 0
   segmentCountShows: 0
