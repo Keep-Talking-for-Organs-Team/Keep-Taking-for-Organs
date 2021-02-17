@@ -8,9 +8,10 @@ namespace KeepTalkingForOrgansGame {
 
         public static GameSceneManager current;
 
-
+        [Header("Options")]
         public float overrideViewSpanMaxSegmentGapAngle;
         public bool  activeHideSpriteAtRuntime = true;
+        public bool  enableRandomCamRotation = true;
 
         [Header("REFS")]
         public Camera mainCam;
@@ -60,6 +61,11 @@ namespace KeepTalkingForOrgansGame {
 
 // print(Vector2.Angle(Vector2.zero, Vector2.one));
 
+        }
+
+        void Start () {
+            if (enableRandomCamRotation)
+                mainCam.transform.rotation = Quaternion.AngleAxis(Random.Range(0, 4) * 90f, Vector3.forward);
         }
 
         void OnDestroy () {
