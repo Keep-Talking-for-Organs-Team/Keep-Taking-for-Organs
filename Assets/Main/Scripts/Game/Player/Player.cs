@@ -18,6 +18,7 @@ namespace KeepTalkingForOrgansGame {
 
         public Vector2 initDir = Vector2.up;
 
+
         [Header("REFS")]
         public VisionSpan visionSpan;
 

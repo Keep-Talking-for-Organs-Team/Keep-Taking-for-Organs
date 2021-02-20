@@ -9,9 +9,12 @@ namespace KeepTalkingForOrgansGame {
     [RequireComponent(typeof(Player))]
     public class PlayerMoveManager : MonoBehaviour {
 
+        [Header("Properties")]
         public float walkSpeed;
         public float crouchSpeed;
 
+        [Header("Parameters")]
+        public LayerMask moveCollisionLayerMask;
 
         public bool IsMovable => true;
 
@@ -35,7 +38,10 @@ namespace KeepTalkingForOrgansGame {
                 }
 
                 if (_rigidbody != null) {
-                    _rigidbody.MovePosition(_rigidbody.position + _controlManager.MoveDirection * speed * Time.fixedDeltaTime);
+
+                    Vector2 deltaPos = PhysicsTools2D.GetFinalDeltaPosAwaringObstacle(_rigidbody, _controlManager.MoveDirection, speed * Time.fixedDeltaTime * Time.timeScale, moveCollisionLayerMask);
+                    
+                    _rigidbody.MovePosition(_rigidbody.position + deltaPos);
                 }
 
             }

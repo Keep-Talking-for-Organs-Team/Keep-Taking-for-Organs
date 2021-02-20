@@ -21,6 +21,9 @@ namespace KeepTalkingForOrgansGame {
         [Header("State")]
         public State defaultState;
 
+        [Header("Parameters")]
+        public LayerMask moveCollisionLayerMask;
+
 
         // Components
         Enemy              _enemy;
@@ -52,9 +55,13 @@ namespace KeepTalkingForOrgansGame {
                     // ====
 
                     _patrolManager.IsPatrolling = true;
-                    Vector2 nextPos = _patrolManager.GetNextPosition(_rigidbody, Time.fixedDeltaTime * Time.timeScale);
 
-                    _rigidbody.MovePosition(nextPos);
+                    Vector2 deltaPos = _patrolManager.AccessNextPosition(_rigidbody, Time.fixedDeltaTime * Time.timeScale) - _rigidbody.position;
+                    Vector2 toNextDir = deltaPos.normalized;
+
+                    deltaPos = PhysicsTools2D.GetFinalDeltaPosAwaringObstacle(_rigidbody, toNextDir, Vector2.Dot(deltaPos, toNextDir), moveCollisionLayerMask);
+
+                    _rigidbody.MovePosition(_rigidbody.position + deltaPos);
                     _rigidbody.MoveRotation(_patrolManager.GetNextRotation(_rigidbody, Time.fixedDeltaTime * Time.timeScale));
                 }
             }
@@ -62,7 +69,7 @@ namespace KeepTalkingForOrgansGame {
         }
 
 
-        public void Target (Vector2 targetPos, float timeStep, float timeScale) {
+        public void Target (Vector2 targetPos, float timeStep) {
             _state = State.Targeting;
 
             Vector2 targetDir = transform.position.DirectionTo(targetPos);
@@ -72,23 +79,25 @@ namespace KeepTalkingForOrgansGame {
             if (Mathf.Sign(toTargetAngle) == Mathf.Sign(toVisionAngle)) {
                 if (Mathf.Abs(toTargetAngle) < Mathf.Abs(toVisionAngle)) {
 
-                    TurnToward(targetPos, timeStep, timeScale);
+                    TurnToward(transform.position.DirectionTo(targetPos), timeStep);
                 }
                 else {
 
-                    TurnToward(_enemy.visionSpan.FacingDirection, timeStep, timeScale);
+                    TurnToward(_enemy.visionSpan.FacingDirection, timeStep);
                 }
             }
         }
 
-        public void Chase (Vector2 targetPos, float timeStep, float timeScale) {
+        public void Chase (Vector2 targetPos, float timeStep) {
             _state = State.Chasing;
-            _rigidbody.MovePosition(_rigidbody.position + (Vector2) transform.position.DirectionTo(targetPos) * chaseSpeed * timeScale * timeStep);
+
+            Vector2 deltaPos = PhysicsTools2D.GetFinalDeltaPosAwaringObstacle(_rigidbody, _rigidbody.position.DirectionTo(targetPos), chaseSpeed * timeStep, moveCollisionLayerMask);
+            _rigidbody.MovePosition(_rigidbody.position + deltaPos);
         }
 
 
-        void TurnToward (Vector2 destinationDir, float timeStep, float timeScale) {
-            _rigidbody.MoveRotation( Mathf.MoveTowardsAngle(_rigidbody.rotation, Vector2.SignedAngle(_enemy.defaultDir, destinationDir), maxTurningSpeed * timeScale * timeStep) );
+        public void TurnToward (Vector2 destinationDir, float timeStep) {
+            _rigidbody.MoveRotation( Mathf.MoveTowardsAngle(_rigidbody.rotation, Vector2.SignedAngle(_enemy.defaultDir, destinationDir), maxTurningSpeed * timeStep) );
         }
 
     }

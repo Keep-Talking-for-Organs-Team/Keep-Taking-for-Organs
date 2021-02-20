@@ -49,7 +49,7 @@ namespace KeepTalkingForOrgansGame {
 
             if (_state == State.Fixed) {
                 if (_enemy.FacingDirection != _enemy.visionSpan.FacingDirection)
-                    RotateToward(_enemy.FacingDirection, Time.fixedDeltaTime, Time.timeScale);
+                    RotateToward(_enemy.FacingDirection, Time.fixedDeltaTime * Time.timeScale);
             }
 
             if (_state == State.Shaking) {
@@ -86,15 +86,15 @@ namespace KeepTalkingForOrgansGame {
 
         }
 
-        public void Target (Vector2 targetPos, float timeStep, float timeScale) {
+        public void Target (Vector2 targetPos, float timeStep) {
             _state = State.Targeting;
-            RotateToward( ((Vector2) transform.position).DirectionTo(targetPos), timeStep, timeScale );
+            RotateToward( ((Vector2) transform.position).DirectionTo(targetPos), timeStep );
         }
 
 
 
-        void RotateToward (Vector2 destinationDir, float timeStep, float timeScale) {
-            _enemy.visionSpan.SetFacingDirection(_enemy.visionSpan.FacingDirection.GetRotateTowards(destinationDir, maxAngularSpeed * timeScale * timeStep));
+        void RotateToward (Vector2 destinationDir, float timeStep) {
+            _enemy.visionSpan.SetFacingDirection(_enemy.visionSpan.FacingDirection.GetRotateTowards(destinationDir, maxAngularSpeed * timeStep));
         }
 
 

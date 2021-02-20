@@ -9,7 +9,6 @@ namespace KeepTalkingForOrgansGame {
 
         public float awareRateIncreaseSpeed;
         public float awareRateDecreaseSpeed;
-        public bool  invisiableWhenOutOfSight;
 
         public Vector2 defaultDir = Vector2.up;
 
@@ -40,7 +39,7 @@ namespace KeepTalkingForOrgansGame {
         }
 
         void Start () {
-            if (invisiableWhenOutOfSight) {
+            if (!GameSceneManager.current.showAllEnemies) {
                 Hide();
             }
         }
@@ -71,7 +70,7 @@ namespace KeepTalkingForOrgansGame {
                     Show();
                 }
                 else {
-                    if (invisiableWhenOutOfSight) {
+                    if (!GameSceneManager.current.showAllEnemies) {
                         Hide();
                     }
                 }
@@ -88,7 +87,7 @@ namespace KeepTalkingForOrgansGame {
                             }
                             else {
                                 if (_moveManager != null)
-                                    _moveManager.Chase(player.transform.position, Time.fixedDeltaTime, Time.timeScale);
+                                    _moveManager.Chase(player.transform.position, Time.fixedDeltaTime * Time.timeScale);
                             }
                         }
                     }
@@ -96,8 +95,8 @@ namespace KeepTalkingForOrgansGame {
                         _awareRate = Mathf.Min(_awareRate + awareRateIncreaseSpeed * Time.timeScale * Time.fixedDeltaTime, 1f);
                     }
 
-                    _visionManager.Target(player.transform.position, Time.fixedDeltaTime, Time.timeScale);
-                    _moveManager.Target(player.transform.position, Time.fixedDeltaTime, Time.timeScale);
+                    _visionManager.Target(player.transform.position, Time.fixedDeltaTime * Time.timeScale);
+                    _moveManager.Target(player.transform.position, Time.fixedDeltaTime * Time.timeScale);
 
                 }
                 else {

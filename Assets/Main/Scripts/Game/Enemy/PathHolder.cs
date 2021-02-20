@@ -4,8 +4,15 @@ namespace KeepTalkingForOrgansGame {
 
     public class PathHolder : MonoBehaviour {
 
+        public enum TurnSide {
+            Left,
+            Right
+        }
+
         [Header("Options")]
         public bool isTailToHead;
+        public TurnSide headTurnSide;
+        public TurnSide tailTurnSide;
 
         [Header("Gizmos Settings")]
         public Color gizmosColor = Color.white;
@@ -34,11 +41,11 @@ namespace KeepTalkingForOrgansGame {
         }
 
 
-        public Vector2 GetPoint (int index) {
-            return transform.GetChild(index % PointCount).position;
+        public Vector2 GetPoint (int ascendedIndex) {
+            return transform.GetChild(ascendedIndex % PointCount).position;
         }
 
-        public Vector2[] GetSegment (int index) {
+        public Vector2[] GetSegment (int ascendedIndex) {
 
             Vector2[] result = new Vector2[2] {Vector2.zero, Vector2.zero};
 
@@ -55,21 +62,21 @@ namespace KeepTalkingForOrgansGame {
                 if (isTailToHead) {
                     // circle
                     for (int i = 0 ; i < result.Length ; i++) {
-                        result[i] = GetPoint(index + i);
+                        result[i] = GetPoint(ascendedIndex + i);
                     }
                 }
                 else {
                     // ping-pong
                     bool reverseDir = false;
-                    if ((index / SegmentsAmount) % 2 == 1)
+                    if ((ascendedIndex / SegmentsAmount) % 2 == 1)
                         reverseDir = true;
 
                     for (int i = 0 ; i < result.Length ; i++) {
                         if (reverseDir) {
-                            result[i] = GetPoint(SegmentsAmount - (index + i) % SegmentsAmount);
+                            result[i] = GetPoint(SegmentsAmount - (ascendedIndex + i) % SegmentsAmount);
                         }
                         else {
-                            result[i] = GetPoint((index + i) % SegmentsAmount);
+                            result[i] = GetPoint((ascendedIndex + i) % SegmentsAmount);
                         }
                     }
                 }
@@ -110,6 +117,26 @@ namespace KeepTalkingForOrgansGame {
         public Vector2 GetClosetPointInSegment (Vector2[] segment, Vector2 source) {
             Vector2 segmentDir = (segment[1] - segment[0]).normalized;
             return segment[0] + Vector2.Dot(source - segment[0], segmentDir) * segmentDir;
+        }
+
+        public int GetTurnDirectionAtEndPoint (int ascendedIndex) {
+            if (!isTailToHead) {
+                TurnSide turnSide = TurnSide.Left;
+                int index = ascendedIndex % PointCount;
+
+                if (index == 0)
+                    turnSide = headTurnSide;
+                else if (index == PointCount - 1)
+                    turnSide = tailTurnSide;
+                else
+                    return 0;
+
+                if (turnSide == TurnSide.Left)
+                    return 1;
+                else if (turnSide == TurnSide.Right)
+                    return -1;
+            }
+            return 0;
         }
 
     }

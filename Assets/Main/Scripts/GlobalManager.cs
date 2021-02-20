@@ -6,6 +6,8 @@ namespace KeepTalkingForOrgansGame {
 
     public class GlobalManager : MonoBehaviour {
 
+        public const float minDeltaAngle = 0.187f;
+
         public static GlobalManager current;
 
         [Header("Output Shows")]
