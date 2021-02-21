@@ -1,6 +1,7 @@
 using System.Collections;
 
 using UnityEngine;
+using UnityEngine.UI;
 
 using DoubleHeat.Utilities;
 
@@ -21,26 +22,30 @@ namespace KeepTalkingForOrgansGame {
 
         [Header("REFS")]
         public VisionSpan visionSpan;
+        public Text deathText;
 
 
-        public Vector2 DirToMouse => (GameSceneManager.current != null) ? (CameraTools.GetMouseWorldPosition(GameSceneManager.current.mainCam) - (Vector2) transform.position).normalized : Vector2.zero;
+        public Vector2 FacingDirection => transform.rotation * initDir;
         public bool IsCrouching => _isCrouching;
         public bool IsHiding => _isHiding;
+        public bool IsDead => _isDead;
 
 
         // Components
         Rigidbody2D _rigidbody;
         TargetedByEnemies _targetedByEmenies;
 
-        Vector2 _dir;
         bool    _isCrouching = false;
         bool    _isHiding = false;
+        bool    _isDead = false;
 
         void Awake () {
             ComponentsTools.SetAndKeepAttachedGameObjectUniquely<Player>(ref current, this);
 
             _rigidbody = GetComponent<Rigidbody2D>();
             _targetedByEmenies = GetComponent<TargetedByEnemies>();
+
+            deathText.enabled = false;
         }
 
         void OnDestroy () {
@@ -49,14 +54,6 @@ namespace KeepTalkingForOrgansGame {
 
 
         void FixedUpdate () {
-            // // === temp === ///
-            // Vector2 moveDir = GameSceneManager.current.mainCam.transform.rotation * (SimpleInput.GetAxisRaw("Horizontal") * Vector2.right + SimpleInput.GetAxisRaw("Vertical") * Vector2.up).normalized;
-            // // === ==== === ///
-            //
-            // if (_rigidbody != null) {
-            //     _rigidbody.MovePosition(_rigidbody.position + moveDir * walkSpeed * Time.fixedDeltaTime);
-            // }
-
 
             if (_isCrouching && TerrainManager.current.IsInHidingArea(transform.position)) {
                 _isHiding = true;
@@ -70,16 +67,31 @@ namespace KeepTalkingForOrgansGame {
         void Update () {
 
             // ==== temp ====
+            // Camera Follow
             GameSceneManager.current.mainCam.transform.SetPosXY(transform.position);
             // ==== ==== ====
 
-            _dir = DirToMouse;
-            transform.rotation = Quaternion.FromToRotation(initDir, _dir);
 
-            visionSpan.SetFacingDirection(_dir);
+#if UNITY_EDITOR
+
+            if (Input.GetKeyDown(KeyCode.Q)) {
+                Die();
+            }
+
+#endif
 
         }
 
+        public void Die () {
+            _isDead = true;
+            deathText.enabled = true;
+        }
+
+
+        public void SetFacing (Vector2 dir) {
+            transform.rotation = Quaternion.FromToRotation(initDir, dir);
+            visionSpan.SetFacingDirection(dir);
+        }
 
         public void ToggleCrouch () {
             _isCrouching = !_isCrouching;

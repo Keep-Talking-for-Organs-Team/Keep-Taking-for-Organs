@@ -24,6 +24,7 @@ namespace KeepTalkingForOrgansGame {
 
 
         // Components
+        EnemyAnimManager   _animManager;
         EnemyVisionManager _visionManager;
         EnemyMoveManager   _moveManager;
         EnemyAttackManager _attackManager;
@@ -33,6 +34,7 @@ namespace KeepTalkingForOrgansGame {
 
 
         void Awake () {
+            _animManager   = GetComponent<EnemyAnimManager>();
             _visionManager = GetComponent<EnemyVisionManager>();
             _moveManager   = GetComponent<EnemyMoveManager>();
             _attackManager = GetComponent<EnemyAttackManager>();
@@ -76,7 +78,7 @@ namespace KeepTalkingForOrgansGame {
                 }
 
                 // Has spotted player?
-                if (visionSpan.IsInSight(player.transform.position) && !player.IsHiding) {
+                if (!player.IsDead && visionSpan.IsInSight(player.transform.position) && !player.IsHiding) {
 
                     if (_awareRate >= 1) {
 
@@ -112,6 +114,28 @@ namespace KeepTalkingForOrgansGame {
             awareRateShows = _awareRate;
         }
 
+        void Update () {
+
+            if (_animManager != null) {
+                if (_awareRate == 1) {
+                    if (_animManager.CurrentState != EnemyAnimManager.State.Alert && _animManager.CurrentState != EnemyAnimManager.State.Attacking) {
+                        _animManager.Play(EnemyAnimManager.State.Alert);
+                    }
+                }
+                else if (_awareRate > 0) {
+                    if (_animManager.CurrentState != EnemyAnimManager.State.Suspecting) {
+                        _animManager.Play(EnemyAnimManager.State.Suspecting);
+                    }
+                }
+                else {
+                    if (_animManager.CurrentState != EnemyAnimManager.State.None) {
+                        _animManager.Play(EnemyAnimManager.State.None);
+
+                    }
+                }
+            }
+
+        }
 
 
         void Show () {
@@ -127,7 +151,6 @@ namespace KeepTalkingForOrgansGame {
 
             visionSpan.isShowingVisionArea = false;
         }
-
 
     }
 }

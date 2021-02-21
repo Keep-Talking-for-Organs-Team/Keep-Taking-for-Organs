@@ -1,4 +1,7 @@
 using UnityEngine;
+using UnityEngine.UI;
+
+using DG.Tweening;
 
 using DoubleHeat;
 
@@ -16,9 +19,14 @@ namespace KeepTalkingForOrgansGame {
         public bool  enableRandomCamRotation = true;
         public bool  showAllEnemies = false;
 
+        [Header("Properties")]
+        public float attackedOverlayFXDuration = 1f;
+        public Ease  attackedOverlayFXEase;
+
         [Header("REFS")]
-        public Camera mainCam;
-        public Transform enemiesParent;
+        public Camera      mainCam;
+        public Transform   enemiesParent;
+        public CanvasGroup attackedOverlayFX;
 
 
 
@@ -34,6 +42,9 @@ namespace KeepTalkingForOrgansGame {
         void Start () {
             if (enableRandomCamRotation)
                 mainCam.transform.rotation = Quaternion.AngleAxis(Random.Range(0, 4) * 90f, Vector3.forward);
+
+
+            attackedOverlayFX.alpha = 0f;
         }
 
         void OnDestroy () {
@@ -48,6 +59,12 @@ namespace KeepTalkingForOrgansGame {
                 VisionSpan.maxSegmentGapAngle = overrideViewSpanMaxSegmentGapAngle;
         }
 
+
+        public void PlayAttackedOverlayFX () {
+            attackedOverlayFX.DOFade(0f, attackedOverlayFXDuration)
+                .From(1f)
+                .SetEase(attackedOverlayFXEase);
+        }
 
     }
 }

@@ -11,6 +11,13 @@ namespace KeepTalkingForOrgansGame {
 
         float _lastestAttackStartTime = 0f;
 
+        // Components
+        EnemyAnimManager _animManager;
+
+        void Awake () {
+            _animManager = GetComponent<EnemyAnimManager>();
+        }
+
 
         public bool IsInRange (Vector2 targetPos) {
 
@@ -29,7 +36,13 @@ namespace KeepTalkingForOrgansGame {
 
         void Attack () {
             _lastestAttackStartTime = Time.time;
-            print("Enemy attacked!");
+
+            if (_animManager != null) {
+                _animManager.Play(EnemyAnimManager.State.Attacking);
+            }
+
+            GameSceneManager.current.PlayAttackedOverlayFX();
+            Player.current.Die();
         }
 
     }

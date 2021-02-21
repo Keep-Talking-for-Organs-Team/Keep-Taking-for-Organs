@@ -16,7 +16,7 @@ namespace KeepTalkingForOrgansGame {
         [Header("Parameters")]
         public LayerMask moveCollisionLayerMask;
 
-        public bool IsMovable => true;
+        public bool IsMovable => !_player.IsDead;
 
         // Components
         Player _player;
@@ -40,7 +40,7 @@ namespace KeepTalkingForOrgansGame {
                 if (_rigidbody != null) {
 
                     Vector2 deltaPos = PhysicsTools2D.GetFinalDeltaPosAwaringObstacle(_rigidbody, _controlManager.MoveDirection, speed * Time.fixedDeltaTime * Time.timeScale, moveCollisionLayerMask);
-                    
+
                     _rigidbody.MovePosition(_rigidbody.position + deltaPos);
                 }
 
