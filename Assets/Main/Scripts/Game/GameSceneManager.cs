@@ -7,9 +7,15 @@ using DoubleHeat;
 
 namespace KeepTalkingForOrgansGame {
 
-    public class GameSceneManager : MonoBehaviour {
+    public class GameSceneManager : SingletonMonoBehaviour<GameSceneManager> {
 
-        public static GameSceneManager current;
+        // public static GameSceneManager current {
+        //     get {
+        //         print(instance);
+        //         return null;
+        //     }
+        // }
+
 
         [Header("Options")]
         [Range(0f, 3f)]
@@ -30,12 +36,8 @@ namespace KeepTalkingForOrgansGame {
 
 
 
-        void Awake () {
-            if (current != null) {
-                Destroy(current);
-            }
-            current = this;
-
+        protected override void Awake () {
+            base.Awake();
             HideSpriteAtRuntime.isActive = activeHideSpriteAtRuntime;
         }
 
@@ -47,9 +49,6 @@ namespace KeepTalkingForOrgansGame {
             attackedOverlayFX.alpha = 0f;
         }
 
-        void OnDestroy () {
-            current = null;
-        }
 
         void OnValidate () {
 

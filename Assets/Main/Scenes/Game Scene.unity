@@ -14070,18 +14070,28 @@ PrefabInstance:
     - target: {fileID: 1086961563114248880, guid: bb9b3108f668e39419361e0e04d5a949,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.570001
+      value: 10.89
       objectReference: {fileID: 0}
     - target: {fileID: 1086961563114248880, guid: bb9b3108f668e39419361e0e04d5a949,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5
+      value: 1.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699935514734301526, guid: bb9b3108f668e39419361e0e04d5a949,
+        type: 3}
+      propertyPath: lockedOnPath
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1699935514734301526, guid: bb9b3108f668e39419361e0e04d5a949,
         type: 3}
       propertyPath: patrollingPath
       value: 
       objectReference: {fileID: 834953953}
+    - target: {fileID: 1699935514734301526, guid: bb9b3108f668e39419361e0e04d5a949,
+        type: 3}
+      propertyPath: positionInPath
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1699935514734301526, guid: bb9b3108f668e39419361e0e04d5a949,
         type: 3}
       propertyPath: defaultMoveState
@@ -14178,9 +14188,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1699935514734301526, guid: bb9b3108f668e39419361e0e04d5a949,
         type: 3}
+      propertyPath: lockedOnPath
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699935514734301526, guid: bb9b3108f668e39419361e0e04d5a949,
+        type: 3}
       propertyPath: patrollingPath
       value: 
       objectReference: {fileID: 1501806539411984976}
+    - target: {fileID: 1699935514734301526, guid: bb9b3108f668e39419361e0e04d5a949,
+        type: 3}
+      propertyPath: positionInPath
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1699935514734301526, guid: bb9b3108f668e39419361e0e04d5a949,
         type: 3}
       propertyPath: defaultMoveState
@@ -14373,6 +14393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fff8779ac5e9aa43aa17edc286da4c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keepRule: 1
+  isInvincible: 1
   walkVisionSpanProps:
     distance: 10
     fov: 70
@@ -15807,6 +15829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50b2dae61df84941a391f51242b1d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keepRule: 0
   timeScale: 1
   overrideViewSpanMaxSegmentGapAngle: 5
   activeHideSpriteAtRuntime: 1
@@ -15922,6 +15945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb52c06d45865d349b2150273de07365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keepRule: 0
   trapArea: {fileID: 1547737972}
   hidingArea: {fileID: 1817219878}
 --- !u!1 &1458794775
@@ -17232,7 +17256,7 @@ PrefabInstance:
     - target: {fileID: 4423601870345542194, guid: f6d8d3c96c0cdbe45809caf2ba5d4ecb,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4423601870345542196, guid: f6d8d3c96c0cdbe45809caf2ba5d4ecb,
         type: 3}

@@ -23,10 +23,20 @@ namespace KeepTalkingForOrgansGame {
         [Header("State")]
         public State defaultState;
 
+
+        public State CurrentState {
+            get => _state;
+            set {
+                _hasAssignedNewStateThisFrame = true;
+                _state = value;
+            }
+        }
+
         // Components
         Enemy        _enemy;
 
         State        _state;
+        bool         _hasAssignedNewStateThisFrame = false;
         ShakingState _shakingState;
 
 
@@ -82,12 +92,15 @@ namespace KeepTalkingForOrgansGame {
                 }
             }
 
-            _state = defaultState;
+            if (!_hasAssignedNewStateThisFrame)
+                _state = defaultState;
+            else
+                _hasAssignedNewStateThisFrame = false;
 
         }
 
         public void Target (Vector2 targetPos, float timeStep) {
-            _state = State.Targeting;
+            CurrentState = State.Targeting;
             RotateToward( ((Vector2) transform.position).DirectionTo(targetPos), timeStep );
         }
 

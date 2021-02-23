@@ -1,5 +1,7 @@
 using UnityEngine;
 
+using DoubleHeat.Utilities;
+
 namespace KeepTalkingForOrgansGame {
 
     public class PathHolder : MonoBehaviour {
@@ -86,7 +88,16 @@ namespace KeepTalkingForOrgansGame {
 
         }
 
-        public Vector2 GetClosetPointInPath (Vector2 source, out int segmentIndex) {
+        public Vector2 GetPositionInPath (float positionValue) {
+            positionValue = Mathf.Max(positionValue, 0f);
+
+            Vector2 prevPoint = GetPoint((int) positionValue);
+            Vector2 segmentVector = GetPoint((int) positionValue + 1) - prevPoint;
+
+            return prevPoint + (positionValue % 1) * segmentVector;
+        }
+
+        public Vector2 GetClosestPointInPath (Vector2 source, out int segmentIndex) {
 
             segmentIndex = 0;
 
@@ -99,7 +110,7 @@ namespace KeepTalkingForOrgansGame {
                 float minSqrDist = (resultPoint - source).sqrMagnitude;
 
                 for (int i = 0 ; i < SegmentsAmount ; i++) {
-                    Vector2 point = GetClosetPointInSegment(GetSegment(i), source);
+                    Vector2 point = source.GetClosestPointInSegment(GetSegment(i));
                     float sqrDist = (point - source).sqrMagnitude;
 
                     if (sqrDist < minSqrDist) {
@@ -114,10 +125,6 @@ namespace KeepTalkingForOrgansGame {
         }
 
 
-        public Vector2 GetClosetPointInSegment (Vector2[] segment, Vector2 source) {
-            Vector2 segmentDir = (segment[1] - segment[0]).normalized;
-            return segment[0] + Vector2.Dot(source - segment[0], segmentDir) * segmentDir;
-        }
 
         public int GetTurnDirectionAtEndPoint (int ascendedIndex) {
             if (!isTailToHead) {

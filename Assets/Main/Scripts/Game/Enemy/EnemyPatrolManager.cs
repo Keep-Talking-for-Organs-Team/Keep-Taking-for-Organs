@@ -21,30 +21,11 @@ namespace KeepTalkingForOrgansGame {
         public PathHolder path;
 
 
-
         float _pendingTurnAngleAtEndPoint = 0f;
 
 
-        public bool IsPatrolling {
-            get => _isPatrolling;
-            set {
-                if (_isPatrolling != value) {
-
-                    if (value == true) {
-                        // start patrolling
-                    }
-                    else {
-                        // stop patrolling
-                        StopPatrolling();
-                    }
-
-                    _isPatrolling = value;
-                }
-
-            }
-        }
-
-        public bool IsInPath => _isInPath;
+        public bool IsInPath             {get; private set;} = false;
+        public bool IsIndexAscendingWard {get; private set;} = true;
         public bool IsOnNode => (_prevNodeAscendedIndex == _nextNodeAscendedIndex && _prevNodeAscendedIndex != -1);
         public Vector2 PrevPoint => path != null ? path.GetPoint(_prevNodeAscendedIndex) : Vector2.zero;
         public Vector2 NextPoint => path != null ? path.GetPoint(_nextNodeAscendedIndex) : Vector2.zero;
@@ -55,7 +36,6 @@ namespace KeepTalkingForOrgansGame {
         EnemyMoveManager _moveManager;
 
 
-        bool _isInPath = false;
         bool _isPatrolling = false;
 
         int _prevNodeAscendedIndex = -1;
@@ -69,6 +49,25 @@ namespace KeepTalkingForOrgansGame {
             _moveManager = GetComponent<EnemyMoveManager>();
         }
 
+        void FixedUpdate () {
+
+            if (_moveManager != null) {
+
+                bool isNowPatrolling = _moveManager.CurrentState == EnemyMoveManager.State.Patrolling;
+
+                if (isNowPatrolling != _isPatrolling) {
+                    if (isNowPatrolling) {
+                        OnStartPatrolling();
+                    }
+                    else {
+                        OnStopPatrolling();
+                    }
+
+                    _isPatrolling = isNowPatrolling;
+                }
+            }
+        }
+
 
         public void SetToPathPosition (float positionInPath) {
             if (path == null)
@@ -80,58 +79,103 @@ namespace KeepTalkingForOrgansGame {
 
             _prevNodeAscendedIndex = (int) positionInPath;
             _nextNodeAscendedIndex = Mathf.CeilToInt(positionInPath);
-            _isInPath = true;
+            IsInPath = true;
 
             HeadToNext();
         }
 
-        public Vector2 AccessNextPosition (Rigidbody2D rb, float timeStep) {
-            if (_isInPath) {
-                Vector2 toNextDir = (NextPoint - rb.position).normalized;
 
-                if (Vector2.Angle(_enemy.FacingDirection, toNextDir) < GlobalManager.minDeltaAngle || toNextDir == Vector2.zero) {
+        public EnemyMoveManager.RigidbodyPosRot AccessNextPosRot (Rigidbody2D rb, float timeStep) {
+            EnemyMoveManager.RigidbodyPosRot result = new EnemyMoveManager.RigidbodyPosRot() {
+                position = rb.position,
+                rotation = rb.rotation
+            };
 
-                    if (_moveManager != null)
-                        _moveManager.TurnToward(toNextDir, timeStep);
 
-                    Vector2 result = Vector2.MoveTowards(rb.position, NextPoint, walkSpeed * timeStep);
+            Vector2 targetPos = rb.position;
 
-                    if (result == NextPoint)
-                        OnNextArrived();
+            if (IsInPath) {
 
-                    return result;
+                if (_prevNodeAscendedIndex < _nextNodeAscendedIndex) {
+                    IsIndexAscendingWard = true;
+                }
+                else if (_prevNodeAscendedIndex > _nextNodeAscendedIndex) {
+                    IsIndexAscendingWard = false;
+                }
+
+                targetPos = NextPoint;
+
+            }
+            else {
+                // Not In Path
+
+                int closestSegmentIndex = 0;
+                Vector2 closestPositionInPath = path.GetClosestPointInPath(rb.position, out closestSegmentIndex);
+
+                if (closestPositionInPath - rb.position == Vector2.zero) {
+                    // Already Got In Path
+                    rb.position = closestPositionInPath;
+                    IsInPath = true;
+
+                    if (IsIndexAscendingWard) {
+                        _prevNodeAscendedIndex = closestSegmentIndex;
+                        _nextNodeAscendedIndex = closestSegmentIndex + 1;
+                    }
+                    else {
+                        _prevNodeAscendedIndex = closestSegmentIndex + 1;
+                        _nextNodeAscendedIndex = closestSegmentIndex;
+                    }
+
+                    targetPos = NextPoint;
+                }
+                else {
+                    // Still Out of Path
+                    targetPos = closestPositionInPath;
                 }
             }
 
-            return transform.position;
-        }
+            // Draw the route
+            Debug.DrawLine(rb.position, targetPos, Color.green);
 
-        public float GetNextRotation (Rigidbody2D rb, float timeStep) {
 
-            if (_isInPath) {
-                if (!IsOnNode) {
+            Vector2 dirToTarget = (targetPos - rb.position).normalized;
 
-                    if (_pendingTurnAngleAtEndPoint == 0) {
-                        Vector2 targetDir = (NextPoint - rb.position).normalized;
+            if (dirToTarget == Vector2.zero) {
+                rb.position = targetPos;
 
-                        if (targetDir != Vector2.zero && _enemy.FacingDirection != targetDir) {
+                if (IsInPath) {
+                    OnNextArrived();
+                }
+            }
+            else {
+                float signedAngleToTarget = Vector2.SignedAngle(_enemy.FacingDirection, dirToTarget);
 
-                            return Mathf.MoveTowardsAngle( rb.rotation, rb.rotation + Vector2.SignedAngle(_enemy.FacingDirection, targetDir), turningSpeed * timeStep );
-                        }
-                    }
-                    else {
+                if (Mathf.Abs(signedAngleToTarget) < GlobalManager.minDeltaAngle) {
+                    // walk
+                    if (_moveManager != null)
+                        _moveManager.TurnToward(dirToTarget, timeStep);
+
+                    result.position = Vector2.MoveTowards(rb.position, targetPos, walkSpeed * timeStep);
+                }
+                else {
+                    // turn
+                    if (_pendingTurnAngleAtEndPoint != 0) {
+
                         float sign = Mathf.Sign(_pendingTurnAngleAtEndPoint);
                         float unsignedDelta = turningSpeed * timeStep;
 
                         _pendingTurnAngleAtEndPoint = sign * Mathf.Max(Mathf.Abs(_pendingTurnAngleAtEndPoint) - unsignedDelta, 0f);
 
-                        return rb.rotation + sign * unsignedDelta;
+                        result.rotation = rb.rotation + sign * unsignedDelta;
                     }
-
+                    else {
+                        result.rotation = Mathf.MoveTowardsAngle(rb.rotation, rb.rotation + signedAngleToTarget, turningSpeed * timeStep);
+                    }
                 }
             }
 
-            return rb.rotation;
+
+            return result;
         }
 
 
@@ -139,7 +183,7 @@ namespace KeepTalkingForOrgansGame {
             if (IsOnNode)
                 return;
 
-            _isInPath = true;
+            IsInPath = true;
             _prevNodeAscendedIndex = _nextNodeAscendedIndex;
 
             _pendingTurnAngleAtEndPoint = path.GetTurnDirectionAtEndPoint(_prevNodeAscendedIndex) * GlobalManager.minDeltaAngle;
@@ -150,13 +194,18 @@ namespace KeepTalkingForOrgansGame {
         }
 
         void HeadToNext () {
-            if (IsOnNode)
-                _nextNodeAscendedIndex = _prevNodeAscendedIndex + 1;
+            _nextNodeAscendedIndex = _prevNodeAscendedIndex + 1;
         }
 
 
-        void StopPatrolling () {
+        void OnStartPatrolling () {
+
+        }
+
+        void OnStopPatrolling () {
             _waitingSeq.Kill(false);
+            IsInPath = false;
+print("STOP");
         }
 
     }

@@ -3,15 +3,19 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+using DoubleHeat;
 using DoubleHeat.Utilities;
 
 namespace KeepTalkingForOrgansGame {
 
-    public class Player : MonoBehaviour {
+    public class Player : SingletonMonoBehaviour<Player> {
 
 
-        public static Player current;
+        // public static Player current => instance != null ? (Player) instance : null;
 
+
+        [Header("Options")]
+        public bool isInvincible = false;
 
         [Header("Properties")]
         public VisionSpan.SpanProps walkVisionSpanProps;
@@ -39,18 +43,14 @@ namespace KeepTalkingForOrgansGame {
         bool    _isHiding = false;
         bool    _isDead = false;
 
-        void Awake () {
-            ComponentsTools.SetAndKeepAttachedGameObjectUniquely<Player>(ref current, this);
-
+        protected override void Awake () {
+            base.Awake();
             _rigidbody = GetComponent<Rigidbody2D>();
             _targetedByEmenies = GetComponent<TargetedByEnemies>();
 
             deathText.enabled = false;
         }
 
-        void OnDestroy () {
-            current  = null;
-        }
 
 
         void FixedUpdate () {
@@ -83,8 +83,10 @@ namespace KeepTalkingForOrgansGame {
         }
 
         public void Die () {
-            _isDead = true;
-            deathText.enabled = true;
+            if (!isInvincible) {
+                _isDead = true;
+                deathText.enabled = true;
+            }
         }
 
 

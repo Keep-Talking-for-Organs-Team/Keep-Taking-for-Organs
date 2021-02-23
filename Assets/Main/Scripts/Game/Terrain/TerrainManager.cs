@@ -1,12 +1,13 @@
 using UnityEngine;
 
+using DoubleHeat;
 using DoubleHeat.Utilities;
 
 namespace KeepTalkingForOrgansGame {
 
-    public class TerrainManager : MonoBehaviour {
+    public class TerrainManager : SingletonMonoBehaviour<TerrainManager> {
 
-        public static TerrainManager current;
+        // public static TerrainManager current = instance != null ? (TerrainManager) instance : null;
 
         [Header("REFS")]
         public GameObject trapArea;
@@ -17,9 +18,6 @@ namespace KeepTalkingForOrgansGame {
         Collider2D[] _hidingAreaColliders;
 
 
-        void Awake () {
-            ComponentsTools.SetAndKeepAttachedGameObjectUniquely<TerrainManager>(ref current, this);
-        }
 
         void Start () {
             _trapAreaColliders = trapArea.GetComponents<Collider2D>();

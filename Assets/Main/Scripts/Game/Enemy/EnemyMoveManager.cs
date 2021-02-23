@@ -25,12 +25,22 @@ namespace KeepTalkingForOrgansGame {
         public LayerMask moveCollisionLayerMask;
 
 
+        public State CurrentState {
+            get => _state;
+            set {
+                _hasAssignedNewStateThisFrame = true;
+                _state = value;
+            }
+        }
+
+
         // Components
         Enemy              _enemy;
         Rigidbody2D        _rigidbody;
         EnemyPatrolManager _patrolManager;
 
         State _state;
+        bool  _hasAssignedNewStateThisFrame = false;
 
 
         void Awake () {
@@ -47,30 +57,32 @@ namespace KeepTalkingForOrgansGame {
         void FixedUpdate () {
 
             if (_state == State.Patrolling) {
+
                 if (_patrolManager != null) {
 
-                    // test
-                    if (!_patrolManager.IsInPath)
-                        _patrolManager.SetToPathPosition(0f);
-                    // ====
+                    RigidbodyPosRot nextPosRot = _patrolManager.AccessNextPosRot(_rigidbody, Time.fixedDeltaTime * Time.timeScale);
 
-                    _patrolManager.IsPatrolling = true;
-
-                    Vector2 deltaPos = _patrolManager.AccessNextPosition(_rigidbody, Time.fixedDeltaTime * Time.timeScale) - _rigidbody.position;
+                    Vector2 deltaPos = nextPosRot.position - _rigidbody.position;
                     Vector2 toNextDir = deltaPos.normalized;
 
                     deltaPos = PhysicsTools2D.GetFinalDeltaPosAwaringObstacle(_rigidbody, toNextDir, Vector2.Dot(deltaPos, toNextDir), moveCollisionLayerMask);
 
                     _rigidbody.MovePosition(_rigidbody.position + deltaPos);
-                    _rigidbody.MoveRotation(_patrolManager.GetNextRotation(_rigidbody, Time.fixedDeltaTime * Time.timeScale));
+                    _rigidbody.MoveRotation(nextPosRot.rotation);
+
                 }
             }
+
+            if (!_hasAssignedNewStateThisFrame)
+                _state = defaultState;
+            else
+                _hasAssignedNewStateThisFrame = false;
 
         }
 
 
         public void Target (Vector2 targetPos, float timeStep) {
-            _state = State.Targeting;
+            CurrentState = State.Targeting;
 
             Vector2 targetDir = transform.position.DirectionTo(targetPos);
             float toTargetAngle = Vector2.SignedAngle(_enemy.FacingDirection, targetDir);
@@ -89,7 +101,7 @@ namespace KeepTalkingForOrgansGame {
         }
 
         public void Chase (Vector2 targetPos, float timeStep) {
-            _state = State.Chasing;
+            CurrentState = State.Chasing;
 
             Vector2 deltaPos = PhysicsTools2D.GetFinalDeltaPosAwaringObstacle(_rigidbody, _rigidbody.position.DirectionTo(targetPos), chaseSpeed * timeStep, moveCollisionLayerMask);
             _rigidbody.MovePosition(_rigidbody.position + deltaPos);
@@ -98,6 +110,12 @@ namespace KeepTalkingForOrgansGame {
 
         public void TurnToward (Vector2 destinationDir, float timeStep) {
             _rigidbody.MoveRotation( Mathf.MoveTowardsAngle(_rigidbody.rotation, Vector2.SignedAngle(_enemy.defaultDir, destinationDir), maxTurningSpeed * timeStep) );
+        }
+
+
+        public class RigidbodyPosRot {
+            public Vector2 position;
+            public float   rotation;
         }
 
     }

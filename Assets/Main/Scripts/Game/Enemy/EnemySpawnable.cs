@@ -4,10 +4,12 @@ namespace KeepTalkingForOrgansGame {
 
     public class EnemySpawnable : MonoBehaviour {
 
+        [Header("Properties")]
         public EnemyVisionManager.State defaultVisionState;
         public EnemyMoveManager.State   defaultMoveState;
         public PathHolder patrollingPath;
-        public bool clickedToResetPositionToPath;
+        public bool lockedOnPath;
+        public float positionInPath;
 
         [Header("REFS")]
         public GameObject enemyPrefab;
@@ -35,9 +37,10 @@ namespace KeepTalkingForOrgansGame {
                 }
             }
 
-            if (pathChanged || clickedToResetPositionToPath) {
+
+            if (lockedOnPath) {
                 if (patrollingPath != null && patrollingPath.PointCount > 0) {
-                    transform.position = patrollingPath.GetPoint(0);
+                    transform.position = patrollingPath.GetPositionInPath(positionInPath);
                 }
             }
              _prevPath = patrollingPath;
