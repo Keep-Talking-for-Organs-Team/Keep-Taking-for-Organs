@@ -6,6 +6,7 @@ using DoubleHeat.Utilities;
 
 namespace KeepTalkingForOrgansGame {
 
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(Player))]
     public class PlayerMoveManager : MonoBehaviour {
 
@@ -15,8 +16,6 @@ namespace KeepTalkingForOrgansGame {
 
         [Header("Parameters")]
         public LayerMask moveCollisionLayerMask;
-
-        public bool IsMovable => !_player.IsDead;
 
         // Components
         Player _player;
@@ -30,7 +29,7 @@ namespace KeepTalkingForOrgansGame {
         }
 
         void FixedUpdate () {
-            if (_controlManager != null && _controlManager.IsControllable) {
+            if (_player.IsMovable) {
 
                 float speed = walkSpeed;
                 if (_player.IsCrouching) {

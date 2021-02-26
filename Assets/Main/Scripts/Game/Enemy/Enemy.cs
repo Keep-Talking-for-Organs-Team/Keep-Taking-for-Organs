@@ -21,7 +21,17 @@ namespace KeepTalkingForOrgansGame {
 
 
         public Vector2 FacingDirection => transform.rotation * defaultDir;
-        public bool IsDead {get; private set;} = false;
+        public bool IsDead {
+            get => _isDead;
+            set {
+                bool oldValue = _isDead;
+                _isDead = value;
+
+                if (oldValue == false && value == true) {
+                    OnDied();
+                }
+            }
+        }
 
 
         // Components
@@ -29,8 +39,10 @@ namespace KeepTalkingForOrgansGame {
         EnemyVisionManager _visionManager;
         EnemyMoveManager   _moveManager;
         EnemyAttackManager _attackManager;
+        Rigidbody2D        _rigidbody;
 
 
+        bool _isDead = false;
         float _awareRate = 0f;
 
 
@@ -39,6 +51,7 @@ namespace KeepTalkingForOrgansGame {
             _visionManager = GetComponent<EnemyVisionManager>();
             _moveManager   = GetComponent<EnemyMoveManager>();
             _attackManager = GetComponent<EnemyAttackManager>();
+            _rigidbody     = GetComponent<Rigidbody2D>();
         }
 
         void Start () {
@@ -148,7 +161,7 @@ namespace KeepTalkingForOrgansGame {
         }
 
 
-        public void AttackedViaMelee () {
+        public void Attacked (PlayerAttackManager.AttackMethod atkMethod) {
             IsDead = true;
         }
 
@@ -165,6 +178,22 @@ namespace KeepTalkingForOrgansGame {
                 sr.gameObject.SetActive(false);
 
             visionSpan.isShowingVisionArea = false;
+        }
+
+
+        void OnDied () {
+
+            if (_rigidbody != null) {
+
+                _rigidbody.simulated = false;
+
+                Collider2D[] colliders = new Collider2D[1];
+                int collidersCount = _rigidbody.GetAttachedColliders(colliders);
+
+                for (int i = 0 ; i < collidersCount ; i++) {
+                    colliders[i].enabled = false;
+                }
+            }
         }
 
     }

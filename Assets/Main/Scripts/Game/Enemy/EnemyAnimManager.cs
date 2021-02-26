@@ -27,10 +27,8 @@ namespace KeepTalkingForOrgansGame {
         public Text deathText;
 
 
-        public State CurrentState => _state;
-
-
-        State _state = State.None;
+        public State CurrentState {get; private set;} = State.None;
+        
 
         void Awake () {
             Play(State.None);
@@ -52,7 +50,7 @@ namespace KeepTalkingForOrgansGame {
 
         public void Play (State state) {
 
-            _state = state;
+            CurrentState = state;
 
             ShutAll();
 
@@ -68,7 +66,7 @@ namespace KeepTalkingForOrgansGame {
                 DOTween.Sequence()
                     .AppendInterval(attackWordShowingDuration)
                     .AppendCallback( () => {
-                        if (_state == State.Attacking) {
+                        if (CurrentState == State.Attacking) {
                             Play(State.Alert);
                         }
                     } );

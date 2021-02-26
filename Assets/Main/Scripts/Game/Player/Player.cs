@@ -3,6 +3,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+using DG.Tweening;
+
 using DoubleHeat;
 using DoubleHeat.Utilities;
 
@@ -10,8 +12,6 @@ namespace KeepTalkingForOrgansGame {
 
     public class Player : SingletonMonoBehaviour<Player> {
 
-
-        // public static Player current => instance != null ? (Player) instance : null;
 
 
         [Header("Options")]
@@ -26,7 +26,6 @@ namespace KeepTalkingForOrgansGame {
 
         [Header("REFS")]
         public VisionSpan visionSpan;
-        public Text deathText;
 
 
         public Vector2 FacingDirection => transform.rotation * initDir;
@@ -34,8 +33,13 @@ namespace KeepTalkingForOrgansGame {
         public bool IsHiding {get; private set;} = false;
         public bool IsDead {get; private set;} = false;
 
+        public bool IsFacingControllable => IsControllable && (_attackManager != null ? !_attackManager.IsAiming : true);
+        public bool IsMovable => !IsDead && (_attackManager != null ? !_attackManager.IsAiming : true);
+        public bool IsControllable => !IsDead;
+
 
         // Components
+        PlayerAnimManager _animManager;
         Rigidbody2D _rigidbody;
         PlayerAttackManager _attackManager;
         // TargetedByEnemies _targetedByEmenies;
@@ -43,11 +47,11 @@ namespace KeepTalkingForOrgansGame {
 
         protected override void Awake () {
             base.Awake();
+            _animManager = GetComponent<PlayerAnimManager>();
             _rigidbody = GetComponent<Rigidbody2D>();
             _attackManager = GetComponent<PlayerAttackManager>();
             // _targetedByEmenies = GetComponent<TargetedByEnemies>();
 
-            deathText.enabled = false;
         }
 
 
@@ -84,7 +88,10 @@ namespace KeepTalkingForOrgansGame {
         public void Die () {
             if (!isInvincible) {
                 IsDead = true;
-                deathText.enabled = true;
+
+                if (_animManager != null) {
+                    _animManager.Play(PlayerAnimManager.State.Dead);
+                }
             }
         }
 

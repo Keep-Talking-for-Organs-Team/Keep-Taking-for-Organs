@@ -37,14 +37,13 @@ namespace KeepTalkingForOrgansGame {
         public int segmentCountShows;
 
 
+        public float FovRateApplied {get; set;} = 1f;
         public Vector2 Origin => transform.position;
         public Vector2 FacingDirection => _dir;
+        public float CurrentFov => spanProps.fov * FovRateApplied;
 
 
         Vector2 _dir = Vector2.up;
-
-
-
         Mesh _mesh;
 
         void Awake () {
@@ -58,7 +57,7 @@ namespace KeepTalkingForOrgansGame {
 
             if (showVisionEdgeLines) {
                 for (int i = -1 ; i <= 1 ; i += 2) {
-                    Debug.DrawLine(transform.position, transform.position + Quaternion.AngleAxis(i * spanProps.fov / 2, Vector3.forward) * _dir * spanProps.distance, Color.red);
+                    Debug.DrawLine(transform.position, transform.position + Quaternion.AngleAxis(i * CurrentFov / 2, Vector3.forward) * _dir * spanProps.distance, Color.red);
                 }
             }
 
@@ -99,7 +98,7 @@ namespace KeepTalkingForOrgansGame {
             if (isBlind && direction == Vector2.zero)
                 return false;
 
-            if (Vector2.Angle(direction, _dir) < spanProps.fov / 2) {
+            if (Vector2.Angle(direction, _dir) < CurrentFov / 2) {
                 return true;
             }
 
@@ -114,7 +113,7 @@ namespace KeepTalkingForOrgansGame {
             GlobalManager.current.visionSpansMaxEdgesResolveIterationsSoFar = maxEdgesResolveIterationsCount;
             currentEdgesResolveIterationsCount = 0;
 
-            int segmentCount = maxSegmentGapAngle > 0 ? Math.Min( Mathf.CeilToInt(spanProps.fov / maxSegmentGapAngle), MAX_SEGMENT_LIMIT ) : 0;
+            int segmentCount = maxSegmentGapAngle > 0 ? Math.Min( Mathf.CeilToInt(CurrentFov / maxSegmentGapAngle), MAX_SEGMENT_LIMIT ) : 0;
             int rayCount = segmentCount + 1;
 
 
@@ -123,7 +122,7 @@ namespace KeepTalkingForOrgansGame {
 
             for (int i = 0 ; i < rayCount ; i++) {
 
-                float   angle     = (i - segmentCount / 2f) * spanProps.fov / segmentCount;
+                float   angle     = (i - segmentCount / 2f) * CurrentFov / segmentCount;
                 Vector2 direction = Quaternion.AngleAxis(angle, Vector3.forward) * _dir;
 
                 ViewCastInfo cast = ViewCast(direction);

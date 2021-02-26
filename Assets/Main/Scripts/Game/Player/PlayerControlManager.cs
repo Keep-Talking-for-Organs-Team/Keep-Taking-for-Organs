@@ -6,45 +6,53 @@ using DoubleHeat.Utilities;
 
 namespace KeepTalkingForOrgansGame {
 
+    [DisallowMultipleComponent]
     [RequireComponent(typeof(Player))]
     public class PlayerControlManager : MonoBehaviour {
 
-        public bool IsControllable => !_player.IsDead;
         public Vector2 DirToMouse => (GameSceneManager.current != null) ? (CameraTools.GetMouseWorldPosition(GameSceneManager.current.mainCam) - (Vector2) transform.position).normalized : Vector2.zero;
-        public Vector2 MoveDirection => _moveDir;
+        public Vector2 MoveDirection {get; private set;}
 
 
         // Components
         Player _player;
-        PlayerMoveManager _moveManager;
         PlayerAttackManager _attackManager;
 
-        Vector2 _moveDir;
 
         void Awake () {
             _player = GetComponent<Player>();
-            _moveManager = GetComponent<PlayerMoveManager>();
             _attackManager = GetComponent<PlayerAttackManager>();
         }
 
         void Update () {
-            if (!IsControllable)
-                return;
 
-
-            _player.SetFacing(DirToMouse);
-
-            _moveDir = GameSceneManager.current.mainCam.transform.rotation * (SimpleInput.GetAxisRaw("Horizontal") * Vector2.right + SimpleInput.GetAxisRaw("Vertical") * Vector2.up).normalized;
-
-
-            // === temp ===
-            if (Input.GetKeyDown(KeyCode.C)) {
-                _player.ToggleCrouch();
+            if (!_player.IsControllable) {
+                MoveDirection = Vector2.zero;
             }
-            if (Input.GetButtonDown("Fire1")) {
-                _attackManager.TryToMeleeAttack();
+            else {
+
+                if (_player.IsFacingControllable) {
+                    _player.SetFacing(DirToMouse);
+                }
+
+                MoveDirection = GameSceneManager.current.mainCam.transform.rotation * (SimpleInput.GetAxisRaw("Horizontal") * Vector2.right + SimpleInput.GetAxisRaw("Vertical") * Vector2.up).normalized;
+
+
+                // === temp ===
+                if (Input.GetKeyDown(KeyCode.C)) {
+                    _player.ToggleCrouch();
+                }
+                if (Input.GetButtonDown("Fire1")) {
+                    _attackManager.TryToAttack();
+                }
+                else if (Input.GetButtonUp("Fire1")) {
+                    _attackManager.TryToReleaseAiming();
+                }
+                if (Input.GetButtonDown("Fire2")) {
+                    _attackManager.TryToCancelAiming();
+                }
+                // === ==== ===
             }
-            // === ==== ===
 
         }
 
