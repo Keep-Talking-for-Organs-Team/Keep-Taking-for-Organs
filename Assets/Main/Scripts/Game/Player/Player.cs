@@ -30,23 +30,22 @@ namespace KeepTalkingForOrgansGame {
 
 
         public Vector2 FacingDirection => transform.rotation * initDir;
-        public bool IsCrouching => _isCrouching;
-        public bool IsHiding => _isHiding;
-        public bool IsDead => _isDead;
+        public bool IsCrouching {get; private set;} = false;
+        public bool IsHiding {get; private set;} = false;
+        public bool IsDead {get; private set;} = false;
 
 
         // Components
         Rigidbody2D _rigidbody;
-        TargetedByEnemies _targetedByEmenies;
+        PlayerAttackManager _attackManager;
+        // TargetedByEnemies _targetedByEmenies;
 
-        bool    _isCrouching = false;
-        bool    _isHiding = false;
-        bool    _isDead = false;
 
         protected override void Awake () {
             base.Awake();
             _rigidbody = GetComponent<Rigidbody2D>();
-            _targetedByEmenies = GetComponent<TargetedByEnemies>();
+            _attackManager = GetComponent<PlayerAttackManager>();
+            // _targetedByEmenies = GetComponent<TargetedByEnemies>();
 
             deathText.enabled = false;
         }
@@ -55,11 +54,11 @@ namespace KeepTalkingForOrgansGame {
 
         void FixedUpdate () {
 
-            if (_isCrouching && TerrainManager.current.IsInHidingArea(transform.position)) {
-                _isHiding = true;
+            if (IsCrouching && TerrainManager.current.IsInHidingArea(transform.position)) {
+                IsHiding = true;
             }
             else {
-                _isHiding = false;
+                IsHiding = false;
             }
 
         }
@@ -84,7 +83,7 @@ namespace KeepTalkingForOrgansGame {
 
         public void Die () {
             if (!isInvincible) {
-                _isDead = true;
+                IsDead = true;
                 deathText.enabled = true;
             }
         }
@@ -96,9 +95,9 @@ namespace KeepTalkingForOrgansGame {
         }
 
         public void ToggleCrouch () {
-            _isCrouching = !_isCrouching;
+            IsCrouching = !IsCrouching;
 
-            if (_isCrouching) {
+            if (IsCrouching) {
                 visionSpan.spanProps = crouchVisionSpanProps;
             }
             else {

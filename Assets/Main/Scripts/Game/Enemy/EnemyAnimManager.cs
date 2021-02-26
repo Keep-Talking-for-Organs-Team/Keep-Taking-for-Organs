@@ -12,6 +12,7 @@ namespace KeepTalkingForOrgansGame {
             Suspecting,
             Alert,
             Attacking,
+            Dead,
             None
         }
 
@@ -23,6 +24,7 @@ namespace KeepTalkingForOrgansGame {
         public Text suspectingText;
         public Text alertText;
         public Text attackText;
+        public Text deathText;
 
 
         public State CurrentState => _state;
@@ -45,6 +47,7 @@ namespace KeepTalkingForOrgansGame {
             suspectingText.enabled = false;
             alertText.enabled = false;
             attackText.enabled = false;
+            deathText.enabled = false;
         }
 
         public void Play (State state) {
@@ -69,6 +72,9 @@ namespace KeepTalkingForOrgansGame {
                             Play(State.Alert);
                         }
                     } );
+            }
+            else if (state == State.Dead) {
+                deathText.enabled = true;
             }
         }
 

@@ -205,7 +205,6 @@ namespace KeepTalkingForOrgansGame {
         void OnStopPatrolling () {
             _waitingSeq.Kill(false);
             IsInPath = false;
-print("STOP");
         }
 
     }

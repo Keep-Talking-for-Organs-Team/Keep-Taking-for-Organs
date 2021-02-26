@@ -56,6 +56,11 @@ namespace KeepTalkingForOrgansGame {
 
 
         void FixedUpdate () {
+            if (_enemy.IsDead || _state == State.Blind) {
+                _enemy.visionSpan.isBlind = true;
+                return;
+            }
+
 
             if (_state == State.Fixed) {
                 if (_enemy.FacingDirection != _enemy.visionSpan.FacingDirection)

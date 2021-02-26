@@ -27,7 +27,7 @@ namespace KeepTalkingForOrgansGame {
 
         public void TryToAttack () {
 
-            if (Time.time - _lastestAttackStartTime > attackCooldownTime) {
+            if (_lastestAttackStartTime == 0 || Time.time - _lastestAttackStartTime > attackCooldownTime) {
                 Attack();
             }
 

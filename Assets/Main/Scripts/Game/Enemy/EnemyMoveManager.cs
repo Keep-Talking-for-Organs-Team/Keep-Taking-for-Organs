@@ -55,6 +55,9 @@ namespace KeepTalkingForOrgansGame {
 
 
         void FixedUpdate () {
+            if (_enemy.IsDead)
+                return;
+                
 
             if (_state == State.Patrolling) {
 

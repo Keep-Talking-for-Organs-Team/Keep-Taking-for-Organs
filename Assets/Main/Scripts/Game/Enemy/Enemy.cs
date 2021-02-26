@@ -21,6 +21,7 @@ namespace KeepTalkingForOrgansGame {
 
 
         public Vector2 FacingDirection => transform.rotation * defaultDir;
+        public bool IsDead {get; private set;} = false;
 
 
         // Components
@@ -30,7 +31,7 @@ namespace KeepTalkingForOrgansGame {
         EnemyAttackManager _attackManager;
 
 
-        float   _awareRate = 0f;
+        float _awareRate = 0f;
 
 
         void Awake () {
@@ -48,6 +49,9 @@ namespace KeepTalkingForOrgansGame {
 
 
         void FixedUpdate () {
+
+            if (IsDead)
+                return;
 
             // foreach (TargetedByEnemies target in TargetedByEnemies.list) {
             //     // Has spotted target?
@@ -117,24 +121,35 @@ namespace KeepTalkingForOrgansGame {
         void Update () {
 
             if (_animManager != null) {
-                if (_awareRate == 1) {
-                    if (_animManager.CurrentState != EnemyAnimManager.State.Alert && _animManager.CurrentState != EnemyAnimManager.State.Attacking) {
-                        _animManager.Play(EnemyAnimManager.State.Alert);
-                    }
+                if (IsDead) {
+                    _animManager.Play(EnemyAnimManager.State.Dead);
                 }
-                else if (_awareRate > 0) {
-                    if (_animManager.CurrentState != EnemyAnimManager.State.Suspecting) {
-                        _animManager.Play(EnemyAnimManager.State.Suspecting);
+                else if (_animManager.CurrentState != EnemyAnimManager.State.Attacking) {
+                    if (_awareRate == 1) {
+                        if (_animManager.CurrentState != EnemyAnimManager.State.Alert) {
+                            _animManager.Play(EnemyAnimManager.State.Alert);
+                        }
                     }
-                }
-                else {
-                    if (_animManager.CurrentState != EnemyAnimManager.State.None) {
-                        _animManager.Play(EnemyAnimManager.State.None);
+                    else if (_awareRate > 0) {
+                        if (_animManager.CurrentState != EnemyAnimManager.State.Suspecting) {
+                            _animManager.Play(EnemyAnimManager.State.Suspecting);
+                        }
+                    }
+                    else {
+                        if (_animManager.CurrentState != EnemyAnimManager.State.None) {
+                            _animManager.Play(EnemyAnimManager.State.None);
 
+                        }
                     }
                 }
+
             }
 
+        }
+
+
+        public void AttackedViaMelee () {
+            IsDead = true;
         }
 
 

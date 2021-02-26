@@ -63,7 +63,7 @@ namespace KeepTalkingForOrgansGame {
             }
 
 
-            if (isShowingVisionArea) {
+            if (isShowingVisionArea && !isBlind) {
                 DrawVisionArea();
             }
             else {

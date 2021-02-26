@@ -17,12 +17,14 @@ namespace KeepTalkingForOrgansGame {
         // Components
         Player _player;
         PlayerMoveManager _moveManager;
+        PlayerAttackManager _attackManager;
 
         Vector2 _moveDir;
 
         void Awake () {
             _player = GetComponent<Player>();
             _moveManager = GetComponent<PlayerMoveManager>();
+            _attackManager = GetComponent<PlayerAttackManager>();
         }
 
         void Update () {
@@ -31,13 +33,16 @@ namespace KeepTalkingForOrgansGame {
 
 
             _player.SetFacing(DirToMouse);
-            
+
             _moveDir = GameSceneManager.current.mainCam.transform.rotation * (SimpleInput.GetAxisRaw("Horizontal") * Vector2.right + SimpleInput.GetAxisRaw("Vertical") * Vector2.up).normalized;
 
 
             // === temp ===
             if (Input.GetKeyDown(KeyCode.C)) {
                 _player.ToggleCrouch();
+            }
+            if (Input.GetButtonDown("Fire1")) {
+                _attackManager.TryToMeleeAttack();
             }
             // === ==== ===
 

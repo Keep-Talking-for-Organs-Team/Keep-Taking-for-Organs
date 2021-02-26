@@ -33,6 +33,7 @@ namespace KeepTalkingForOrgansGame {
         public Camera      mainCam;
         public Transform   enemiesParent;
         public CanvasGroup attackedOverlayFX;
+        public CanvasGroup meleeAttackOverlayFX;
 
 
 
@@ -61,6 +62,12 @@ namespace KeepTalkingForOrgansGame {
 
         public void PlayAttackedOverlayFX () {
             attackedOverlayFX.DOFade(0f, attackedOverlayFXDuration)
+                .From(1f)
+                .SetEase(attackedOverlayFXEase);
+        }
+
+        public void PlayMeleeAttackOverlayFX () {
+            meleeAttackOverlayFX.DOFade(0f, attackedOverlayFXDuration)
                 .From(1f)
                 .SetEase(attackedOverlayFXEase);
         }
