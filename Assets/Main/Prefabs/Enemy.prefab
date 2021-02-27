@@ -425,6 +425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 532933b87592ddc4685ba08c61b7a972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInvincible: 0
   awareRateIncreaseSpeed: 0.87
   awareRateDecreaseSpeed: 0.87
   defaultDir: {x: 0, y: 1}
@@ -691,7 +692,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 756685dddb28c3e44b813e006e17b288, type: 3}
-  m_Color: {r: 0.6886792, g: 0.2891153, b: 0.2891153, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.6266365, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

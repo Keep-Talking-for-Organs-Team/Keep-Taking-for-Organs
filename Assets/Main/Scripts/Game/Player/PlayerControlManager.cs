@@ -49,7 +49,10 @@ namespace KeepTalkingForOrgansGame {
                     _attackManager.TryToReleaseAiming();
                 }
                 if (Input.GetButtonDown("Fire2")) {
-                    _attackManager.TryToCancelAiming();
+                    _attackManager.PickRanged();
+                }
+                else if (Input.GetButtonUp("Fire2")) {
+                    _attackManager.DropRanged();
                 }
                 // === ==== ===
             }

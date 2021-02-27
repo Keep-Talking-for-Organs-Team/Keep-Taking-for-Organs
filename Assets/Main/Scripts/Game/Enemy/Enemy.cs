@@ -7,6 +7,10 @@ namespace KeepTalkingForOrgansGame {
     public class Enemy : MonoBehaviour {
 
 
+        [Header("Options")]
+        public bool isInvincible = false;
+
+        [Header("Properties")]
         public float awareRateIncreaseSpeed;
         public float awareRateDecreaseSpeed;
 
@@ -162,7 +166,9 @@ namespace KeepTalkingForOrgansGame {
 
 
         public void Attacked (PlayerAttackManager.AttackMethod atkMethod) {
-            IsDead = true;
+            if (!isInvincible) {
+                IsDead = true;
+            }
         }
 
 

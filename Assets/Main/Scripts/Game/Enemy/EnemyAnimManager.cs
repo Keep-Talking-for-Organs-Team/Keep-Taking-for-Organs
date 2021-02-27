@@ -6,6 +6,8 @@ using DG.Tweening;
 
 namespace KeepTalkingForOrgansGame {
 
+    [DisallowMultipleComponent]
+    [RequireComponent(typeof(Player))]
     public class EnemyAnimManager : MonoBehaviour {
 
         public enum State {
@@ -28,7 +30,7 @@ namespace KeepTalkingForOrgansGame {
 
 
         public State CurrentState {get; private set;} = State.None;
-        
+
 
         void Awake () {
             Play(State.None);

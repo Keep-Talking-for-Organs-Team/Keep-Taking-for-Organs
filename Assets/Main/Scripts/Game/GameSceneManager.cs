@@ -35,6 +35,7 @@ namespace KeepTalkingForOrgansGame {
         public CanvasGroup attackedOverlayFX;
         public CanvasGroup meleeAttackOverlayFX;
         public CanvasGroup rangedAttackOverlayFX;
+        public CanvasGroup outOfAmmoOverlayFX;
 
 
 
@@ -75,6 +76,12 @@ namespace KeepTalkingForOrgansGame {
 
         public void PlayRangedAttackOverlayFX () {
             rangedAttackOverlayFX.DOFade(0f, attackedOverlayFXDuration)
+                .From(1f)
+                .SetEase(attackedOverlayFXEase);
+        }
+
+        public void PlayOutOfAmmoOverlayFX () {
+            outOfAmmoOverlayFX.DOFade(0f, attackedOverlayFXDuration)
                 .From(1f)
                 .SetEase(attackedOverlayFXEase);
         }

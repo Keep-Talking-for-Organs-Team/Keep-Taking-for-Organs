@@ -1,3 +1,4 @@
+using Math = System.Math;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -22,6 +23,7 @@ namespace KeepTalkingForOrgansGame {
         }
 
         [Header("Properties")]
+        public int   defaultBulletsAmount = -1;
         public float meleeDistance = 1f;
         public float meleeCooldownTime = 1f;
         public float rangedDistance = 1f;
@@ -32,27 +34,59 @@ namespace KeepTalkingForOrgansGame {
 
         [Header("REFS")]
         public Transform targetDetectStartPoint;
+        public SpriteRenderer rangedRangeIndicator;
+        public Text hudInfoText;
+
+        [Header("Output Shows")]
+        public float meleeCooldown = 0f;
+        public float rangedCooldown = 0f;
 
 
-        public Enemy CurrentTarget {get; private set;}
-        public bool IsAiming {get; private set;}
+        public bool  IsTakingRanged {get; private set;} = false;
+        public Enemy CurrentTarget {get; private set;} = null;
+        public int   BulletsLeft {get; private set;} = -1;
+
+        public bool  IsAiming {
+            get => _isAiming;
+            set {
+                bool oldValue = _isAiming;
+                _isAiming = value;
+
+                if (oldValue != value) {
+                    if (value)
+                        OnStartAiming();
+                    else
+                        OnStopAiming();
+                }
+            }
+        }
+
         public AttackMethod AvailableAttackMethod {
             get {
-                if (CurrentTarget == null) {
-                    return AttackMethod.None;
+                if (CurrentTarget != null) {
+
+                    AttackMethod method = AttackMethod.None;
+
+                    if (IsTakingRanged) {
+                        method = AttackMethod.Ranged;
+                    }
+                    else if ( (CurrentTarget.transform.position - transform.position).sqrMagnitude < Mathf.Pow(meleeDistance, 2) ) {
+                        method = AttackMethod.Melee;
+                    }
+
+                    if (method != AttackMethod.None && IsAttackMethodActive(method))
+                        return method;
                 }
-                else {
-                    if ( (CurrentTarget.transform.position - transform.position).sqrMagnitude < Mathf.Pow(meleeDistance, 2) )
-                        return AttackMethod.Melee;
-                    else
-                        return AttackMethod.Ranged;
-                }
+
+                return AttackMethod.None;
             }
         }
 
         // Components
         Player _player;
         PlayerAnimManager _animManager;
+
+        bool _isAiming = false;
 
         Dictionary<AttackMethod, float> _lastestAttackStartTimeOfAttackMethods = new Dictionary<AttackMethod, float>() {
             { AttackMethod.Melee, 0f },
@@ -69,20 +103,22 @@ namespace KeepTalkingForOrgansGame {
 
             _cooldownTimeOfAttackMethods.Add(AttackMethod.Melee, meleeCooldownTime);
             _cooldownTimeOfAttackMethods.Add(AttackMethod.Ranged, rangedCooldownTime);
+
+            BulletsLeft = defaultBulletsAmount;
         }
 
         void FixedUpdate () {
             RaycastHit2D hit = Physics2D.Raycast(targetDetectStartPoint.position, _player.FacingDirection, rangedDistance, targetDetectLayerMask);
 
-#if UNITY_EDITOR
 
+#if UNITY_EDITOR
             Vector2 endPoint = hit.point;
             if (hit.collider == null) {
                 endPoint = targetDetectStartPoint.position + (Vector3) _player.FacingDirection * rangedDistance;
             }
             Debug.DrawLine(targetDetectStartPoint.position, endPoint, Color.blue);
-
 #endif
+
 
             Enemy newTarget = null;
 
@@ -97,6 +133,10 @@ namespace KeepTalkingForOrgansGame {
             if (CurrentTarget != newTarget) {
                 OnTargetChanged();
                 CurrentTarget = newTarget;
+            }
+
+            if (IsAiming) {
+                IsAiming = IsAttackMethodActive(AttackMethod.Ranged);
             }
 
 
@@ -119,6 +159,54 @@ namespace KeepTalkingForOrgansGame {
             }
         }
 
+        void Update () {
+
+            // === temp ===
+            rangedRangeIndicator.enabled = false;
+            if (IsTakingRanged) {
+                rangedRangeIndicator.enabled = true;
+                rangedRangeIndicator.transform.position = targetDetectStartPoint.position + (Vector3) _player.FacingDirection * rangedDistance / 2;
+                rangedRangeIndicator.transform.SetScaleY(rangedDistance * 25);
+            }
+            // === ==== ===
+
+            string[] lines = hudInfoText.text.Split('\n');
+            for (int i = 0 ; i < lines.Length ; i++) {
+
+                string[] parts = lines[i].Split(':');
+
+                if (parts.Length >= 2) {
+                    if (i == 0) {
+                        lines[i] = parts[0] + ": " + GetCurrentCooldownTimeLeft(AttackMethod.Melee).ToString("0.0");
+                    }
+                    else if (i == 1) {
+                        lines[i] = parts[0] + ": " + GetCurrentCooldownTimeLeft(AttackMethod.Ranged).ToString("0.0");
+                    }
+                    else if (i == 2) {
+                        lines[i] = parts[0] + ":" + (BulletsLeft >= 0 ? BulletsLeft.ToString() : "Inf");
+                    }
+                }
+            }
+
+            hudInfoText.text = string.Join("\n", lines);
+
+#if UNITY_EDITOR
+            meleeCooldown = GetCurrentCooldownTimeLeft(AttackMethod.Melee);
+            rangedCooldown = GetCurrentCooldownTimeLeft(AttackMethod.Ranged);
+#endif
+        }
+
+
+        public void PickRanged () {
+            if (GetCurrentCooldownTimeLeft(AttackMethod.Ranged) == 0) {
+                IsTakingRanged = true;
+            }
+        }
+
+        public void DropRanged () {
+            IsTakingRanged = false;
+            IsAiming = false;
+        }
 
         public void TryToAttack () {
             AttackMethod atkMethod = AvailableAttackMethod;
@@ -126,18 +214,18 @@ namespace KeepTalkingForOrgansGame {
             if (atkMethod == AttackMethod.None)
                 return;
 
-            if (_lastestAttackStartTimeOfAttackMethods[atkMethod] == 0 || _lastestAttackStartTimeOfAttackMethods[atkMethod] > _cooldownTimeOfAttackMethods[atkMethod]) {
-
-                if (atkMethod == AttackMethod.Melee) {
-                    Attack(atkMethod);
-                }
-                else if (atkMethod == AttackMethod.Ranged) {
+            if (atkMethod == AttackMethod.Melee) {
+                Attack(atkMethod);
+            }
+            else if (atkMethod == AttackMethod.Ranged) {
+                if (BulletsLeft != 0) {
                     IsAiming = true;
-                    OnStartAiming();
+                }
+                else {
+                    GameSceneManager.current.PlayOutOfAmmoOverlayFX();
                 }
             }
         }
-
 
         public void TryToReleaseAiming () {
             if (IsAiming) {
@@ -146,15 +234,27 @@ namespace KeepTalkingForOrgansGame {
                 }
 
                 IsAiming = false;
-                OnStopAiming();
             }
         }
 
         public void TryToCancelAiming () {
             if (IsAiming) {
                 IsAiming = false;
-                OnStopAiming();
             }
+        }
+
+        public float GetCurrentCooldownTimeLeft (AttackMethod atkMethod) {
+            if (_lastestAttackStartTimeOfAttackMethods[atkMethod] == 0) {
+                return 0f;
+            }
+            return Mathf.Max(_cooldownTimeOfAttackMethods[atkMethod] - (Time.time - _lastestAttackStartTimeOfAttackMethods[atkMethod]), 0f);
+        }
+
+        public bool IsAttackMethodActive (AttackMethod atkMethod) {
+            if (atkMethod == AttackMethod.None)
+                return false;
+
+            return _lastestAttackStartTimeOfAttackMethods[atkMethod] == 0 || Time.time - _lastestAttackStartTimeOfAttackMethods[atkMethod] > _cooldownTimeOfAttackMethods[atkMethod];
         }
 
 
@@ -168,17 +268,18 @@ namespace KeepTalkingForOrgansGame {
                 GameSceneManager.current.PlayMeleeAttackOverlayFX();
             }
             else if (atkMethod == AttackMethod.Ranged) {
+                if (BulletsLeft > 0) {
+                    BulletsLeft--;
+                }
+
                 GameSceneManager.current.PlayRangedAttackOverlayFX();
-                OnStopAiming();
+                IsAiming = false;
             }
         }
 
 
         void OnTargetChanged () {
-            if (IsAiming) {
-                IsAiming = false;
-                OnStopAiming();
-            }
+            IsAiming = false;
         }
 
         void OnStartAiming () {
