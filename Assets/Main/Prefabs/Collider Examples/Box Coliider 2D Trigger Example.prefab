@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8193295630919570823}
   - component: {fileID: 1091532426661601908}
   m_Layer: 0
-  m_Name: Box Coliider 2D Trigger Sample
+  m_Name: Box Coliider 2D Trigger Example
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

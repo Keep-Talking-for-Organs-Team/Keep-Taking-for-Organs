@@ -24,7 +24,7 @@ namespace KeepTalkingForOrgansGame {
             _attackManager = GetComponent<PlayerAttackManager>();
         }
 
-        void Update () {
+        void LateUpdate () {
 
             if (!_player.IsControllable) {
                 MoveDirection = Vector2.zero;

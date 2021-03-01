@@ -87,7 +87,7 @@ public class TilemapColliderGeneratior : MonoBehaviour //Component declaration
         if (CurrentMap.HasTile(Where)) //Have we any tile in the place where we want to create collider?
         {
             Tile TileInWhere = CurrentMap.GetTile<Tile>(Where); //Get information about tile in "Where".
-            if ((TileInWhere as Tile).colliderType == Tile.ColliderType.None) //The tile shouldn't be enclosed in a collider.
+            if (TileInWhere == null || (TileInWhere as Tile).colliderType == Tile.ColliderType.None) //The tile shouldn't be enclosed in a collider.
             {
                 return false;
             }
@@ -243,7 +243,7 @@ public class TilemapColliderGeneratior : MonoBehaviour //Component declaration
         }
     }
 
-    //This method calling before "Start" method. 
+    //This method calling before "Start" method.
     void Awake()
     {
         if (GenerateAtStart && GenerateAt == AutoGenerationMethod.Awake)

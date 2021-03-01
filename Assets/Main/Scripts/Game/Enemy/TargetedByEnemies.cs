@@ -30,7 +30,7 @@ namespace KeepTalkingForOrgansGame {
         }
 
         void FixedUpdate () {
-            if (TerrainManager.current.IsInHidingArea(transform.position)) {
+            if (GameSceneManager.current.currentTerrain.IsInHidingArea(transform.position)) {
                 _isHiding = true;
             }
             else {

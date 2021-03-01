@@ -32,10 +32,11 @@ namespace KeepTalkingForOrgansGame {
         public bool IsCrouching {get; private set;} = false;
         public bool IsHiding {get; private set;} = false;
         public bool IsDead {get; private set;} = false;
+        public bool HasGoal {get; private set;} = false;
 
+        public bool IsMovable => GameSceneManager.current.IsMissionOnGoing && !IsDead && (_attackManager != null ? !_attackManager.IsAiming : true);
+        public bool IsControllable => GameSceneManager.current.IsMissionOnGoing && !IsDead;
         public bool IsFacingControllable => IsControllable && (_attackManager != null ? !_attackManager.IsAiming : true);
-        public bool IsMovable => !IsDead && (_attackManager != null ? !_attackManager.IsAiming : true);
-        public bool IsControllable => !IsDead;
 
 
         // Components
@@ -58,7 +59,7 @@ namespace KeepTalkingForOrgansGame {
 
         void FixedUpdate () {
 
-            if (IsCrouching && TerrainManager.current.IsInHidingArea(transform.position)) {
+            if (IsCrouching && GameSceneManager.current.currentTerrain.IsInHidingArea(transform.position)) {
                 IsHiding = true;
             }
             else {
@@ -83,6 +84,18 @@ namespace KeepTalkingForOrgansGame {
 
 #endif
 
+        }
+
+        void OnTriggerEnter2D (Collider2D other) {
+            if (other.tag == "Goal") {
+                HasGoal = true;
+                Destroy(other.gameObject);
+            }
+            else if (other.tag == "Exit") {
+                if (HasGoal) {
+                    GameSceneManager.current.MissionSuccess();
+                }
+            }
         }
 
         public void Die () {

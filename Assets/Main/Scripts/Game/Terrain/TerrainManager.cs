@@ -5,9 +5,7 @@ using DoubleHeat.Utilities;
 
 namespace KeepTalkingForOrgansGame {
 
-    public class TerrainManager : SingletonMonoBehaviour<TerrainManager> {
-
-        // public static TerrainManager current = instance != null ? (TerrainManager) instance : null;
+    public class TerrainManager : MonoBehaviour {
 
         [Header("REFS")]
         public GameObject trapArea;

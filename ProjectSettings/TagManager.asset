@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Goal
+  - Exit
   layers:
   - Default
   - TransparentFX
@@ -27,7 +29,7 @@ TagManager:
   - Always Black
   - 
   - Unit
-  - 
+  - Pickable
   - 
   - 
   - 

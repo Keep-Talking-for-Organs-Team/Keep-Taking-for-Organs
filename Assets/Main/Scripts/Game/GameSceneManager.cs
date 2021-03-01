@@ -30,6 +30,7 @@ namespace KeepTalkingForOrgansGame {
         public Ease  attackedOverlayFXEase;
 
         [Header("REFS")]
+        public TerrainManager currentTerrain;
         public Camera      mainCam;
         public Transform   enemiesParent;
         public CanvasGroup attackedOverlayFX;
@@ -38,20 +39,13 @@ namespace KeepTalkingForOrgansGame {
         public CanvasGroup outOfAmmoOverlayFX;
 
 
+        public bool IsMissionOnGoing {get; private set;} = false;
+
 
         protected override void Awake () {
             base.Awake();
             HideSpriteAtRuntime.isActive = activeHideSpriteAtRuntime;
         }
-
-        void Start () {
-            if (enableRandomCamRotation)
-                mainCam.transform.rotation = Quaternion.AngleAxis(Random.Range(0, 4) * 90f, Vector3.forward);
-
-
-            attackedOverlayFX.alpha = 0f;
-        }
-
 
         void OnValidate () {
 
@@ -59,6 +53,25 @@ namespace KeepTalkingForOrgansGame {
 
             if (overrideViewSpanMaxSegmentGapAngle > 0)
                 VisionSpan.maxSegmentGapAngle = overrideViewSpanMaxSegmentGapAngle;
+        }
+
+        void Start () {
+            if (enableRandomCamRotation)
+                mainCam.transform.rotation = Quaternion.AngleAxis(Random.Range(0, 4) * 90f, Vector3.forward);
+
+            attackedOverlayFX.alpha = 0f;
+            meleeAttackOverlayFX.alpha = 0f;
+            rangedAttackOverlayFX.alpha = 0f;
+            outOfAmmoOverlayFX.alpha = 0f;
+
+
+            IsMissionOnGoing = true;
+        }
+
+
+        public void MissionSuccess () {
+            IsMissionOnGoing = false;
+            PlayMissionSuccessOverlayFX();
         }
 
 
@@ -84,6 +97,10 @@ namespace KeepTalkingForOrgansGame {
             outOfAmmoOverlayFX.DOFade(0f, attackedOverlayFXDuration)
                 .From(1f)
                 .SetEase(attackedOverlayFXEase);
+        }
+
+        public void PlayMissionSuccessOverlayFX () {
+            print("SUCCESS!");
         }
 
     }
