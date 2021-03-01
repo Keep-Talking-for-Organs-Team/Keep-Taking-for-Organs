@@ -48,3 +48,10 @@ Corridor/Library/metadata/
 # My Builds #
 # ========= #
 /Builds
+
+# ===== #
+# Wwise #
+# ===== #
+/Keep\ Taking\ for\ Organs_WwiseProject/.cache/
+/Keep\ Taking\ for\ Organs_WwiseProject/Originals/SFX/*.akd
+/Keep\ Taking\ for\ Organs_WwiseProject/*.validationcache

@@ -59,6 +59,10 @@ namespace KeepTalkingForOrgansGame {
 
         void FixedUpdate () {
 
+            if (GameSceneManager.current.currentTerrain.IsInTrapArea(transform.position)) {
+                Die();
+            }
+
             if (IsCrouching && GameSceneManager.current.currentTerrain.IsInHidingArea(transform.position)) {
                 IsHiding = true;
             }
@@ -74,15 +78,6 @@ namespace KeepTalkingForOrgansGame {
             // Camera Follow
             GameSceneManager.current.mainCam.transform.SetPosXY(transform.position);
             // ==== ==== ====
-
-
-#if UNITY_EDITOR
-
-            if (Input.GetKeyDown(KeyCode.Q)) {
-                Die();
-            }
-
-#endif
 
         }
 

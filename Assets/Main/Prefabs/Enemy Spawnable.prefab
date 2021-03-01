@@ -122,7 +122,7 @@ Transform:
   m_GameObject: {fileID: 7372384052269084432}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.0718, z: 0}
-  m_LocalScale: {x: 2.3197181, y: 5.012974, z: 1}
+  m_LocalScale: {x: 2.3197181, y: 9.079748, z: 1}
   m_Children: []
   m_Father: {fileID: 7372384052249614169}
   m_RootOrder: 0
@@ -233,9 +233,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9e64aa4e640bf4db303d1552c985e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultVisionState: 1
+  defaultVisionState: 2
   defaultMoveState: 0
   patrollingPath: {fileID: 0}
-  clickedToResetPositionToPath: 0
+  lockedOnPath: 0
+  positionInPath: 0
   enemyPrefab: {fileID: 4423601870345542194, guid: f6d8d3c96c0cdbe45809caf2ba5d4ecb,
     type: 3}

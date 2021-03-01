@@ -35,7 +35,6 @@ namespace KeepTalkingForOrgansGame {
         [Header("REFS")]
         public Transform targetDetectStartPoint;
         public SpriteRenderer rangedRangeIndicator;
-        public Text hudInfoText;
 
         [Header("Output Shows")]
         public float meleeCooldown = 0f;
@@ -170,7 +169,7 @@ namespace KeepTalkingForOrgansGame {
             }
             // === ==== ===
 
-            string[] lines = hudInfoText.text.Split('\n');
+            string[] lines = GameSceneManager.current.hudInfoText.text.Split('\n');
             for (int i = 0 ; i < lines.Length ; i++) {
 
                 string[] parts = lines[i].Split(':');
@@ -188,7 +187,7 @@ namespace KeepTalkingForOrgansGame {
                 }
             }
 
-            hudInfoText.text = string.Join("\n", lines);
+            GameSceneManager.current.hudInfoText.text = string.Join("\n", lines);
 
 #if UNITY_EDITOR
             meleeCooldown = GetCurrentCooldownTimeLeft(AttackMethod.Melee);

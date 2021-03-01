@@ -501,7 +501,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 2.1
   turningSpeed: 143
-  waitingTimeOnNode: 0.8
+  waitingTimeOnNode: 0.35
   path: {fileID: 0}
 --- !u!114 &4423601870345542199
 MonoBehaviour:

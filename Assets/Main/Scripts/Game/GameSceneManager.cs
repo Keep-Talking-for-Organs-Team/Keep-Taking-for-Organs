@@ -31,12 +31,16 @@ namespace KeepTalkingForOrgansGame {
 
         [Header("REFS")]
         public TerrainManager currentTerrain;
-        public Camera      mainCam;
-        public Transform   enemiesParent;
-        public CanvasGroup attackedOverlayFX;
-        public CanvasGroup meleeAttackOverlayFX;
-        public CanvasGroup rangedAttackOverlayFX;
-        public CanvasGroup outOfAmmoOverlayFX;
+        public Camera         mainCam;
+        public Transform      enemiesParent;
+        public Transform      playerSpawnPointsParent;
+        public GameObject     playerPrefab;
+
+        public Text           hudInfoText;
+        public CanvasGroup    attackedOverlayFX;
+        public CanvasGroup    meleeAttackOverlayFX;
+        public CanvasGroup    rangedAttackOverlayFX;
+        public CanvasGroup    outOfAmmoOverlayFX;
 
 
         public bool IsMissionOnGoing {get; private set;} = false;
@@ -55,6 +59,12 @@ namespace KeepTalkingForOrgansGame {
                 VisionSpan.maxSegmentGapAngle = overrideViewSpanMaxSegmentGapAngle;
         }
 
+        void OnDrawGizmos () {
+            foreach (Transform point in playerSpawnPointsParent) {
+                Gizmos.DrawSphere(point.position, 0.4f);
+            }
+        }
+
         void Start () {
             if (enableRandomCamRotation)
                 mainCam.transform.rotation = Quaternion.AngleAxis(Random.Range(0, 4) * 90f, Vector3.forward);
@@ -64,10 +74,23 @@ namespace KeepTalkingForOrgansGame {
             rangedAttackOverlayFX.alpha = 0f;
             outOfAmmoOverlayFX.alpha = 0f;
 
-
-            IsMissionOnGoing = true;
+            StartMission();
         }
 
+
+        public void StartMission () {
+            IsMissionOnGoing = true;
+
+            if (playerSpawnPointsParent.childCount > 0) {
+
+                int playerSpawnPointIndex = Random.Range(0, playerSpawnPointsParent.childCount);
+
+                Player player = Instantiate(playerPrefab, playerSpawnPointsParent.GetChild(playerSpawnPointIndex).position, Quaternion.identity, transform).GetComponent<Player>();
+            }
+            else {
+                print("Missing Player Spawn Point!!");
+            }
+        }
 
         public void MissionSuccess () {
             IsMissionOnGoing = false;

@@ -655,7 +655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keepRule: 1
-  isInvincible: 1
+  isInvincible: 0
   walkVisionSpanProps:
     distance: 10
     fov: 70
@@ -743,7 +743,6 @@ MonoBehaviour:
   aimingFinalFovRate: 0.3
   targetDetectStartPoint: {fileID: 8564637927107118114}
   rangedRangeIndicator: {fileID: 8564637927317977648}
-  hudInfoText: {fileID: 0}
   meleeCooldown: 0
   rangedCooldown: 0
 --- !u!114 &8564637927624833748

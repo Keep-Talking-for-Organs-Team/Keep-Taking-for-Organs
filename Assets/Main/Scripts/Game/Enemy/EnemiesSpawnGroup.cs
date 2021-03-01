@@ -7,9 +7,11 @@ namespace KeepTalkingForOrgansGame {
 
     public class EnemiesSpawnGroup : MonoBehaviour {
 
+        [Header("Options")]
         [Range(0f, 1f)]
         public float spawnPosibility = 1f;
-        public int spawnAmount = 1;
+        public int minSpawnAmount = 1;
+        public int maxSpawnAmount = 1;
 
         [Header("Gizmos")]
         public Color gizmosColor = Color.white;
@@ -34,39 +36,41 @@ namespace KeepTalkingForOrgansGame {
 
         void RandomSpawn () {
 
-            if (Random.value > spawnPosibility)
-                return;
+            if (Random.value <= spawnPosibility) {
+                List<EnemySpawnable> spawnables = new List<EnemySpawnable>();
+
+                for (int i = 0 ; i < transform.childCount ; i++) {
+
+                    EnemySpawnable spawnable = transform.GetChild(i).gameObject.GetComponent<EnemySpawnable>();
+
+                    if (spawnable != null) {
+                        spawnables.Add(spawnable);
+                    }
+                }
 
 
-            List<EnemySpawnable> spawnables = new List<EnemySpawnable>();
+                int spawnAmount = Random.Range(minSpawnAmount, maxSpawnAmount + 1);
 
-            for (int i = 0 ; i < transform.childCount ; i++) {
+                if (spawnAmount < 0)
+                    _spawns = new EnemySpawnable[spawnables.Count];
+                else
+                    _spawns = new EnemySpawnable[Math.Min(spawnAmount, spawnables.Count)];
 
-                EnemySpawnable spawnable = transform.GetChild(i).gameObject.GetComponent<EnemySpawnable>();
+                for (int i = 0 ; i < _spawns.Length ; i++) {
 
-                if (spawnable != null) {
-                    spawnables.Add(spawnable);
+                    int index = Random.Range(0, spawnables.Count);
+
+                    _spawns[i] = spawnables[index];
+                    spawnables.RemoveAt(index);
+                }
+
+
+                foreach (EnemySpawnable spawn in _spawns) {
+                    spawn.Spawn();
                 }
             }
 
-            if (spawnAmount < 0)
-                _spawns = new EnemySpawnable[spawnables.Count];
-            else
-                _spawns = new EnemySpawnable[Math.Min(spawnAmount, spawnables.Count)];
-
-            for (int i = 0 ; i < _spawns.Length ; i++) {
-
-                int index = Random.Range(0, spawnables.Count);
-
-                _spawns[i] = spawnables[index];
-                spawnables.RemoveAt(index);
-            }
-
-
-            foreach (EnemySpawnable spawn in _spawns) {
-                spawn.Spawn();
-            }
-
+            Destroy(gameObject);
         }
 
     }
