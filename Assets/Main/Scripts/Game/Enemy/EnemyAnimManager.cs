@@ -22,7 +22,6 @@ namespace KeepTalkingForOrgansGame {
         public float attackWordShowingDuration = 1f;
 
         [Header("REFS")]
-        public RotationConstraint rotConstraint;
         public Text suspectingText;
         public Text alertText;
         public Text attackText;
@@ -36,12 +35,6 @@ namespace KeepTalkingForOrgansGame {
             Play(State.None);
         }
 
-        void Start () {
-            rotConstraint.SetSource(0, new ConstraintSource {
-                sourceTransform = GameSceneManager.current.transform,
-                weight = 1f
-            });
-        }
 
         void ShutAll () {
             suspectingText.enabled = false;

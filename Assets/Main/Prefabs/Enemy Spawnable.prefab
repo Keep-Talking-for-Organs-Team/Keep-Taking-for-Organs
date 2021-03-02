@@ -90,7 +90,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7372384052249614174}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae6a197aa38481c4ab946ef229543ce9, type: 3}
   m_Name: 
@@ -238,5 +238,6 @@ MonoBehaviour:
   patrollingPath: {fileID: 0}
   lockedOnPath: 0
   positionInPath: 0
+  spriteGO: {fileID: 7372384052249614174}
   enemyPrefab: {fileID: 4423601870345542194, guid: f6d8d3c96c0cdbe45809caf2ba5d4ecb,
     type: 3}

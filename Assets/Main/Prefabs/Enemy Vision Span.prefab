@@ -14,8 +14,18 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 35d493be615238a4382304617db04d7f, type: 2}
     - target: {fileID: 1851463298499128468, guid: fd82e149e774ee54884dada878f13f8d,
         type: 3}
+      propertyPath: spanProps.fov
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851463298499128468, guid: fd82e149e774ee54884dada878f13f8d,
+        type: 3}
       propertyPath: showDebugLines
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1851463298499128468, guid: fd82e149e774ee54884dada878f13f8d,
+        type: 3}
+      propertyPath: spanProps.distance
+      value: 7.8
       objectReference: {fileID: 0}
     - target: {fileID: 1851463298499128468, guid: fd82e149e774ee54884dada878f13f8d,
         type: 3}

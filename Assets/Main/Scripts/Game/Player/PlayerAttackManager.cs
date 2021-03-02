@@ -69,7 +69,7 @@ namespace KeepTalkingForOrgansGame {
                     if (IsTakingRanged) {
                         method = AttackMethod.Ranged;
                     }
-                    else if ( (CurrentTarget.transform.position - transform.position).sqrMagnitude < Mathf.Pow(meleeDistance, 2) ) {
+                    else if ( ((Vector2) (CurrentTarget.transform.position - transform.position)).sqrMagnitude < Mathf.Pow(meleeDistance, 2) ) {
                         method = AttackMethod.Melee;
                     }
 
@@ -161,6 +161,7 @@ namespace KeepTalkingForOrgansGame {
         void Update () {
 
             // === temp ===
+            // Ranged Range Indicator
             rangedRangeIndicator.enabled = false;
             if (IsTakingRanged) {
                 rangedRangeIndicator.enabled = true;

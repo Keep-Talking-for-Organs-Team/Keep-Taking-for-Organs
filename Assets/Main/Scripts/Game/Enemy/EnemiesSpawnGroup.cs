@@ -19,9 +19,6 @@ namespace KeepTalkingForOrgansGame {
 
         EnemySpawnable[] _spawns;
 
-        void Start () {
-            RandomSpawn();
-        }
 
         void OnDrawGizmos () {
 
@@ -34,7 +31,7 @@ namespace KeepTalkingForOrgansGame {
         }
 
 
-        void RandomSpawn () {
+        public void RandomSpawn () {
 
             if (Random.value <= spawnPosibility) {
                 List<EnemySpawnable> spawnables = new List<EnemySpawnable>();

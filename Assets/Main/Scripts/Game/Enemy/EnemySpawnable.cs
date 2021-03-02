@@ -1,8 +1,12 @@
+using System.Collections.Generic;
+
 using UnityEngine;
 
 namespace KeepTalkingForOrgansGame {
 
     public class EnemySpawnable : MonoBehaviour {
+
+        public static List<EnemySpawnable> list = new List<EnemySpawnable>();
 
         [Header("Properties")]
         public EnemyVisionManager.State defaultVisionState;
@@ -12,12 +16,17 @@ namespace KeepTalkingForOrgansGame {
         public float positionInPath;
 
         [Header("REFS")]
+        public GameObject spriteGO;
+
+        [Header("Prefabs")]
         public GameObject enemyPrefab;
 
 
         PathHolder _prevPath;
 
         void Awake () {
+            list.Add(this);
+
             _prevPath = patrollingPath;
         }
 
@@ -46,23 +55,42 @@ namespace KeepTalkingForOrgansGame {
              _prevPath = patrollingPath;
         }
 
+        void OnDestroy () {
+            if (list.Contains(this))
+                list.Remove(this);
+        }
 
-        public GameObject Spawn () {
-            GameObject result = Instantiate(enemyPrefab, transform.position, transform.rotation, GameSceneManager.current.enemiesParent);
 
-            var visionManager = result.GetComponent<EnemyVisionManager>();
-            if (visionManager != null)
-                visionManager.defaultState = defaultVisionState;
+        public void Spawn () {
 
-            var moveManager = result.GetComponent<EnemyMoveManager>();
-            if (moveManager != null)
-                moveManager.defaultState = defaultMoveState;
+            if (!GlobalManager.current.isMapViewer) {
 
-            var patrolManager = result.GetComponent<EnemyPatrolManager>();
-            if (patrolManager != null)
-                patrolManager.path = patrollingPath;
+                GameObject enemyGO = Instantiate(enemyPrefab, (Vector2) transform.position, transform.rotation, GameSceneManager.current.enemiesParent);
 
-            return result;
+                var visionManager = enemyGO.GetComponent<EnemyVisionManager>();
+                if (visionManager != null)
+                    visionManager.defaultState = defaultVisionState;
+
+                var moveManager = enemyGO.GetComponent<EnemyMoveManager>();
+                if (moveManager != null)
+                    moveManager.defaultState = defaultMoveState;
+
+                var patrolManager = enemyGO.GetComponent<EnemyPatrolManager>();
+                if (patrolManager != null)
+                    patrolManager.path = patrollingPath;
+
+            }
+            else {
+                spriteGO.transform.SetParent(GameSceneManager.current.enemiesParent);
+
+                if (patrollingPath != null) {
+                    if (!patrollingPath.IsLineDrawn) {
+                        patrollingPath.DrawPathLines();
+                    }
+                }
+            }
+
+            list.Remove(this);
         }
 
     }

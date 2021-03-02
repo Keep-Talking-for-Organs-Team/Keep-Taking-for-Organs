@@ -159,6 +159,17 @@ namespace DoubleHeat.Utilities {
             thisRectTrans.anchoredPosition = targetRectTrans.anchoredPosition;
             thisRectTrans.sizeDelta        = targetRectTrans.sizeDelta;
         }
+
+
+        public static void SetLayerRecursively (this Transform thisTrans, int layer) {
+            thisTrans.gameObject.layer = layer;
+
+            foreach (Transform child in thisTrans) {
+                if (child != null) {
+                    child.SetLayerRecursively(layer);
+                }
+            }
+        }
     }
 
     public static class RendererExtensions {

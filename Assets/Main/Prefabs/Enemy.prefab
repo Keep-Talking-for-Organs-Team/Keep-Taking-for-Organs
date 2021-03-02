@@ -445,7 +445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackWordShowingDuration: 0.78
-  rotConstraint: {fileID: 277847859072181645}
+  rotConstraint: {fileID: 0}
   suspectingText: {fileID: 1975541602766672295}
   alertText: {fileID: 5907474910042945820}
   attackText: {fileID: 7876436365229354079}
@@ -713,7 +713,7 @@ GameObject:
   - component: {fileID: 2209115752635720036}
   - component: {fileID: 2098859537167479836}
   - component: {fileID: 2765861686119210085}
-  - component: {fileID: 277847859072181645}
+  - component: {fileID: 8373590448114220621}
   m_Layer: 20
   m_Name: Canvas
   m_TagString: Untagged
@@ -787,25 +787,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!1818360609 &277847859072181645
-RotationConstraint:
+--- !u!114 &8373590448114220621
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8885090621599499203}
   m_Enabled: 1
-  m_Weight: 1
-  m_RotationAtRest: {x: 0, y: 0, z: 0}
-  m_RotationOffset: {x: 0, y: 0, z: 0}
-  m_AffectRotationX: 1
-  m_AffectRotationY: 1
-  m_AffectRotationZ: 1
-  m_IsContraintActive: 1
-  m_IsLocked: 1
-  m_Sources:
-  - sourceTransform: {fileID: 0}
-    weight: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac67e3a70d9de0540b5f67f92ba04350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4423601870515179608
 PrefabInstance:
   m_ObjectHideFlags: 0

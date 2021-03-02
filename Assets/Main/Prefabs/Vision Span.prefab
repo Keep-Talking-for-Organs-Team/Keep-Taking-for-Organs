@@ -93,10 +93,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spanProps:
-    distance: 10
-    fov: 70
-  visionDistance: 10
-  fovAngle: 70
+    distance: 5
+    fov: 90
   cutInObstacleDistance: 0
   isBlind: 0
   isShowingVisionArea: 1

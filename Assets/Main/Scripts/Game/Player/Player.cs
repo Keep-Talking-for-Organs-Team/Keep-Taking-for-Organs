@@ -35,7 +35,7 @@ namespace KeepTalkingForOrgansGame {
         public bool HasGoal {get; private set;} = false;
 
         public bool IsMovable => GameSceneManager.current.IsMissionOnGoing && !IsDead && (_attackManager != null ? !_attackManager.IsAiming : true);
-        public bool IsControllable => GameSceneManager.current.IsMissionOnGoing && !IsDead;
+        public bool IsControllable => GameSceneManager.current.IsMissionOnGoing && !IsDead && Time.timeScale > 0;
         public bool IsFacingControllable => IsControllable && (_attackManager != null ? !_attackManager.IsAiming : true);
 
 
@@ -55,21 +55,27 @@ namespace KeepTalkingForOrgansGame {
 
         }
 
+        void Start () {
+            visionSpan.spanProps = walkVisionSpanProps;
+        }
 
 
         void FixedUpdate () {
 
-            if (GameSceneManager.current.currentTerrain.IsInTrapArea(transform.position)) {
-                Die();
-            }
+            if (!IsDead) {
 
-            if (IsCrouching && GameSceneManager.current.currentTerrain.IsInHidingArea(transform.position)) {
-                IsHiding = true;
-            }
-            else {
-                IsHiding = false;
-            }
+                if (GameSceneManager.current.currentTerrain.IsInTrapArea(transform.position)) {
+                    GameSceneManager.current.PlayAttackedOverlayFX();
+                    Die();
+                }
 
+                if (IsCrouching && GameSceneManager.current.currentTerrain.IsInHidingArea(transform.position)) {
+                    IsHiding = true;
+                }
+                else {
+                    IsHiding = false;
+                }
+            }
         }
 
         void Update () {
@@ -100,7 +106,10 @@ namespace KeepTalkingForOrgansGame {
                 if (_animManager != null) {
                     _animManager.Play(PlayerAnimManager.State.Dead);
                 }
+
+                GameSceneManager.current.MissionFailed();
             }
+
         }
 
 

@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 8564637926536799201}
   - component: {fileID: 8564637926536799200}
   - component: {fileID: 8564637926536799231}
-  - component: {fileID: 8564637926536799202}
+  - component: {fileID: 8047249031812359850}
   m_Layer: 20
   m_Name: Canvas
   m_TagString: Untagged
@@ -105,7 +105,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8564637926536799229}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.2}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
@@ -182,25 +182,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1818360609 &8564637926536799202
-RotationConstraint:
+--- !u!114 &8047249031812359850
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8564637926536799229}
   m_Enabled: 1
-  m_Weight: 1
-  m_RotationAtRest: {x: 0, y: 0, z: 0}
-  m_RotationOffset: {x: 0, y: 0, z: 0}
-  m_AffectRotationX: 1
-  m_AffectRotationY: 1
-  m_AffectRotationZ: 1
-  m_IsContraintActive: 1
-  m_IsLocked: 1
-  m_Sources:
-  - sourceTransform: {fileID: 0}
-    weight: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac67e3a70d9de0540b5f67f92ba04350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8564637926701883497
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,10 +650,10 @@ MonoBehaviour:
   keepRule: 1
   isInvincible: 0
   walkVisionSpanProps:
-    distance: 10
+    distance: 6.5
     fov: 70
   crouchVisionSpanProps:
-    distance: 5.8
+    distance: 3.87
     fov: 50
   initDir: {x: 0, y: 1}
   visionSpan: {fileID: 8028243435077393571}
@@ -714,8 +707,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea659b443ab5e1947b960ece59b850b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 6
-  crouchSpeed: 2.3
+  walkSpeed: 3.8
+  crouchSpeed: 1.2
   moveCollisionLayerMask:
     serializedVersion: 2
     m_Bits: 1049344
@@ -732,9 +725,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultBulletsAmount: 3
-  meleeDistance: 1.2
+  meleeDistance: 1.05
   meleeCooldownTime: 1.3
-  rangedDistance: 6.4
+  rangedDistance: 5.3
   rangedCooldownTime: 3
   requiredAimingDuration: 1.12
   targetDetectLayerMask:

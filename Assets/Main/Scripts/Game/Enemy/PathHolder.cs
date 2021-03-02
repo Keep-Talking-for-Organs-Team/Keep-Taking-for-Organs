@@ -11,6 +11,9 @@ namespace KeepTalkingForOrgansGame {
             Right
         }
 
+        static float drawnPathLineWidth = 0.023f;
+
+
         [Header("Options")]
         public bool isTailToHead;
         public TurnSide headTurnSide;
@@ -21,6 +24,7 @@ namespace KeepTalkingForOrgansGame {
         public float gizmosSphereSize = 1f;
 
 
+        public bool IsLineDrawn {get; private set;} = false;
         public int PointCount => transform.childCount;
         public int SegmentsAmount => isTailToHead ? PointCount : PointCount - 1;
 
@@ -144,6 +148,17 @@ namespace KeepTalkingForOrgansGame {
                     return -1;
             }
             return 0;
+        }
+
+
+        public void DrawPathLines () {
+
+            for (int i = 0 ; i < SegmentsAmount ; i++) {
+                Vector2[] segment = GetSegment(i);
+                GameSceneManager.current.lineFactory.GetLine(segment[0], segment[1], drawnPathLineWidth, Color.white);
+            }
+
+            IsLineDrawn = true;
         }
 
     }

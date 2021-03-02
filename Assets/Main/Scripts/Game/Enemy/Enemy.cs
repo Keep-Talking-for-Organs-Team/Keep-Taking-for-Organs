@@ -2,6 +2,8 @@ using UnityEngine;
 
 using DG.Tweening;
 
+using DoubleHeat.Utilities;
+
 namespace KeepTalkingForOrgansGame {
 
     public class Enemy : MonoBehaviour {
@@ -67,72 +69,70 @@ namespace KeepTalkingForOrgansGame {
 
         void FixedUpdate () {
 
-            if (IsDead)
-                return;
+            // Action
+            if (!IsDead) {
+                
+                // foreach (TargetedByEnemies target in TargetedByEnemies.list) {
+                //     // Has spotted target?
+                //     if (visionSpan.IsInSight(target.transform.position)) {
+                //
+                //         if (!_isSpottingPlayer)
+                //             print(string.Format("The target \"{0}\" go into the enemy's sight", target.name));
+                //
+                //         _isSpottingPlayer = true;
+                //     }
+                //     else {
+                //         _isSpottingPlayer = false;
+                //     }
+                // }
 
-            // foreach (TargetedByEnemies target in TargetedByEnemies.list) {
-            //     // Has spotted target?
-            //     if (visionSpan.IsInSight(target.transform.position)) {
-            //
-            //         if (!_isSpottingPlayer)
-            //             print(string.Format("The target \"{0}\" go into the enemy's sight", target.name));
-            //
-            //         _isSpottingPlayer = true;
-            //     }
-            //     else {
-            //         _isSpottingPlayer = false;
-            //     }
-            // }
+                if (Player.current != null) {
+                    Player player = Player.current;
 
-
-            if (Player.current != null) {
-                Player player = Player.current;
-
-                // Is spotted by player?
-                if (player.IsInVision(transform.position)) {
-                    Show();
-                }
-                else {
-                    if (!GameSceneManager.current.showAllEnemies) {
-                        Hide();
-                    }
-                }
-
-                // Has spotted player?
-                if (!player.IsDead && visionSpan.IsInSight(player.transform.position) && !player.IsHiding) {
-
-                    if (_awareRate >= 1) {
-
-                        if (_attackManager != null) {
-
-                            if (_attackManager.IsInRange(player.transform.position)) {
-                                _attackManager.TryToAttack();
-                            }
-                            else {
-                                if (_moveManager != null)
-                                    _moveManager.Chase(player.transform.position, Time.fixedDeltaTime * Time.timeScale);
-                            }
-                        }
+                    // Is spotted by player?
+                    if (player.IsInVision(transform.position)) {
+                        Show();
                     }
                     else {
-                        _awareRate = Mathf.Min(_awareRate + awareRateIncreaseSpeed * Time.timeScale * Time.fixedDeltaTime, 1f);
+                        if (!GameSceneManager.current.showAllEnemies) {
+                            Hide();
+                        }
                     }
 
-                    _visionManager.Target(player.transform.position, Time.fixedDeltaTime * Time.timeScale);
-                    _moveManager.Target(player.transform.position, Time.fixedDeltaTime * Time.timeScale);
+                    // Has spotted player?
+                    if (!player.IsDead && visionSpan.IsInSight(player.transform.position) && !player.IsHiding) {
 
-                }
-                else {
-                    if (_awareRate > 0) {
-                        _awareRate = Mathf.Max(_awareRate - awareRateDecreaseSpeed * Time.timeScale * Time.fixedDeltaTime, 0f);
+                        if (_awareRate >= 1) {
+
+                            if (_attackManager != null) {
+
+                                if (_attackManager.IsInRange(player.transform.position)) {
+                                    _attackManager.TryToAttack();
+                                }
+                                else {
+                                    if (_moveManager != null)
+                                        _moveManager.Chase(player.transform.position, Time.fixedDeltaTime * Time.timeScale);
+                                }
+                            }
+                        }
+                        else {
+                            _awareRate = Mathf.Min(_awareRate + awareRateIncreaseSpeed * Time.timeScale * Time.fixedDeltaTime, 1f);
+                        }
+
+                        _visionManager.Target(player.transform.position, Time.fixedDeltaTime * Time.timeScale);
+                        _moveManager.Target(player.transform.position, Time.fixedDeltaTime * Time.timeScale);
+
                     }
+                    else {
+                        if (_awareRate > 0) {
+                            _awareRate = Mathf.Max(_awareRate - awareRateDecreaseSpeed * Time.timeScale * Time.fixedDeltaTime, 0f);
+                        }
+                    }
+
                 }
 
-
+                awareRateShows = _awareRate;
             }
-
-
-            awareRateShows = _awareRate;
         }
 
         void Update () {
@@ -200,6 +200,10 @@ namespace KeepTalkingForOrgansGame {
                     colliders[i].enabled = false;
                 }
             }
+
+
+            int layer = LayerMask.NameToLayer("Default");
+            sr.transform.SetLayerRecursively(layer);
         }
 
     }

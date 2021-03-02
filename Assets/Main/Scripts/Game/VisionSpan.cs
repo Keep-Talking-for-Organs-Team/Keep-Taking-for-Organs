@@ -55,7 +55,7 @@ namespace KeepTalkingForOrgansGame {
 
         void LateUpdate () {
 
-            if (showVisionEdgeLines) {
+            if (showVisionEdgeLines && !isBlind) {
                 for (int i = -1 ; i <= 1 ; i += 2) {
                     Debug.DrawLine(transform.position, transform.position + Quaternion.AngleAxis(i * CurrentFov / 2, Vector3.forward) * _dir * spanProps.distance, Color.red);
                 }
