@@ -32,11 +32,11 @@ namespace KeepTalkingForOrgansGame {
 
         [Header("REFS")]
         public TerrainManager currentTerrain;
+        public SpriteRenderer fogSR;
         public Camera         mainCam;
         public Camera         mapViewCam;
         public Transform      enemiesParent;
         public Transform      playerSpawnPointsParent;
-        public EnemiesSpawnersManager[] enemiesSpawnersManagers;
 
         public GameObject     randomSeedInputGO;
         public GameObject     switchableInfoPanel;
@@ -53,6 +53,8 @@ namespace KeepTalkingForOrgansGame {
         [Header("Prefabs")]
         public GameObject     playerPrefab;
 
+        [Header("Register Enemies Spawners")]
+        public EnemiesSpawnersManager[] enemiesSpawnersManagers;
 
         public bool IsMissionStarted {get; private set;} = false;
         public bool IsMissionEnded {get; private set;} = false;
@@ -71,6 +73,9 @@ namespace KeepTalkingForOrgansGame {
 
         int _randSeed = -1;
 
+        // Components
+        SecretCodeHandler[] _secretCodeHandlers;
+
 
         protected override void Awake () {
             base.Awake();
@@ -83,6 +88,8 @@ namespace KeepTalkingForOrgansGame {
             rangedAttackOverlayFX.alpha = 0f;
             outOfAmmoOverlayFX.alpha = 0f;
 
+            _secretCodeHandlers = GetComponents<SecretCodeHandler>();
+
             RandomSeed = Random.Range(0, 10000);
         }
 
@@ -94,13 +101,11 @@ namespace KeepTalkingForOrgansGame {
                 VisionSpan.maxSegmentGapAngle = overrideViewSpanMaxSegmentGapAngle;
         }
 
-        void OnDrawGizmos () {
-            foreach (Transform point in playerSpawnPointsParent) {
-                Gizmos.DrawSphere(point.position, 0.4f);
-            }
-        }
-
         void Start () {
+
+            if (GlobalManager.current == null) {
+                Instantiate(Resources.Load<GameObject>("Prefabs/Global Manager"));
+            }
 
             if (!GlobalManager.current.isMapViewer) {
 
@@ -163,6 +168,18 @@ namespace KeepTalkingForOrgansGame {
                 }
                 // === ==== ===
             }
+
+
+            foreach (var handler in _secretCodeHandlers) {
+                if (handler.IsActiveSecretCode) {
+
+                    if (handler.actionName == "Remove Fog") {
+                        RemoveFog();
+                    }
+
+                    handler.IsActiveSecretCode = false;
+                }
+            }
         }
 
 
@@ -174,6 +191,8 @@ namespace KeepTalkingForOrgansGame {
                 int playerSpawnPointIndex = Random.Range(0, playerSpawnPointsParent.childCount);
 
                 Player player = Instantiate(playerPrefab, playerSpawnPointsParent.GetChild(playerSpawnPointIndex).position, Quaternion.identity, transform).GetComponent<Player>();
+
+                Destroy(playerSpawnPointsParent.gameObject);
             }
             else {
                 print("Missing Player Spawn Point!!");
@@ -249,6 +268,13 @@ namespace KeepTalkingForOrgansGame {
             Random.InitState(RandomSeed);
             foreach (var spawnersManager in enemiesSpawnersManagers) {
                 spawnersManager.StartSpawn();
+            }
+        }
+
+        void RemoveFog () {
+            if (!GlobalManager.current.isMapViewer) {
+                fogSR.enabled = false;
+                showAllEnemies = true;
             }
         }
 

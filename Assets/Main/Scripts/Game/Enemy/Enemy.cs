@@ -69,9 +69,13 @@ namespace KeepTalkingForOrgansGame {
 
         void FixedUpdate () {
 
+            if (GameSceneManager.current.showAllEnemies) {
+                Show();
+            }
+
             // Action
             if (!IsDead) {
-                
+
                 // foreach (TargetedByEnemies target in TargetedByEnemies.list) {
                 //     // Has spotted target?
                 //     if (visionSpan.IsInSight(target.transform.position)) {
@@ -90,11 +94,11 @@ namespace KeepTalkingForOrgansGame {
                     Player player = Player.current;
 
                     // Is spotted by player?
-                    if (player.IsInVision(transform.position)) {
-                        Show();
-                    }
-                    else {
-                        if (!GameSceneManager.current.showAllEnemies) {
+                    if (!GameSceneManager.current.showAllEnemies) {
+                        if (player.IsInVision(transform.position)) {
+                            Show();
+                        }
+                        else {
                             Hide();
                         }
                     }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 using DG.Tweening;
 
@@ -24,6 +25,13 @@ namespace KeepTalkingForOrgansGame {
             DontDestroyOnLoad(gameObject);
 
             DOTween.Init();
+        }
+
+        void Start () {
+            if (GameObject.FindObjectOfType<EventSystem>() == null) {
+                GameObject eventSys = new GameObject("Event System");
+                eventSys.AddComponent<EventSystem>();
+            }
         }
 
 

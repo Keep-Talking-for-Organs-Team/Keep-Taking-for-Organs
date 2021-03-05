@@ -13,7 +13,6 @@ namespace DoubleHeat {
         }
 
         public static T current = null;
-        // public static Dictionary<Type, SingletonMonoBehaviour> singletonInstances = new Dictionary<Type, SingletonMonoBehaviour>();
 
 
         [Header("Singleton Options")]
@@ -22,10 +21,12 @@ namespace DoubleHeat {
 
         protected virtual void Awake () {
 
+            T thisInstance = GetComponent<T>();
+
             if (current == null) {
-                current = GetComponent<T>();
+                current = thisInstance;
             }
-            else {
+            else if (current != thisInstance) {
                 if (keepRule == KeepRule.KeepOld) {
 
                     if (this.gameObject != null)
@@ -37,14 +38,14 @@ namespace DoubleHeat {
                     if (current.gameObject != null)
                         Destroy(current.gameObject);
 
-                    current = GetComponent<T>();
+                    current = thisInstance;
                 }
             }
 
         }
 
         protected virtual void OnDestroy () {
-            if (current == this)
+            if (current == GetComponent<T>())
                 current = null;
         }
 
