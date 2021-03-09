@@ -49,7 +49,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 331b124d0c8540418aee57828c09577b
     GuidInternal: 
-    m_lastTime: -8585863067234473731
+    m_lastTime: -8585863046414846350
     List:
     - name: SoundBank
       guid: 49e904883884a74a9af000f0f780fcf2
@@ -68,7 +68,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 212552149d463c4c84b85baf50cd0631
     GuidInternal: 
-    m_lastTime: -8585863063412495160
+    m_lastTime: -8585863046414985973
     List:
     - name: Game SFX
       guid: 5e4774ce09776842af07b32ed828bca4
@@ -162,8 +162,5 @@ MonoBehaviour:
     List: []
   ExpandedItems:
   - /Keep Taking for Organs_WwiseProject
-  - /Keep Taking for Organs_WwiseProject/Events
-  - /Keep Taking for Organs_WwiseProject/Events/Default Work Unit
-  - /Keep Taking for Organs_WwiseProject/Events/Default Work Unit/Music
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

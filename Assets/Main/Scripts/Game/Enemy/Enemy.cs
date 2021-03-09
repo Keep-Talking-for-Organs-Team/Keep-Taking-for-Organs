@@ -124,8 +124,10 @@ namespace KeepTalkingForOrgansGame {
                             _awareRate = Mathf.Min(_awareRate + awareRateIncreaseSpeed * Time.timeScale * Time.fixedDeltaTime, 1f);
                         }
 
-                        _visionManager.Target(player.transform.position, Time.fixedDeltaTime * Time.timeScale);
-                        _moveManager.Target(player.transform.position, Time.fixedDeltaTime * Time.timeScale);
+                        if (_visionManager != null)
+                            _visionManager.Target(player.transform.position, Time.fixedDeltaTime * Time.timeScale);
+                        if (_moveManager != null)
+                            _moveManager.Target(player.transform.position, Time.fixedDeltaTime * Time.timeScale);
 
                     }
                     else {

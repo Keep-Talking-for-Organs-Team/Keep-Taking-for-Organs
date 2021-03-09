@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 using DG.Tweening;
@@ -10,13 +11,18 @@ namespace KeepTalkingForOrgansGame {
 
     public class MenuSceneManager : SingletonMonoBehaviour<MenuSceneManager> {
 
+        public Slider levelNumberSelector;
 
         public void StartAsOperator () {
-            GlobalManager.current.StartLevel("Level 1", false);
+            GlobalManager.current.StartLevel(GetLevelName(), false);
         }
 
         public void StartAsMapViewer () {
-            GlobalManager.current.StartLevel("Level 1", true);
+            GlobalManager.current.StartLevel(GetLevelName(), true);
+        }
+
+        string GetLevelName () {
+            return "Level " + (int) levelNumberSelector.value;
         }
 
     }

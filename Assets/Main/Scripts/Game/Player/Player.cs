@@ -22,6 +22,7 @@ namespace KeepTalkingForOrgansGame {
         [Header("Properties")]
         public VisionSpan.SpanProps walkVisionSpanProps;
         public VisionSpan.SpanProps crouchVisionSpanProps;
+        public float                lightningFXDuration = 1f;
 
         public Vector2 initDir = Vector2.up;
 
@@ -29,6 +30,8 @@ namespace KeepTalkingForOrgansGame {
         [Header("REFS")]
         public VisionSpan visionSpan;
 
+        [Header("Prefabs")]
+        public GameObject lightningFXPrefab;
 
         public Vector2 FacingDirection => transform.rotation * initDir;
         public bool IsCrouching {get; private set;} = false;
@@ -40,6 +43,8 @@ namespace KeepTalkingForOrgansGame {
         public bool IsControllable => GameSceneManager.current.IsMissionOnGoing && !IsDead && Time.timeScale > 0;
         public bool IsFacingControllable => IsControllable && (_attackManager != null ? !_attackManager.IsAiming : true);
 
+
+        Coroutine _currentTrapFX;
 
         // Components
         PlayerAnimManager _animManager;
@@ -61,13 +66,13 @@ namespace KeepTalkingForOrgansGame {
             visionSpan.spanProps = walkVisionSpanProps;
         }
 
-
         void FixedUpdate () {
 
             if (!IsDead) {
 
                 if (GameSceneManager.current.currentTerrain.IsInTrapArea(transform.position)) {
-                    GameSceneManager.current.PlayAttackedOverlayFX();
+                    if (_currentTrapFX == null)
+                        _currentTrapFX = StartCoroutine(TrapFX());
                     Die();
                 }
 
@@ -136,6 +141,16 @@ namespace KeepTalkingForOrgansGame {
 
         public bool IsInVision (Vector2 position) {
             return visionSpan.IsInSight(position);
+        }
+
+
+        IEnumerator TrapFX () {
+            GameObject lightningFX = Instantiate(lightningFXPrefab, transform.position, Quaternion.identity, transform);
+
+            yield return new WaitForSeconds(lightningFXDuration);
+
+            Destroy(lightningFX);
+            _currentTrapFX = null;
         }
 
     }
