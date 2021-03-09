@@ -1,0 +1,6 @@
+Event	ID	Name			Wwise Object Path	Notes
+	1193902085	Play_Main			\Default Work Unit\Music\Play_Main	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	630342208	Main	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\Main_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Main\MainTest\Main		42553328
+

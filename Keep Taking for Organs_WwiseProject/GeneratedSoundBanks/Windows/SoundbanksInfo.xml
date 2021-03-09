@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
+	<RootPaths>
+		<ProjectRoot>C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX" Hash="4204904655">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="1661994096" Language="SFX" Hash="2300113000">
+			<ObjectPath>\SoundBanks\Default Work Unit\SoundBank</ObjectPath>
+			<ShortName>SoundBank</ShortName>
+			<Path>SoundBank.bnk</Path>
+			<IncludedEvents>
+				<Event Id="1193902085" Name="Play_Main" ObjectPath="\Events\Default Work Unit\Music\Play_Main" DurationType="OneShot" DurationMin="221.631256" DurationMax="221.631256">
+					<IncludedMemoryFiles>
+						<File Id="630342208" Language="SFX">
+							<ShortName>Main.wav</ShortName>
+							<Path>SFX\Main_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+			</IncludedEvents>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>
