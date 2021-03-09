@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" SchemaVersion="97">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="UI SFX" ID="{8B3306A0-9257-4B9A-80FF-88D94F47EBA4}" ShortID="759186299"/>
+				<Folder Name="Game SFX" ID="{CE74475E-7709-4268-AF07-B32ED828BCA4}" ShortID="1035306733"/>
+				<Folder Name="Music" ID="{44E9EEDD-3B09-4928-94EF-DB8FAFA9234A}" ShortID="1008204086">
+					<ChildrenList>
+						<Event Name="Play_Main" ID="{29F5F19B-2508-45EA-B8B8-1F1FBEC2F286}">
+							<ChildrenList>
+								<Action Name="" ID="{24D33C76-C92B-44A0-983F-814946F71DF6}" ShortID="362080057">
+									<PropertyList>
+										<Property Name="FadeTime" Type="Real64" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="MainTest" ID="{B5E3E4E5-F116-4352-B23C-6B6DA9BC4DAB}" WorkUnitID="{A9184E8C-7D9E-4DE0-96BD-87B0AAAB6346}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>
