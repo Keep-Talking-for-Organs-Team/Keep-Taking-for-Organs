@@ -41,9 +41,18 @@ namespace KeepTalkingForOrgansGame {
         public float rangedCooldown = 0f;
 
 
+        public AttackMethod CurrentWeapon {get; private set;} = AttackMethod.Melee;
         public bool  IsTakingRanged {get; private set;} = false;
         public Enemy CurrentTarget {get; private set;} = null;
-        public int   BulletsLeft {get; private set;} = -1;
+        public int   BulletsLeft {
+            get => _bulletsLeft;
+            set {
+                if (_bulletsLeft != value) {
+                    _bulletsLeft = value;
+                    GameSceneManager.current.operatorHUDManager.weaponStatusDisplay.UpdateBulletsDisplay(_bulletsLeft);
+                }
+            }
+        }
 
         public bool  IsAiming {
             get => _isAiming;
@@ -81,11 +90,12 @@ namespace KeepTalkingForOrgansGame {
             }
         }
 
-        // Components
-        Player _player;
-        PlayerAnimManager _animManager;
 
-        bool _isAiming = false;
+
+
+        bool  _isAiming = false;
+        int   _bulletsLeft = -1;
+        float _lastestAimingStartTime = 0f;
 
         Dictionary<AttackMethod, float> _lastestAttackStartTimeOfAttackMethods = new Dictionary<AttackMethod, float>() {
             { AttackMethod.Melee, 0f },
@@ -93,7 +103,10 @@ namespace KeepTalkingForOrgansGame {
         };
         Dictionary<AttackMethod, float> _cooldownTimeOfAttackMethods = new Dictionary<AttackMethod, float>();
 
-        float _lastestAimingStartTime = 0f;
+
+        // Components
+        Player _player;
+        PlayerAnimManager _animManager;
 
 
         void Awake () {
@@ -104,6 +117,10 @@ namespace KeepTalkingForOrgansGame {
             _cooldownTimeOfAttackMethods.Add(AttackMethod.Ranged, rangedCooldownTime);
 
             BulletsLeft = defaultBulletsAmount;
+        }
+
+        void Start () {
+            UpdateHUDWeaponDisplay();
         }
 
         void FixedUpdate () {
@@ -170,25 +187,29 @@ namespace KeepTalkingForOrgansGame {
             }
             // === ==== ===
 
-            string[] lines = GameSceneManager.current.hudInfoText.text.Split('\n');
-            for (int i = 0 ; i < lines.Length ; i++) {
+            GameSceneManager.current.operatorHUDManager.weaponStatusDisplay.UpdateCooldownTimeRemainedRate(GetCurrentCooldownTimeRemainedRate(CurrentWeapon));
 
-                string[] parts = lines[i].Split(':');
 
-                if (parts.Length >= 2) {
-                    if (i == 0) {
-                        lines[i] = parts[0] + ": " + GetCurrentCooldownTimeLeft(AttackMethod.Melee).ToString("0.0");
-                    }
-                    else if (i == 1) {
-                        lines[i] = parts[0] + ": " + GetCurrentCooldownTimeLeft(AttackMethod.Ranged).ToString("0.0");
-                    }
-                    else if (i == 2) {
-                        lines[i] = parts[0] + ":" + (BulletsLeft >= 0 ? BulletsLeft.ToString() : "Inf");
-                    }
-                }
-            }
-
-            GameSceneManager.current.hudInfoText.text = string.Join("\n", lines);
+            // temp HUD display
+            // string[] lines = GameSceneManager.current.hudInfoText.text.Split('\n');
+            // for (int i = 0 ; i < lines.Length ; i++) {
+            //
+            //     string[] parts = lines[i].Split(':');
+            //
+            //     if (parts.Length >= 2) {
+            //         if (i == 0) {
+            //             lines[i] = parts[0] + ": " + GetCurrentCooldownTimeLeft(AttackMethod.Melee).ToString("0.0");
+            //         }
+            //         else if (i == 1) {
+            //             lines[i] = parts[0] + ": " + GetCurrentCooldownTimeLeft(AttackMethod.Ranged).ToString("0.0");
+            //         }
+            //         else if (i == 2) {
+            //             lines[i] = parts[0] + ":" + (BulletsLeft >= 0 ? BulletsLeft.ToString() : "Inf");
+            //         }
+            //     }
+            // }
+            //
+            // GameSceneManager.current.hudInfoText.text = string.Join("\n", lines);
 
 #if UNITY_EDITOR
             meleeCooldown = GetCurrentCooldownTimeLeft(AttackMethod.Melee);
@@ -198,15 +219,22 @@ namespace KeepTalkingForOrgansGame {
 
 
         public void PickRanged () {
+            CurrentWeapon = AttackMethod.Ranged;
+            UpdateHUDWeaponDisplay();
+
             if (GetCurrentCooldownTimeLeft(AttackMethod.Ranged) == 0) {
                 IsTakingRanged = true;
             }
         }
 
         public void DropRanged () {
+            CurrentWeapon = AttackMethod.Melee;
+            UpdateHUDWeaponDisplay();
+
             IsTakingRanged = false;
             IsAiming = false;
         }
+
 
         public void TryToAttack () {
             AttackMethod atkMethod = AvailableAttackMethod;
@@ -250,6 +278,10 @@ namespace KeepTalkingForOrgansGame {
             return Mathf.Max(_cooldownTimeOfAttackMethods[atkMethod] - (Time.time - _lastestAttackStartTimeOfAttackMethods[atkMethod]), 0f);
         }
 
+        public float GetCurrentCooldownTimeRemainedRate (AttackMethod atkMethod) {
+            return GetCurrentCooldownTimeLeft(atkMethod) / _cooldownTimeOfAttackMethods[atkMethod];
+        }
+
         public bool IsAttackMethodActive (AttackMethod atkMethod) {
             if (atkMethod == AttackMethod.None)
                 return false;
@@ -275,6 +307,10 @@ namespace KeepTalkingForOrgansGame {
                 GameSceneManager.current.PlayRangedAttackOverlayFX();
                 IsAiming = false;
             }
+        }
+
+        void UpdateHUDWeaponDisplay () {
+            GameSceneManager.current.operatorHUDManager.weaponStatusDisplay.SetWeapon(CurrentWeapon, BulletsLeft);
         }
 
 

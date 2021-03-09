@@ -16,6 +16,8 @@ namespace KeepTalkingForOrgansGame {
 
         [Header("Options")]
         public bool isInvincible = false;
+        public bool mustCrouchToHide = false;
+        public bool isCrouchable = false;
 
         [Header("Properties")]
         public VisionSpan.SpanProps walkVisionSpanProps;
@@ -69,7 +71,7 @@ namespace KeepTalkingForOrgansGame {
                     Die();
                 }
 
-                if (IsCrouching && GameSceneManager.current.currentTerrain.IsInHidingArea(transform.position)) {
+                if (GameSceneManager.current.currentTerrain.IsInHidingArea(transform.position) && (!mustCrouchToHide || IsCrouching)) {
                     IsHiding = true;
                 }
                 else {
@@ -119,6 +121,9 @@ namespace KeepTalkingForOrgansGame {
         }
 
         public void ToggleCrouch () {
+            if (!isCrouchable)
+                return;
+
             IsCrouching = !IsCrouching;
 
             if (IsCrouching) {

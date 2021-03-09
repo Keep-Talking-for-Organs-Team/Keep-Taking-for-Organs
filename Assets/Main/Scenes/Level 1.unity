@@ -605,7 +605,7 @@ PrefabInstance:
     - target: {fileID: 3880245682808395220, guid: 0601c10befdc25344816a4dbce5b7605,
         type: 3}
       propertyPath: isMapViewer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3880245682808395221, guid: 0601c10befdc25344816a4dbce5b7605,
         type: 3}
@@ -622,6 +622,11 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 73012145361017396, guid: e531d48ca1040f94e98290af63b8bfe5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2854455124478714039, guid: e531d48ca1040f94e98290af63b8bfe5,
         type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -32000,6 +32005,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6373732400859277931, guid: e531d48ca1040f94e98290af63b8bfe5,
         type: 3}
+      propertyPath: timeLimit
+      value: 480
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373732400859277931, guid: e531d48ca1040f94e98290af63b8bfe5,
+        type: 3}
       propertyPath: showAllEnemies
       value: 0
       objectReference: {fileID: 0}
@@ -32073,10 +32083,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6373732401176909029, guid: e531d48ca1040f94e98290af63b8bfe5,
+    - target: {fileID: 6373732401176909019, guid: e531d48ca1040f94e98290af63b8bfe5,
         type: 3}
-      propertyPath: m_Text
-      value: "\u5200CD: 0\n\u69CDCD: 0\n\u69CD\u5F48\u6578:Inf\n<size=44>\u6309\u4F4FTAB\u770B\u7A2E\u5B50\u78BC</size>"
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6373732401317964194, guid: e531d48ca1040f94e98290af63b8bfe5,
         type: 3}

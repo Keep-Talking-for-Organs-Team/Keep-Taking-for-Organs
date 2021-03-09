@@ -219,8 +219,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8564637926701883497}
   m_LocalRotation: {x: 0, y: 0, z: -0.92387956, w: 0.38268343}
-  m_LocalPosition: {x: 0, y: 0.0344, z: 0}
-  m_LocalScale: {x: 0.12, y: 0.12, z: 1}
+  m_LocalPosition: {x: 0, y: 0.08779, z: 0}
+  m_LocalScale: {x: 0.044498205, y: 0.044498205, z: 0.37081838}
   m_Children: []
   m_Father: {fileID: 8564637926918686024}
   m_RootOrder: 0
@@ -649,6 +649,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keepRule: 1
   isInvincible: 0
+  mustCrouchToHide: 0
+  isCrouchable: 0
   walkVisionSpanProps:
     distance: 6.5
     fov: 70
@@ -669,7 +671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0843b2c76d7180f419b341dacb0c6df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hidingOpacity: 0.32
+  hidingOpacity: 0.2
   bodySRs:
   - {fileID: 8564637926918686025}
   - {fileID: 8564637926701883499}
@@ -711,7 +713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea659b443ab5e1947b960ece59b850b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 3.8
+  walkSpeed: 2.7
   crouchSpeed: 1.2
   moveCollisionLayerMask:
     serializedVersion: 2

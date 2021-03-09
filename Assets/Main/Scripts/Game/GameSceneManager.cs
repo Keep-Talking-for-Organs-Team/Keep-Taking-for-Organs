@@ -27,16 +27,18 @@ namespace KeepTalkingForOrgansGame {
         public bool  showAllEnemies = false;
 
         [Header("Properties")]
+        public float timeLimit = -1f;
         public float attackedOverlayFXDuration = 1f;
         public Ease  attackedOverlayFXEase;
 
         [Header("REFS")]
         public TerrainManager currentTerrain;
-        public SpriteRenderer fogSR;
-        public Camera         mainCam;
-        public Camera         mapViewCam;
         public Transform      enemiesParent;
         public Transform      playerSpawnPointsParent;
+        public Camera         mainCam;
+        public SpriteRenderer fogSR;
+        public HUDManager     operatorHUDManager;
+        public Camera         mapViewCam;
 
         public GameObject     randomSeedInputGO;
         public GameObject     switchableInfoPanel;
@@ -59,6 +61,8 @@ namespace KeepTalkingForOrgansGame {
         public bool IsMissionStarted {get; private set;} = false;
         public bool IsMissionEnded {get; private set;} = false;
         public bool IsMissionOnGoing => IsMissionStarted && !IsMissionEnded;
+        public float MissionTimePassed => !IsMissionStarted ? -1f : Time.time - _missionStartTime;
+        public float MissionTimeRemained => timeLimit - MissionTimePassed;
 
         public int  RandomSeed {
             get => _randSeed;
@@ -71,7 +75,8 @@ namespace KeepTalkingForOrgansGame {
         }
 
 
-        int _randSeed = -1;
+        int   _randSeed = -1;
+        float _missionStartTime = 0f;
 
         // Components
         SecretCodeHandler[] _secretCodeHandlers;
@@ -133,6 +138,22 @@ namespace KeepTalkingForOrgansGame {
         void Update () {
 
             if (!GlobalManager.current.isMapViewer) {
+
+                if (operatorHUDManager.timerDisplayText != null) {
+                    if (timeLimit < 0) {
+                        operatorHUDManager.timerDisplayText.enabled = false;
+                    }
+                    else if (IsMissionOnGoing) {
+                        operatorHUDManager.UpdateTimerDisplay(MissionTimeRemained);
+                    }
+                }
+
+                if (IsMissionOnGoing && timeLimit > 0 && MissionTimeRemained <= 0) {
+                    MissionFailed();
+                }
+
+
+                // handle input
                 if (Input.GetKeyDown(KeyCode.Escape)) {
                     if (Time.timeScale > 0) {
                         Time.timeScale = 0f;
@@ -184,6 +205,7 @@ namespace KeepTalkingForOrgansGame {
 
 
         public void StartMission () {
+            _missionStartTime = Time.time;
             IsMissionStarted = true;
 
             if (playerSpawnPointsParent.childCount > 0) {

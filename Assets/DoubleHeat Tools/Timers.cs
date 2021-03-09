@@ -2,8 +2,11 @@
 namespace DoubleHeat {
 
     public struct TimerTimeDisplay {
+
         public int min;
         public int sec;
+
+        public string MinSecDisplay => min.ToString("00") + " : " + sec.ToString("00");
 
         public TimerTimeDisplay (int min, int sec) {
             this.min = min;

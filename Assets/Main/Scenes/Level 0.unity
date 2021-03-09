@@ -697,7 +697,7 @@ PrefabInstance:
     - target: {fileID: 3880245682808395220, guid: 0601c10befdc25344816a4dbce5b7605,
         type: 3}
       propertyPath: isMapViewer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3880245682808395221, guid: 0601c10befdc25344816a4dbce5b7605,
         type: 3}
