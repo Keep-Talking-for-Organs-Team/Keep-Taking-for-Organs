@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -209,6 +209,9 @@ GameObject:
   m_Component:
   - component: {fileID: 517849016}
   - component: {fileID: 517849015}
+  - component: {fileID: 517849017}
+  - component: {fileID: 517849019}
+  - component: {fileID: 517849018}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -257,6 +260,83 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &517849017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517849014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bef9f0770e23a34b848dfc836a2db21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: ae8d9d44f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 21fdc5636e50b8a43b6d84f2b5ea8776,
+      type: 2}
+  decodeBank: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 
+  bankNameInternal: 
+  valueGuidInternal: 
+--- !u!114 &517849018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517849014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa2844dc59cc14d48b2c526509e7d072, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  enableActionOnEvent: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 3657e18b716793642bd4f54cfa99e1b0,
+      type: 2}
+  useCallbacks: 0
+  Callbacks: []
+  playingId: 0
+  soundEmitterObject: {fileID: 0}
+  transitionDuration: 0
+  eventIdInternal: 0
+  valueGuidInternal: 
+  m_callbackDataInternal: {fileID: 0}
+--- !u!114 &517849019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517849014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b5f32331c21184493047f84b1663b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 1
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
 --- !u!1001 &590250207
 PrefabInstance:
   m_ObjectHideFlags: 0
