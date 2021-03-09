@@ -12,7 +12,17 @@ namespace KeepTalkingForOrgansGame {
     [RequireComponent(typeof(Player))]
     public class PlayerAnimManager : MonoBehaviour {
 
-        public enum State {
+        public enum AttitudeState {
+            Standing,
+            Crouching
+        }
+
+        public enum VisibilityState {
+            Visible,
+            Invisible
+        }
+
+        public enum ActionState {
             Idle,
             Dead,
             Aiming,
@@ -20,7 +30,11 @@ namespace KeepTalkingForOrgansGame {
         }
 
 
+        [Header("Properties")]
+        public float hidingOpacity;
+
         [Header("REFS")]
+        public SpriteRenderer[] bodySRs;
         public Text deathText;
         public Text aimText;
         public Text aimingProcessText;
@@ -28,8 +42,43 @@ namespace KeepTalkingForOrgansGame {
         public Text rangedText;
 
 
-        public State CurrentState {get; private set;} = State.None;
+        public ActionState CurrentActionState {get; private set;} = ActionState.None;
+        public AttitudeState CurrentAttitudeState {
+            get => _attitudeState;
+            set {
+                if (_attitudeState != value) {
 
+                    if (value == AttitudeState.Standing) {
+                        OnStood();
+                    }
+                    else if (value == AttitudeState.Crouching) {
+                        OnCrouched();
+                    }
+
+                    _attitudeState = value;
+                }
+            }
+        }
+        public VisibilityState CurrentVisiblityState {
+            get => _visibilityState;
+            set {
+                if (_visibilityState != value) {
+
+                    if (value == VisibilityState.Visible) {
+                        OnBecomeVisible();
+                    }
+                    else if (value == VisibilityState.Invisible) {
+                        OnBecomeInvisible();
+                    }
+
+                    _visibilityState = value;
+                }
+            }
+        }
+
+
+        AttitudeState _attitudeState = AttitudeState.Standing;
+        VisibilityState _visibilityState = VisibilityState.Visible;
 
         // Components
         Player _player;
@@ -39,7 +88,7 @@ namespace KeepTalkingForOrgansGame {
             _player = GetComponent<Player>();
             _attackManager = GetComponent<PlayerAttackManager>();
 
-            Play(State.Idle);
+            PlayAction(ActionState.Idle);
         }
 
         void ShutAll () {
@@ -50,6 +99,26 @@ namespace KeepTalkingForOrgansGame {
 
         void Update () {
 
+            // Attitude State
+            if (_player.IsCrouching) {
+                CurrentAttitudeState = AttitudeState.Crouching;
+            }
+            else {
+                CurrentAttitudeState = AttitudeState.Standing;
+            }
+
+            // Visibility State
+            foreach (var sr in bodySRs) {
+                if (_player.IsHiding) {
+                    CurrentVisiblityState = VisibilityState.Invisible;
+                }
+                else {
+                    CurrentVisiblityState = VisibilityState.Visible;
+                }
+            }
+
+
+            // Attackable Instructions
             meleeText.enabled = false;
             rangedText.enabled = false;
 
@@ -66,16 +135,16 @@ namespace KeepTalkingForOrgansGame {
         }
 
 
-        public void Play (State state) {
+        public void PlayAction (ActionState state) {
 
-            CurrentState = state;
+            CurrentActionState = state;
 
             ShutAll();
 
-            if (state == State.Dead) {
+            if (state == ActionState.Dead) {
                 deathText.enabled = true;
             }
-            else if (state == State.Aiming) {
+            else if (state == ActionState.Aiming) {
                 aimText.enabled = true;
                 aimingProcessText.enabled = true;
                 aimingProcessText.text = "0%";
@@ -83,6 +152,23 @@ namespace KeepTalkingForOrgansGame {
         }
 
 
+        void OnStood () {
+
+        }
+
+        void OnCrouched () {
+
+        }
+
+        void OnBecomeVisible () {
+            foreach (var sr in bodySRs)
+                sr.SetOpacity(1f);
+        }
+
+        void OnBecomeInvisible () {
+            foreach (var sr in bodySRs)
+                sr.SetOpacity(hidingOpacity);
+        }
 
     }
 }

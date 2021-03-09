@@ -8,6 +8,7 @@ namespace KeepTalkingForOrgansGame {
         public float attackDistance;
         public float attackCooldownTime;
 
+        public bool HasAttackedPlayer {get; private set;} = false;
 
         float _lastestAttackStartTime = 0f;
 
@@ -36,6 +37,8 @@ namespace KeepTalkingForOrgansGame {
 
         void Attack () {
             _lastestAttackStartTime = Time.time;
+
+            HasAttackedPlayer = true;
 
             if (_animManager != null) {
                 _animManager.Play(EnemyAnimManager.State.Attacking);

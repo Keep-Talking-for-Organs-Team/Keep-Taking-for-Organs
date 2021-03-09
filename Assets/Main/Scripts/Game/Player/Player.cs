@@ -104,7 +104,7 @@ namespace KeepTalkingForOrgansGame {
                 IsDead = true;
 
                 if (_animManager != null) {
-                    _animManager.Play(PlayerAnimManager.State.Dead);
+                    _animManager.PlayAction(PlayerAnimManager.ActionState.Dead);
                 }
 
                 GameSceneManager.current.MissionFailed();

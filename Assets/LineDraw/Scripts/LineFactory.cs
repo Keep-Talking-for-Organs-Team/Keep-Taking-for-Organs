@@ -24,7 +24,7 @@ public class LineFactory : MonoBehaviour
 	void Start ()
 	{
 		pooledLines = new Line[maxLines];
-		
+
 		for (int i = 0; i < maxLines; i++) {
 			var line = Instantiate (linePrefab);
 			line.SetActive (false);
@@ -44,7 +44,7 @@ public class LineFactory : MonoBehaviour
 	public Line GetLine (Vector2 start, Vector2 end, float width, Color color)
 	{
 		var line = pooledLines [currentIndex];
-		
+
 		line.Initialise (start, end, width, color);
 		line.gameObject.SetActive (true);
 
@@ -70,4 +70,12 @@ public class LineFactory : MonoBehaviour
 		return activeLines;
 	}
 
+
+	public void ClearLines () {
+		List<Line> actives = GetActive();
+
+		foreach (var line in actives) {
+			line.gameObject.SetActive(false);
+		}
+	}
 }

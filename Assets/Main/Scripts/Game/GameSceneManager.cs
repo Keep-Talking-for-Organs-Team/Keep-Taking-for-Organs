@@ -279,11 +279,7 @@ namespace KeepTalkingForOrgansGame {
         }
 
         void ClearDrawnLines () {
-            var activeLines = lineFactory.GetActive ();
-
-    		foreach (var line in activeLines) {
-    			line.gameObject.SetActive(false);
-    		}
+            lineFactory.ClearLines();
         }
 
     }

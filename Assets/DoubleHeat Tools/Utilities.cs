@@ -206,6 +206,12 @@ namespace DoubleHeat.Utilities {
             rectTrans.pivot = percentPivot;
         }
 
+
+        public static void SetOpacity (this SpriteRenderer sr, float alpha) {
+            Color color = sr.color;
+            color.a = alpha;
+            sr.color = color;
+        }
     }
 
 

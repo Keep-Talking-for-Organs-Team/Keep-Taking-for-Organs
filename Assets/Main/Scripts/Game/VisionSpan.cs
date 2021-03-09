@@ -39,11 +39,10 @@ namespace KeepTalkingForOrgansGame {
 
         public float FovRateApplied {get; set;} = 1f;
         public Vector2 Origin => transform.position;
-        public Vector2 FacingDirection => _dir;
+        public Vector2 FacingDirection {get; private set;} = Vector2.zero;
         public float CurrentFov => spanProps.fov * FovRateApplied;
 
 
-        Vector2 _dir = Vector2.up;
         Mesh _mesh;
 
         void Awake () {
@@ -57,7 +56,7 @@ namespace KeepTalkingForOrgansGame {
 
             if (showVisionEdgeLines && !isBlind) {
                 for (int i = -1 ; i <= 1 ; i += 2) {
-                    Debug.DrawLine(transform.position, transform.position + Quaternion.AngleAxis(i * CurrentFov / 2, Vector3.forward) * _dir * spanProps.distance, Color.red);
+                    Debug.DrawLine(transform.position, transform.position + Quaternion.AngleAxis(i * CurrentFov / 2, Vector3.forward) * FacingDirection * spanProps.distance, Color.red);
                 }
             }
 
@@ -72,7 +71,7 @@ namespace KeepTalkingForOrgansGame {
 
 
         public void SetFacingDirection (Vector2 dir) {
-            _dir = dir;
+            FacingDirection = dir;
         }
 
         public bool IsInSight (Vector2 position) {
@@ -98,7 +97,7 @@ namespace KeepTalkingForOrgansGame {
             if (isBlind && direction == Vector2.zero)
                 return false;
 
-            if (Vector2.Angle(direction, _dir) < CurrentFov / 2) {
+            if (Vector2.Angle(direction, FacingDirection) < CurrentFov / 2) {
                 return true;
             }
 
@@ -123,7 +122,7 @@ namespace KeepTalkingForOrgansGame {
             for (int i = 0 ; i < rayCount ; i++) {
 
                 float   angle     = (i - segmentCount / 2f) * CurrentFov / segmentCount;
-                Vector2 direction = Quaternion.AngleAxis(angle, Vector3.forward) * _dir;
+                Vector2 direction = Quaternion.AngleAxis(angle, Vector3.forward) * FacingDirection;
 
                 ViewCastInfo cast = ViewCast(direction);
 

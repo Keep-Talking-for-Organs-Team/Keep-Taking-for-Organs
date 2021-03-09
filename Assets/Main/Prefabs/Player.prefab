@@ -669,6 +669,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0843b2c76d7180f419b341dacb0c6df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hidingOpacity: 0.32
+  bodySRs:
+  - {fileID: 8564637926918686025}
+  - {fileID: 8564637926701883499}
   deathText: {fileID: 8564637927877528112}
   aimText: {fileID: 8564637926271407868}
   aimingProcessText: {fileID: 8564637928217816321}

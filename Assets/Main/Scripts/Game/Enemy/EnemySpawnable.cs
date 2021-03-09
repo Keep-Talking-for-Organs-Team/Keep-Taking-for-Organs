@@ -15,12 +15,19 @@ namespace KeepTalkingForOrgansGame {
         public bool lockedOnPath;
         public float positionInPath;
 
+        [Header("On Map Properties")]
+        public float visionAreaLinesWidthOnMap = 1f;
+        public Color visionAreaLinesColorOnMap = Color.white;
+
         [Header("REFS")]
-        public GameObject spriteGO;
+        public GameObject  spriteGO;
+        public LineFactory lineFactory;
 
         [Header("Prefabs")]
         public GameObject enemyPrefab;
 
+
+        public Vector2 FacingDirection => transform.rotation * enemyPrefab.GetComponent<Enemy>().defaultDir;
 
         PathHolder _prevPath;
 
@@ -81,7 +88,11 @@ namespace KeepTalkingForOrgansGame {
 
             }
             else {
+                // Is Map Viewer
                 spriteGO.transform.SetParent(GameSceneManager.current.enemiesParent);
+                lineFactory.transform.SetParent(GameSceneManager.current.enemiesParent);
+
+                DrawLinesOfVisionArea();
 
                 if (patrollingPath != null) {
                     if (!patrollingPath.IsLineDrawn) {
@@ -91,6 +102,19 @@ namespace KeepTalkingForOrgansGame {
             }
 
             list.Remove(this);
+        }
+
+
+        void DrawLinesOfVisionArea () {
+            lineFactory.ClearLines();
+
+            Enemy enemy = enemyPrefab.GetComponent<Enemy>();
+            VisionSpan visionSpan = enemy.visionSpan;
+            if (!visionSpan.isBlind) {
+                for (int i = -1 ; i <= 1 ; i += 2) {
+                    lineFactory.GetLine(transform.position, transform.position + Quaternion.AngleAxis(i * visionSpan.spanProps.fov / 2, Vector3.forward) * FacingDirection * visionSpan.spanProps.distance, visionAreaLinesWidthOnMap, visionAreaLinesColorOnMap);
+                }
+            }
         }
 
     }

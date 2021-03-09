@@ -11,13 +11,16 @@ namespace KeepTalkingForOrgansGame {
             Right
         }
 
-        static float drawnPathLineWidth = 0.023f;
-
 
         [Header("Options")]
         public bool isTailToHead;
         public TurnSide headTurnSide;
         public TurnSide tailTurnSide;
+
+        [Header("On Map Properties")]
+        public float drawnPathLinesWidth = 0.023f;
+        public Color drawnPathLinesColor = Color.white;
+
 
         [Header("Gizmos Settings")]
         public Color gizmosColor = Color.white;
@@ -155,7 +158,7 @@ namespace KeepTalkingForOrgansGame {
 
             for (int i = 0 ; i < SegmentsAmount ; i++) {
                 Vector2[] segment = GetSegment(i);
-                GameSceneManager.current.lineFactory.GetLine(segment[0], segment[1], drawnPathLineWidth, Color.white);
+                GameSceneManager.current.lineFactory.GetLine(segment[0], segment[1], drawnPathLinesWidth, drawnPathLinesColor);
             }
 
             IsLineDrawn = true;

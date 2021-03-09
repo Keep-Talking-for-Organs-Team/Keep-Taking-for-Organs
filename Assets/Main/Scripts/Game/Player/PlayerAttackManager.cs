@@ -286,13 +286,13 @@ namespace KeepTalkingForOrgansGame {
             _lastestAimingStartTime = Time.time;
 
             if (_animManager != null) {
-                _animManager.Play(PlayerAnimManager.State.Aiming);
+                _animManager.PlayAction(PlayerAnimManager.ActionState.Aiming);
             }
         }
 
         void OnStopAiming () {
             if (_animManager != null) {
-                _animManager.Play(PlayerAnimManager.State.Idle);
+                _animManager.PlayAction(PlayerAnimManager.ActionState.Idle);
             }
         }
 

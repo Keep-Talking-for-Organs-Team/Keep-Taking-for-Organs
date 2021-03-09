@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 1851463298499128468, guid: fd82e149e774ee54884dada878f13f8d,
         type: 3}
       propertyPath: spanProps.fov
-      value: 70
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 1851463298499128468, guid: fd82e149e774ee54884dada878f13f8d,
         type: 3}
@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: 1851463298499128468, guid: fd82e149e774ee54884dada878f13f8d,
         type: 3}
       propertyPath: spanProps.distance
-      value: 7.8
+      value: 7.2
       objectReference: {fileID: 0}
     - target: {fileID: 1851463298499128468, guid: fd82e149e774ee54884dada878f13f8d,
         type: 3}
