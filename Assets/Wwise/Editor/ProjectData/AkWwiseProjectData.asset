@@ -20,7 +20,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: bf71450f6664754c9c7f8740cc44e82d
     GuidInternal: 
-    m_lastTime: -8585869963886210257
+    m_lastTime: -8585863202022559197
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -30,7 +30,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 0a2068a6100c5540998fc7bbf666e94c
     GuidInternal: 
-    m_lastTime: -8585869963886778757
+    m_lastTime: -8585863202022629013
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -49,8 +49,17 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 331b124d0c8540418aee57828c09577b
     GuidInternal: 
-    m_lastTime: -8585869963885192991
-    List: []
+    m_lastTime: -8585863067234473731
+    List:
+    - name: SoundBank
+      guid: 49e904883884a74a9af000f0f780fcf2
+      id: 1661994096
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SoundBank
+        ObjectType: 7
+      Path: Default Work Unit\SoundBank
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     PathAndIcons:
@@ -59,8 +68,58 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 212552149d463c4c84b85baf50cd0631
     GuidInternal: 
-    m_lastTime: -8585869963886639126
-    List: []
+    m_lastTime: -8585863063412495160
+    List:
+    - name: Game SFX
+      guid: 5e4774ce09776842af07b32ed828bca4
+      id: 581653678
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Game SFX
+        ObjectType: 4
+      Path: Default Work Unit\Game SFX
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Music
+      guid: ddeee944093b284994efdb8fafa9234a
+      id: 3991942870
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 4
+      Path: Default Work Unit\Music
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Main
+      guid: 9bf1f5290825ea45b8b81f1fbec2f286
+      id: 1193902085
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music
+        ObjectType: 4
+      - ElementName: Play_Main
+        ObjectType: 3
+      Path: Default Work Unit\Music\Play_Main
+      maxAttenuation: 0
+      maxDuration: 221.63126
+      minDuration: 221.63126
+    - name: UI SFX
+      guid: a006338b57929a4b80ff88d94f47eba4
+      id: 3821354766
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: UI SFX
+        ObjectType: 4
+      Path: Default Work Unit\UI SFX
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -69,7 +128,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: d19a6d8782dded4598c9162409509b11
     GuidInternal: 
-    m_lastTime: -8585869963885861201
+    m_lastTime: -8585863202022648959
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
@@ -79,7 +138,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 4dfeee53dfb74b489f60cd5e4529ee4f
     GuidInternal: 
-    m_lastTime: -8585869963885970912
+    m_lastTime: -8585863202022579142
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
@@ -89,7 +148,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 64ef94d509f0af47b098dc23d5caad22
     GuidInternal: 
-    m_lastTime: -8585869963886509467
+    m_lastTime: -8585863202022569170
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
@@ -99,8 +158,12 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: a0dd80592d0539428a6310d80294dd29
     GuidInternal: 
-    m_lastTime: -8585869963885691657
+    m_lastTime: -8585863202022569170
     List: []
-  ExpandedItems: []
+  ExpandedItems:
+  - /Keep Taking for Organs_WwiseProject
+  - /Keep Taking for Organs_WwiseProject/Events
+  - /Keep Taking for Organs_WwiseProject/Events/Default Work Unit
+  - /Keep Taking for Organs_WwiseProject/Events/Default Work Unit/Music
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
