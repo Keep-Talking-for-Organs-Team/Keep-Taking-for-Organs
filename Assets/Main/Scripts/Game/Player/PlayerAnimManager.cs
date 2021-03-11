@@ -32,9 +32,12 @@ namespace KeepTalkingForOrgansGame {
 
         [Header("Properties")]
         public float hidingOpacity;
+        public float rangedAttackableLineWidth = 0.23f;
+        public Color rangedAttackableLineColor = Color.red;
 
         [Header("REFS")]
         public SpriteRenderer[] bodySRs;
+        public LineFactory rangedAttackableLineFactory;
         public Text deathText;
         public Text aimText;
         public Text aimingProcessText;
@@ -122,16 +125,16 @@ namespace KeepTalkingForOrgansGame {
             meleeText.enabled = false;
             rangedText.enabled = false;
 
-            if (_player.IsControllable && _player.IsFacingControllable && _attackManager != null) {
-                PlayerAttackManager.AttackMethod atkMethod = _attackManager.AvailableAttackMethod;
-
-                if (atkMethod == PlayerAttackManager.AttackMethod.Melee) {
-                    meleeText.enabled = true;
-                }
-                else if (atkMethod == PlayerAttackManager.AttackMethod.Ranged) {
-                    rangedText.enabled = true;
-                }
-            }
+            // if (_player.IsControllable && _player.IsFacingControllable && _attackManager != null) {
+            //     PlayerAttackManager.AttackMethod atkMethod = _attackManager.AvailableAttackMethod;
+            //
+            //     if (atkMethod == PlayerAttackManager.AttackMethod.Melee) {
+            //         meleeText.enabled = true;
+            //     }
+            //     else if (atkMethod == PlayerAttackManager.AttackMethod.Ranged) {
+            //         rangedText.enabled = true;
+            //     }
+            // }
         }
 
 
@@ -151,6 +154,14 @@ namespace KeepTalkingForOrgansGame {
             }
         }
 
+        public void ClearRangedAttackableLine () {
+            rangedAttackableLineFactory.ClearLines();
+        }
+
+        public void DrawRangedAttackableLine (Vector2 startPoint, Vector2 targetPoint) {
+            rangedAttackableLineFactory.GetLine(startPoint, targetPoint, rangedAttackableLineWidth, rangedAttackableLineColor);
+        }
+
 
         void OnStood () {
 
@@ -158,6 +169,14 @@ namespace KeepTalkingForOrgansGame {
 
         void OnCrouched () {
 
+        }
+
+        void OnStartWalking () {
+            AkSoundEngine.PostEvent("Play Player Footstep" , gameObject);
+        }
+
+        void OnStopWalking () {
+            AkSoundEngine.PostEvent("Stop Player Footstep" , gameObject);
         }
 
         void OnBecomeVisible () {

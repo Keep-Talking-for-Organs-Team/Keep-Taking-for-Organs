@@ -42,19 +42,14 @@ namespace KeepTalkingForOrgansGame {
                 if (Input.GetKeyDown(KeyCode.C)) {
                     _player.ToggleCrouch();
                 }
-                if (Input.GetButtonDown("Fire1")) {
-                    _attackManager.TryToAttack();
-                }
-                else if (Input.GetButtonUp("Fire1")) {
-                    _attackManager.TryToReleaseAiming();
-                }
-                if (Input.GetButtonDown("Fire2")) {
-                    _attackManager.PickRanged();
-                }
-                else if (Input.GetButtonUp("Fire2")) {
-                    _attackManager.DropRanged();
-                }
                 // === ==== ===
+                
+                if (Input.GetButtonDown("Fire1")) {
+                    _attackManager.TryToAttack(PlayerAttackManager.AttackMethod.Melee);
+                }
+                else if (Input.GetButtonDown("Fire2")) {
+                    _attackManager.TryToAttack(PlayerAttackManager.AttackMethod.Ranged);
+                }
             }
 
         }

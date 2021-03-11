@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace DoubleHeat.Utilities {
 
@@ -211,6 +212,12 @@ namespace DoubleHeat.Utilities {
             Color color = sr.color;
             color.a = alpha;
             sr.color = color;
+        }
+
+        public static void SetOpacity (this Tilemap tilemap, float alpha) {
+            Color color = tilemap.color;
+            color.a = alpha;
+            tilemap.color = color;
         }
     }
 

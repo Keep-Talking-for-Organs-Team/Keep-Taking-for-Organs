@@ -172,6 +172,10 @@ namespace KeepTalkingForOrgansGame {
         }
 
 
+        public void IsTargetedByPlayer () {
+            // higthlighted
+        }
+
         public void Attacked (PlayerAttackManager.AttackMethod atkMethod) {
             if (!isInvincible) {
                 IsDead = true;

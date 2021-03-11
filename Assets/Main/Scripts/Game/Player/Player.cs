@@ -39,9 +39,9 @@ namespace KeepTalkingForOrgansGame {
         public bool IsDead {get; private set;} = false;
         public bool HasGoal {get; private set;} = false;
 
-        public bool IsMovable => GameSceneManager.current.IsMissionOnGoing && !IsDead && (_attackManager != null ? !_attackManager.IsAiming : true);
+        public bool IsMovable => GameSceneManager.current.IsMissionOnGoing && !IsDead;
         public bool IsControllable => GameSceneManager.current.IsMissionOnGoing && !IsDead && Time.timeScale > 0;
-        public bool IsFacingControllable => IsControllable && (_attackManager != null ? !_attackManager.IsAiming : true);
+        public bool IsFacingControllable => IsControllable;
 
 
         Coroutine _currentTrapFX;

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 using DoubleHeat;
 using DoubleHeat.Utilities;
@@ -12,16 +13,25 @@ namespace KeepTalkingForOrgansGame {
         public GameObject hidingArea;
 
 
+        Tilemap      _trapAreaTilemap;
         Collider2D[] _trapAreaColliders;
         Collider2D[] _hidingAreaColliders;
 
 
 
-        void Start () {
+        void Awake () {
+            _trapAreaTilemap = trapArea.GetComponent<Tilemap>();
             _trapAreaColliders = trapArea.GetComponents<Collider2D>();
             _hidingAreaColliders = hidingArea.GetComponents<Collider2D>();
         }
 
+        void Start () {
+            if (!GlobalManager.current.isMapViewer) {
+                if (_trapAreaTilemap != null) {
+                    _trapAreaTilemap.SetOpacity(0f);
+                }
+            }
+        }
 
 
         public bool IsInTrapArea (Vector2 pos) {
