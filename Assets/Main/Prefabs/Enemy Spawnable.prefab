@@ -258,6 +258,12 @@ MonoBehaviour:
   patrollingPath: {fileID: 0}
   lockedOnPath: 0
   positionInPath: 0
+  standingEnemyVisionSpanProps:
+    distance: 7
+    fov: 60
+  patrollingEnemyVisionSpanProps:
+    distance: 6.5
+    fov: 50
   visionAreaLinesWidthOnMap: 0.023
   visionAreaLinesColorOnMap: {r: 1, g: 0.46000293, b: 0.07058823, a: 0.59607846}
   spriteGO: {fileID: 7372384052249614174}

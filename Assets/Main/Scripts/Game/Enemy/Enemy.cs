@@ -13,6 +13,7 @@ namespace KeepTalkingForOrgansGame {
         public bool isInvincible = false;
 
         [Header("Properties")]
+        public bool  isPatrollingEnemy = false;
         public float awareRateIncreaseSpeed;
         public float awareRateDecreaseSpeed;
 

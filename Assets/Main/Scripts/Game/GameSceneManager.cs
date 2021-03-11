@@ -224,6 +224,8 @@ namespace KeepTalkingForOrgansGame {
         public void MissionSuccess () {
             IsMissionEnded = true;
             PlayMissionEndedOverlayFX(true);
+
+            Time.timeScale = 0f;
         }
 
         public void MissionFailed () {

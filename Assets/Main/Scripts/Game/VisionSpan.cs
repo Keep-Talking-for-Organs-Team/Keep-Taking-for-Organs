@@ -263,6 +263,11 @@ namespace KeepTalkingForOrgansGame {
         public struct SpanProps {
             public float distance;
             public float fov;
+
+            public SpanProps (float distance, float fov) {
+                this.distance = distance;
+                this.fov = fov;
+            }
         }
 
         struct ViewCastInfo {

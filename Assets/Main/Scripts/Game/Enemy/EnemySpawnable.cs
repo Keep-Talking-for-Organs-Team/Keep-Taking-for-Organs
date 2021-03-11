@@ -14,6 +14,8 @@ namespace KeepTalkingForOrgansGame {
         public PathHolder patrollingPath;
         public bool lockedOnPath;
         public float positionInPath;
+        public VisionSpan.SpanProps standingEnemyVisionSpanProps;
+        public VisionSpan.SpanProps patrollingEnemyVisionSpanProps;
 
         [Header("On Map Properties")]
         public float visionAreaLinesWidthOnMap = 1f;
@@ -74,6 +76,8 @@ namespace KeepTalkingForOrgansGame {
 
                 GameObject enemyGO = Instantiate(enemyPrefab, (Vector2) transform.position, transform.rotation, GameSceneManager.current.enemiesParent);
 
+                enemyGO.GetComponent<Enemy>().visionSpan.spanProps = patrollingPath == null ? standingEnemyVisionSpanProps : patrollingEnemyVisionSpanProps;
+
                 var visionManager = enemyGO.GetComponent<EnemyVisionManager>();
                 if (visionManager != null)
                     visionManager.defaultState = defaultVisionState;
@@ -108,12 +112,10 @@ namespace KeepTalkingForOrgansGame {
         void DrawLinesOfVisionArea () {
             lineFactory.ClearLines();
 
-            Enemy enemy = enemyPrefab.GetComponent<Enemy>();
-            VisionSpan visionSpan = enemy.visionSpan;
-            if (!visionSpan.isBlind) {
-                for (int i = -1 ; i <= 1 ; i += 2) {
-                    lineFactory.GetLine(transform.position, transform.position + Quaternion.AngleAxis(i * visionSpan.spanProps.fov / 2, Vector3.forward) * FacingDirection * visionSpan.spanProps.distance, visionAreaLinesWidthOnMap, visionAreaLinesColorOnMap);
-                }
+            VisionSpan.SpanProps visionSpanProps = patrollingPath == null ? standingEnemyVisionSpanProps : patrollingEnemyVisionSpanProps;
+
+            for (int i = -1 ; i <= 1 ; i += 2) {
+                lineFactory.GetLine(transform.position, transform.position + Quaternion.AngleAxis(i * visionSpanProps.fov / 2, Vector3.forward) * FacingDirection * visionSpanProps.distance, visionAreaLinesWidthOnMap, visionAreaLinesColorOnMap);
             }
         }
 
