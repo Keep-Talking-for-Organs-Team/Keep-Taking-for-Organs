@@ -25,6 +25,24 @@ namespace KeepTalkingForOrgansGame {
         public LayerMask moveCollisionLayerMask;
 
 
+        public bool IsMoving {
+            get => _isMoving;
+            set {
+                if (value == true) {
+                    _hasAssignedMovementThisFrame = true;
+                }
+
+                if (_isMoving != value) {
+                    if (value == true)
+                        OnStartWalking();
+                    else
+                        OnStopWalking();
+
+                    _isMoving = value;
+                }
+            }
+        }
+
         public State CurrentState {
             get => _state;
             set {
@@ -39,6 +57,8 @@ namespace KeepTalkingForOrgansGame {
         Rigidbody2D        _rigidbody;
         EnemyPatrolManager _patrolManager;
 
+        bool  _isMoving = false;
+        bool  _hasAssignedMovementThisFrame = false;
         State _state;
         bool  _hasAssignedNewStateThisFrame = false;
 
@@ -57,7 +77,7 @@ namespace KeepTalkingForOrgansGame {
         void FixedUpdate () {
             if (_enemy.IsDead)
                 return;
-                
+
 
             if (_state == State.Patrolling) {
 
@@ -73,13 +93,19 @@ namespace KeepTalkingForOrgansGame {
                     _rigidbody.MovePosition(_rigidbody.position + deltaPos);
                     _rigidbody.MoveRotation(nextPosRot.rotation);
 
+                    IsMoving = true;
                 }
             }
 
+
+            if (!_hasAssignedMovementThisFrame)
+                _isMoving = false;
+
             if (!_hasAssignedNewStateThisFrame)
                 _state = defaultState;
-            else
-                _hasAssignedNewStateThisFrame = false;
+
+            _hasAssignedMovementThisFrame = false;
+            _hasAssignedNewStateThisFrame = false;
 
         }
 
@@ -108,6 +134,8 @@ namespace KeepTalkingForOrgansGame {
 
             Vector2 deltaPos = PhysicsTools2D.GetFinalDeltaPosAwaringObstacle(_rigidbody, _rigidbody.position.DirectionTo(targetPos), chaseSpeed * timeStep, moveCollisionLayerMask);
             _rigidbody.MovePosition(_rigidbody.position + deltaPos);
+
+            IsMoving = true;
         }
 
 
@@ -119,6 +147,15 @@ namespace KeepTalkingForOrgansGame {
         public class RigidbodyPosRot {
             public Vector2 position;
             public float   rotation;
+        }
+
+
+        void OnStartWalking () {
+            AkSoundEngine.PostEvent("Play Robot Move" , gameObject);
+        }
+
+        void OnStopWalking () {
+            AkSoundEngine.PostEvent("Stop Robot Move" , gameObject);
         }
 
     }

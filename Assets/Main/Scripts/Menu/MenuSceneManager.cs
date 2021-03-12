@@ -14,11 +14,11 @@ namespace KeepTalkingForOrgansGame {
         public Slider levelNumberSelector;
 
         public void StartAsOperator () {
-            GlobalManager.current.StartLevel(GetLevelName(), false);
+            GlobalManager.StartLevel(GetLevelName(), false);
         }
 
         public void StartAsMapViewer () {
-            GlobalManager.current.StartLevel(GetLevelName(), true);
+            GlobalManager.StartLevel(GetLevelName(), true);
         }
 
         string GetLevelName () {

@@ -216,6 +216,8 @@ namespace KeepTalkingForOrgansGame {
 
             int layer = LayerMask.NameToLayer("Default");
             sr.transform.SetLayerRecursively(layer);
+
+            AkSoundEngine.PostEvent("Play Robot Death" , gameObject);
         }
 
     }

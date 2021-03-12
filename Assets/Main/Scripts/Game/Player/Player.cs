@@ -77,10 +77,16 @@ namespace KeepTalkingForOrgansGame {
                 }
 
                 if (GameSceneManager.current.currentTerrain.IsInHidingArea(transform.position) && (!mustCrouchToHide || IsCrouching)) {
-                    IsHiding = true;
+                    if (!IsHiding) {
+                        IsHiding = true;
+                        OnStartHiding();
+                    }
                 }
                 else {
-                    IsHiding = false;
+                    if (IsHiding) {
+                        IsHiding = false;
+                        OnStopHiding();
+                    }
                 }
             }
         }
@@ -96,8 +102,12 @@ namespace KeepTalkingForOrgansGame {
 
         void OnTriggerEnter2D (Collider2D other) {
             if (other.tag == "Goal") {
-                HasGoal = true;
-                Destroy(other.gameObject);
+                if (!HasGoal) {
+                    HasGoal = true;
+                    Destroy(other.gameObject);
+
+                    AkSoundEngine.PostEvent("Play Get Organ", gameObject);
+                }
             }
             else if (other.tag == "Exit") {
                 if (HasGoal) {
@@ -115,6 +125,8 @@ namespace KeepTalkingForOrgansGame {
                 }
 
                 GameSceneManager.current.MissionFailed();
+
+                AkSoundEngine.PostEvent("Play Player Death" , gameObject);
             }
 
         }
@@ -146,11 +158,22 @@ namespace KeepTalkingForOrgansGame {
 
         IEnumerator TrapFX () {
             GameObject lightningFX = Instantiate(lightningFXPrefab, transform.position, Quaternion.identity, transform);
+            AkSoundEngine.PostEvent("Play Ele Trap" , gameObject);
 
             yield return new WaitForSeconds(lightningFXDuration);
 
             Destroy(lightningFX);
             _currentTrapFX = null;
+        }
+
+
+
+        void OnStartHiding () {
+            AkSoundEngine.PostEvent("Play Start Hiding" , gameObject);
+        }
+
+        void OnStopHiding () {
+            AkSoundEngine.PostEvent("Play End Hiding" , gameObject);
         }
 
     }

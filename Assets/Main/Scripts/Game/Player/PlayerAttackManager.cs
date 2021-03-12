@@ -34,12 +34,10 @@ namespace KeepTalkingForOrgansGame {
 
         [Header("REFS")]
         public Transform targetDetectStartPoint;
-        // public SpriteRenderer rangedRangeIndicator;
 
 
         public AttackMethod CurrentWeapon {get; private set;} = AttackMethod.Melee;
-        // public bool  IsTakingRanged {get; private set;} = false;
-        public Enemy CurrentTarget {get; private set;} = null;
+        public Enemy        CurrentTarget {get; private set;} = null;
 
         public int   BulletsLeft {
             get => _bulletsLeft;
@@ -51,48 +49,7 @@ namespace KeepTalkingForOrgansGame {
             }
         }
 
-        // public bool  IsAiming {
-        //     get => _isAiming;
-        //     set {
-        //         bool oldValue = _isAiming;
-        //         _isAiming = value;
-        //
-        //         if (oldValue != value) {
-        //             if (value)
-        //                 OnStartAiming();
-        //             else
-        //                 OnStopAiming();
-        //         }
-        //     }
-        // }
-
-        // public AttackMethod AvailableAttackMethod {
-        //     get {
-        //         if (CurrentTarget != null) {
-        //
-        //             AttackMethod method = AttackMethod.None;
-        //
-        //             if (IsTakingRanged) {
-        //                 method = AttackMethod.Ranged;
-        //             }
-        //             else if ( ((Vector2) (CurrentTarget.transform.position - transform.position)).sqrMagnitude < Mathf.Pow(meleeDistance, 2) ) {
-        //                 method = AttackMethod.Melee;
-        //             }
-        //
-        //             if (method != AttackMethod.None && IsAttackMethodActive(method))
-        //                 return method;
-        //         }
-        //
-        //         return AttackMethod.None;
-        //     }
-        // }
-
-
-
-
-        // bool  _isAiming = false;
         int _bulletsLeft = -1;
-        // float _lastestAimingStartTime = 0f;
 
         Dictionary<AttackMethod, float> _lastestAttackStartTimeOfAttackMethods = new Dictionary<AttackMethod, float>() {
             { AttackMethod.Melee, 0f },
@@ -162,42 +119,9 @@ namespace KeepTalkingForOrgansGame {
                     _animManager.DrawRangedAttackableLine(targetDetectStartPoint.position, CurrentTarget.transform.position);
             }
 
-
-
-            // discarded
-            // if (IsAiming) {
-            //     IsAiming = IsAttackMethodActive(AttackMethod.Ranged);
-            // }
-            // if (IsAiming) {
-            //
-            //     // follow
-            //     _player.SetFacing( ((Vector2) (CurrentTarget.transform.position - transform.position)).normalized );
-            //
-            //     float progessRate = Mathf.Min((Time.time - _lastestAimingStartTime) / requiredAimingDuration, 1f);
-            //     _player.visionSpan.FovRateApplied = (1f - progessRate) * (1f - aimingFinalFovRate) + aimingFinalFovRate;
-            //
-            //     // === temp ===
-            //     if (_animManager != null) {
-            //         _animManager.aimingProcessText.text = (int) (progessRate * 100f) + "%";
-            //     }
-            //     // === ==== ===
-            // }
-            // else {
-            //     _player.visionSpan.FovRateApplied = 1f;
-            // }
         }
 
         void Update () {
-
-            // === temp ===
-            // Ranged Range Indicator
-            // rangedRangeIndicator.enabled = false;
-            // if (IsTakingRanged) {
-            //     rangedRangeIndicator.enabled = true;
-            //     rangedRangeIndicator.transform.position = targetDetectStartPoint.position + (Vector3) _player.FacingDirection * rangedDistance / 2;
-            //     rangedRangeIndicator.transform.SetScaleY(rangedDistance * 25);
-            // }
-            // === ==== ===
 
             GameSceneManager.current.operatorHUDManager.weaponStatusDisplay.UpdateCooldownTimeRemainedRate(GetCurrentCooldownTimeRemainedRate(CurrentWeapon));
 
@@ -226,23 +150,6 @@ namespace KeepTalkingForOrgansGame {
         }
 
 
-        // public void PickRanged () {
-        //     CurrentWeapon = AttackMethod.Ranged;
-        //     UpdateHUDWeaponDisplay();
-        //
-        //     if (GetCurrentCooldownTimeLeft(AttackMethod.Ranged) == 0) {
-        //         IsTakingRanged = true;
-        //     }
-        // }
-        //
-        // public void DropRanged () {
-        //     CurrentWeapon = AttackMethod.Melee;
-        //     UpdateHUDWeaponDisplay();
-        //
-        //     IsTakingRanged = false;
-        //     IsAiming = false;
-        // }
-
 
         public void TryToAttack (AttackMethod atkMethod) {
             if (atkMethod == AttackMethod.None)
@@ -259,22 +166,6 @@ namespace KeepTalkingForOrgansGame {
                 }
             }
         }
-
-        // public void TryToReleaseAiming () {
-        //     if (IsAiming) {
-        //         if (Time.time - _lastestAimingStartTime > requiredAimingDuration) {
-        //             Attack(AttackMethod.Ranged);
-        //         }
-        //
-        //         IsAiming = false;
-        //     }
-        // }
-        //
-        // public void TryToCancelAiming () {
-        //     if (IsAiming) {
-        //         IsAiming = false;
-        //     }
-        // }
 
         public float GetCurrentCooldownTimeLeft (AttackMethod atkMethod) {
             if (_lastestAttackStartTimeOfAttackMethods[atkMethod] == 0) {
@@ -316,6 +207,8 @@ namespace KeepTalkingForOrgansGame {
 
             if (atkMethod == AttackMethod.Melee) {
                 GameSceneManager.current.PlayMeleeAttackOverlayFX();
+
+                AkSoundEngine.PostEvent("Play Player Saber" , gameObject);
             }
             else if (atkMethod == AttackMethod.Ranged) {
                 if (BulletsLeft > 0) {
@@ -323,7 +216,8 @@ namespace KeepTalkingForOrgansGame {
                 }
 
                 GameSceneManager.current.PlayRangedAttackOverlayFX();
-                // IsAiming = false;
+
+                AkSoundEngine.PostEvent("Play Player Gunshot" , gameObject);
             }
         }
 
@@ -333,22 +227,9 @@ namespace KeepTalkingForOrgansGame {
 
 
         void OnTargetChanged () {
-            // IsAiming = false;
+
         }
 
-        // void OnStartAiming () {
-        //     _lastestAimingStartTime = Time.time;
-        //
-        //     if (_animManager != null) {
-        //         _animManager.PlayAction(PlayerAnimManager.ActionState.Aiming);
-        //     }
-        // }
-        //
-        // void OnStopAiming () {
-        //     if (_animManager != null) {
-        //         _animManager.PlayAction(PlayerAnimManager.ActionState.Idle);
-        //     }
-        // }
 
     }
 }

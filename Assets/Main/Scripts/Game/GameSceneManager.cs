@@ -167,7 +167,7 @@ namespace KeepTalkingForOrgansGame {
             }
             else {
                 if (Input.GetKeyDown(KeyCode.Escape)) {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    GlobalManager.RestartLevel();
                 }
             }
 
@@ -184,8 +184,7 @@ namespace KeepTalkingForOrgansGame {
 
                 // === temp ===
                 if (Input.GetKeyDown(KeyCode.Return)) {
-                    // Reload Scene
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    GlobalManager.RestartLevel();
                 }
                 // === ==== ===
             }
