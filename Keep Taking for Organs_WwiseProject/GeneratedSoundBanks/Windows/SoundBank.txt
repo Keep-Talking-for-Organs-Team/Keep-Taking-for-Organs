@@ -1,6 +1,8 @@
 Event	ID	Name			Wwise Object Path	Notes
 	1193902085	Play_Main			\Default Work Unit\Music\Play_Main	
+	1724675634	Play_Player_Footstep			\Default Work Unit\Game SFX\Play_Player_Footstep	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	208902186	Player Footstep	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\ppl move_86F4F27E.wem		\Actor-Mixer Hierarchy\Default Work Unit\Player Footstep		1032694
 	630342208	Main	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\Main_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Main\MainTest\Main		42553328
 

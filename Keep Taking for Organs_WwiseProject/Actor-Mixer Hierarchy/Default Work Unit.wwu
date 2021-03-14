@@ -1,6 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}" SchemaVersion="97">
 	<AudioObjects>
-		<WorkUnit Name="Default Work Unit" ID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="Robot Killed" ID="{434330D9-E3A8-4167-99F2-B53B6CB6F8AC}" ShortID="551255441">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E5E149B8-AAE6-4984-B720-C9BA9DADA28F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A668200A-0C10-4055-998F-C7BBF666E94C}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="robot wound" ID="{348D4118-9830-4462-866B-E6646ED3BCEC}">
+							<Language>SFX</Language>
+							<AudioFile>robot wound.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="508845521"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="robot wound" ID="{348D4118-9830-4462-866B-E6646ED3BCEC}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Player Stab" ID="{CB7D7FA6-A73F-492C-8B5F-3D4D1725ABF4}" ShortID="100241421">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E5E149B8-AAE6-4984-B720-C9BA9DADA28F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A668200A-0C10-4055-998F-C7BBF666E94C}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="stab" ID="{AB8A8E5F-00E6-48F5-B17A-6D2DB30FB413}">
+							<Language>SFX</Language>
+							<AudioFile>stab.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="769722826"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="stab" ID="{AB8A8E5F-00E6-48F5-B17A-6D2DB30FB413}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Player Footstep" ID="{8947E2EB-4662-434C-A442-95B6EF4F9B41}" ShortID="769535754">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>27</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<ValueList>
+								<Value>380</Value>
+							</ValueList>
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{FD71B9EF-FA3B-4C79-8020-A9EE3ED2EEC3}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="300"/>
+											<Property Name="Min" Type="Real64" Value="-300"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>2</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E5E149B8-AAE6-4984-B720-C9BA9DADA28F}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{A668200A-0C10-4055-998F-C7BBF666E94C}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="ppl move" ID="{2A0074EE-3176-4D2B-AE02-B5352D9102C5}">
+							<PropertyList>
+								<Property Name="LoopBegin" Type="Real64" Value="3.97820804794521"/>
+								<Property Name="LoopEnd" Type="Real64" Value="4.77016613156393"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>ppl move.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="208902186"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="ppl move" ID="{2A0074EE-3176-4D2B-AE02-B5352D9102C5}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>

@@ -4,7 +4,21 @@
 		<WorkUnit Name="Default Work Unit" ID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" PersistMode="Standalone">
 			<ChildrenList>
 				<Folder Name="UI SFX" ID="{8B3306A0-9257-4B9A-80FF-88D94F47EBA4}" ShortID="759186299"/>
-				<Folder Name="Game SFX" ID="{CE74475E-7709-4268-AF07-B32ED828BCA4}" ShortID="1035306733"/>
+				<Folder Name="Game SFX" ID="{CE74475E-7709-4268-AF07-B32ED828BCA4}" ShortID="1035306733">
+					<ChildrenList>
+						<Event Name="Play_Player_Footstep" ID="{2BD010AB-B67B-4B93-BA17-3C21DFDC4D58}">
+							<ChildrenList>
+								<Action Name="" ID="{E52B5F39-1CFD-44B3-B50B-F7004D7BF5BD}" ShortID="864339261">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player Footstep" ID="{8947E2EB-4662-434C-A442-95B6EF4F9B41}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
 				<Folder Name="Music" ID="{44E9EEDD-3B09-4928-94EF-DB8FAFA9234A}" ShortID="1008204086">
 					<ChildrenList>
 						<Event Name="Play_Main" ID="{29F5F19B-2508-45EA-B8B8-1F1FBEC2F286}">

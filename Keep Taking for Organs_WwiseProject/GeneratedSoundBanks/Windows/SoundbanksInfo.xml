@@ -16,7 +16,7 @@
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 		</SoundBank>
-		<SoundBank Id="1661994096" Language="SFX" Hash="2300113000">
+		<SoundBank Id="1661994096" Language="SFX" Hash="1369016777">
 			<ObjectPath>\SoundBanks\Default Work Unit\SoundBank</ObjectPath>
 			<ShortName>SoundBank</ShortName>
 			<Path>SoundBank.bnk</Path>
@@ -26,6 +26,14 @@
 						<File Id="630342208" Language="SFX">
 							<ShortName>Main.wav</ShortName>
 							<Path>SFX\Main_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1724675634" Name="Play_Player_Footstep" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Player_Footstep" DurationType="Infinite">
+					<IncludedMemoryFiles>
+						<File Id="208902186" Language="SFX">
+							<ShortName>ppl move.wav</ShortName>
+							<Path>SFX\ppl move_86F4F27E.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
