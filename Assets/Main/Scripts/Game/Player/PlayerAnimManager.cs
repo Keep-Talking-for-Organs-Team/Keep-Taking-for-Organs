@@ -171,11 +171,11 @@ namespace KeepTalkingForOrgansGame {
         }
 
         void OnStartWalking () {
-            AkSoundEngine.PostEvent("Play Player Footstep" , gameObject);
+            AkSoundEngine.PostEvent("Play_Player_Footstep" , gameObject);
         }
 
         void OnStopWalking () {
-            AkSoundEngine.PostEvent("Stop Player Footstep" , gameObject);
+            AkSoundEngine.PostEvent("Stop_Player_Footstep" , gameObject);
         }
 
         void OnBecomeVisible () {
