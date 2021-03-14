@@ -3,10 +3,23 @@
 	<SoundBanks>
 		<WorkUnit Name="Default Work Unit" ID="{4D121B33-850C-4140-8AEE-57828C09577B}" PersistMode="Standalone">
 			<ChildrenList>
-				<SoundBank Name="SoundBank" ID="{8804E949-8438-4AA7-9AF0-00F0F780FCF2}">
+				<SoundBank Name="New_SoundBank" ID="{3723EFBF-7339-4959-BE0D-5002664A5BD6}">
 					<ObjectInclusionList>
+						<ObjectRef Name="Play_Player_Death" ID="{E5898925-8CE7-41B8-B2C4-E3FEBA8709CA}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_Player_Footstep" ID="{BE56C8F9-ED17-4225-95AD-4D345CFD4154}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Get_Organ" ID="{60352DBC-1B41-449F-9E55-1982F31B68D7}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_End_Hiding" ID="{9C92DD13-22D9-44E1-9392-C0EAFAEF08F7}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Robot_Move" ID="{489EC087-6B22-4560-9913-2C6B29C75916}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Main" ID="{29F5F19B-2508-45EA-B8B8-1F1FBEC2F286}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Robot_EleGun" ID="{DDE4B907-857D-4720-8A35-76DA04593BE3}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_Robot_Move" ID="{586C078C-1617-4775-9AE4-3F9778A33DA7}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Player_Gunshot" ID="{DE47D6F8-EC91-479E-83E4-59652D5CB742}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Robot_LaserGun" ID="{50902247-EF21-48BE-8C7C-FF1AA997AFB3}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Robot_Death" ID="{7C2A7D21-6192-4AD2-AF86-B8640CF96093}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Player_Footstep" ID="{2BD010AB-B67B-4B93-BA17-3C21DFDC4D58}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Start_Hiding" ID="{ECB4E5B5-BF0F-4C62-BB92-138C40C63AE4}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Player_Saber" ID="{7351B90B-81C7-4DBE-BDD2-FEAECD3719F2}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Ele_Trap" ID="{75C8E2E0-34FD-4EF5-8C7B-444C59ECF6B2}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

@@ -210,7 +210,7 @@ namespace KeepTalkingForOrgansGame {
             if (atkMethod == AttackMethod.Melee) {
                 GameSceneManager.current.PlayMeleeAttackOverlayFX();
 
-                AkSoundEngine.PostEvent("Play Player Saber" , gameObject);
+                AkSoundEngine.PostEvent("Play_Player_Saber" , gameObject);
             }
             else if (atkMethod == AttackMethod.Ranged) {
                 if (BulletsLeft > 0) {
@@ -219,7 +219,7 @@ namespace KeepTalkingForOrgansGame {
 
                 GameSceneManager.current.PlayRangedAttackOverlayFX();
 
-                AkSoundEngine.PostEvent("Play Player Gunshot" , gameObject);
+                AkSoundEngine.PostEvent("Play_Player_Gunshot" , gameObject);
             }
         }
 

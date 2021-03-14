@@ -11,7 +11,177 @@
 								<Action Name="" ID="{E52B5F39-1CFD-44B3-B50B-F7004D7BF5BD}" ShortID="864339261">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Player Footstep" ID="{8947E2EB-4662-434C-A442-95B6EF4F9B41}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+											<ObjectRef Name="Player_Footstep" ID="{8947E2EB-4662-434C-A442-95B6EF4F9B41}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Player_Saber" ID="{7351B90B-81C7-4DBE-BDD2-FEAECD3719F2}">
+							<ChildrenList>
+								<Action Name="" ID="{2D571DA5-7F20-44AB-BA7C-576F5F107608}" ShortID="266297849">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Saber_01" ID="{3119DDA0-3D32-494F-B12F-44BB8A5724CC}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{48037189-3242-45AA-81A1-DE0D62F6617D}" ShortID="902752648">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Saber" ID="{CB7D7FA6-A73F-492C-8B5F-3D4D1725ABF4}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{10A432FE-CC7F-448E-B791-F3635D59A36C}" ShortID="2121739">
+									<PropertyList>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Saber_02" ID="{C23FD4B2-D183-4A36-B67D-0C095ACFEDC1}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Player_Gunshot" ID="{DE47D6F8-EC91-479E-83E4-59652D5CB742}">
+							<ChildrenList>
+								<Action Name="" ID="{07EBE4C5-A173-425B-8D3C-CCFF6B415703}" ShortID="486752159">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Gunshot" ID="{444C66B1-0834-4A47-9084-A42C6442264D}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Player_Death" ID="{E5898925-8CE7-41B8-B2C4-E3FEBA8709CA}">
+							<ChildrenList>
+								<Action Name="" ID="{73A6C12E-4056-4222-B780-D00A3E6FEDF3}" ShortID="564941520">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Death" ID="{CA49E89E-778D-4349-B02D-57564E2CD283}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Robot_Move" ID="{489EC087-6B22-4560-9913-2C6B29C75916}">
+							<ChildrenList>
+								<Action Name="" ID="{740E508F-05F7-445A-8C31-2A163A2E866F}" ShortID="876770957">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Robot_Move" ID="{004E4160-220A-45E0-928E-792AA82AC99B}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Robot_EleGun" ID="{DDE4B907-857D-4720-8A35-76DA04593BE3}">
+							<ChildrenList>
+								<Action Name="" ID="{BA5D60EA-6037-4ED3-9285-A34E4C0F3065}" ShortID="334840012">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Robot_EleGun" ID="{C0A95372-59C6-484D-BF1C-07919971431D}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Robot_LaserGun" ID="{50902247-EF21-48BE-8C7C-FF1AA997AFB3}">
+							<ChildrenList>
+								<Action Name="" ID="{8791BFA7-0FEB-41DE-BAE1-24A16B4F1DC2}" ShortID="179765762">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Robot_LaserGun" ID="{E032D659-7E54-4D00-9AFE-04F5A06257A1}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Robot_Death" ID="{7C2A7D21-6192-4AD2-AF86-B8640CF96093}">
+							<ChildrenList>
+								<Action Name="" ID="{F004ABFC-A7D4-4211-9932-4B99A2302214}" ShortID="394086951">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Death" ID="{CA49E89E-778D-4349-B02D-57564E2CD283}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Ele_Trap" ID="{75C8E2E0-34FD-4EF5-8C7B-444C59ECF6B2}">
+							<ChildrenList>
+								<Action Name="" ID="{A3EC57D5-925E-4BBD-BD0E-0D4744EACAC8}" ShortID="118731524">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Ele_Trap" ID="{E87A52DB-16A8-4662-B7BC-07EEECC4DA8C}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Start_Hiding" ID="{ECB4E5B5-BF0F-4C62-BB92-138C40C63AE4}">
+							<ChildrenList>
+								<Action Name="" ID="{37A53784-6D7C-44C8-9CCD-D86445043632}" ShortID="145309834">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Start_Hiding" ID="{E03478C5-F8D6-4550-A9D7-4C895D4A9F56}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_End_Hiding" ID="{9C92DD13-22D9-44E1-9392-C0EAFAEF08F7}">
+							<ChildrenList>
+								<Action Name="" ID="{0FE45F61-A64F-4C1C-8DAA-83EB423D8E19}" ShortID="1031055092">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="End_Hiding" ID="{0BA69E1A-E8E4-436E-B83B-C0D23D4D01F9}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stop_Robot_Move" ID="{586C078C-1617-4775-9AE4-3F9778A33DA7}">
+							<ChildrenList>
+								<Action Name="" ID="{DAB06846-5A9E-49F9-BF54-47D902E2CBEB}" ShortID="378504829">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Robot_Move" ID="{004E4160-220A-45E0-928E-792AA82AC99B}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stop_Player_Footstep" ID="{BE56C8F9-ED17-4225-95AD-4D345CFD4154}">
+							<ChildrenList>
+								<Action Name="" ID="{3198C8B1-A0CC-4D9B-A32D-CCFA82A21535}" ShortID="689197276">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Footstep" ID="{8947E2EB-4662-434C-A442-95B6EF4F9B41}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_Get_Organ" ID="{60352DBC-1B41-449F-9E55-1982F31B68D7}">
+							<ChildrenList>
+								<Action Name="" ID="{ECE4014D-E9E3-40F4-828B-6A71EDCA27C1}" ShortID="477587109">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Get_Organ" ID="{6A75D81E-C27C-4697-BFB5-BE9C897EC0B9}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

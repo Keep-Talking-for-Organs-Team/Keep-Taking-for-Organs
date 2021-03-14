@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{62D929E2-9340-43D2-8D8F-AB8A8268A134}" SchemaVersion="97">
 	<Effects>
-		<WorkUnit Name="Default Work Unit" ID="{62D929E2-9340-43D2-8D8F-AB8A8268A134}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{62D929E2-9340-43D2-8D8F-AB8A8268A134}" PersistMode="Standalone">
+			<ChildrenList>
+				<Effect Name="New_Wwise_Parametric_EQ" ID="{4BE67AF4-D9A2-4C40-B6AA-14869F0A6962}" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+					<PropertyList>
+						<Property Name="FilterTypeBand3" Type="int32" Value="0"/>
+						<Property Name="FrequencyBand2" Type="Real32" Value="6526"/>
+						<Property Name="FrequencyBand3" Type="Real32" Value="7531"/>
+						<Property Name="GainBand2" Type="Real32" Value="-2"/>
+						<Property Name="GainBand3" Type="Real32" Value="-6"/>
+					</PropertyList>
+				</Effect>
+				<Effect Name="New_Wwise_Parametric_EQ_01" ID="{4C6D7AE7-8E59-4239-94A2-B97FD2D2BD9C}" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+					<PropertyList>
+						<Property Name="FilterTypeBand1" Type="int32" Value="1"/>
+						<Property Name="FrequencyBand1" Type="Real32" Value="203"/>
+					</PropertyList>
+				</Effect>
+				<Effect Name="New_Wwise_RoomVerb" ID="{8F759D98-295C-44BE-8A2B-575DD38FB611}" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+					<PropertyList>
+						<Property Name="DryLevel" Type="Real32" Value="-8.3"/>
+						<Property Name="ERLevel" Type="Real32" Value="-2"/>
+						<Property Name="ERPattern" Type="int32" Value="0"/>
+						<Property Name="PreDelay" Type="Real32" Value="23"/>
+						<Property Name="ReverbLevel" Type="Real32" Value="-27"/>
+					</PropertyList>
+				</Effect>
+				<Effect Name="New_Wwise_Matrix_Reverb" ID="{CD6D2171-FB1F-4BDC-9B52-47E68C6D0BDB}" PluginName="Wwise Matrix Reverb" CompanyID="0" PluginID="115" PluginType="3">
+					<PropertyList>
+						<Property Name="DryLevel" Type="Real32" Value="-9.3"/>
+						<Property Name="HFRatio" Type="Real32" Value="6.9"/>
+						<Property Name="ReverbTime" Type="Real32" Value="4.5"/>
+						<Property Name="WetLevel" Type="Real32" Value="-40"/>
+					</PropertyList>
+				</Effect>
+				<Effect Name="New_Wwise_Parametric_EQ_02" ID="{FBFB16D3-3A7D-46B0-9C40-F8AC17560532}" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+					<PropertyList>
+						<Property Name="FrequencyBand2" Type="Real32" Value="778"/>
+						<Property Name="GainBand2" Type="Real32" Value="2"/>
+					</PropertyList>
+				</Effect>
+			</ChildrenList>
+		</WorkUnit>
 	</Effects>
 </WwiseDocument>

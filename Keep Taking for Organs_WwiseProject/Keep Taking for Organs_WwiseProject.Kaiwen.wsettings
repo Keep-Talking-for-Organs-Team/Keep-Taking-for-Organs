@@ -6,6 +6,19 @@
 				<Property Name="AudioFilesImporter\Path" Type="string" Value="C:\Users\Kaiwen\Desktop\Keep Talking\Effects\"/>
 				<Property Name="Event Action List\{29F5F19B-2508-45EA-B8B8-1F1FBEC2F286}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Event Action List\{2BD010AB-B67B-4B93-BA17-3C21DFDC4D58}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{489EC087-6B22-4560-9913-2C6B29C75916}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{50902247-EF21-48BE-8C7C-FF1AA997AFB3}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{586C078C-1617-4775-9AE4-3F9778A33DA7}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{60352DBC-1B41-449F-9E55-1982F31B68D7}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{7351B90B-81C7-4DBE-BDD2-FEAECD3719F2}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{75C8E2E0-34FD-4EF5-8C7B-444C59ECF6B2}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{7C2A7D21-6192-4AD2-AF86-B8640CF96093}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{9C92DD13-22D9-44E1-9392-C0EAFAEF08F7}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{BE56C8F9-ED17-4225-95AD-4D345CFD4154}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{DDE4B907-857D-4720-8A35-76DA04593BE3}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{DE47D6F8-EC91-479E-83E4-59652D5CB742}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{E5898925-8CE7-41B8-B2C4-E3FEBA8709CA}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Event Action List\{ECB4E5B5-BF0F-4C62-BB92-138C40C63AE4}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="EventView\FilterMode1" Type="int32" Value="2"/>
 				<Property Name="ExternalSourcesInputPath" Type="string">
 					<ValueList>
@@ -24,7 +37,7 @@
 				<Property Name="General\LatestPlatform" Type="string" Value="Mac"/>
 				<Property Name="GenerateSoundBanks\x64_SelectedLanguages" Type="string" Value="BvDMKA=="/>
 				<Property Name="GenerateSoundBanks\x64_SelectedPlatforms" Type="string" Value="0GCrJmM7GEej8BKituzj6w=="/>
-				<Property Name="GenerateSoundBanks\x64_SelectedSoundBanks" Type="string" Value="SekEiDiEp0qa8ADw94D88g=="/>
+				<Property Name="GenerateSoundBanks\x64_SelectedSoundBanks" Type="string" Value="v+8jNzlzWUm+DVACZkpb1g=="/>
 				<Property Name="HardwareController\CurrentSession" Type="string" Value="{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}"/>
 				<Property Name="HardwareController\{2451DD2E-A7B2-45E6-B93B-6F49B9B887AD}\x64_ActiveGroups" Type="string" Value="O6dGTuvQoky5UYhU8yvOngGOS4//////t0uQFbSLbEyspSENy7rpeAGOS4//////"/>
 				<Property Name="Interactive Music\x64_{B5E3E4E5-F116-4352-B23C-6B6DA9BC4DAB} - SegmentEditorZoomInfo" Type="string" Value="AAAAAAAA8D8AAAAAAADwP6coTUDxfhBAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAAAA"/>
