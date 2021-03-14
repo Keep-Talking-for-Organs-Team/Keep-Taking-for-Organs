@@ -13,7 +13,8 @@ namespace KeepTalkingForOrgansGame {
     public class HUDManager : MonoBehaviour {
 
         [Header("REFS")]
-        public WeaponStatusDisplay weaponStatusDisplay;
+        public WeaponStatusDisplay meleeDisplay;
+        public WeaponStatusDisplay rangedDisplay;
         public Text timerDisplayText;
 
 
@@ -21,9 +22,20 @@ namespace KeepTalkingForOrgansGame {
             timerDisplayText.text = TimerTimeDisplay.FromSeconds(timerTime).MinSecDisplay;
         }
 
-        public void UpdateWeaponStatusDisplay (PlayerAttackManager.AttackMethod atkMethod, float cooldownTimeRemainedRate, int bulletsCount) {
-            weaponStatusDisplay.SetWeapon(atkMethod, bulletsCount);
-            weaponStatusDisplay.UpdateCooldownTimeRemainedRate(cooldownTimeRemainedRate);
+        public void UpdateWeaponStatusDisplay (PlayerAttackManager.AttackMethod atkMethod, float cooldownTimeRemainedRate, int bulletsCount = 0) {
+
+            if (atkMethod == PlayerAttackManager.AttackMethod.Melee) {
+                meleeDisplay.UpdateCooldownTimeRemainedRate(cooldownTimeRemainedRate);
+            }
+            else if (atkMethod == PlayerAttackManager.AttackMethod.Ranged) {
+                rangedDisplay.UpdateBulletsDisplay(bulletsCount);
+
+                if (bulletsCount != 0)
+                    rangedDisplay.UpdateCooldownTimeRemainedRate(cooldownTimeRemainedRate);
+                else
+                    rangedDisplay.UpdateCooldownTimeRemainedRate(1f);
+            }
+
         }
 
     }

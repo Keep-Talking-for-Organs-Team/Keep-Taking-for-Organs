@@ -21,7 +21,7 @@ public class LineFactory : MonoBehaviour
 	private Line[] pooledLines;
 	private int currentIndex = 0;
 
-	void Start ()
+	void Awake ()
 	{
 		pooledLines = new Line[maxLines];
 

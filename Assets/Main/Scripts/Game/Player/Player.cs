@@ -106,7 +106,7 @@ namespace KeepTalkingForOrgansGame {
                     HasGoal = true;
                     Destroy(other.gameObject);
 
-                    AkSoundEngine.PostEvent("Play Get Organ", gameObject);
+                    AkSoundEngine.PostEvent("Play_Get_Organ", gameObject);
                 }
             }
             else if (other.tag == "Exit") {
@@ -126,7 +126,7 @@ namespace KeepTalkingForOrgansGame {
 
                 GameSceneManager.current.MissionFailed();
 
-                AkSoundEngine.PostEvent("Play Player Death" , gameObject);
+                AkSoundEngine.PostEvent("Play_Player_Death" , gameObject);
             }
 
         }
@@ -158,7 +158,7 @@ namespace KeepTalkingForOrgansGame {
 
         IEnumerator TrapFX () {
             GameObject lightningFX = Instantiate(lightningFXPrefab, transform.position, Quaternion.identity, transform);
-            AkSoundEngine.PostEvent("Play Ele Trap" , gameObject);
+            AkSoundEngine.PostEvent("Play_Ele_Trap" , gameObject);
 
             yield return new WaitForSeconds(lightningFXDuration);
 
@@ -169,11 +169,11 @@ namespace KeepTalkingForOrgansGame {
 
 
         void OnStartHiding () {
-            AkSoundEngine.PostEvent("Play Start Hiding" , gameObject);
+            AkSoundEngine.PostEvent("Play_Start_Hiding" , gameObject);
         }
 
         void OnStopHiding () {
-            AkSoundEngine.PostEvent("Play End Hiding" , gameObject);
+            AkSoundEngine.PostEvent("Play_End_Hiding" , gameObject);
         }
 
     }

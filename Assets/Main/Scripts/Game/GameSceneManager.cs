@@ -51,6 +51,7 @@ namespace KeepTalkingForOrgansGame {
         public CanvasGroup    rangedAttackOverlayFX;
         public CanvasGroup    outOfAmmoOverlayFX;
         public LineFactory    lineFactory;
+        public LineFactory    playerRangedAttackableLineFactory;
 
         [Header("Prefabs")]
         public GameObject     playerPrefab;

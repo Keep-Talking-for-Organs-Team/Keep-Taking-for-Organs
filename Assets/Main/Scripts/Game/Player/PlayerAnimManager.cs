@@ -37,7 +37,6 @@ namespace KeepTalkingForOrgansGame {
 
         [Header("REFS")]
         public SpriteRenderer[] bodySRs;
-        public LineFactory rangedAttackableLineFactory;
         public Text deathText;
         public Text aimText;
         public Text aimingProcessText;
@@ -155,11 +154,11 @@ namespace KeepTalkingForOrgansGame {
         }
 
         public void ClearRangedAttackableLine () {
-            rangedAttackableLineFactory.ClearLines();
+            GameSceneManager.current.playerRangedAttackableLineFactory.ClearLines();
         }
 
         public void DrawRangedAttackableLine (Vector2 startPoint, Vector2 targetPoint) {
-            rangedAttackableLineFactory.GetLine(startPoint, targetPoint, rangedAttackableLineWidth, rangedAttackableLineColor);
+            GameSceneManager.current.playerRangedAttackableLineFactory.GetLine(startPoint, targetPoint, rangedAttackableLineWidth, rangedAttackableLineColor);
         }
 
 

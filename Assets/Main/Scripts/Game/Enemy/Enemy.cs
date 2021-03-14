@@ -27,6 +27,8 @@ namespace KeepTalkingForOrgansGame {
         public float awareRateShows;
 
 
+        public bool IsInPlayersSight {get; private set;} = false;
+
         public Vector2 FacingDirection => transform.rotation * defaultDir;
         public bool IsAlwaysShowed => (GameSceneManager.current.showAllEnemies || (_attackManager != null ? _attackManager.HasAttackedPlayer : false));
         public bool IsDead {
@@ -71,6 +73,8 @@ namespace KeepTalkingForOrgansGame {
 
         void FixedUpdate () {
 
+            IsInPlayersSight = false;
+
             if (IsAlwaysShowed) {
                 Show();
             }
@@ -96,8 +100,10 @@ namespace KeepTalkingForOrgansGame {
                     Player player = Player.current;
 
                     // Is spotted by player?
+                    IsInPlayersSight = player.IsInVision(transform.position);
+
                     if (!IsAlwaysShowed) {
-                        if (player.IsInVision(transform.position)) {
+                        if (IsInPlayersSight) {
                             Show();
                         }
                         else {

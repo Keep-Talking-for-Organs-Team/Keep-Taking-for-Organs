@@ -44,7 +44,7 @@ namespace KeepTalkingForOrgansGame {
             set {
                 if (_bulletsLeft != value) {
                     _bulletsLeft = value;
-                    GameSceneManager.current.operatorHUDManager.weaponStatusDisplay.UpdateBulletsDisplay(_bulletsLeft);
+                    GameSceneManager.current.operatorHUDManager.rangedDisplay.UpdateBulletsDisplay(_bulletsLeft);
                 }
             }
         }
@@ -71,10 +71,6 @@ namespace KeepTalkingForOrgansGame {
             _cooldownTimeOfAttackMethods.Add(AttackMethod.Ranged, rangedCooldownTime);
 
             BulletsLeft = defaultBulletsAmount;
-        }
-
-        void Start () {
-            UpdateHUDWeaponDisplay();
         }
 
         void FixedUpdate () {
@@ -105,6 +101,9 @@ namespace KeepTalkingForOrgansGame {
                 CurrentTarget = newTarget;
             }
 
+        }
+
+        void Update () {
 
             if (_animManager != null)
                 _animManager.ClearRangedAttackableLine();
@@ -116,14 +115,12 @@ namespace KeepTalkingForOrgansGame {
                 CurrentTarget.IsTargetedByPlayer();
 
                 if (_animManager != null)
-                    _animManager.DrawRangedAttackableLine(targetDetectStartPoint.position, CurrentTarget.transform.position);
+                    _animManager.DrawRangedAttackableLine(transform.position, CurrentTarget.transform.position);
             }
 
-        }
-
-        void Update () {
-
-            GameSceneManager.current.operatorHUDManager.weaponStatusDisplay.UpdateCooldownTimeRemainedRate(GetCurrentCooldownTimeRemainedRate(CurrentWeapon));
+            HUDManager hudManager = GameSceneManager.current.operatorHUDManager;
+            hudManager.UpdateWeaponStatusDisplay(AttackMethod.Melee, GetCurrentCooldownTimeRemainedRate(AttackMethod.Melee));
+            hudManager.UpdateWeaponStatusDisplay(AttackMethod.Ranged, GetCurrentCooldownTimeRemainedRate(AttackMethod.Ranged), BulletsLeft);
 
 
             // temp HUD display
@@ -190,14 +187,19 @@ namespace KeepTalkingForOrgansGame {
             if (CurrentTarget == null)
                 return false;
 
+            bool isReady = _lastestAttackStartTimeOfAttackMethods[atkMethod] == 0 || Time.time - _lastestAttackStartTimeOfAttackMethods[atkMethod] > _cooldownTimeOfAttackMethods[atkMethod];
+            bool isInRange = false;
+            bool hasBullets = true;
+
             if (atkMethod == AttackMethod.Melee) {
-                return ((Vector2) (CurrentTarget.transform.position - transform.position)).sqrMagnitude < Mathf.Pow(meleeDistance, 2);
+                isInRange = ((Vector2) (CurrentTarget.transform.position - transform.position)).sqrMagnitude < Mathf.Pow(meleeDistance, 2);
             }
             else if (atkMethod == AttackMethod.Ranged) {
-                return ((Vector2) (CurrentTarget.transform.position - transform.position)).sqrMagnitude < Mathf.Pow(rangedDistance, 2);
+                isInRange = ((Vector2) (CurrentTarget.transform.position - transform.position)).sqrMagnitude < Mathf.Pow(rangedDistance, 2);
+                hasBullets = BulletsLeft > 0;
             }
 
-            return false;
+            return isInRange && isReady && hasBullets;
         }
 
         void Attack (AttackMethod atkMethod) {
@@ -219,10 +221,6 @@ namespace KeepTalkingForOrgansGame {
 
                 AkSoundEngine.PostEvent("Play Player Gunshot" , gameObject);
             }
-        }
-
-        void UpdateHUDWeaponDisplay () {
-            GameSceneManager.current.operatorHUDManager.weaponStatusDisplay.SetWeapon(CurrentWeapon, BulletsLeft);
         }
 
 

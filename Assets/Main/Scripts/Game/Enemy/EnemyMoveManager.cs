@@ -151,11 +151,11 @@ namespace KeepTalkingForOrgansGame {
 
 
         void OnStartWalking () {
-            AkSoundEngine.PostEvent("Play Robot Move" , gameObject);
+
         }
 
         void OnStopWalking () {
-            AkSoundEngine.PostEvent("Stop Robot Move" , gameObject);
+            
         }
 
     }

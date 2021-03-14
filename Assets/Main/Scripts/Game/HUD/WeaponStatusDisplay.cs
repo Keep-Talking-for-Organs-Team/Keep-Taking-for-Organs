@@ -17,8 +17,6 @@ namespace KeepTalkingForOrgansGame {
 
         [Header("REFS")]
         public GameObject centerFilled;
-        public GameObject meleeIcon;
-        public GameObject rangedIcon;
         public Transform  bulletIconsParent;
 
         [Header("Prefabs")]
@@ -27,12 +25,6 @@ namespace KeepTalkingForOrgansGame {
 
         void Awake () {
             centerFilled.SetActive(true);
-
-            if (meleeIcon.activeSelf)
-                meleeIcon.SetActive(false);
-
-            if (rangedIcon.activeSelf)
-                rangedIcon.SetActive(false);
         }
 
         public void UpdateCooldownTimeRemainedRate (float cooldownTimeRemainedRate) {
@@ -43,20 +35,23 @@ namespace KeepTalkingForOrgansGame {
             ShowBullets(bulletsCount);
         }
 
-        public void SetWeapon (PlayerAttackManager.AttackMethod type, int bulletsCount = 0) {
-            if (type == PlayerAttackManager.AttackMethod.Melee) {
-                meleeIcon.SetActive(true);
-                rangedIcon.SetActive(false);
-                ClearBulletIcons();
-            }
-            else if (type == PlayerAttackManager.AttackMethod.Ranged) {
-                meleeIcon.SetActive(false);
-                rangedIcon.SetActive(true);
-                ShowBullets(bulletsCount);
-            }
-        }
+        // public void SetWeapon (PlayerAttackManager.AttackMethod type, int bulletsCount = 0) {
+        //     if (type == PlayerAttackManager.AttackMethod.Melee) {
+        //         meleeIcon.SetActive(true);
+        //         rangedIcon.SetActive(false);
+        //         ClearBulletIcons();
+        //     }
+        //     else if (type == PlayerAttackManager.AttackMethod.Ranged) {
+        //         meleeIcon.SetActive(false);
+        //         rangedIcon.SetActive(true);
+        //         ShowBullets(bulletsCount);
+        //     }
+        // }
 
         void ShowBullets (int bulletsCount) {
+            if (bulletIconsParent == null || bulletIconPrefab == null)
+                return;
+
             ClearBulletIcons();
             for (int i = 0 ; i < bulletsCount ; i++) {
                 GameObject bulletIcon = Instantiate(bulletIconPrefab, bulletIconsParent);
@@ -65,6 +60,9 @@ namespace KeepTalkingForOrgansGame {
         }
 
         void ClearBulletIcons () {
+            if (bulletIconsParent == null || bulletIconPrefab == null)
+                return;
+
             foreach (Transform child in bulletIconsParent) {
                 Destroy(child.gameObject);
             }

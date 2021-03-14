@@ -632,7 +632,6 @@ Transform:
   - {fileID: 8028243435077393568}
   - {fileID: 8564637927502874520}
   - {fileID: 8564637927107118114}
-  - {fileID: 6332599994279527654}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -649,7 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keepRule: 1
-  isInvincible: 0
+  isInvincible: 1
   mustCrouchToHide: 0
   isCrouchable: 0
   walkVisionSpanProps:
@@ -677,11 +676,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hidingOpacity: 0.2
   rangedAttackableLineWidth: 0.023
-  rangedAttackableLineColor: {r: 0.8490566, g: 0, b: 0, a: 1}
+  rangedAttackableLineColor: {r: 0.9245283, g: 0.9245283, b: 0.9245283, a: 1}
   bodySRs:
   - {fileID: 8564637926918686025}
   - {fileID: 8564637926701883499}
-  rangedAttackableLineFactory: {fileID: 5417644177956814834}
   deathText: {fileID: 8564637927877528112}
   aimText: {fileID: 8564637926271407868}
   aimingProcessText: {fileID: 8564637928217816321}
@@ -994,51 +992,6 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 50%
---- !u!1 &9206470456808282784
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6332599994279527654}
-  - component: {fileID: 5417644177956814834}
-  m_Layer: 20
-  m_Name: Ranged Attackable Line Factory
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6332599994279527654
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9206470456808282784}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8564637927624833744}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5417644177956814834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9206470456808282784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 814b7461d62334e188b3a43681f700b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  linePrefab: {fileID: 1000013289361224, guid: 67db316532143b248b19bb424019b871, type: 3}
-  maxLines: 1
 --- !u!1001 &8564637926578778167
 PrefabInstance:
   m_ObjectHideFlags: 0
