@@ -23467,6 +23467,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6373732400859277931, guid: e531d48ca1040f94e98290af63b8bfe5,
         type: 3}
+      propertyPath: timeLimit
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6373732400859277931, guid: e531d48ca1040f94e98290af63b8bfe5,
+        type: 3}
       propertyPath: enemiesSpawnersManagers.Array.size
       value: 1
       objectReference: {fileID: 0}

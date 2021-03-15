@@ -45,11 +45,10 @@ namespace KeepTalkingForOrgansGame {
 
 
 
-        public static void StartLevel (string levelName, bool willPlayAsMapViewer) {
+        public static void StartLevel (string levelName) {
             if (current == null)
                 return;
 
-            current.isMapViewer = willPlayAsMapViewer;
             SceneManager.LoadScene(levelName);
         }
 

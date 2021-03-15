@@ -42,10 +42,10 @@ namespace KeepTalkingForOrgansGame {
 
         public GameObject     randomSeedInputGO;
         public GameObject     switchableInfoPanel;
+        public GameObject     pausedPanel;
+        public GameObject     missionSuccessMessages;
+        public GameObject     missionFailedMessages;
         public Text           seedInfoText;
-        public Text           hudInfoText;
-        public Text           pausedMessage;
-        public Text           missionEndMessage;
         public CanvasGroup    attackedOverlayFX;
         public CanvasGroup    meleeAttackOverlayFX;
         public CanvasGroup    rangedAttackOverlayFX;
@@ -87,8 +87,6 @@ namespace KeepTalkingForOrgansGame {
             base.Awake();
             HideSpriteAtRuntime.isActive = activeHideSpriteAtRuntime;
 
-            pausedMessage.enabled = false;
-            missionEndMessage.enabled = false;
             attackedOverlayFX.alpha = 0f;
             meleeAttackOverlayFX.alpha = 0f;
             rangedAttackOverlayFX.alpha = 0f;
@@ -158,11 +156,11 @@ namespace KeepTalkingForOrgansGame {
                 if (Input.GetKeyDown(KeyCode.Escape)) {
                     if (Time.timeScale > 0) {
                         Time.timeScale = 0f;
-                        pausedMessage.enabled = true;
+                        pausedPanel.SetActive(true);
                     }
                     else if (Time.timeScale == 0) {
                         Time.timeScale = 1f;
-                        pausedMessage.enabled = false;
+                        pausedPanel.SetActive(false);
                     }
                 }
             }
@@ -183,11 +181,12 @@ namespace KeepTalkingForOrgansGame {
 
             if (IsMissionEnded) {
 
-                // === temp ===
-                if (Input.GetKeyDown(KeyCode.Return)) {
+                if (Input.GetButtonDown("Submit")) {
                     GlobalManager.RestartLevel();
                 }
-                // === ==== ===
+                else if (Input.GetButtonDown("Cancel")) {
+                    GlobalManager.BackToMenuScene();
+                }
             }
 
 
@@ -259,12 +258,13 @@ namespace KeepTalkingForOrgansGame {
         }
 
         public void PlayMissionEndedOverlayFX (bool success) {
-            missionEndMessage.enabled = true;
 
             if (success) {
+                missionSuccessMessages.SetActive(true);
                 print("SUCCESS!");
             }
             else {
+                missionFailedMessages.SetActive(true);
                 print("FAILED");
             }
         }
