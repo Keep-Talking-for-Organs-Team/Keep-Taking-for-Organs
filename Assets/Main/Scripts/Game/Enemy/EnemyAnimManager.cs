@@ -62,6 +62,7 @@ namespace KeepTalkingForOrgansGame {
                     .AppendInterval(attackWordShowingDuration)
                     .AppendCallback( () => {
                         if (CurrentState == State.Attacking) {
+                            AkSoundEngine.PostEvent("Play_Robot_LaserGun", gameObject);
                             Play(State.Alert);
                         }
                     } );

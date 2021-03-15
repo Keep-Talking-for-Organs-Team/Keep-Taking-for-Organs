@@ -650,7 +650,7 @@ MonoBehaviour:
   keepRule: 1
   isInvincible: 1
   mustCrouchToHide: 0
-  isCrouchable: 0
+  isCrouchable: 1
   walkVisionSpanProps:
     distance: 6.5
     fov: 70
