@@ -1,27 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="12" SoundbankVersion="135">
 	<RootPaths>
-		<ProjectRoot>D:\GameEngines\Unity\Projects\Keep Taking for Organs\Keep Taking for Organs_WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>D:\GameEngines\Unity\Projects\Keep Taking for Organs\Keep Taking for Organs_WwiseProject\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>D:\GameEngines\Unity\Projects\Keep Taking for Organs\Keep Taking for Organs_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ProjectRoot>C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>D:\GameEngines\Unity\Projects\Keep Taking for Organs\Keep Taking for Organs_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\GeneratedSoundBanks\Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="562971691">
+		<SoundBank Id="1355168291" Language="SFX" Hash="3087805082">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
+			<GameParameters>
+				<GameParameter Id="1006694112" Name="Music_Volumn" ObjectPath="\Game Parameters\Default Work Unit\Music_Volumn"/>
+				<GameParameter Id="1564184904" Name="SFX_Volumn" ObjectPath="\Game Parameters\Default Work Unit\SFX_Volumn"/>
+				<GameParameter Id="4179668891" Name="Master_Volumn" ObjectPath="\Game Parameters\Default Work Unit\Master_Volumn"/>
+			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="4072029455" Language="SFX" Hash="1780284710">
+		<SoundBank Id="4072029455" Language="SFX" Hash="2192569435">
 			<ObjectPath>\SoundBanks\Default Work Unit\New_SoundBank</ObjectPath>
 			<ShortName>New_SoundBank</ShortName>
 			<Path>New_SoundBank.bnk</Path>
 			<IncludedEvents>
-				<Event Id="1376857212" Name="Play_Ele_Trap" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Ele_Trap" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+				<Event Id="1376857212" Name="Play_Ele_Trap" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Ele_Trap" DurationType="OneShot" DurationMin="2.900187" DurationMax="2.900187">
 					<IncludedMemoryFiles>
 						<File Id="546542437" Language="SFX">
 							<ShortName>ELE-01 trap.wav</ShortName>
@@ -29,7 +34,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2938009645" Name="Play_End_Hiding" ObjectPath="\Events\Default Work Unit\Game SFX\Play_End_Hiding" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+				<Event Id="2938009645" Name="Play_End_Hiding" ObjectPath="\Events\Default Work Unit\Game SFX\Play_End_Hiding" DurationType="OneShot" DurationMin="1.034000" DurationMax="1.034000">
 					<IncludedMemoryFiles>
 						<File Id="126676604" Language="SFX">
 							<ShortName>Hide  and Show.wav</ShortName>
@@ -37,7 +42,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2614804272" Name="Play_Get_Organ" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Get_Organ" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+				<Event Id="2614804272" Name="Play_Get_Organ" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Get_Organ" DurationType="OneShot" DurationMin="4.000000" DurationMax="4.000000">
 					<IncludedMemoryFiles>
 						<File Id="751965073" Language="SFX">
 							<ShortName>get organ.wav</ShortName>
@@ -62,15 +67,15 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="33727574" Name="Play_Player_Gunshot" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Player_Gunshot" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+				<Event Id="33727574" Name="Play_Player_Gunshot" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Player_Gunshot" DurationType="OneShot" DurationMin="2.683676" DurationMax="3.151148">
 					<IncludedMemoryFiles>
 						<File Id="207849703" Language="SFX">
 							<ShortName>gun shot.wav</ShortName>
-							<Path>SFX\gun shot_F51825CB.wem</Path>
+							<Path>SFX\gun shot_9E1C6B21.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3877648163" Name="Play_Player_Saber" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Player_Saber" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+				<Event Id="3877648163" Name="Play_Player_Saber" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Player_Saber" DurationType="OneShot" DurationMin="0.751156" DurationMax="0.907845">
 					<IncludedMemoryFiles>
 						<File Id="312680083" Language="SFX">
 							<ShortName>ROBOT DIE.wav</ShortName>
@@ -83,15 +88,15 @@
 					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="2426976433" Name="Play_Robot_Death" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_Death" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="3233088915" Name="Play_Robot_EleGun" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_EleGun" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+				<Event Id="3233088915" Name="Play_Robot_EleGun" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_EleGun" DurationType="OneShot" DurationMin="0.307459" DurationMax="0.307459">
 					<IncludedMemoryFiles>
 						<File Id="602434379" Language="SFX">
 							<ShortName>ele gun.wav</ShortName>
-							<Path>SFX\ele gun_10C4C929.wem</Path>
+							<Path>SFX\ele gun_810ABAB1.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2371690888" Name="Play_Robot_LaserGun" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_LaserGun" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+				<Event Id="2371690888" Name="Play_Robot_LaserGun" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_LaserGun" DurationType="OneShot" DurationMin="0.860771" DurationMax="0.860771">
 					<IncludedMemoryFiles>
 						<File Id="281290208" Language="SFX">
 							<ShortName>laser.wav</ShortName>
@@ -107,7 +112,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="882926292" Name="Play_Start_Hiding" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Start_Hiding" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000">
+				<Event Id="882926292" Name="Play_Start_Hiding" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Start_Hiding" DurationType="OneShot" DurationMin="0.833650" DurationMax="0.833650">
 					<IncludedMemoryFiles>
 						<File Id="275523258" Language="SFX">
 							<ShortName>Hide  and Show.wav</ShortName>
