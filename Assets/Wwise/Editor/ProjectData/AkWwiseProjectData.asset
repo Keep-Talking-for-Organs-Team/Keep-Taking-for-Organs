@@ -30,7 +30,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 0a2068a6100c5540998fc7bbf666e94c
     GuidInternal: 
-    m_lastTime: -8585863202022629013
+    m_lastTime: -8585858134402200898
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -41,6 +41,28 @@ MonoBehaviour:
       - ElementName: Master Audio Bus
         ObjectType: 2
       Path: Default Work Unit\Master Audio Bus
+    - name: Music
+      guid: 293e9018bfe8694facfecdeb5afb24e8
+      id: 3991942870
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+      - ElementName: Music
+        ObjectType: 2
+      Path: Default Work Unit\Master Audio Bus\Music
+    - name: SFX
+      guid: 83493a72f9c9a943968140bf2bb53375
+      id: 393239870
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Master Audio Bus
+        ObjectType: 2
+      - ElementName: SFX
+        ObjectType: 2
+      Path: Default Work Unit\Master Audio Bus\SFX
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     PathAndIcons:
@@ -68,7 +90,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 212552149d463c4c84b85baf50cd0631
     GuidInternal: 
-    m_lastTime: -8585858513361512853
+    m_lastTime: -8585858125066121645
     List:
     - name: Game SFX
       guid: 5e4774ce09776842af07b32ed828bca4
@@ -260,8 +282,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_Robot_Move
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Play_Start_Hiding
       guid: b5e5b4ec0fbf624cbb92138c40c63ae4
       id: 882926292
@@ -324,8 +346,35 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: d19a6d8782dded4598c9162409509b11
     GuidInternal: 
-    m_lastTime: -8585863202022648959
-    List: []
+    m_lastTime: -8585858134402110848
+    List:
+    - name: Master_Volumn
+      guid: 718afdf6fc877d4e8eed5a8013bd58f4
+      id: 4179668891
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Master_Volumn
+        ObjectType: 13
+      Path: Default Work Unit\Master_Volumn
+    - name: Music_Volumn
+      guid: 894443187654904983f97cbd47d72589
+      id: 1006694112
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Music_Volumn
+        ObjectType: 13
+      Path: Default Work Unit\Music_Volumn
+    - name: SFX_Volumn
+      guid: 440009b60567924fbaf3a2633a6f20a2
+      id: 1564184904
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SFX_Volumn
+        ObjectType: 13
+      Path: Default Work Unit\SFX_Volumn
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     PathAndIcons:

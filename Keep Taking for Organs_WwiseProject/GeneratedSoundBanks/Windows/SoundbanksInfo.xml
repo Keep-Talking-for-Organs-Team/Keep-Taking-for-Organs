@@ -11,12 +11,17 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="562971691">
+		<SoundBank Id="1355168291" Language="SFX" Hash="3087805082">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
+			<GameParameters>
+				<GameParameter Id="1006694112" Name="Music_Volumn" ObjectPath="\Game Parameters\Default Work Unit\Music_Volumn"/>
+				<GameParameter Id="1564184904" Name="SFX_Volumn" ObjectPath="\Game Parameters\Default Work Unit\SFX_Volumn"/>
+				<GameParameter Id="4179668891" Name="Master_Volumn" ObjectPath="\Game Parameters\Default Work Unit\Master_Volumn"/>
+			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="4072029455" Language="SFX" Hash="2037912221">
+		<SoundBank Id="4072029455" Language="SFX" Hash="904886630">
 			<ObjectPath>\SoundBanks\Default Work Unit\New_SoundBank</ObjectPath>
 			<ShortName>New_SoundBank</ShortName>
 			<Path>New_SoundBank.bnk</Path>
@@ -58,7 +63,7 @@
 					<IncludedMemoryFiles>
 						<File Id="208902186" Language="SFX">
 							<ShortName>ppl move.wav</ShortName>
-							<Path>SFX\ppl move_86F4F27E.wem</Path>
+							<Path>SFX\ppl move_D983C871.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -66,7 +71,7 @@
 					<IncludedMemoryFiles>
 						<File Id="207849703" Language="SFX">
 							<ShortName>gun shot.wav</ShortName>
-							<Path>SFX\gun shot_06159FFA.wem</Path>
+							<Path>SFX\gun shot_9E1C6B21.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -83,11 +88,11 @@
 					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="2426976433" Name="Play_Robot_Death" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_Death" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
-				<Event Id="3233088915" Name="Play_Robot_EleGun" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_EleGun" DurationType="OneShot" DurationMin="0.500000" DurationMax="0.500000">
+				<Event Id="3233088915" Name="Play_Robot_EleGun" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_EleGun" DurationType="OneShot" DurationMin="0.307459" DurationMax="0.307459">
 					<IncludedMemoryFiles>
 						<File Id="602434379" Language="SFX">
 							<ShortName>ele gun.wav</ShortName>
-							<Path>SFX\ele gun_10C4C929.wem</Path>
+							<Path>SFX\ele gun_810ABAB1.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>

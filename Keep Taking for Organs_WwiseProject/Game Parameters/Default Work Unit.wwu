@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{876D9AD1-DD82-45ED-98C9-162409509B11}" SchemaVersion="97">
 	<GameParameters>
-		<WorkUnit Name="Default Work Unit" ID="{876D9AD1-DD82-45ED-98C9-162409509B11}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{876D9AD1-DD82-45ED-98C9-162409509B11}" PersistMode="Standalone">
+			<ChildrenList>
+				<GameParameter Name="Master_Volumn" ID="{F6FD8A71-87FC-4E7D-8EED-5A8013BD58F4}"/>
+				<GameParameter Name="SFX_Volumn" ID="{B6090044-6705-4F92-BAF3-A2633A6F20A2}"/>
+				<GameParameter Name="Music_Volumn" ID="{18434489-5476-4990-83F9-7CBD47D72589}"/>
+			</ChildrenList>
+		</WorkUnit>
 	</GameParameters>
 </WwiseDocument>
