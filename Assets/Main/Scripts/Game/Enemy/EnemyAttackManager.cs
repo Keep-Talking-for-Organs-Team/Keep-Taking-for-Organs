@@ -41,6 +41,7 @@ namespace KeepTalkingForOrgansGame {
             HasAttackedPlayer = true;
 
             if (_animManager != null) {
+                AkSoundEngine.PostEvent("Play_Robot_LaserGun", gameObject);
                 _animManager.Play(EnemyAnimManager.State.Attacking);
             }
 

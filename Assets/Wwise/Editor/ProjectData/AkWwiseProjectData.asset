@@ -90,7 +90,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 212552149d463c4c84b85baf50cd0631
     GuidInternal: 
-    m_lastTime: -8585858205973413710
+    m_lastTime: -8585858125066121645
     List:
     - name: Game SFX
       guid: 5e4774ce09776842af07b32ed828bca4
@@ -128,8 +128,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_Ele_Trap
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 2.900187
+      minDuration: 2.900187
     - name: Play_End_Hiding
       guid: 13dd929cd922e1449392c0eafaef08f7
       id: 2938009645
@@ -142,8 +142,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_End_Hiding
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 1.034
+      minDuration: 1.034
     - name: Play_Get_Organ
       guid: bc2d3560411b9f449e551982f31b68d7
       id: 2614804272
@@ -156,8 +156,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_Get_Organ
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 4
+      minDuration: 4
     - name: Play_Main
       guid: 9bf1f5290825ea45b8b81f1fbec2f286
       id: 1193902085
@@ -212,8 +212,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_Player_Gunshot
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 3.151148
+      minDuration: 2.683676
     - name: Play_Player_Saber
       guid: 0bb95173c781be4dbdd2feaecd3719f2
       id: 3877648163
@@ -226,8 +226,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_Player_Saber
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 0.907845
+      minDuration: 0.751156
     - name: Play_Robot_Death
       guid: 217d2a7c9261d24aaf86b8640cf96093
       id: 2426976433
@@ -254,8 +254,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_Robot_EleGun
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 0.307459
+      minDuration: 0.307459
     - name: Play_Robot_LaserGun
       guid: 4722905021efbe488c7cff1aa997afb3
       id: 2371690888
@@ -268,8 +268,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_Robot_LaserGun
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 0.860771
+      minDuration: 0.860771
     - name: Play_Robot_Move
       guid: 87c09e48226b604599132c6b29c75916
       id: 841165746
@@ -296,8 +296,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_Start_Hiding
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: 0.83365
+      minDuration: 0.83365
     - name: Stop_Player_Footstep
       guid: f9c856be17ed254295ad4d345cfd4154
       id: 2005445724
@@ -405,6 +405,7 @@ MonoBehaviour:
     GuidInternal: 
     m_lastTime: -8585863202022569170
     List: []
-  ExpandedItems: []
+  ExpandedItems:
+  - /Keep Taking for Organs_WwiseProject
   autoPopulateEnabled: 1
   CurrentPluginConfig: 
