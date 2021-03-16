@@ -13,10 +13,13 @@ namespace KeepTalkingForOrgansGame {
     public class WeaponStatusDisplay : MonoBehaviour {
 
         [Header("Properties")]
+        public Color UnavailableColor = Color.grey;
         public float bulletsIconIntervalDistance = 1f;
 
         [Header("REFS")]
-        public GameObject centerFilled;
+        public Image      backPanelImage;
+        public Image      iconImage;
+        public GameObject cooldownBar;
         public Transform  bulletIconsParent;
 
         [Header("Prefabs")]
@@ -24,11 +27,25 @@ namespace KeepTalkingForOrgansGame {
 
 
         void Awake () {
-            centerFilled.SetActive(true);
+            cooldownBar.SetActive(true);
+            cooldownBar.transform.SetScaleX(0f);
         }
 
         public void UpdateCooldownTimeRemainedRate (float cooldownTimeRemainedRate) {
-            centerFilled.transform.SetScaleY(1f - cooldownTimeRemainedRate);
+
+            float cooldownBarRate = 0f;
+
+            if (cooldownTimeRemainedRate > 0) {
+                backPanelImage.color = UnavailableColor;
+                iconImage.color = UnavailableColor;
+                cooldownBarRate = 1f - cooldownTimeRemainedRate;
+            }
+            else {
+                backPanelImage.color = Color.white;
+                iconImage.color = Color.white;
+            }
+
+            cooldownBar.transform.SetScaleX(cooldownBarRate);
         }
 
         public void UpdateBulletsDisplay (int bulletsCount) {

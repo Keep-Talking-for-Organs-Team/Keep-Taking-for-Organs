@@ -1041,6 +1041,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 84800157367584098, guid: e531d48ca1040f94e98290af63b8bfe5,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3544733466822247338, guid: e531d48ca1040f94e98290af63b8bfe5,
         type: 3}
       propertyPath: m_Size.x
@@ -19838,6 +19843,22 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[534].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 4917277387545285003, guid: e531d48ca1040f94e98290af63b8bfe5,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6ab6725a5db0d1a4188ac763dd6e1102,
+        type: 3}
+    - target: {fileID: 4917277387545285003, guid: e531d48ca1040f94e98290af63b8bfe5,
+        type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6058379984078699871, guid: e531d48ca1040f94e98290af63b8bfe5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6373732399912701420, guid: e531d48ca1040f94e98290af63b8bfe5,
         type: 3}
       propertyPath: m_Color.b
@@ -23966,6 +23987,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 9.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341350135635358493, guid: e531d48ca1040f94e98290af63b8bfe5,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2.8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6373732400589872759, guid: e531d48ca1040f94e98290af63b8bfe5, type: 3}
