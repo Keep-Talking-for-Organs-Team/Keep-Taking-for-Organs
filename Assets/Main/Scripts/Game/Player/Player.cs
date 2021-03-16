@@ -73,7 +73,7 @@ namespace KeepTalkingForOrgansGame {
                 if (GameSceneManager.current.currentTerrain.IsInTrapArea(transform.position)) {
                     if (_currentTrapFX == null)
                         _currentTrapFX = StartCoroutine(TrapFX());
-                    Die();
+                    Die(GameSceneManager.FailedReason.Trap);
                 }
 
                 if (GameSceneManager.current.currentTerrain.IsInHidingArea(transform.position) && (!mustCrouchToHide || IsCrouching)) {
@@ -116,7 +116,7 @@ namespace KeepTalkingForOrgansGame {
             }
         }
 
-        public void Die () {
+        public void Die (GameSceneManager.FailedReason reason = GameSceneManager.FailedReason.None) {
             if (!isInvincible) {
                 IsDead = true;
 
@@ -124,7 +124,7 @@ namespace KeepTalkingForOrgansGame {
                     _animManager.PlayAction(PlayerAnimManager.ActionState.Dead);
                 }
 
-                GameSceneManager.current.MissionFailed();
+                GameSceneManager.current.MissionFailed(reason);
 
                 AkSoundEngine.PostEvent("Play_Player_Death" , gameObject);
             }
@@ -157,6 +157,9 @@ namespace KeepTalkingForOrgansGame {
 
 
         IEnumerator TrapFX () {
+
+            GameSceneManager.current.PlayAttackedOverlayFX();
+
             GameObject lightningFX = Instantiate(lightningFXPrefab, transform.position, Quaternion.identity, transform);
             AkSoundEngine.PostEvent("Play_Ele_Trap" , gameObject);
 

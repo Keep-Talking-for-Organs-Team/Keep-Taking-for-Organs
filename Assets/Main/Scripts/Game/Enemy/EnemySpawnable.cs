@@ -76,7 +76,7 @@ namespace KeepTalkingForOrgansGame {
 
                 GameObject enemyGO = Instantiate(enemyPrefab, (Vector2) transform.position, transform.rotation, GameSceneManager.current.enemiesParent);
 
-                enemyGO.GetComponent<Enemy>().visionSpan.spanProps = patrollingPath == null ? standingEnemyVisionSpanProps : patrollingEnemyVisionSpanProps;
+                enemyGO.GetComponent<Enemy>().visionSpan.spanProps = (patrollingPath == null) ? standingEnemyVisionSpanProps : patrollingEnemyVisionSpanProps;
 
                 var visionManager = enemyGO.GetComponent<EnemyVisionManager>();
                 if (visionManager != null)
@@ -89,6 +89,10 @@ namespace KeepTalkingForOrgansGame {
                 var patrolManager = enemyGO.GetComponent<EnemyPatrolManager>();
                 if (patrolManager != null)
                     patrolManager.path = patrollingPath;
+
+                var attackManager = enemyGO.GetComponent<EnemyAttackManager>();
+                if (attackManager != null)
+                    attackManager.gunType = (patrollingPath == null) ? EnemyAttackManager.GunType.Laser : EnemyAttackManager.GunType.Electric;
 
             }
             else {

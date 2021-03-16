@@ -648,7 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keepRule: 1
-  isInvincible: 1
+  isInvincible: 0
   mustCrouchToHide: 0
   isCrouchable: 0
   walkVisionSpanProps:
@@ -657,7 +657,7 @@ MonoBehaviour:
   crouchVisionSpanProps:
     distance: 3.87
     fov: 50
-  lightningFXDuration: 0.66
+  lightningFXDuration: 1.1
   initDir: {x: 0, y: 1}
   visionSpan: {fileID: 8028243435077393571}
   lightningFXPrefab: {fileID: 2721876124140457719, guid: 25b7f8937fe4daa43be65d821ddefa12,

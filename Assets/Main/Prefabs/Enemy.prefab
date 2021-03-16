@@ -426,6 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInvincible: 0
+  isPatrollingEnemy: 0
   awareRateIncreaseSpeed: 0.87
   awareRateDecreaseSpeed: 0.87
   defaultDir: {x: 0, y: 1}
@@ -481,7 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTurningSpeed: 150
-  chaseSpeed: 4.5
+  chaseSpeed: 3.3
   defaultState: 0
   moveCollisionLayerMask:
     serializedVersion: 2
@@ -514,8 +515,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 763580bc4f7da2b49aabc409365b525d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 6.2
+  gunType: 0
+  laserGunAttackDistance: 5
+  electricGunAttackDistance: 3.3
   attackCooldownTime: 1.5
+  gunFXDuration: 0.67
+  playerAttackedFXDelayTime: 0.152
+  laserGunFX: {fileID: 2402956496616449429, guid: 6b29638dd67194c4fa42ab4fc5d01940,
+    type: 3}
+  electricGunFX: {fileID: 6154813769950259504, guid: 93755b9a3acc05a48a4778f3ce72e138,
+    type: 3}
 --- !u!50 &9194131719174694894
 Rigidbody2D:
   serializedVersion: 4

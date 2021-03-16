@@ -10,13 +10,13 @@ namespace KeepTalkingForOrgansGame {
 
     public class GameSceneManager : SingletonMonoBehaviour<GameSceneManager> {
 
-        // public static GameSceneManager current {
-        //     get {
-        //         print(instance);
-        //         return null;
-        //     }
-        // }
-
+        public enum FailedReason {
+            RunOutOfTime,
+            Trap,
+            LaserGun,
+            ElectricGun,
+            None
+        }
 
         [Header("Options")]
         [Range(0f, 3f)]
@@ -30,6 +30,7 @@ namespace KeepTalkingForOrgansGame {
         public float timeLimit = -1f;
         public float attackedOverlayFXDuration = 1f;
         public Ease  attackedOverlayFXEase;
+        public FailedReasonMessages failedReasonMessages;
 
         [Header("REFS")]
         public TerrainManager currentTerrain;
@@ -45,6 +46,7 @@ namespace KeepTalkingForOrgansGame {
         public GameObject     pausedPanel;
         public GameObject     missionSuccessMessages;
         public GameObject     missionFailedMessages;
+        public Text           howDiedMessageText;
         public Text           seedInfoText;
         public CanvasGroup    attackedOverlayFX;
         public CanvasGroup    meleeAttackOverlayFX;
@@ -148,24 +150,48 @@ namespace KeepTalkingForOrgansGame {
                 }
 
                 if (IsMissionOnGoing && timeLimit > 0 && MissionTimeRemained <= 0) {
-                    MissionFailed();
+                    MissionFailed(FailedReason.RunOutOfTime);
                 }
 
 
                 // handle input
-                if (Input.GetKeyDown(KeyCode.Escape)) {
-                    if (Time.timeScale > 0) {
-                        Time.timeScale = 0f;
-                        pausedPanel.SetActive(true);
+                if (IsMissionEnded) {
+
+                    if (Input.GetButtonDown("Submit")) {
+                        GlobalManager.RestartLevel();
                     }
-                    else if (Time.timeScale == 0) {
-                        Time.timeScale = 1f;
-                        pausedPanel.SetActive(false);
+                    else if (Input.GetButtonDown("Menu")) {
+                        GlobalManager.BackToMenuScene();
+                    }
+                }
+                else {
+
+                    if (Input.GetButtonDown("Menu")) {
+                        if (Time.timeScale > 0) {
+                            Time.timeScale = 0f;
+                            pausedPanel.SetActive(true);
+                        }
+                        else if (Time.timeScale == 0) {
+                            Time.timeScale = 1f;
+                            pausedPanel.SetActive(false);
+                        }
+                    }
+                }
+
+                // Remove Fog Secret Code
+                foreach (var handler in _secretCodeHandlers) {
+                    if (handler.IsActiveSecretCode) {
+
+                        if (handler.actionName == "Remove Fog") {
+                            RemoveFog();
+                        }
+
+                        handler.IsActiveSecretCode = false;
                     }
                 }
             }
             else {
-                if (Input.GetKeyDown(KeyCode.Escape)) {
+                if (Input.GetButtonDown("Menu")) {
                     GlobalManager.RestartLevel();
                 }
             }
@@ -179,27 +205,7 @@ namespace KeepTalkingForOrgansGame {
             }
             // === ==== ===
 
-            if (IsMissionEnded) {
 
-                if (Input.GetButtonDown("Submit")) {
-                    GlobalManager.RestartLevel();
-                }
-                else if (Input.GetButtonDown("Cancel")) {
-                    GlobalManager.BackToMenuScene();
-                }
-            }
-
-
-            foreach (var handler in _secretCodeHandlers) {
-                if (handler.IsActiveSecretCode) {
-
-                    if (handler.actionName == "Remove Fog") {
-                        RemoveFog();
-                    }
-
-                    handler.IsActiveSecretCode = false;
-                }
-            }
         }
 
 
@@ -227,7 +233,10 @@ namespace KeepTalkingForOrgansGame {
             Time.timeScale = 0f;
         }
 
-        public void MissionFailed () {
+        public void MissionFailed (FailedReason reason = FailedReason.None) {
+
+            howDiedMessageText.text = failedReasonMessages.GetMessage(reason);
+
             IsMissionEnded = true;
             PlayMissionEndedOverlayFX(false);
         }
@@ -304,6 +313,29 @@ namespace KeepTalkingForOrgansGame {
 
         void ClearDrawnLines () {
             lineFactory.ClearLines();
+        }
+
+
+        [System.Serializable]
+        public class FailedReasonMessages {
+
+            public string runOutOfTime;
+            public string trap;
+            public string laserGun;
+            public string electricGun;
+
+            public string GetMessage (FailedReason reason) {
+                if (reason == FailedReason.RunOutOfTime)
+                    return runOutOfTime;
+                else if (reason == FailedReason.Trap)
+                    return trap;
+                else if (reason == FailedReason.LaserGun)
+                    return laserGun;
+                else if (reason == FailedReason.ElectricGun)
+                    return electricGun;
+
+                return "";
+            }
         }
 
     }
