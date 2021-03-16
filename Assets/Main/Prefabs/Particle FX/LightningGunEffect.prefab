@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6154813769518451102}
   - component: {fileID: 6154813769518451104}
   - component: {fileID: 6154813769518451103}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Particle System (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 6154813769518451101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.23, z: 1}
   m_Children: []
   m_Father: {fileID: 6154813769950259505}
   m_RootOrder: 2
@@ -4763,7 +4763,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6154813769950259505}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: LightningGunEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4798,7 +4798,7 @@ GameObject:
   - component: {fileID: 6154813770656829703}
   - component: {fileID: 6154813770656829705}
   - component: {fileID: 6154813770656829704}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Particle System (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4814,7 +4814,7 @@ Transform:
   m_GameObject: {fileID: 6154813770656829702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.23, z: 1}
   m_Children: []
   m_Father: {fileID: 6154813769950259505}
   m_RootOrder: 1
@@ -9552,7 +9552,7 @@ GameObject:
   - component: {fileID: 6154813770820811081}
   - component: {fileID: 6154813770820811080}
   - component: {fileID: 6154813770820811079}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9568,7 +9568,7 @@ Transform:
   m_GameObject: {fileID: 6154813770820811078}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.23, z: 1}
   m_Children: []
   m_Father: {fileID: 6154813769950259505}
   m_RootOrder: 0

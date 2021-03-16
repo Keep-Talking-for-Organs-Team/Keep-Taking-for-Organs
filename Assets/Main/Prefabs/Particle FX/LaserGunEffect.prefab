@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2402956495938151895}
   - component: {fileID: 2402956495938151893}
   - component: {fileID: 2402956495938151892}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Particle System (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4774,7 +4774,7 @@ GameObject:
   - component: {fileID: 2402956496171796543}
   - component: {fileID: 2402956496171796541}
   - component: {fileID: 2402956496171796540}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9534,7 +9534,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2402956496616449426}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: LaserGunEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -24,16 +24,21 @@ namespace KeepTalkingForOrgansGame {
 
 
         void Update () {
+            if (GlobalManager.current.isMapViewer)
+                return;
 
             bool hasMovingEnemiesInPlayersSightThisFrame = false;
 
             foreach (Transform child in transform) {
 
                 Enemy enemy = child.gameObject.GetComponent<Enemy>();
-                EnemyMoveManager enemyMoveManager = enemy.GetComponent<EnemyMoveManager>();
 
-                if (enemyMoveManager != null && enemyMoveManager.IsMoving && enemy.IsInPlayersSight) {
-                    hasMovingEnemiesInPlayersSightThisFrame = true;
+                if (enemy != null) {
+                    EnemyMoveManager enemyMoveManager = enemy.GetComponent<EnemyMoveManager>();
+
+                    if (enemyMoveManager != null && enemyMoveManager.IsMoving && enemy.IsInPlayersSight) {
+                        hasMovingEnemiesInPlayersSightThisFrame = true;
+                    }
                 }
             }
 
