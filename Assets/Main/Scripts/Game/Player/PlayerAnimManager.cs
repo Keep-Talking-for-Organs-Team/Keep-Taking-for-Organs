@@ -170,15 +170,6 @@ namespace KeepTalkingForOrgansGame {
 
         }
 
-        void OnStartWalking () {
-            AkSoundEngine.PostEvent("Play_Player_Footstep" , gameObject);
-            Debug.Log("¨«¨«¨«");
-        }
-
-        void OnStopWalking () {
-            AkSoundEngine.PostEvent("Stop_Player_Footstep" , gameObject);
-            Debug.Log("°±°±°±");
-        }
 
         void OnBecomeVisible () {
             foreach (var sr in bodySRs)
