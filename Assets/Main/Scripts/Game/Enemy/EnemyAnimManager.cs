@@ -62,6 +62,7 @@ namespace KeepTalkingForOrgansGame {
                     .AppendInterval(attackWordShowingDuration)
                     .AppendCallback( () => {
                         if (CurrentState == State.Attacking) {
+                            
                             Play(State.Alert);
                         }
                     } );
