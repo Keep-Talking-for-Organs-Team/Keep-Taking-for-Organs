@@ -207,6 +207,30 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Event Name="Stop_AllSFX" ID="{532D9E27-13EE-49C2-8492-B0FDD8EB9220}">
+					<ChildrenList>
+						<Action Name="" ID="{B2C148CC-D463-46AA-9E44-26D3C5A9C55D}" ShortID="665214043">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="GameSFX" ID="{8F5D82BD-6AE1-48D7-98BF-168665E6165D}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+						<Action Name="" ID="{EED44EF1-BE55-49FE-B06B-F820DBE88A0A}" ShortID="533649671">
+							<PropertyList>
+								<Property Name="ActionType" Type="int16" Value="2"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="UISFX" ID="{7BA2D219-9810-405F-91B5-68A7D3868BA4}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

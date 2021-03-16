@@ -20,7 +20,7 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	207849703	Player_Gunshot	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\gun shot_9E1C6B21.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Player_Gunshot		318596
 	208902186	Player_Footstep	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\ppl move_D983C871.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Player_Footstep		1032694
 	275523258	Start_Hiding	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\Hide  and Show_CEEC1AE8.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Start_Hiding		160124
-	281290208	Robot_LaserGun	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\laser_167E6DA5.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Robot_LaserGun		165412
+	281290208	Robot_LaserGun	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\laser_D6C01541.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Robot_LaserGun		160036
 	312680083	Player_Saber	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\ROBOT DIE_EBD7AF56.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Player_Saber		154816
 	546542437	Ele_Trap	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\ELE-01 trap_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Ele_Trap		556900
 	602434379	Robot_EleGun	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\ele gun_810ABAB1.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Robot_EleGun		61952
@@ -28,4 +28,5 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	630342208	Main	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\Main_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Main\MainTest\Main		42553328
 	751965073	Get_Organ	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\get organ_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Get_Organ		705664
 	769722826	Player_Saber_01	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\stab_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Player_Saber_01		62344
+	796556713	Player_Death	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\icu_752E7539.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX\Player_Death		1133136
 

@@ -21,7 +21,7 @@
 				<GameParameter Id="4179668891" Name="Master_Volumn" ObjectPath="\Game Parameters\Default Work Unit\Master_Volumn"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="4072029455" Language="SFX" Hash="2192569435">
+		<SoundBank Id="4072029455" Language="SFX" Hash="2860006992">
 			<ObjectPath>\SoundBanks\Default Work Unit\New_SoundBank</ObjectPath>
 			<ShortName>New_SoundBank</ShortName>
 			<Path>New_SoundBank.bnk</Path>
@@ -58,7 +58,14 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1835085974" Name="Play_Player_Death" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Player_Death" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="1835085974" Name="Play_Player_Death" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Player_Death" DurationType="OneShot" DurationMin="4.877228" DurationMax="4.877228">
+					<IncludedMemoryFiles>
+						<File Id="796556713" Language="SFX">
+							<ShortName>icu.wav</ShortName>
+							<Path>SFX\icu_752E7539.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="1724675634" Name="Play_Player_Footstep" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Player_Footstep" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="208902186" Language="SFX">
@@ -87,7 +94,14 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2426976433" Name="Play_Robot_Death" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_Death" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="2426976433" Name="Play_Robot_Death" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_Death" DurationType="OneShot" DurationMin="4.877228" DurationMax="4.877228">
+					<IncludedMemoryFiles>
+						<File Id="796556713" Language="SFX">
+							<ShortName>icu.wav</ShortName>
+							<Path>SFX\icu_752E7539.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="3233088915" Name="Play_Robot_EleGun" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_EleGun" DurationType="OneShot" DurationMin="0.307459" DurationMax="0.307459">
 					<IncludedMemoryFiles>
 						<File Id="602434379" Language="SFX">
@@ -96,11 +110,11 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2371690888" Name="Play_Robot_LaserGun" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_LaserGun" DurationType="OneShot" DurationMin="0.860771" DurationMax="0.860771">
+				<Event Id="2371690888" Name="Play_Robot_LaserGun" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_LaserGun" DurationType="OneShot" DurationMin="0.832771" DurationMax="0.832771">
 					<IncludedMemoryFiles>
 						<File Id="281290208" Language="SFX">
 							<ShortName>laser.wav</ShortName>
-							<Path>SFX\laser_167E6DA5.wem</Path>
+							<Path>SFX\laser_D6C01541.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
