@@ -43,7 +43,7 @@ namespace KeepTalkingForOrgansGame {
 
         public GameObject     randomSeedInputGO;
         public GameObject     switchableInfoPanel;
-        public GameObject     pausedPanel;
+        public GameObject     inGameMenu;
         public GameObject     missionSuccessMessages;
         public GameObject     missionFailedMessages;
         public Text           howDiedMessageText;
@@ -134,6 +134,9 @@ namespace KeepTalkingForOrgansGame {
 
                 randomSeedInputGO.SetActive(true);
             }
+
+            AkSoundEngine.SetState("Game", "Normal");
+            AkSoundEngine.SetState("Music_Stage", "lv" + LevelSelector.currentLevelNumber);
         }
 
         void Update () {
@@ -162,19 +165,7 @@ namespace KeepTalkingForOrgansGame {
                     }
                     else if (Input.GetButtonDown("Menu")) {
                         GlobalManager.BackToMenuScene();
-                    }
-                }
-                else {
-
-                    if (Input.GetButtonDown("Menu")) {
-                        if (Time.timeScale > 0) {
-                            Time.timeScale = 0f;
-                            pausedPanel.SetActive(true);
-                        }
-                        else if (Time.timeScale == 0) {
-                            Time.timeScale = 1f;
-                            pausedPanel.SetActive(false);
-                        }
+                        AkSoundEngine.PostEvent("Play_ESCLeave" , gameObject);
                     }
                 }
 
@@ -191,16 +182,30 @@ namespace KeepTalkingForOrgansGame {
                 }
             }
             else {
+                // Map Viewer
+
+            }
+
+            if (!IsMissionEnded) {
                 if (Input.GetButtonDown("Menu")) {
-                    GlobalManager.RestartLevel();
+                    if (!inGameMenu.activeSelf) {
+                        // no pause
+                        inGameMenu.SetActive(true);
+                        AkSoundEngine.PostEvent("Play_ESCMenu" , gameObject);
+                    }
+                    else {
+                        inGameMenu.SetActive(false);
+                        AkSoundEngine.PostEvent("Play_LeaveMenu" , gameObject);
+                    }
                 }
             }
 
-            // === temp ===
-            if (Input.GetKeyDown(KeyCode.Tab)) {
+
+            if (Input.GetButtonDown("Info")) {
                 switchableInfoPanel.SetActive(true);
+                AkSoundEngine.PostEvent("Play_Tab" , gameObject);
             }
-            else if (Input.GetKeyUp(KeyCode.Tab)) {
+            else if (Input.GetButtonUp("Info")) {
                 switchableInfoPanel.SetActive(false);
             }
             // === ==== ===
@@ -231,6 +236,8 @@ namespace KeepTalkingForOrgansGame {
             PlayMissionEndedOverlayFX(true);
 
             Time.timeScale = 0f;
+
+            AkSoundEngine.SetState("Game", "Success");
         }
 
         public void MissionFailed (FailedReason reason = FailedReason.None) {
@@ -239,6 +246,8 @@ namespace KeepTalkingForOrgansGame {
 
             IsMissionEnded = true;
             PlayMissionEndedOverlayFX(false);
+
+            AkSoundEngine.SetState("Game", "Over");
         }
 
 
@@ -279,10 +288,16 @@ namespace KeepTalkingForOrgansGame {
         }
 
 
+        public void OnInputingRandomSeed () {
+            AkSoundEngine.PostEvent("Play_EnterDigit" , gameObject);
+        }
+
         public void ApplyRandomSeed (string value) {
+
+            AkSoundEngine.PostEvent("Play_PressEnter" , gameObject);
+
             int seed = -1;
 
-            // === temp ===
             if (System.Int32.TryParse(value, out seed) && seed >= 0 && seed < 10000) {
                 RandomSeed = seed;
                 GenerateEnemies();

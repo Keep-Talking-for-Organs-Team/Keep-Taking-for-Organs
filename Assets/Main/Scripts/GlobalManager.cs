@@ -18,11 +18,14 @@ namespace KeepTalkingForOrgansGame {
 
         public bool isMapViewer = false;
 
+        [Header("Audio Settings")]
+        public AudioSettings audioSettings;
+
         [Header("Output Shows")]
         public int visionSpansMaxEdgesResolveIterationsSoFar = 0;
 
 
-        public string CurrentLevelName {get; private set;} = "";
+        public string CurrentLevelName => "Level " + LevelSelector.currentLevelNumber;
 
 
         protected override void Awake () {
@@ -37,6 +40,8 @@ namespace KeepTalkingForOrgansGame {
                 GameObject eventSys = new GameObject("Event System");
                 eventSys.AddComponent<EventSystem>();
             }
+
+            AssignAudioSettings();
         }
 
         void OnApplicationQuit () {
@@ -58,6 +63,14 @@ namespace KeepTalkingForOrgansGame {
 
         public static void BackToMenuScene () {
             SceneManager.LoadScene(menuSceneName);
+        }
+
+        public static void AssignAudioSettings () {
+            AudioSettings settings = GlobalManager.current.audioSettings;
+
+            AkSoundEngine.SetRTPCValue("Master_Volumn", settings.masterVolume);
+            AkSoundEngine.SetRTPCValue("SFX_Volumn", settings.sfxVolume);
+            AkSoundEngine.SetRTPCValue("Music_Volumn", settings.musicVolume);
         }
 
     }

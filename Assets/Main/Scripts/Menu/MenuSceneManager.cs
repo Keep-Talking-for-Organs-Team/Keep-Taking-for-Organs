@@ -22,6 +22,7 @@ namespace KeepTalkingForOrgansGame {
         [Header("REFS")]
         public GameObject mainMenuStage;
         public GameObject levelSelectingStage;
+        public GameObject settingsPanel;
 
 
         public Stage CurrentStage {get; private set;} = Stage.MainMenu;
@@ -32,11 +33,16 @@ namespace KeepTalkingForOrgansGame {
 
         protected override void Awake () {
             base.Awake();
-            
+
             stages = new Dictionary<Stage, GameObject>() {
                 { Stage.MainMenu, mainMenuStage },
                 { Stage.LevelSelecting, levelSelectingStage }
             };
+        }
+
+        void Start () {
+            AkSoundEngine.SetState("Game", "NotInGame");
+            AkSoundEngine.SetState("Music_Stage", "Title");
         }
 
         void Update () {
@@ -57,31 +63,43 @@ namespace KeepTalkingForOrgansGame {
                     }
                 }
             }
+
+            if (CurrentStage == Stage.MainMenu) {
+                if (Input.GetButtonDown("Menu")) {
+
+                    if (!settingsPanel.activeSelf) {
+                        settingsPanel.SetActive(true);
+                        AkSoundEngine.PostEvent("Play_ESCMenu", gameObject);
+                    }
+                    else {
+                        settingsPanel.SetActive(false);
+                        AkSoundEngine.PostEvent("Play_LeaveMenu", gameObject);
+                    }
+
+                }
+            }
         }
 
         public void SelectMapViewer () {
+            AkSoundEngine.PostEvent("Play_PlayerBStart" , gameObject);
+
             GlobalManager.current.isMapViewer = true;
             SwitchStage(Stage.LevelSelecting);
         }
 
         public void SelectOperator () {
+            AkSoundEngine.PostEvent("Play_PlayerAStart" , gameObject);
+
             GlobalManager.current.isMapViewer = false;
             SwitchStage(Stage.LevelSelecting);
         }
 
         public void StartGame () {
-            GlobalManager.StartLevel( GetLevelName(LevelSelector.currentLevelNumber) );
+            AkSoundEngine.PostEvent("Play_Start" , gameObject);
+
+            GlobalManager.StartLevel(GlobalManager.current.CurrentLevelName);
         }
 
-
-
-        public void StartAsOperator () {
-            // GlobalManager.StartLevel(GetLevelName(), false);
-        }
-
-        public void StartAsMapViewer () {
-            // GlobalManager.StartLevel(GetLevelName(), true);
-        }
 
 
         void SwitchStage (Stage newStage) {
@@ -95,11 +113,6 @@ namespace KeepTalkingForOrgansGame {
             }
 
             CurrentStage = newStage;
-        }
-
-
-        string GetLevelName (int levelNumber) {
-            return "Level " + levelNumber;
         }
 
     }
