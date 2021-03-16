@@ -68,7 +68,6 @@ namespace KeepTalkingForOrgansGame {
             HasAttackedPlayer = true;
 
             if (_animManager != null) {
-                AkSoundEngine.PostEvent("Play_Robot_LaserGun", gameObject);
                 _animManager.Play(EnemyAnimManager.State.Attacking);
             }
 
@@ -76,9 +75,11 @@ namespace KeepTalkingForOrgansGame {
 
             if (gunType == GunType.Laser) {
                 gunFX = Instantiate(laserGunFX, transform.position, transform.rotation);
+                AkSoundEngine.PostEvent("Play_Robot_LaserGun", gameObject);
             }
             else if (gunType == GunType.Electric) {
                 gunFX = Instantiate(electricGunFX, transform.position, transform.rotation, transform);
+                AkSoundEngine.PostEvent("Play_Robot_EleGun", gameObject);
             }
 
             DOTween.Sequence()
