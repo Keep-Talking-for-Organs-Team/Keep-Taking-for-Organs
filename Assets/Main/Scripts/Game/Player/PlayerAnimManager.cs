@@ -154,11 +154,11 @@ namespace KeepTalkingForOrgansGame {
         }
 
         public void ClearRangedAttackableLine () {
-            GameSceneManager.current.playerRangedAttackableLineFactory.ClearLines();
+            GameSceneManager.current.operatorManager.playerRangedAttackableLineFactory.ClearLines();
         }
 
         public void DrawRangedAttackableLine (Vector2 startPoint, Vector2 targetPoint) {
-            GameSceneManager.current.playerRangedAttackableLineFactory.GetLine(startPoint, targetPoint, rangedAttackableLineWidth, rangedAttackableLineColor);
+            GameSceneManager.current.operatorManager.playerRangedAttackableLineFactory.GetLine(startPoint, targetPoint, rangedAttackableLineWidth, rangedAttackableLineColor);
         }
 
 
@@ -172,12 +172,12 @@ namespace KeepTalkingForOrgansGame {
 
         void OnStartWalking () {
             AkSoundEngine.PostEvent("Play_Player_Footstep" , gameObject);
-            Debug.Log("¨«¨«¨«");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         }
 
         void OnStopWalking () {
             AkSoundEngine.PostEvent("Stop_Player_Footstep" , gameObject);
-            Debug.Log("°±°±°±");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
         }
 
         void OnBecomeVisible () {

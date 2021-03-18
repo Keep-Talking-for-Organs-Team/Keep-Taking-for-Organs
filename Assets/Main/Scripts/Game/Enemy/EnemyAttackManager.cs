@@ -92,12 +92,12 @@ namespace KeepTalkingForOrgansGame {
             DOTween.Sequence()
                 .AppendInterval(playerAttackedFXDelayTime)
                 .AppendCallback( () => {
-                    GameSceneManager.current.PlayAttackedOverlayFX();
+                    GameSceneManager.current.operatorManager.PlayAttackedOverlayFX();
 
                     if (gunType == GunType.Laser)
-                        Player.current.Die(GameSceneManager.FailedReason.LaserGun);
+                        Player.current.Die(OperatorManager.FailedReason.LaserGun);
                     else if (gunType == GunType.Electric)
-                        Player.current.Die(GameSceneManager.FailedReason.ElectricGun);
+                        Player.current.Die(OperatorManager.FailedReason.ElectricGun);
                     else
                         Player.current.Die();
                 } );

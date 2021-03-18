@@ -8,11 +8,11 @@ namespace KeepTalkingForOrgansGame {
     [DisallowMultipleComponent]
     public class FixRotationToMainCam : MonoBehaviour {
 
+        public Camera targetCam;
+
         void Update () {
-            if (GameSceneManager.current != null) {
-                if (GameSceneManager.current.mainCam != null) {
-                    transform.rotation = GameSceneManager.current.mainCam.transform.rotation;
-                }
+            if (targetCam != null) {
+                transform.rotation = targetCam.transform.rotation;
             }
         }
 

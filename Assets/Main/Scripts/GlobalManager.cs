@@ -73,6 +73,11 @@ namespace KeepTalkingForOrgansGame {
             AkSoundEngine.SetRTPCValue("Music_Volumn", settings.musicVolume);
         }
 
+        public void QuitGame () {
+            AkSoundEngine.PostEvent("Stop_AllSFX" , gameObject);
+            Application.Quit();
+        }
+
     }
 
 }

@@ -82,10 +82,10 @@ namespace KeepTalkingForOrgansGame {
 
                     for (int i = 0 ; i < result.Length ; i++) {
                         if (reverseDir) {
-                            result[i] = GetPoint(SegmentsAmount - (ascendedIndex + i) % SegmentsAmount);
+                            result[i] = GetPoint(SegmentsAmount - ascendedIndex % SegmentsAmount - i);
                         }
                         else {
-                            result[i] = GetPoint((ascendedIndex + i) % SegmentsAmount);
+                            result[i] = GetPoint(ascendedIndex + i);
                         }
                     }
                 }
@@ -158,7 +158,8 @@ namespace KeepTalkingForOrgansGame {
 
             for (int i = 0 ; i < SegmentsAmount ; i++) {
                 Vector2[] segment = GetSegment(i);
-                GameSceneManager.current.lineFactory.GetLine(segment[0], segment[1], drawnPathLinesWidth, drawnPathLinesColor);
+                GameSceneManager.current.mapViewerManager.pathLineFactory.GetLine(segment[0], segment[1], drawnPathLinesWidth, drawnPathLinesColor);
+                print(segment[0] + "," + segment[1]);
             }
 
             IsLineDrawn = true;

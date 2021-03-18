@@ -648,7 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keepRule: 1
-  isInvincible: 1
+  isInvincible: 0
   mustCrouchToHide: 0
   isCrouchable: 0
   walkVisionSpanProps:

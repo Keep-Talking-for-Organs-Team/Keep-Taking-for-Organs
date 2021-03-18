@@ -10,7 +10,7 @@ namespace KeepTalkingForOrgansGame {
     [RequireComponent(typeof(Player))]
     public class PlayerControlManager : MonoBehaviour {
 
-        public Vector2 DirToMouse => (GameSceneManager.current != null) ? (CameraTools.GetMouseWorldPosition(GameSceneManager.current.mainCam) - (Vector2) transform.position).normalized : Vector2.zero;
+        public Vector2 DirToMouse => (GameSceneManager.current != null && GameSceneManager.current.operatorManager != null) ? (CameraTools.GetMouseWorldPosition(GameSceneManager.current.operatorManager.cam) - (Vector2) transform.position).normalized : Vector2.zero;
         public Vector2 MoveDirection {get; private set;}
 
 
@@ -35,7 +35,7 @@ namespace KeepTalkingForOrgansGame {
                     _player.SetFacing(DirToMouse);
                 }
 
-                MoveDirection = GameSceneManager.current.mainCam.transform.rotation * (SimpleInput.GetAxisRaw("Horizontal") * Vector2.right + SimpleInput.GetAxisRaw("Vertical") * Vector2.up).normalized;
+                MoveDirection = GameSceneManager.current.operatorManager.cam.transform.rotation * (SimpleInput.GetAxisRaw("Horizontal") * Vector2.right + SimpleInput.GetAxisRaw("Vertical") * Vector2.up).normalized;
 
 
                 // === temp ===
@@ -43,7 +43,7 @@ namespace KeepTalkingForOrgansGame {
                     _player.ToggleCrouch();
                 }
                 // === ==== ===
-                
+
                 if (Input.GetButtonDown("Fire1")) {
                     _attackManager.TryToAttack(PlayerAttackManager.AttackMethod.Melee);
                 }

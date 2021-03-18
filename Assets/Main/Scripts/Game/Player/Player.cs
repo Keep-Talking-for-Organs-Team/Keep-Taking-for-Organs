@@ -39,8 +39,8 @@ namespace KeepTalkingForOrgansGame {
         public bool IsDead {get; private set;} = false;
         public bool HasGoal {get; private set;} = false;
 
-        public bool IsMovable => GameSceneManager.current.IsMissionOnGoing && !IsDead;
-        public bool IsControllable => GameSceneManager.current.IsMissionOnGoing && !IsDead && Time.timeScale > 0;
+        public bool IsMovable => GameSceneManager.current.operatorManager.IsMissionOnGoing && !IsDead;
+        public bool IsControllable => GameSceneManager.current.operatorManager.IsMissionOnGoing && !IsDead && Time.timeScale > 0;
         public bool IsFacingControllable => IsControllable;
 
 
@@ -73,7 +73,7 @@ namespace KeepTalkingForOrgansGame {
                 if (GameSceneManager.current.currentTerrain.IsInTrapArea(transform.position)) {
                     if (_currentTrapFX == null)
                         _currentTrapFX = StartCoroutine(TrapFX());
-                    Die(GameSceneManager.FailedReason.Trap);
+                    Die(OperatorManager.FailedReason.Trap);
                 }
 
                 if (GameSceneManager.current.currentTerrain.IsInHidingArea(transform.position) && (!mustCrouchToHide || IsCrouching)) {
@@ -95,7 +95,7 @@ namespace KeepTalkingForOrgansGame {
 
             // ==== temp ====
             // Camera Follow
-            GameSceneManager.current.mainCam.transform.SetPosXY(transform.position);
+            GameSceneManager.current.operatorManager.cam.transform.SetPosXY(transform.position);
             // ==== ==== ====
 
         }
@@ -111,12 +111,12 @@ namespace KeepTalkingForOrgansGame {
             }
             else if (other.tag == "Exit") {
                 if (HasGoal) {
-                    GameSceneManager.current.MissionSuccess();
+                    GameSceneManager.current.operatorManager.MissionSuccess();
                 }
             }
         }
 
-        public void Die (GameSceneManager.FailedReason reason = GameSceneManager.FailedReason.None) {
+        public void Die (OperatorManager.FailedReason reason = OperatorManager.FailedReason.None) {
             if (!isInvincible) {
                 IsDead = true;
 
@@ -124,7 +124,7 @@ namespace KeepTalkingForOrgansGame {
                     _animManager.PlayAction(PlayerAnimManager.ActionState.Dead);
                 }
 
-                GameSceneManager.current.MissionFailed(reason);
+                GameSceneManager.current.operatorManager.MissionFailed(reason);
 
                 AkSoundEngine.PostEvent("Play_Player_Death" , gameObject);
             }
@@ -158,7 +158,7 @@ namespace KeepTalkingForOrgansGame {
 
         IEnumerator TrapFX () {
 
-            GameSceneManager.current.PlayAttackedOverlayFX();
+            GameSceneManager.current.operatorManager.PlayAttackedOverlayFX();
 
             GameObject lightningFX = Instantiate(lightningFXPrefab, transform.position, Quaternion.identity, transform);
             AkSoundEngine.PostEvent("Play_Ele_Trap" , gameObject);

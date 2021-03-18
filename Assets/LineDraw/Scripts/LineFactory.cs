@@ -21,8 +21,10 @@ public class LineFactory : MonoBehaviour
 	private Line[] pooledLines;
 	private int currentIndex = 0;
 
-	void Awake ()
-	{
+
+	// void Awake()
+	public void Init() {
+
 		pooledLines = new Line[maxLines];
 
 		for (int i = 0; i < maxLines; i++) {
@@ -32,6 +34,7 @@ public class LineFactory : MonoBehaviour
 			pooledLines[i] = line.GetComponent<Line> ();
 		}
 	}
+
 
 	/// <summary>
 	/// Gets an initialised and active line. The line is retrieved from the pool and set active.
@@ -57,8 +60,12 @@ public class LineFactory : MonoBehaviour
 	/// Returns all active lines.
 	/// </summary>
 	/// <returns>The active lines.</returns>
-	public List<Line> GetActive()
-	{
+	public List<Line> GetActive() {
+
+		if (transform.childCount == 0)
+			Init();
+			
+
 		var activeLines = new List<Line> ();
 
 		foreach (var line in pooledLines) {

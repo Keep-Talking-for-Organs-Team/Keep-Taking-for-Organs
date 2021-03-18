@@ -12,7 +12,11 @@ namespace KeepTalkingForOrgansGame {
         }
 
         void Start () {
-            _attachedCam = _attachedCam ?? GameSceneManager.current.mainCam;
+            if (_attachedCam == null) {
+                if (GameSceneManager.current != null && GameSceneManager.current.operatorManager != null) {
+                    _attachedCam = GameSceneManager.current.operatorManager.cam;
+                }
+            }
         }
 
         void Update () {

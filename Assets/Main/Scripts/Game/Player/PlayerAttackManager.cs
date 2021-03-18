@@ -44,7 +44,7 @@ namespace KeepTalkingForOrgansGame {
             set {
                 if (_bulletsLeft != value) {
                     _bulletsLeft = value;
-                    GameSceneManager.current.operatorHUDManager.rangedDisplay.UpdateBulletsDisplay(_bulletsLeft);
+                    GameSceneManager.current.operatorManager.hudManager.rangedDisplay.UpdateBulletsDisplay(_bulletsLeft);
                 }
             }
         }
@@ -118,7 +118,7 @@ namespace KeepTalkingForOrgansGame {
                     _animManager.DrawRangedAttackableLine(transform.position, CurrentTarget.transform.position);
             }
 
-            HUDManager hudManager = GameSceneManager.current.operatorHUDManager;
+            HUDManager hudManager = GameSceneManager.current.operatorManager.hudManager;
             hudManager.UpdateWeaponStatusDisplay(AttackMethod.Melee, GetCurrentCooldownTimeRemainedRate(AttackMethod.Melee));
             hudManager.UpdateWeaponStatusDisplay(AttackMethod.Ranged, GetCurrentCooldownTimeRemainedRate(AttackMethod.Ranged), BulletsLeft);
 
@@ -156,7 +156,7 @@ namespace KeepTalkingForOrgansGame {
             if (IsAttackable(atkMethod)) {
                 if (atkMethod == AttackMethod.Ranged && BulletsLeft == 0) {
                     // Out of Ammo
-                    GameSceneManager.current.PlayOutOfAmmoOverlayFX();
+                    GameSceneManager.current.operatorManager.PlayOutOfAmmoOverlayFX();
                 }
                 else {
                     Attack(atkMethod);
@@ -208,7 +208,7 @@ namespace KeepTalkingForOrgansGame {
             CurrentTarget.Attacked(atkMethod);
 
             if (atkMethod == AttackMethod.Melee) {
-                GameSceneManager.current.PlayMeleeAttackOverlayFX();
+                GameSceneManager.current.operatorManager.PlayMeleeAttackOverlayFX();
 
                 AkSoundEngine.PostEvent("Play_Player_Saber" , gameObject);
             }
@@ -217,7 +217,7 @@ namespace KeepTalkingForOrgansGame {
                     BulletsLeft--;
                 }
 
-                GameSceneManager.current.PlayRangedAttackOverlayFX();
+                GameSceneManager.current.operatorManager.PlayRangedAttackOverlayFX();
 
                 AkSoundEngine.PostEvent("Play_Player_Gunshot" , gameObject);
             }

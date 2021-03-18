@@ -19,6 +19,10 @@ namespace KeepTalkingForOrgansGame {
             UpdateDisplay();
         }
 
+        void OnEnable () {
+            UpdateDisplay();
+        }
+
         public void SelectLevel (int levelNumber) {
             currentLevelNumber = levelNumber;
             UpdateDisplay();
