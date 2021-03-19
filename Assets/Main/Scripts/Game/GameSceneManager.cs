@@ -86,6 +86,8 @@ namespace KeepTalkingForOrgansGame {
 
             AkSoundEngine.SetState("Game", "Normal");
             AkSoundEngine.SetState("Music_Stage", "lv" + LevelSelector.currentLevelNumber);
+
+            GlobalManager.current.ClearLoadingDisplay();
         }
 
         void Update () {
@@ -148,6 +150,19 @@ namespace KeepTalkingForOrgansGame {
             foreach (var spawnersManager in enemiesSpawnersManagers) {
                 spawnersManager.StartSpawn();
             }
+        }
+
+
+        public void RestartLevel () {
+            GlobalManager.current.FadeScreenOut( () => {
+                GlobalManager.ReloadScene();
+            } );
+        }
+
+        public void BackToMainMenu () {
+            GlobalManager.current.FadeScreenOut( () => {
+                GlobalManager.BackToMenuScene();
+            } );
         }
 
     }

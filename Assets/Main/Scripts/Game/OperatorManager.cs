@@ -55,7 +55,7 @@ namespace KeepTalkingForOrgansGame {
         public bool IsMissionStarted {get; private set;} = false;
         public bool IsMissionEnded {get; private set;} = false;
         public bool IsMissionOnGoing => IsMissionStarted && !IsMissionEnded;
-        public float MissionTimePassed => !IsMissionStarted ? -1f : Time.time - _missionStartTime;
+        public float MissionTimePassed => !IsMissionStarted ? 0f : Time.time - _missionStartTime;
         public float MissionTimeRemained => timeLimit - MissionTimePassed;
 
         public int RandomSeed {
@@ -103,20 +103,18 @@ namespace KeepTalkingForOrgansGame {
                 cam.transform.rotation = Quaternion.AngleAxis(Random.Range(0, 4) * 90f, Vector3.forward);
 
             _gameSceneManager.GenerateEnemies(RandomSeed);
-            StartMission();
+            GeneratePlayer();
+            UpdateTimerDisplay();
+
+            GlobalManager.current.FadeScreenIn( () => {
+                StartMission();
+            } );
         }
 
 
         void Update () {
 
-            if (hudManager.timerDisplayText != null) {
-                if (timeLimit < 0) {
-                    hudManager.timerDisplayText.enabled = false;
-                }
-                else if (IsMissionOnGoing) {
-                    hudManager.UpdateTimerDisplay(MissionTimeRemained);
-                }
-            }
+            UpdateTimerDisplay();
 
             if (IsMissionOnGoing && timeLimit > 0 && MissionTimeRemained <= 0) {
                 MissionFailed(FailedReason.RunOutOfTime);
@@ -127,10 +125,10 @@ namespace KeepTalkingForOrgansGame {
             if (IsMissionEnded) {
 
                 if (Input.GetButtonDown("Submit")) {
-                    GlobalManager.RestartLevel();
+                    _gameSceneManager.RestartLevel();
                 }
                 else if (Input.GetButtonDown("Menu")) {
-                    GlobalManager.BackToMenuScene();
+                    _gameSceneManager.BackToMainMenu();
                     AkSoundEngine.PostEvent("Play_ESCLeave" , gameObject);
                 }
             }
@@ -139,20 +137,9 @@ namespace KeepTalkingForOrgansGame {
 
 
         public void StartMission () {
+
             _missionStartTime = Time.time;
             IsMissionStarted = true;
-
-            if (playerSpawnPointsParent.childCount > 0) {
-
-                int playerSpawnPointIndex = Random.Range(0, playerSpawnPointsParent.childCount);
-
-                Player player = Instantiate(playerPrefab, playerSpawnPointsParent.GetChild(playerSpawnPointIndex).position, Quaternion.identity, transform).GetComponent<Player>();
-
-                Destroy(playerSpawnPointsParent.gameObject);
-            }
-            else {
-                print("Missing Player Spawn Point!!");
-            }
         }
 
         public void MissionSuccess () {
@@ -216,6 +203,32 @@ namespace KeepTalkingForOrgansGame {
             showAllEnemies = true;
         }
 
+
+        void GeneratePlayer () {
+            if (playerSpawnPointsParent.childCount > 0) {
+
+                int playerSpawnPointIndex = Random.Range(0, playerSpawnPointsParent.childCount);
+                Transform playerSpawnPointTrans = playerSpawnPointsParent.GetChild(playerSpawnPointIndex);
+
+                Player player = Instantiate(playerPrefab, playerSpawnPointTrans.position, cam.transform.rotation, transform).GetComponent<Player>();
+
+                Destroy(playerSpawnPointsParent.gameObject);
+            }
+            else {
+                print("Missing Player Spawn Point!!");
+            }
+        }
+
+        void UpdateTimerDisplay () {
+            if (hudManager.timerDisplayText != null) {
+                if (timeLimit < 0) {
+                    hudManager.timerDisplayText.enabled = false;
+                }
+                else {
+                    hudManager.UpdateTimerDisplay(MissionTimeRemained);
+                }
+            }
+        }
 
 
         [System.Serializable]

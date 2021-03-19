@@ -75,7 +75,7 @@ namespace KeepTalkingForOrgansGame {
 
 
         void FixedUpdate () {
-            if (_enemy.IsDead)
+            if (!_enemy.IsActable)
                 return;
 
 
@@ -155,7 +155,7 @@ namespace KeepTalkingForOrgansGame {
         }
 
         void OnStopWalking () {
-            
+
         }
 
     }

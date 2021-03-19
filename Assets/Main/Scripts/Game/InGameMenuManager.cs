@@ -11,11 +11,11 @@ namespace KeepTalkingForOrgansGame {
     public class InGameMenuManager : MonoBehaviour {
 
         public void Restart () {
-            GlobalManager.RestartLevel();
+            GameSceneManager.current.RestartLevel();
         }
 
         public void BackToMainMenu () {
-            GlobalManager.BackToMenuScene();
+            GameSceneManager.current.BackToMainMenu();
         }
 
     }

@@ -60,6 +60,8 @@ namespace KeepTalkingForOrgansGame {
                 _enemy.visionSpan.isBlind = true;
                 return;
             }
+            if (!_enemy.IsActable)
+                return;
 
 
             if (_state == State.Fixed) {

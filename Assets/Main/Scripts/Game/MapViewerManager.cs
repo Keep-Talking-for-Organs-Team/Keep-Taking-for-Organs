@@ -69,6 +69,8 @@ namespace KeepTalkingForOrgansGame {
             cam.enabled = true;
 
             randomSeedInputPanel.SetActive(true);
+
+            GlobalManager.current.FadeScreenIn();
         }
 
 

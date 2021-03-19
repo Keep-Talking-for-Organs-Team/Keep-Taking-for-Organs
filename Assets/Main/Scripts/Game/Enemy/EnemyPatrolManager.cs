@@ -50,6 +50,8 @@ namespace KeepTalkingForOrgansGame {
         }
 
         void FixedUpdate () {
+            if (!_enemy.IsActable)
+                return;
 
             if (_moveManager != null) {
 
