@@ -15,5 +15,9 @@ namespace KeepTalkingForOrgansGame {
             musicVolume = 0.8f;
         }
 
+        public override string ToString () {
+            return "master: " + masterVolume + "\n" + "sfx: " + sfxVolume + "\n" + "music: " + musicVolume;
+        }
+
     }
 }

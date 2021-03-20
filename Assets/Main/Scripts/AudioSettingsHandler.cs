@@ -15,19 +15,26 @@ namespace KeepTalkingForOrgansGame {
         public Slider sfxVolumeSlider;
         public Slider musicVolumeSlider;
 
+        void Awake () {
+            UpdateSliders();
+        }
 
         void OnEnable () {
             UpdateSliders();
         }
 
-        public void OnValuesChanged () {
+        public void OnValuesChanged (int index) {
+
             AudioSettings settings = GlobalManager.current.audioSettings;
 
-            settings.masterVolume = masterVolumeSlider.value;
-            settings.sfxVolume    = sfxVolumeSlider.value;
-            settings.musicVolume  = musicVolumeSlider.value;
+            if (index == 0)
+                settings.masterVolume = masterVolumeSlider.value;
+            else if (index == 1)
+                settings.sfxVolume    = sfxVolumeSlider.value;
+            else if (index == 2)
+                settings.musicVolume  = musicVolumeSlider.value;
 
-            GlobalManager.AssignAudioSettings();
+            GlobalManager.AssignAudioSettings(index);
         }
 
 

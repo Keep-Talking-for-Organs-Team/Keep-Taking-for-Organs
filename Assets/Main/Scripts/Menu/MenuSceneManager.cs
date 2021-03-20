@@ -38,11 +38,12 @@ namespace KeepTalkingForOrgansGame {
                 { Stage.MainMenu, mainMenuStage },
                 { Stage.LevelSelecting, levelSelectingStage }
             };
+            
+            AkSoundEngine.SetState("Game", "NotInGame");
+            AkSoundEngine.SetState("Music_Stage", "Title");
         }
 
         void Start () {
-            AkSoundEngine.SetState("Game", "NotInGame");
-            AkSoundEngine.SetState("Music_Stage", "Title");
 
             // Intro
             GlobalManager.current.ClearLoadingDisplay();

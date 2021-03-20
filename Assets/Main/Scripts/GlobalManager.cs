@@ -80,18 +80,21 @@ namespace KeepTalkingForOrgansGame {
             SceneManager.LoadScene(menuSceneName);
         }
 
-        public static void AssignAudioSettings () {
+        public static void AssignAudioSettings (int index = -1) {
             AudioSettings settings = GlobalManager.current.audioSettings;
 
-            AkSoundEngine.SetRTPCValue("Master_Volumn", settings.masterVolume);
-            AkSoundEngine.SetRTPCValue("SFX_Volumn", settings.sfxVolume);
-            AkSoundEngine.SetRTPCValue("Music_Volumn", settings.musicVolume);
+            if (index == 0 || index == -1)
+                AkSoundEngine.SetRTPCValue("Master_Volumn", settings.masterVolume * 100);
+            if (index == 1 || index == -1)
+                AkSoundEngine.SetRTPCValue("SFX_Volumn", settings.sfxVolume * 100);
+            if (index == 2 || index == -1)
+                AkSoundEngine.SetRTPCValue("Music_Volumn", settings.musicVolume * 100);
         }
 
         public void FadeScreenOut (TweenCallback endCallback = null) {
             IsInTransition = true;
             blackScreenOverlay.blocksRaycasts = true;
-print("fade out");
+
             blackScreenOverlay.DOFade(1f, screenFadeDuration)
                 .From(0f)
                 .SetEase(screenFadeEase)
@@ -100,15 +103,12 @@ print("fade out");
 
                     if (endCallback != null)
                         endCallback();
-                } )
-                .OnKill(() => print("fout killed"))
-                .OnPause(() => print("fou paused"))
-                .timeScale = 1f;
+                } );
         }
 
         public void FadeScreenIn (TweenCallback endCallback = null) {
             IsInTransition = true;
-print("fade in");
+
             blackScreenOverlay.DOFade(0f, screenFadeDuration)
                 .From(1f)
                 .SetEase(screenFadeEase)
@@ -118,10 +118,7 @@ print("fade in");
 
                     if (endCallback != null)
                         endCallback();
-                } )
-                .OnKill(() => print("fin killed"))
-                .OnPause(() => print("fin paused"))
-                .timeScale = 1f;
+                } );
         }
 
         public void ClearLoadingDisplay () {

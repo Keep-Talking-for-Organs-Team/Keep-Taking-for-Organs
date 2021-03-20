@@ -35,28 +35,43 @@ namespace KeepTalkingForOrgansGame {
 
         public Vector2 FacingDirection => transform.rotation * initDir;
         public bool IsCrouching {get; private set;} = false;
-        public bool IsHiding {get; private set;} = false;
         public bool IsDead {get; private set;} = false;
         public bool HasGoal {get; private set;} = false;
+        public bool IsHiding {
+            get => _isHiding;
+            set {
+                if (_isHiding != value) {
+                    _isHiding = value;
+
+                    if (_isHiding)
+                        OnStartHiding();
+                    else
+                        OnStopHiding();
+                }
+            }
+        }
 
         public bool IsMovable => GameSceneManager.current.operatorManager.IsMissionOnGoing && !IsDead;
         public bool IsControllable => GameSceneManager.current.operatorManager.IsMissionOnGoing && !IsDead && Time.timeScale > 0;
         public bool IsFacingControllable => IsControllable;
 
 
+        bool _isHiding = false;
         Coroutine _currentTrapFX;
 
         // Components
-        PlayerAnimManager _animManager;
-        Rigidbody2D _rigidbody;
+        Rigidbody2D         _rigidbody;
+        PlayerAnimManager   _animManager;
+        PlayerMoveManager   _moveManager;
         PlayerAttackManager _attackManager;
         // TargetedByEnemies _targetedByEmenies;
 
 
         protected override void Awake () {
             base.Awake();
-            _animManager = GetComponent<PlayerAnimManager>();
             _rigidbody = GetComponent<Rigidbody2D>();
+            _animManager = GetComponent<PlayerAnimManager>();
+            _moveManager = GetComponent<PlayerMoveManager>();
             _attackManager = GetComponent<PlayerAttackManager>();
             // _targetedByEmenies = GetComponent<TargetedByEnemies>();
 
@@ -93,10 +108,8 @@ namespace KeepTalkingForOrgansGame {
 
         void Update () {
 
-            // ==== temp ====
             // Camera Follow
             GameSceneManager.current.operatorManager.cam.transform.SetPosXY(transform.position);
-            // ==== ==== ====
 
         }
 
@@ -171,12 +184,32 @@ namespace KeepTalkingForOrgansGame {
 
 
 
-        void OnStartHiding () {
-            AkSoundEngine.PostEvent("Play_Start_Hiding" , gameObject);
+        public void OnStartWalking () {
+            AkSoundEngine.PostEvent("Play_Player_Footstep" , gameObject);
+
+            if (_animManager != null)
+                _animManager.OnStartWalking();
         }
 
-        void OnStopHiding () {
+        public void OnStopWalking () {
+            AkSoundEngine.PostEvent("Stop_Player_Footstep" , gameObject);
+
+            if (_animManager != null)
+                _animManager.OnStopWalking();
+        }
+
+        public void OnStartHiding () {
+            AkSoundEngine.PostEvent("Play_Start_Hiding" , gameObject);
+
+            if (_animManager != null)
+                _animManager.OnStartHiding();
+        }
+
+        public void OnStopHiding () {
             AkSoundEngine.PostEvent("Play_End_Hiding" , gameObject);
+
+            if (_animManager != null)
+                _animManager.OnStopHiding();
         }
 
     }

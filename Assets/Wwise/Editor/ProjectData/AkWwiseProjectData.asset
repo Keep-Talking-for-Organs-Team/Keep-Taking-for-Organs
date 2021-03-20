@@ -71,7 +71,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 331b124d0c8540418aee57828c09577b
     GuidInternal: 
-    m_lastTime: -8585853871013408719
+    m_lastTime: -8585853746127212571
     List:
     - name: SoundBank
       guid: 033c8f8e0b368440b27317a98e41ecfb
@@ -90,7 +90,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 212552149d463c4c84b85baf50cd0631
     GuidInternal: 
-    m_lastTime: -8585853853815591029
+    m_lastTime: -8585853746133660762
     List:
     - name: Game SFX
       guid: 5e4774ce09776842af07b32ed828bca4
@@ -226,8 +226,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Music\Play_Music
       maxAttenuation: 0
-      maxDuration: 221.63126
-      minDuration: 221.63126
+      maxDuration: -1
+      minDuration: -1
     - name: Play_Player_Death
       guid: 258989e5e78cb841b2c4e3feba8709ca
       id: 1835085974
@@ -296,8 +296,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\UI SFX\Play_PlayerAStart
       maxAttenuation: 0
-      maxDuration: 221.63126
-      minDuration: 221.63126
+      maxDuration: 0.251406
+      minDuration: 0.251406
     - name: Play_PlayerBStart
       guid: 828bb76913832845a1f95c6bc4a1904e
       id: 1003576063
@@ -498,7 +498,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: d19a6d8782dded4598c9162409509b11
     GuidInternal: 
-    m_lastTime: -8585853853987907572
+    m_lastTime: -8585853746133660762
     List:
     - name: Master_Volumn
       guid: 718afdf6fc877d4e8eed5a8013bd58f4
@@ -559,5 +559,8 @@ MonoBehaviour:
     List: []
   ExpandedItems:
   - /Keep Taking for Organs_WwiseProject
+  - /Keep Taking for Organs_WwiseProject/Events
+  - /Keep Taking for Organs_WwiseProject/Events/Default Work Unit
+  - /Keep Taking for Organs_WwiseProject/Events/Default Work Unit/Music
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

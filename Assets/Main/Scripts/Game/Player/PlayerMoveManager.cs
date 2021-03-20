@@ -18,7 +18,21 @@ namespace KeepTalkingForOrgansGame {
         public LayerMask moveCollisionLayerMask;
 
 
-        public bool IsWalking {get; private set;} = false;
+        public bool IsWalking {
+            get => _isWalking;
+            set {
+                if (_isWalking != value) {
+                    _isWalking = value;
+
+                    if (_isWalking)
+                        _player.OnStartWalking();
+                    else
+                        _player.OnStopWalking();
+                }
+            }
+        }
+
+        bool _isWalking = false;
 
         // Components
         Player _player;
@@ -32,7 +46,8 @@ namespace KeepTalkingForOrgansGame {
         }
 
         void FixedUpdate () {
-            IsWalking = false;
+
+            bool isWalkingThisFrame = false;
 
             if (_player.IsMovable) {
 
@@ -46,10 +61,12 @@ namespace KeepTalkingForOrgansGame {
                     Vector2 deltaPos = PhysicsTools2D.GetFinalDeltaPosAwaringObstacle(_rigidbody, _controlManager.MoveDirection, speed * Time.fixedDeltaTime * Time.timeScale, moveCollisionLayerMask);
                     _rigidbody.MovePosition(_rigidbody.position + deltaPos);
 
-                    IsWalking = true;
+                    isWalkingThisFrame = true;
                 }
 
             }
+
+            IsWalking = isWalkingThisFrame;
         }
 
     }

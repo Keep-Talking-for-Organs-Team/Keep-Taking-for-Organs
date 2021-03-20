@@ -45,38 +45,6 @@ namespace KeepTalkingForOrgansGame {
 
 
         public ActionState CurrentActionState {get; private set;} = ActionState.None;
-        public AttitudeState CurrentAttitudeState {
-            get => _attitudeState;
-            set {
-                if (_attitudeState != value) {
-
-                    if (value == AttitudeState.Standing) {
-                        OnStood();
-                    }
-                    else if (value == AttitudeState.Crouching) {
-                        OnCrouched();
-                    }
-
-                    _attitudeState = value;
-                }
-            }
-        }
-        public VisibilityState CurrentVisiblityState {
-            get => _visibilityState;
-            set {
-                if (_visibilityState != value) {
-
-                    if (value == VisibilityState.Visible) {
-                        OnBecomeVisible();
-                    }
-                    else if (value == VisibilityState.Invisible) {
-                        OnBecomeInvisible();
-                    }
-
-                    _visibilityState = value;
-                }
-            }
-        }
 
 
         AttitudeState _attitudeState = AttitudeState.Standing;
@@ -100,24 +68,6 @@ namespace KeepTalkingForOrgansGame {
         }
 
         void Update () {
-
-            // Attitude State
-            if (_player.IsCrouching) {
-                CurrentAttitudeState = AttitudeState.Crouching;
-            }
-            else {
-                CurrentAttitudeState = AttitudeState.Standing;
-            }
-
-            // Visibility State
-            foreach (var sr in bodySRs) {
-                if (_player.IsHiding) {
-                    CurrentVisiblityState = VisibilityState.Invisible;
-                }
-                else {
-                    CurrentVisiblityState = VisibilityState.Visible;
-                }
-            }
 
 
             // Attackable Instructions
@@ -162,32 +112,22 @@ namespace KeepTalkingForOrgansGame {
         }
 
 
-        void OnStood () {
+        public void OnStartWalking () {
 
         }
 
-        void OnCrouched () {
-
+        public void OnStopWalking () {
+            
         }
 
-        void OnStartWalking () {
-            AkSoundEngine.PostEvent("Play_Player_Footstep" , gameObject);
-            Debug.Log("������");
-        }
-
-        void OnStopWalking () {
-            AkSoundEngine.PostEvent("Stop_Player_Footstep" , gameObject);
-            Debug.Log("������");
-        }
-
-        void OnBecomeVisible () {
-            foreach (var sr in bodySRs)
-                sr.SetOpacity(1f);
-        }
-
-        void OnBecomeInvisible () {
+        public void OnStartHiding () {
             foreach (var sr in bodySRs)
                 sr.SetOpacity(hidingOpacity);
+        }
+
+        public void OnStopHiding () {
+            foreach (var sr in bodySRs)
+                sr.SetOpacity(1f);
         }
 
     }

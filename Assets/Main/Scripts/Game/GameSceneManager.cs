@@ -57,6 +57,9 @@ namespace KeepTalkingForOrgansGame {
             operatorManager    = GetComponent<OperatorManager>();
             mapViewerManager   = GetComponent<MapViewerManager>();
             _secretCodeHandlers = GetComponents<SecretCodeHandler>();
+
+            AkSoundEngine.SetState("Game", "Normal");
+            AkSoundEngine.SetState("Music_Stage", "lv" + LevelSelector.currentLevelNumber);
         }
 
         void Start () {
@@ -83,9 +86,6 @@ namespace KeepTalkingForOrgansGame {
                     operatorManager.cam.gameObject.SetActive(!isMapViewer);
                 }
             }
-
-            AkSoundEngine.SetState("Game", "Normal");
-            AkSoundEngine.SetState("Music_Stage", "lv" + LevelSelector.currentLevelNumber);
 
             GlobalManager.current.ClearLoadingDisplay();
         }
