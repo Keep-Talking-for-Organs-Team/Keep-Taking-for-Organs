@@ -14,13 +14,6 @@
 										</Reference>
 									</ReferenceList>
 								</Action>
-								<Action Name="" ID="{EF5B0363-6437-4926-955B-53D1E4034B67}" ShortID="305934862">
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="MainTest" ID="{B5E3E4E5-F116-4352-B23C-6B6DA9BC4DAB}" WorkUnitID="{A9184E8C-7D9E-4DE0-96BD-87B0AAAB6346}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="Play_PlayerBStart" ID="{69B78B82-8313-4528-A1F9-5C6BC4A1904E}">
@@ -207,7 +200,7 @@
 								<Action Name="" ID="{F004ABFC-A7D4-4211-9932-4B99A2302214}" ShortID="394086951">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Player_Death" ID="{CA49E89E-778D-4349-B02D-57564E2CD283}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+											<ObjectRef Name="Robot_Death" ID="{434330D9-E3A8-4167-99F2-B53B6CB6F8AC}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

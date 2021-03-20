@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="4235002493">
+		<SoundBank Id="1355168291" Language="SFX" Hash="2423953405">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -21,10 +21,10 @@
 				<GameParameter Id="4179668891" Name="Master_Volumn" ObjectPath="\Game Parameters\Default Work Unit\Master_Volumn"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="4072029455" Language="SFX" Hash="1411933092">
-			<ObjectPath>\SoundBanks\Default Work Unit\New_SoundBank</ObjectPath>
-			<ShortName>New_SoundBank</ShortName>
-			<Path>New_SoundBank.bnk</Path>
+		<SoundBank Id="1661994096" Language="SFX" Hash="3026739835">
+			<ObjectPath>\SoundBanks\Default Work Unit\SoundBank</ObjectPath>
+			<ShortName>SoundBank</ShortName>
+			<Path>SoundBank.bnk</Path>
 			<IncludedEvents>
 				<Event Id="1376857212" Name="Play_Ele_Trap" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Ele_Trap" DurationType="OneShot" DurationMin="2.900187" DurationMax="2.900187">
 					<IncludedMemoryFiles>
@@ -82,7 +82,14 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2932040671" Name="Play_Music" ObjectPath="\Events\Default Work Unit\Music\Play_Music" DurationType="Infinite"/>
+				<Event Id="2932040671" Name="Play_Music" ObjectPath="\Events\Default Work Unit\Music\Play_Music" DurationType="OneShot" DurationMin="221.631256" DurationMax="221.631256">
+					<IncludedMemoryFiles>
+						<File Id="630342208" Language="SFX">
+							<ShortName>Main.wav</ShortName>
+							<Path>SFX\Main_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="1835085974" Name="Play_Player_Death" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Player_Death" DurationType="OneShot" DurationMin="4.877228" DurationMax="4.877228">
 					<IncludedMemoryFiles>
 						<File Id="796556713" Language="SFX">
@@ -143,11 +150,11 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2426976433" Name="Play_Robot_Death" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_Death" DurationType="OneShot" DurationMin="4.877228" DurationMax="4.877228">
+				<Event Id="2426976433" Name="Play_Robot_Death" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_Death" DurationType="OneShot" DurationMin="1.887000" DurationMax="1.887000">
 					<IncludedMemoryFiles>
-						<File Id="796556713" Language="SFX">
-							<ShortName>icu.wav</ShortName>
-							<Path>SFX\icu_752E7539.wem</Path>
+						<File Id="508845521" Language="SFX">
+							<ShortName>robot wound.wav</ShortName>
+							<Path>SFX\robot wound_E111E852.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -211,17 +218,6 @@
 				<Event Id="2005445724" Name="Stop_Player_Footstep" ObjectPath="\Events\Default Work Unit\Game SFX\Stop_Player_Footstep" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="2672046660" Name="Stop_Robot_Move" ObjectPath="\Events\Default Work Unit\Game SFX\Stop_Robot_Move" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 			</IncludedEvents>
-			<StateGroups>
-				<StateGroup Id="4044678609" Name="Music_Stage" ObjectPath="\States\Default Work Unit\Music_Stage">
-					<States>
-						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\Music_Stage\None"/>
-						<State Id="964811740" Name="lv1" ObjectPath="\States\Default Work Unit\Music_Stage\lv1"/>
-						<State Id="964811741" Name="lv0" ObjectPath="\States\Default Work Unit\Music_Stage\lv0"/>
-						<State Id="964811743" Name="lv2" ObjectPath="\States\Default Work Unit\Music_Stage\lv2"/>
-						<State Id="3705726509" Name="Title" ObjectPath="\States\Default Work Unit\Music_Stage\Title"/>
-					</States>
-				</StateGroup>
-			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>

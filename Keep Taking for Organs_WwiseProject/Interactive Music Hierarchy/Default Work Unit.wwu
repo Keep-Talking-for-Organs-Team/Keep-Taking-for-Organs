@@ -112,50 +112,6 @@
 									</CueList>
 								</MusicSegment>
 							</ChildrenList>
-							<StateInfo>
-								<StateGroupList>
-									<StateGroupInfo>
-										<StateGroupRef Name="Music_Stage" ID="{52EC6893-623C-4504-A33C-2ACDED1C38F9}"/>
-									</StateGroupInfo>
-									<StateGroupInfo>
-										<StateGroupRef Name="Game" ID="{ECB9FD51-E4D5-449F-9060-E840229C8AD4}"/>
-									</StateGroupInfo>
-								</StateGroupList>
-								<CustomStateList>
-									<CustomState>
-										<StateRef Name="Title" ID="{9D5797EE-4913-4178-83E8-8D116A738B99}"/>
-										<CustomState Name="" ID="{56FC12E4-38FE-4877-81F7-C5D775D404E9}" ShortID="163106688"/>
-									</CustomState>
-									<CustomState>
-										<StateRef Name="Normal" ID="{EAFF19C5-2642-426C-85A8-992FC437DE40}"/>
-										<CustomState Name="" ID="{4173A6A8-CB97-4549-AAD4-8D2C4F6E7DA1}" ShortID="583674523"/>
-									</CustomState>
-									<CustomState>
-										<StateRef Name="Success" ID="{32F9272B-4162-4322-A38E-A1186110C458}"/>
-										<CustomState Name="" ID="{BFB58784-206C-4B17-B4D3-6EF4C8C182FE}" ShortID="206362033"/>
-									</CustomState>
-									<CustomState>
-										<StateRef Name="lv1" ID="{3FF138D2-CBC8-4381-A892-D762A8CDD246}"/>
-										<CustomState Name="" ID="{7E9C442E-E85B-4B88-AA78-6983584B424C}" ShortID="600909482"/>
-									</CustomState>
-									<CustomState>
-										<StateRef Name="lv0" ID="{93D63C32-0F8E-4B38-967A-280EDDDAF732}"/>
-										<CustomState Name="" ID="{EBD37162-7C59-4CD6-85CC-0D7AB6805A5D}" ShortID="699371304"/>
-									</CustomState>
-									<CustomState>
-										<StateRef Name="NotInGame" ID="{45F534E9-849C-4BC6-960D-BA24AA772227}"/>
-										<CustomState Name="" ID="{2E5B0627-1BEC-4132-961D-169F74BFA1C3}" ShortID="611259241"/>
-									</CustomState>
-									<CustomState>
-										<StateRef Name="lv2" ID="{E9092ECF-4B3A-4C4F-B02F-E8D335684BD9}"/>
-										<CustomState Name="" ID="{564B3291-B9FF-4EEA-AD95-C30D845B7E7F}" ShortID="83362420"/>
-									</CustomState>
-									<CustomState>
-										<StateRef Name="Over" ID="{8B456402-F0CA-4F78-87ED-A9F1401AD6C0}"/>
-										<CustomState Name="" ID="{BFDB2214-BEEA-411D-AA30-824706C85839}" ShortID="272432203"/>
-									</CustomState>
-								</CustomStateList>
-							</StateInfo>
 							<TransitionList>
 								<MusicTransition Name="Root" ID="{FD310031-A83D-4BC3-A785-155129B990E1}">
 									<PropertyList>
@@ -200,31 +156,6 @@
 							</Playlist>
 						</MusicPlaylistContainer>
 					</ChildrenList>
-					<StateInfo>
-						<StateGroupList>
-							<StateGroupInfo>
-								<StateGroupRef Name="Music_Stage" ID="{52EC6893-623C-4504-A33C-2ACDED1C38F9}"/>
-							</StateGroupInfo>
-						</StateGroupList>
-						<CustomStateList>
-							<CustomState>
-								<StateRef Name="Title" ID="{9D5797EE-4913-4178-83E8-8D116A738B99}"/>
-								<CustomState Name="" ID="{8BDC45C3-40C1-43F3-B322-506ABD5D5A75}" ShortID="764556513"/>
-							</CustomState>
-							<CustomState>
-								<StateRef Name="lv1" ID="{3FF138D2-CBC8-4381-A892-D762A8CDD246}"/>
-								<CustomState Name="" ID="{65F7ED62-B3F9-42F3-B523-BB1446042D30}" ShortID="117450959"/>
-							</CustomState>
-							<CustomState>
-								<StateRef Name="lv0" ID="{93D63C32-0F8E-4B38-967A-280EDDDAF732}"/>
-								<CustomState Name="" ID="{82DAE400-B204-4C8F-B916-F5C327DE6623}" ShortID="608340771"/>
-							</CustomState>
-							<CustomState>
-								<StateRef Name="lv2" ID="{E9092ECF-4B3A-4C4F-B02F-E8D335684BD9}"/>
-								<CustomState Name="" ID="{EFECAE90-A097-4965-901D-77BAD2F309B8}" ShortID="941325115"/>
-							</CustomState>
-						</CustomStateList>
-					</StateInfo>
 					<TransitionList>
 						<MusicTransition Name="Root" ID="{248B7430-B1AB-4DD7-ABF4-B3D4E7CEBB0F}">
 							<PropertyList>
@@ -238,9 +169,6 @@
 							<TransitionInfo/>
 						</MusicTransition>
 					</TransitionList>
-					<ArgumentList>
-						<ArgumentRef Name="Music_Stage" ID="{52EC6893-623C-4504-A33C-2ACDED1C38F9}"/>
-					</ArgumentList>
 				</MusicSwitchContainer>
 			</ChildrenList>
 		</WorkUnit>
