@@ -35,8 +35,10 @@ namespace KeepTalkingForOrgansGame {
 
         public string CurrentLevelName => "Level " + LevelSelector.currentLevelNumber;
         public bool   IsInTransition {get; private set;} = false;
+        public bool   IsMouseMoving  {get; private set;} = false;
 
 
+        Vector2 _prevMousePosition = Vector2.zero;
         Tween _blackScreenOverlayAnim;
 
         protected override void Awake () {
@@ -54,6 +56,19 @@ namespace KeepTalkingForOrgansGame {
             }
 
             AssignAudioSettings();
+        }
+
+        void Update () {
+            Vector2 currentMousePos = Input.mousePosition;
+
+            if (_prevMousePosition == currentMousePos) {
+                IsMouseMoving = false;
+            }
+            else {
+                IsMouseMoving = true;
+            }
+
+            _prevMousePosition = currentMousePos;
         }
 
         void OnApplicationQuit () {

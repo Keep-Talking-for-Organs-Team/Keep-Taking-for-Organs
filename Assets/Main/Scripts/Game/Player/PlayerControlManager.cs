@@ -32,10 +32,21 @@ namespace KeepTalkingForOrgansGame {
             else {
 
                 if (_player.IsFacingControllable) {
-                    _player.SetFacing(DirToMouse);
+
+                    if (GlobalManager.current.IsMouseMoving) {
+                        _player.SetFacing(DirToMouse);
+                    }
+                    else {
+                        Vector2 facingDirFromGamepad = GameSceneManager.current.operatorManager.cam.transform.rotation * (Vector2.right * Input.GetAxis("Horizontal2") + Vector2.down * Input.GetAxis("Vertical2")).normalized;
+
+                        if (facingDirFromGamepad != Vector2.zero) {
+                            _player.SetFacing(facingDirFromGamepad);
+                        }
+                    }
+
                 }
 
-                MoveDirection = GameSceneManager.current.operatorManager.cam.transform.rotation * (SimpleInput.GetAxisRaw("Horizontal") * Vector2.right + SimpleInput.GetAxisRaw("Vertical") * Vector2.up).normalized;
+                MoveDirection = GameSceneManager.current.operatorManager.cam.transform.rotation * (Vector2.right * Input.GetAxisRaw("Horizontal") + Vector2.up * Input.GetAxisRaw("Vertical")).normalized;
 
 
                 // === temp ===
