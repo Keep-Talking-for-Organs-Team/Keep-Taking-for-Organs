@@ -25,7 +25,7 @@
 											</Point>
 											<Point>
 												<XPos>100</XPos>
-												<YPos>0</YPos>
+												<YPos>12</YPos>
 												<Flags>37</Flags>
 											</Point>
 										</PointList>
@@ -62,7 +62,7 @@
 													</Point>
 													<Point>
 														<XPos>100</XPos>
-														<YPos>0</YPos>
+														<YPos>12</YPos>
 														<Flags>37</Flags>
 													</Point>
 												</PointList>
@@ -70,6 +70,7 @@
 										</RTPC>
 									</RTPCList>
 								</Property>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 							</PropertyList>
 						</Bus>
 						<Bus Name="Music" ID="{18903E29-E8BF-4F69-ACFE-CDEB5AFB24E8}">
@@ -94,7 +95,7 @@
 													</Point>
 													<Point>
 														<XPos>100</XPos>
-														<YPos>0</YPos>
+														<YPos>12</YPos>
 														<Flags>37</Flags>
 													</Point>
 												</PointList>
@@ -102,6 +103,7 @@
 										</RTPC>
 									</RTPCList>
 								</Property>
+								<Property Name="UseGameAuxSends" Type="bool" Value="True"/>
 							</PropertyList>
 						</Bus>
 					</ChildrenList>
