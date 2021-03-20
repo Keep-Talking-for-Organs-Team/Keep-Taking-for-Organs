@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="3087805082">
+		<SoundBank Id="1355168291" Language="SFX" Hash="3567628992">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -21,10 +21,10 @@
 				<GameParameter Id="4179668891" Name="Master_Volumn" ObjectPath="\Game Parameters\Default Work Unit\Master_Volumn"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="4072029455" Language="SFX" Hash="2192569435">
-			<ObjectPath>\SoundBanks\Default Work Unit\New_SoundBank</ObjectPath>
-			<ShortName>New_SoundBank</ShortName>
-			<Path>New_SoundBank.bnk</Path>
+		<SoundBank Id="1661994096" Language="SFX" Hash="891357101">
+			<ObjectPath>\SoundBanks\Default Work Unit\SoundBank</ObjectPath>
+			<ShortName>SoundBank</ShortName>
+			<Path>SoundBank.bnk</Path>
 			<IncludedEvents>
 				<Event Id="1376857212" Name="Play_Ele_Trap" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Ele_Trap" DurationType="OneShot" DurationMin="2.900187" DurationMax="2.900187">
 					<IncludedMemoryFiles>
@@ -42,6 +42,30 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="2865869223" Name="Play_EnterDigit" ObjectPath="\Events\Default Work Unit\Game SFX\Play_EnterDigit" DurationType="OneShot" DurationMin="0.301859" DurationMax="0.301859">
+					<IncludedMemoryFiles>
+						<File Id="408860656" Language="SFX">
+							<ShortName>202530__kalisemorrison__scanner-beep.wav</ShortName>
+							<Path>SFX\202530__kalisemorrison__scanner-beep_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="702431094" Name="Play_ESCLeave" ObjectPath="\Events\Default Work Unit\UI SFX\Play_ESCLeave" DurationType="OneShot" DurationMin="0.170193" DurationMax="0.170193">
+					<IncludedMemoryFiles>
+						<File Id="549095969" Language="SFX">
+							<ShortName>BPLAY.wav</ShortName>
+							<Path>SFX\BPLAY_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1762940376" Name="Play_ESCMenu" ObjectPath="\Events\Default Work Unit\UI SFX\Play_ESCMenu" DurationType="OneShot" DurationMin="1.664354" DurationMax="1.664354">
+					<IncludedMemoryFiles>
+						<File Id="141084209" Language="SFX">
+							<ShortName>140510__blackstalian__click-sfx8.wav</ShortName>
+							<Path>SFX\140510__blackstalian__click-sfx8_08BEB9C2.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="2614804272" Name="Play_Get_Organ" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Get_Organ" DurationType="OneShot" DurationMin="4.000000" DurationMax="4.000000">
 					<IncludedMemoryFiles>
 						<File Id="751965073" Language="SFX">
@@ -50,7 +74,15 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1193902085" Name="Play_Main" ObjectPath="\Events\Default Work Unit\Music\Play_Main" DurationType="OneShot" DurationMin="221.631256" DurationMax="221.631256">
+				<Event Id="2784792558" Name="Play_LeaveMenu" ObjectPath="\Events\Default Work Unit\UI SFX\Play_LeaveMenu" DurationType="OneShot" DurationMin="1.500000" DurationMax="1.500000">
+					<IncludedMemoryFiles>
+						<File Id="141084209" Language="SFX">
+							<ShortName>140510__blackstalian__click-sfx8.wav</ShortName>
+							<Path>SFX\140510__blackstalian__click-sfx8_08BEB9C2.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2932040671" Name="Play_Music" ObjectPath="\Events\Default Work Unit\Music\Play_Music" DurationType="OneShot" DurationMin="221.631256" DurationMax="221.631256">
 					<IncludedMemoryFiles>
 						<File Id="630342208" Language="SFX">
 							<ShortName>Main.wav</ShortName>
@@ -58,7 +90,14 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1835085974" Name="Play_Player_Death" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Player_Death" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="1835085974" Name="Play_Player_Death" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Player_Death" DurationType="OneShot" DurationMin="4.877228" DurationMax="4.877228">
+					<IncludedMemoryFiles>
+						<File Id="796556713" Language="SFX">
+							<ShortName>icu.wav</ShortName>
+							<Path>SFX\icu_752E7539.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="1724675634" Name="Play_Player_Footstep" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Player_Footstep" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="208902186" Language="SFX">
@@ -87,7 +126,42 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2426976433" Name="Play_Robot_Death" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_Death" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
+				<Event Id="4238984918" Name="Play_PlayerAStart" ObjectPath="\Events\Default Work Unit\UI SFX\Play_PlayerAStart" DurationType="OneShot" DurationMin="221.631256" DurationMax="221.631256">
+					<IncludedMemoryFiles>
+						<File Id="373278986" Language="SFX">
+							<ShortName>540478__breviceps__metallic-file-select.wav</ShortName>
+							<Path>SFX\540478__breviceps__metallic-file-select_10C4C929.wem</Path>
+						</File>
+						<File Id="630342208" Language="SFX">
+							<ShortName>Main.wav</ShortName>
+							<Path>SFX\Main_D79FB2B7.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1003576063" Name="Play_PlayerBStart" ObjectPath="\Events\Default Work Unit\UI SFX\Play_PlayerBStart" DurationType="OneShot" DurationMin="0.713487" DurationMax="0.713487">
+					<IncludedMemoryFiles>
+						<File Id="824892366" Language="SFX">
+							<ShortName>tab.wav</ShortName>
+							<Path>SFX\tab_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="392107407" Name="Play_PressEnter" ObjectPath="\Events\Default Work Unit\Game SFX\Play_PressEnter" DurationType="OneShot" DurationMin="0.130794" DurationMax="0.130794">
+					<IncludedMemoryFiles>
+						<File Id="968583479" Language="SFX">
+							<ShortName>enter.wav</ShortName>
+							<Path>SFX\enter_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2426976433" Name="Play_Robot_Death" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_Death" DurationType="OneShot" DurationMin="4.877228" DurationMax="4.877228">
+					<IncludedMemoryFiles>
+						<File Id="796556713" Language="SFX">
+							<ShortName>icu.wav</ShortName>
+							<Path>SFX\icu_752E7539.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="3233088915" Name="Play_Robot_EleGun" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_EleGun" DurationType="OneShot" DurationMin="0.307459" DurationMax="0.307459">
 					<IncludedMemoryFiles>
 						<File Id="602434379" Language="SFX">
@@ -96,11 +170,11 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2371690888" Name="Play_Robot_LaserGun" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_LaserGun" DurationType="OneShot" DurationMin="0.860771" DurationMax="0.860771">
+				<Event Id="2371690888" Name="Play_Robot_LaserGun" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Robot_LaserGun" DurationType="OneShot" DurationMin="0.832771" DurationMax="0.832771">
 					<IncludedMemoryFiles>
 						<File Id="281290208" Language="SFX">
 							<ShortName>laser.wav</ShortName>
-							<Path>SFX\laser_167E6DA5.wem</Path>
+							<Path>SFX\laser_036E6FE0.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -112,6 +186,22 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="2964532456" Name="Play_SelectStage" ObjectPath="\Events\Default Work Unit\UI SFX\Play_SelectStage" DurationType="OneShot" DurationMin="0.226580" DurationMax="0.226580">
+					<IncludedMemoryFiles>
+						<File Id="373278986" Language="SFX">
+							<ShortName>540478__breviceps__metallic-file-select.wav</ShortName>
+							<Path>SFX\540478__breviceps__metallic-file-select_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="2230670290" Name="Play_Start" ObjectPath="\Events\Default Work Unit\UI SFX\Play_Start" DurationType="OneShot" DurationMin="4.118813" DurationMax="4.118813">
+					<IncludedMemoryFiles>
+						<File Id="240279952" Language="SFX">
+							<ShortName>531511__eponn__menu-beep.wav</ShortName>
+							<Path>SFX\531511__eponn__menu-beep_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
 				<Event Id="882926292" Name="Play_Start_Hiding" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Start_Hiding" DurationType="OneShot" DurationMin="0.833650" DurationMax="0.833650">
 					<IncludedMemoryFiles>
 						<File Id="275523258" Language="SFX">
@@ -120,6 +210,15 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
+				<Event Id="2419250855" Name="Play_Tab" ObjectPath="\Events\Default Work Unit\UI SFX\Play_Tab" DurationType="OneShot" DurationMin="0.421798" DurationMax="0.421798">
+					<IncludedMemoryFiles>
+						<File Id="824892366" Language="SFX">
+							<ShortName>tab.wav</ShortName>
+							<Path>SFX\tab_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1217524018" Name="Stop_AllSFX" ObjectPath="\Events\Default Work Unit\Stop_AllSFX" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="2005445724" Name="Stop_Player_Footstep" ObjectPath="\Events\Default Work Unit\Game SFX\Stop_Player_Footstep" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="2672046660" Name="Stop_Robot_Move" ObjectPath="\Events\Default Work Unit\Game SFX\Stop_Robot_Move" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 			</IncludedEvents>
