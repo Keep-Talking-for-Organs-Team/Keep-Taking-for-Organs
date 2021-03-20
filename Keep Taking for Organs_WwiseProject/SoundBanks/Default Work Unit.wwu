@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{3CCE020B-AFF7-476B-9A07-04B2F7C4C423}" SchemaVersion="97">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{3CCE020B-AFF7-476B-9A07-04B2F7C4C423}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="SoundBank" ID="{6E958BCD-8D64-4581-B4C5-74222042D50B}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Play_Player_Death" ID="{E5898925-8CE7-41B8-B2C4-E3FEBA8709CA}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_Player_Footstep" ID="{BE56C8F9-ED17-4225-95AD-4D345CFD4154}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Start" ID="{DA2CEDF2-1B84-424A-B330-D31EEA4C7BF3}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Get_Organ" ID="{60352DBC-1B41-449F-9E55-1982F31B68D7}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Tab" ID="{178BAB6A-58E1-44CA-A4C1-DE8CDAD1B933}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_End_Hiding" ID="{9C92DD13-22D9-44E1-9392-C0EAFAEF08F7}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_PlayerBStart" ID="{69B78B82-8313-4528-A1F9-5C6BC4A1904E}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_PlayerAStart" ID="{748A7494-F85B-454E-BC51-A00A52BC492A}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Robot_Move" ID="{489EC087-6B22-4560-9913-2C6B29C75916}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Music" ID="{29F5F19B-2508-45EA-B8B8-1F1FBEC2F286}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_EnterDigit" ID="{BF79481A-6EB8-466D-967F-C86AB592CD6A}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Robot_EleGun" ID="{DDE4B907-857D-4720-8A35-76DA04593BE3}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_Robot_Move" ID="{586C078C-1617-4775-9AE4-3F9778A33DA7}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Player_Gunshot" ID="{DE47D6F8-EC91-479E-83E4-59652D5CB742}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_SelectStage" ID="{A6B5CC96-8745-4850-AA5B-2BDC8BD335A5}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Robot_LaserGun" ID="{50902247-EF21-48BE-8C7C-FF1AA997AFB3}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_LeaveMenu" ID="{336EEE00-6940-4936-9F28-ABAFC56B2542}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Stop_AllSFX" ID="{532D9E27-13EE-49C2-8492-B0FDD8EB9220}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_PressEnter" ID="{E3A63225-0859-49D2-8AD5-2BBEA428CD50}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Robot_Death" ID="{7C2A7D21-6192-4AD2-AF86-B8640CF96093}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Player_Footstep" ID="{2BD010AB-B67B-4B93-BA17-3C21DFDC4D58}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Start_Hiding" ID="{ECB4E5B5-BF0F-4C62-BB92-138C40C63AE4}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Player_Saber" ID="{7351B90B-81C7-4DBE-BDD2-FEAECD3719F2}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_ESCLeave" ID="{3BFC512C-C626-4E7A-BD5C-DED727FD6881}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_ESCMenu" ID="{332FA847-5148-4EBF-9A10-8634DF64DFC9}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Ele_Trap" ID="{75C8E2E0-34FD-4EF5-8C7B-444C59ECF6B2}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

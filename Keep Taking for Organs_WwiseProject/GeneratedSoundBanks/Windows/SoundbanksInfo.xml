@@ -21,7 +21,7 @@
 				<GameParameter Id="4179668891" Name="Master_Volumn" ObjectPath="\Game Parameters\Default Work Unit\Master_Volumn"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="1661994096" Language="SFX" Hash="439071898">
+		<SoundBank Id="1661994096" Language="SFX" Hash="3515694609">
 			<ObjectPath>\SoundBanks\Default Work Unit\SoundBank</ObjectPath>
 			<ShortName>SoundBank</ShortName>
 			<Path>SoundBank.bnk</Path>
@@ -100,9 +100,9 @@
 				</Event>
 				<Event Id="1724675634" Name="Play_Player_Footstep" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Player_Footstep" DurationType="Infinite">
 					<IncludedMemoryFiles>
-						<File Id="208902186" Language="SFX">
-							<ShortName>ppl move.wav</ShortName>
-							<Path>SFX\ppl move_D983C871.wem</Path>
+						<File Id="329162039" Language="SFX">
+							<ShortName>FEETSTEP.wav</ShortName>
+							<Path>SFX\FEETSTEP_BD8AA4E4.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
