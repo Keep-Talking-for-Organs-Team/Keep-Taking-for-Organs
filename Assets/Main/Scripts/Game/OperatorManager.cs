@@ -114,10 +114,13 @@ namespace KeepTalkingForOrgansGame {
 
         void Update () {
 
-            UpdateTimerDisplay();
+            if (IsMissionOnGoing) {
+                
+                UpdateTimerDisplay();
 
-            if (IsMissionOnGoing && timeLimit > 0 && MissionTimeRemained <= 0) {
-                MissionFailed(FailedReason.RunOutOfTime);
+                if (timeLimit > 0 && MissionTimeRemained <= 0) {
+                    MissionFailed(FailedReason.RunOutOfTime);
+                }
             }
 
 
@@ -145,8 +148,6 @@ namespace KeepTalkingForOrgansGame {
         public void MissionSuccess () {
             IsMissionEnded = true;
             PlayMissionEndedOverlayFX(true);
-
-            Time.timeScale = 0f;
 
             AkSoundEngine.SetState("Game", "Success");
         }

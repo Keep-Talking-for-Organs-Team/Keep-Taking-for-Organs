@@ -46,10 +46,6 @@ namespace KeepTalkingForOrgansGame {
 
         public ActionState CurrentActionState {get; private set;} = ActionState.None;
 
-
-        AttitudeState _attitudeState = AttitudeState.Standing;
-        VisibilityState _visibilityState = VisibilityState.Visible;
-
         // Components
         Player _player;
         PlayerAttackManager _attackManager;
@@ -117,7 +113,7 @@ namespace KeepTalkingForOrgansGame {
         }
 
         public void OnStopWalking () {
-            
+
         }
 
         public void OnStartHiding () {

@@ -88,6 +88,7 @@ namespace KeepTalkingForOrgansGame {
                 if (GameSceneManager.current.currentTerrain.IsInTrapArea(transform.position)) {
                     if (_currentTrapFX == null)
                         _currentTrapFX = StartCoroutine(TrapFX());
+
                     Die(OperatorManager.FailedReason.Trap);
                 }
 

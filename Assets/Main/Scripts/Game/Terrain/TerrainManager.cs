@@ -18,14 +18,12 @@ namespace KeepTalkingForOrgansGame {
         Collider2D[] _hidingAreaColliders;
 
 
+        void Start () {
 
-        void Awake () {
             _trapAreaTilemap = trapArea.GetComponent<Tilemap>();
             _trapAreaColliders = trapArea.GetComponents<Collider2D>();
             _hidingAreaColliders = hidingArea.GetComponents<Collider2D>();
-        }
 
-        void Start () {
             if (!GlobalManager.current.isMapViewer) {
                 if (_trapAreaTilemap != null) {
                     _trapAreaTilemap.SetOpacity(0f);
@@ -35,11 +33,11 @@ namespace KeepTalkingForOrgansGame {
 
 
         public bool IsInTrapArea (Vector2 pos) {
-            return IsInCollidersBounds(pos, _trapAreaColliders);
+            return IsInCollidersBounds(pos, _trapAreaColliders ?? trapArea.GetComponents<Collider2D>());
         }
 
         public bool IsInHidingArea (Vector2 pos) {
-            return IsInCollidersBounds(pos, _hidingAreaColliders);
+            return IsInCollidersBounds(pos, _hidingAreaColliders ?? hidingArea.GetComponents<Collider2D>());
         }
 
 

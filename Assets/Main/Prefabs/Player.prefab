@@ -718,7 +718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea659b443ab5e1947b960ece59b850b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 2.7
+  walkSpeed: 1.75
   crouchSpeed: 1.2
   moveCollisionLayerMask:
     serializedVersion: 2

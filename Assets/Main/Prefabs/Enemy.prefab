@@ -427,8 +427,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInvincible: 0
   isPatrollingEnemy: 0
-  awareRateIncreaseSpeed: 0.87
-  awareRateDecreaseSpeed: 0.87
+  awareRateIncreaseSpeed: 2.5
+  awareRateDecreaseSpeed: 0.5
   defaultDir: {x: 0, y: 1}
   sr: {fileID: 4423601871196682348}
   visionSpan: {fileID: 283753608623382913}

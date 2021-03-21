@@ -605,7 +605,7 @@ PrefabInstance:
     - target: {fileID: 3880245682808395220, guid: 0601c10befdc25344816a4dbce5b7605,
         type: 3}
       propertyPath: isMapViewer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3880245682808395221, guid: 0601c10befdc25344816a4dbce5b7605,
         type: 3}
@@ -22324,6 +22324,11 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[755].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 6058379984078699871, guid: e531d48ca1040f94e98290af63b8bfe5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6373732399905433271, guid: e531d48ca1040f94e98290af63b8bfe5,
         type: 3}
       propertyPath: m_Enabled
@@ -32093,16 +32098,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6373732401317964204, guid: e531d48ca1040f94e98290af63b8bfe5,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6373732401317964204, guid: e531d48ca1040f94e98290af63b8bfe5,
-        type: 3}
-      propertyPath: GenerateAtStart
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6373732401317964206, guid: e531d48ca1040f94e98290af63b8bfe5,
         type: 3}
       propertyPath: m_Tiles.Array.size
@@ -32701,6 +32696,11 @@ PrefabInstance:
       value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 6568613407368652516, guid: e531d48ca1040f94e98290af63b8bfe5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6621695881789230931, guid: e531d48ca1040f94e98290af63b8bfe5,
         type: 3}
       propertyPath: m_IsActive
       value: 0

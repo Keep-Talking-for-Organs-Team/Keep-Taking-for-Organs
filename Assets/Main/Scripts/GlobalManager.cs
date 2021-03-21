@@ -14,7 +14,12 @@ namespace KeepTalkingForOrgansGame {
         const string menuSceneName = "Menu Scene";
 
         public const float minDeltaAngle = 0.187f;
-
+        public static class PlayerPrefsKeys {
+            public const string MASTER_VOLUME = "MasterVol";
+            public const string SFX_VOLUME    = "SFXVol";
+            public const string MUSIC_VOLUME  = "MusicVol";
+            public const string LEVEL_NUMBER_SELECTED = "LevelNum";
+        }
 
         public bool isMapViewer = false;
 
@@ -47,6 +52,15 @@ namespace KeepTalkingForOrgansGame {
 
             DOTween.Init();
             DOTween.showUnityEditorReport = true;
+
+
+            // Load PlayerPrefs
+            if (PlayerPrefs.HasKey(PlayerPrefsKeys.MASTER_VOLUME))
+                audioSettings.masterVolume = PlayerPrefs.GetFloat(PlayerPrefsKeys.MASTER_VOLUME);
+            if (PlayerPrefs.HasKey(PlayerPrefsKeys.SFX_VOLUME))
+                audioSettings.sfxVolume = PlayerPrefs.GetFloat(PlayerPrefsKeys.SFX_VOLUME);
+            if (PlayerPrefs.HasKey(PlayerPrefsKeys.MUSIC_VOLUME))
+                audioSettings.musicVolume = PlayerPrefs.GetFloat(PlayerPrefsKeys.MUSIC_VOLUME);
         }
 
         void Start () {
@@ -75,36 +89,6 @@ namespace KeepTalkingForOrgansGame {
             print("[Vision Span] Vision Spans Max Edge Resolve Iterations Count is " + visionSpansMaxEdgesResolveIterationsSoFar);
         }
 
-
-
-        public static void StartLevel (string levelName) {
-            if (current == null)
-                return;
-
-            current.loadingDisplay.SetActive(true);
-            SceneManager.LoadScene(levelName);
-        }
-
-        public static void ReloadScene () {
-            current.loadingDisplay.SetActive(true);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
-
-        public static void BackToMenuScene () {
-            current.loadingDisplay.SetActive(true);
-            SceneManager.LoadScene(menuSceneName);
-        }
-
-        public static void AssignAudioSettings (int index = -1) {
-            AudioSettings settings = GlobalManager.current.audioSettings;
-
-            if (index == 0 || index == -1)
-                AkSoundEngine.SetRTPCValue("Master_Volumn", settings.masterVolume * 100);
-            if (index == 1 || index == -1)
-                AkSoundEngine.SetRTPCValue("SFX_Volumn", settings.sfxVolume * 100);
-            if (index == 2 || index == -1)
-                AkSoundEngine.SetRTPCValue("Music_Volumn", settings.musicVolume * 100);
-        }
 
         public void FadeScreenOut (TweenCallback endCallback = null) {
             IsInTransition = true;
@@ -144,6 +128,50 @@ namespace KeepTalkingForOrgansGame {
             AkSoundEngine.PostEvent("Stop_AllSFX" , gameObject);
             Application.Quit();
         }
+
+
+
+        public static void StartLevel (string levelName) {
+            if (current == null)
+                return;
+
+            current.loadingDisplay.SetActive(true);
+            SceneManager.LoadScene(levelName);
+        }
+
+        public static void ReloadScene () {
+            current.loadingDisplay.SetActive(true);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        public static void BackToMenuScene () {
+            current.loadingDisplay.SetActive(true);
+            SceneManager.LoadScene(menuSceneName);
+        }
+
+        public static void AssignAudioSettings (int index = -1) {
+            AudioSettings settings = GlobalManager.current.audioSettings;
+
+            SetPlayerPrefsAudioSettings(settings, index);
+
+            if (index == 0 || index == -1)
+                AkSoundEngine.SetRTPCValue("Master_Volumn", settings.masterVolume * 100);
+            if (index == 1 || index == -1)
+                AkSoundEngine.SetRTPCValue("SFX_Volumn", settings.sfxVolume * 100);
+            if (index == 2 || index == -1)
+                AkSoundEngine.SetRTPCValue("Music_Volumn", settings.musicVolume * 100);
+        }
+
+
+        public static void SetPlayerPrefsAudioSettings (AudioSettings settings, int index = -1) {
+            if (index == 0 || index == -1)
+                PlayerPrefs.SetFloat(PlayerPrefsKeys.MASTER_VOLUME, settings.masterVolume);
+            if (index == 1 || index == -1)
+                PlayerPrefs.SetFloat(PlayerPrefsKeys.SFX_VOLUME, settings.sfxVolume);
+            if (index == 2 || index == -1)
+                PlayerPrefs.SetFloat(PlayerPrefsKeys.MUSIC_VOLUME, settings.musicVolume);
+        }
+
 
     }
 

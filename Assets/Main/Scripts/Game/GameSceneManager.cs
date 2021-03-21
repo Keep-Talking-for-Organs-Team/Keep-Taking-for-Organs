@@ -19,7 +19,6 @@ namespace KeepTalkingForOrgansGame {
         public bool  showAllEnemies = false;
 
         [Header("Properties")]
-        public float timeLimit = -1f;
         public float attackedOverlayFXDuration = 1f;
         public Ease  attackedOverlayFXEase;
 

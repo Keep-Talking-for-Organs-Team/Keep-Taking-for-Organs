@@ -16,6 +16,9 @@ namespace KeepTalkingForOrgansGame {
 
 
         void Awake () {
+            if (PlayerPrefs.HasKey(GlobalManager.PlayerPrefsKeys.LEVEL_NUMBER_SELECTED))
+                currentLevelNumber = PlayerPrefs.GetInt(GlobalManager.PlayerPrefsKeys.LEVEL_NUMBER_SELECTED);
+
             UpdateDisplay();
         }
 
@@ -25,6 +28,8 @@ namespace KeepTalkingForOrgansGame {
 
         public void SelectLevel (int levelNumber) {
             currentLevelNumber = levelNumber;
+            PlayerPrefs.SetInt(GlobalManager.PlayerPrefsKeys.LEVEL_NUMBER_SELECTED, levelNumber);
+
             UpdateDisplay();
 
             AkSoundEngine.PostEvent("Play_SelectStage" , gameObject); // this means "Select Level"

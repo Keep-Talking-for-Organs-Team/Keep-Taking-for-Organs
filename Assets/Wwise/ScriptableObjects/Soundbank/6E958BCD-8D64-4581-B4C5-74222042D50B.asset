@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2eb2129a7ddc1ac4196df6be8c411231, type: 3}
-  m_Name: 8E8F3C03-360B-4084-B273-17A98E41ECFB
+  m_Name: 6E958BCD-8D64-4581-B4C5-74222042D50B
   m_EditorClassIdentifier: 
   objectName: SoundBank
   id: 1661994096
-  guid: 8E8F3C03-360B-4084-B273-17A98E41ECFB
+  guid: 6E958BCD-8D64-4581-B4C5-74222042D50B
