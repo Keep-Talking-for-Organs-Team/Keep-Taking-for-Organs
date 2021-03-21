@@ -23,6 +23,7 @@ namespace KeepTalkingForOrgansGame {
         public VisionSpan.SpanProps walkVisionSpanProps;
         public VisionSpan.SpanProps crouchVisionSpanProps;
         public float                lightningFXDuration = 1f;
+        public float                maxAngularSpeed = 180f;
 
         public Vector2 initDir = Vector2.up;
 
@@ -146,9 +147,15 @@ namespace KeepTalkingForOrgansGame {
         }
 
 
-        public void SetFacing (Vector2 dir) {
-            transform.rotation = Quaternion.FromToRotation(initDir, dir);
-            visionSpan.SetFacingDirection(dir);
+        public void SetFacing (Vector2 dir, float timestep) {
+            float ToDestAngle = Vector2.SignedAngle(FacingDirection, dir);
+            float movedAngleMagnitude = Mathf.Min(Mathf.Abs(ToDestAngle), maxAngularSpeed * timestep);
+
+            transform.rotation = Quaternion.AngleAxis(Mathf.Sign(ToDestAngle) * movedAngleMagnitude, Vector3.forward) * transform.rotation;
+            visionSpan.SetFacingDirection(FacingDirection);
+
+            // transform.rotation = Quaternion.FromToRotation(initDir, dir);
+            // visionSpan.SetFacingDirection(dir);
         }
 
         public void ToggleCrouch () {

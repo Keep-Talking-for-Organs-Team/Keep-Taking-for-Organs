@@ -14,6 +14,8 @@ namespace KeepTalkingForOrgansGame {
         public Vector2 MoveDirection {get; private set;}
 
 
+        bool _isUsingGamepad = false;
+
         // Components
         Player _player;
         PlayerAttackManager _attackManager;
@@ -33,16 +35,20 @@ namespace KeepTalkingForOrgansGame {
 
                 if (_player.IsFacingControllable) {
 
-                    if (GlobalManager.current.IsMouseMoving) {
-                        _player.SetFacing(DirToMouse);
+                    Vector2 facingDirFromGamepad = GameSceneManager.current.operatorManager.cam.transform.rotation * (Vector2.right * Input.GetAxis("Horizontal2") + Vector2.down * Input.GetAxis("Vertical2")).normalized;
+
+                    if (facingDirFromGamepad == Vector2.zero) {
+                        if (GlobalManager.current.IsMouseMoving)
+                            _isUsingGamepad = false;
                     }
                     else {
-                        Vector2 facingDirFromGamepad = GameSceneManager.current.operatorManager.cam.transform.rotation * (Vector2.right * Input.GetAxis("Horizontal2") + Vector2.down * Input.GetAxis("Vertical2")).normalized;
-
-                        if (facingDirFromGamepad != Vector2.zero) {
-                            _player.SetFacing(facingDirFromGamepad);
-                        }
+                        _isUsingGamepad = true;
                     }
+
+                    if (_isUsingGamepad)
+                        _player.SetFacing(facingDirFromGamepad, Time.deltaTime);
+                    else
+                        _player.SetFacing(DirToMouse, Time.deltaTime);
 
                 }
 
