@@ -26,8 +26,11 @@ namespace KeepTalkingForOrgansGame {
 
         [Header("Properties")]
         public float timeLimit = -1f;
+        public int[] differentBulletsAmountIntervalDividers;
         public float attackedOverlayFXDuration = 1f;
         public Ease  attackedOverlayFXEase;
+        public float killedEnemyOverlayFXDuration = 1f;
+        public Ease  killedEnemyOverlayFXEase;
         public FailedReasonMessages failedReasonMessages;
 
         [Header("REFS")]
@@ -36,6 +39,7 @@ namespace KeepTalkingForOrgansGame {
         public SpriteRenderer fogSR;
         public HUDManager     hudManager;
 
+        public GameObject     goalIcon;
         public GameObject     switchableInfoPanel;
         public GameObject     missionSuccessMessages;
         public GameObject     missionFailedMessages;
@@ -43,6 +47,7 @@ namespace KeepTalkingForOrgansGame {
         public SeedDisplay    seedDisplay;
         // public Text           seedInfoText;
         public CanvasGroup    attackedOverlayFX;
+        public CanvasGroup    killedEnemyOverlayFX;
         public CanvasGroup    meleeAttackOverlayFX;
         public CanvasGroup    rangedAttackOverlayFX;
         public CanvasGroup    outOfAmmoOverlayFX;
@@ -58,6 +63,15 @@ namespace KeepTalkingForOrgansGame {
         public float MissionTimePassed => !IsMissionStarted ? 0f : Time.time - _missionStartTime;
         public float MissionTimeRemained => timeLimit - MissionTimePassed;
 
+        public Sprite[] EnemyFlyingAnimSprites {
+            get {
+                if (_enemyFlyingAnimSprites == null) {
+                    _enemyFlyingAnimSprites = LoadEnemyFlyingAnimSprites();
+                }
+                return _enemyFlyingAnimSprites;
+            }
+        }
+
         public int RandomSeed {
             get => _randSeed;
             set {
@@ -72,6 +86,7 @@ namespace KeepTalkingForOrgansGame {
 
         int   _randSeed = -1;
         float _missionStartTime = 0f;
+        Sprite[] _enemyFlyingAnimSprites = null;
 
         // Components
         GameSceneManager _gameSceneManager;
@@ -80,7 +95,13 @@ namespace KeepTalkingForOrgansGame {
         void Awake () {
             _gameSceneManager = GetComponent<GameSceneManager>();
 
+            _enemyFlyingAnimSprites = LoadEnemyFlyingAnimSprites();
+
+            if (goalIcon.activeSelf)
+                goalIcon.SetActive(false);
+
             attackedOverlayFX.alpha = 0f;
+            killedEnemyOverlayFX.alpha = 0f;
             meleeAttackOverlayFX.alpha = 0f;
             rangedAttackOverlayFX.alpha = 0f;
             outOfAmmoOverlayFX.alpha = 0f;
@@ -115,7 +136,7 @@ namespace KeepTalkingForOrgansGame {
         void Update () {
 
             if (IsMissionOnGoing) {
-                
+
                 UpdateTimerDisplay();
 
                 if (timeLimit > 0 && MissionTimeRemained <= 0) {
@@ -169,6 +190,12 @@ namespace KeepTalkingForOrgansGame {
                 .SetEase(attackedOverlayFXEase);
         }
 
+        public void PlayKilledEnemyOverlayFX () {
+            killedEnemyOverlayFX.DOFade(0f, killedEnemyOverlayFXDuration)
+                .From(1f)
+                .SetEase(killedEnemyOverlayFXEase);
+        }
+
         public void PlayMeleeAttackOverlayFX () {
             meleeAttackOverlayFX.DOFade(0f, attackedOverlayFXDuration)
                 .From(1f)
@@ -197,6 +224,10 @@ namespace KeepTalkingForOrgansGame {
                 missionFailedMessages.SetActive(true);
                 print("FAILED");
             }
+        }
+
+        public void OnPlayerGetGoal () {
+            goalIcon.SetActive(true);
         }
 
         public void RemoveFog () {
@@ -229,6 +260,10 @@ namespace KeepTalkingForOrgansGame {
                     hudManager.UpdateTimerDisplay(MissionTimeRemained);
                 }
             }
+        }
+
+        Sprite[] LoadEnemyFlyingAnimSprites () {
+            return Resources.LoadAll<Sprite>("Sprites/Enemy");
         }
 
 

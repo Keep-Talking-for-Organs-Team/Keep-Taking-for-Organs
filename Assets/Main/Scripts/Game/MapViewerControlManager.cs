@@ -40,7 +40,7 @@ namespace KeepTalkingForOrgansGame {
             }
 
             Vector3 movement = Vector3.right * Input.GetAxisRaw("Horizontal") + Vector3.up * Input.GetAxisRaw("Vertical");
-            transform.position = transform.position + transform.rotation * movement * cameraMoveSpeed * Time.deltaTime;
+            transform.position = transform.position + transform.rotation * movement * cameraMoveSpeed * Time.deltaTime * _cam.orthographicSize;
 
 
             int rotate = 0;

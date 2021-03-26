@@ -32,6 +32,16 @@ namespace KeepTalkingForOrgansGame {
         public EnemiesSpawnersManager[] enemiesSpawnersManagers;
 
 
+        public int EnemiesSpawnedCount {
+            get {
+                int sum = 0;
+                foreach (var manager in enemiesSpawnersManagers) {
+                    sum += manager.SpawnedCount;
+                }
+                return sum;
+            }
+        }
+
         // Components
         public OperatorManager  operatorManager {get; private set;}
         public MapViewerManager mapViewerManager {get; private set;}
@@ -95,13 +105,13 @@ namespace KeepTalkingForOrgansGame {
                 if (!inGameMenu.activeSelf) {
 
                     if ( !(operatorManager != null && operatorManager.enabled && operatorManager.IsMissionEnded) ) {
-                        inGameMenu.SetActive(true);
-                        AkSoundEngine.PostEvent("Play_ESCMenu" , gameObject);
+                        OpenInGameMenu();
+                            inGameMenu.SetActive(true);
+                            AkSoundEngine.PostEvent("Play_ESCMenu" , gameObject);
                     }
                 }
                 else {
-                    inGameMenu.SetActive(false);
-                    AkSoundEngine.PostEvent("Play_LeaveMenu" , gameObject);
+                    CloseInGameMenu();
                 }
             }
 
@@ -151,6 +161,16 @@ namespace KeepTalkingForOrgansGame {
             }
         }
 
+
+        public void OpenInGameMenu () {
+            inGameMenu.SetActive(true);
+            AkSoundEngine.PostEvent("Play_ESCMenu" , gameObject);
+        }
+
+        public void CloseInGameMenu () {
+            inGameMenu.SetActive(false);
+            AkSoundEngine.PostEvent("Play_LeaveMenu" , gameObject);
+        }
 
         public void RestartLevel () {
             GlobalManager.current.FadeScreenOut( () => {

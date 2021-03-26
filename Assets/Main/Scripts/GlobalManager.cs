@@ -48,10 +48,15 @@ namespace KeepTalkingForOrgansGame {
 
         protected override void Awake () {
             base.Awake();
+
+            if (current != this)
+                return;
+
             DontDestroyOnLoad(gameObject);
 
             DOTween.Init();
             DOTween.showUnityEditorReport = true;
+            DOTween.defaultTimeScaleIndependent = true;
 
 
             // Load PlayerPrefs
@@ -171,7 +176,6 @@ namespace KeepTalkingForOrgansGame {
             if (index == 2 || index == -1)
                 PlayerPrefs.SetFloat(PlayerPrefsKeys.MUSIC_VOLUME, settings.musicVolume);
         }
-
 
     }
 

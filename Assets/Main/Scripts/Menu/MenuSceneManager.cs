@@ -38,7 +38,7 @@ namespace KeepTalkingForOrgansGame {
                 { Stage.MainMenu, mainMenuStage },
                 { Stage.LevelSelecting, levelSelectingStage }
             };
-            
+
             AkSoundEngine.SetState("Game", "NotInGame");
             AkSoundEngine.SetState("Music_Stage", "Title");
         }
@@ -60,12 +60,10 @@ namespace KeepTalkingForOrgansGame {
                     return;
 
                 if (!settingsPanel.activeSelf) {
-                    settingsPanel.SetActive(true);
-                    AkSoundEngine.PostEvent("Play_ESCMenu", gameObject);
+                    OpenSettingsPanel();
                 }
                 else {
-                    settingsPanel.SetActive(false);
-                    AkSoundEngine.PostEvent("Play_LeaveMenu", gameObject);
+                    CloseSettingsPanel();
                 }
 
             }
@@ -78,6 +76,7 @@ namespace KeepTalkingForOrgansGame {
             }
 
         }
+
 
         public void SelectMapViewer () {
             if (GlobalManager.current.IsInTransition)
@@ -127,6 +126,16 @@ namespace KeepTalkingForOrgansGame {
                     prevStage = stage;
                 }
             }
+        }
+
+        public void OpenSettingsPanel () {
+            settingsPanel.SetActive(true);
+            AkSoundEngine.PostEvent("Play_ESCMenu", gameObject);
+        }
+
+        public void CloseSettingsPanel () {
+            settingsPanel.SetActive(false);
+            AkSoundEngine.PostEvent("Play_LeaveMenu", gameObject);
         }
 
         public void OnQuitGameButtonClicked () {

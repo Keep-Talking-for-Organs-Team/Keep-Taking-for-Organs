@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace DoubleHeat.Animation {
 
-    public class SeqImgAnimation {
+    public class SeqImgAnim {
 
         public delegate void AnimEndCallback ();
 

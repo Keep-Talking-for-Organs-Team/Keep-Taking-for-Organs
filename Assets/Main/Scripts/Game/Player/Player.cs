@@ -52,7 +52,7 @@ namespace KeepTalkingForOrgansGame {
             }
         }
 
-        public bool IsMovable => GameSceneManager.current.operatorManager.IsMissionOnGoing && !IsDead;
+        public bool IsMovable => GameSceneManager.current.operatorManager.IsMissionOnGoing && !IsDead && (_animManager != null ? !_animManager.IsActionAnimPlaying : true);
         public bool IsControllable => GameSceneManager.current.operatorManager.IsMissionOnGoing && !IsDead && Time.timeScale > 0;
         public bool IsFacingControllable => IsControllable;
 
@@ -120,6 +120,8 @@ namespace KeepTalkingForOrgansGame {
                 if (!HasGoal) {
                     HasGoal = true;
                     Destroy(other.gameObject);
+
+                    GameSceneManager.current.operatorManager.OnPlayerGetGoal();
 
                     AkSoundEngine.PostEvent("Play_Get_Organ", gameObject);
                 }
@@ -218,6 +220,23 @@ namespace KeepTalkingForOrgansGame {
 
             if (_animManager != null)
                 _animManager.OnStopHiding();
+        }
+
+
+        public void OnMeleeAttack () {
+            if (_animManager != null)
+                _animManager.CurrentState = PlayerAnimManager.State.Melee;
+
+            // GameSceneManager.current.operatorManager.PlayMeleeAttackOverlayFX();
+            AkSoundEngine.PostEvent("Play_Player_Saber" , gameObject);
+        }
+
+        public void OnRangedAttack () {
+            if (_animManager != null)
+                _animManager.CurrentState = PlayerAnimManager.State.Gun;
+
+            // GameSceneManager.current.operatorManager.PlayRangedAttackOverlayFX();
+            AkSoundEngine.PostEvent("Play_Player_Gunshot" , gameObject);
         }
 
     }

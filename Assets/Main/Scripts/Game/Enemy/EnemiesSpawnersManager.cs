@@ -8,7 +8,7 @@ namespace KeepTalkingForOrgansGame {
 
     public class EnemiesSpawnersManager : MonoBehaviour {
 
-
+        public int SpawnedCount {get; private set;} = 0;
 
         public void StartSpawn () {
 
@@ -16,7 +16,11 @@ namespace KeepTalkingForOrgansGame {
                 EnemiesSpawnGroup spawnGroup = child.gameObject.GetComponent<EnemiesSpawnGroup>();
 
                 if (spawnGroup != null) {
-                    spawnGroup.RandomSpawn();
+                    
+                    int spawnedCount;
+                    spawnGroup.RandomSpawn(out spawnedCount);
+
+                    SpawnedCount += spawnedCount;
                 }
             }
         }

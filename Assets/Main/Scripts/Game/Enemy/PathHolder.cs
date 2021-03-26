@@ -159,7 +159,6 @@ namespace KeepTalkingForOrgansGame {
             for (int i = 0 ; i < SegmentsAmount ; i++) {
                 Vector2[] segment = GetSegment(i);
                 GameSceneManager.current.mapViewerManager.pathLineFactory.GetLine(segment[0], segment[1], drawnPathLinesWidth, drawnPathLinesColor);
-                print(segment[0] + "," + segment[1]);
             }
 
             IsLineDrawn = true;

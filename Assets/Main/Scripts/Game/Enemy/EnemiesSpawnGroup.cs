@@ -17,6 +17,7 @@ namespace KeepTalkingForOrgansGame {
         public Color gizmosColor = Color.white;
         public float gizmosSphereSize = 1f;
 
+
         EnemySpawnable[] _spawns;
 
 
@@ -31,7 +32,9 @@ namespace KeepTalkingForOrgansGame {
         }
 
 
-        public void RandomSpawn () {
+        public void RandomSpawn (out int spawnedCount) {
+
+            spawnedCount = 0;
 
             if (Random.value <= spawnPosibility) {
                 List<EnemySpawnable> spawnables = new List<EnemySpawnable>();
@@ -64,6 +67,7 @@ namespace KeepTalkingForOrgansGame {
 
                 foreach (EnemySpawnable spawn in _spawns) {
                     spawn.Spawn();
+                    spawnedCount++;
                 }
             }
 

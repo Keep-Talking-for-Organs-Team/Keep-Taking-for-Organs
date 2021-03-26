@@ -224,6 +224,9 @@ namespace KeepTalkingForOrgansGame {
             int layer = LayerMask.NameToLayer("Default");
             sr.transform.SetLayerRecursively(layer);
 
+            if (GameSceneManager.current != null && GameSceneManager.current.operatorManager != null)
+                GameSceneManager.current.operatorManager.PlayKilledEnemyOverlayFX();
+
             AkSoundEngine.PostEvent("Play_Robot_Death" , gameObject);
         }
 

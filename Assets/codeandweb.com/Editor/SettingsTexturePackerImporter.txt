@@ -1,0 +1,18 @@
+version: 2
+importPivots: 1
+tpsheetFileNames:
+- Assets/codeandweb.com/Example/SpriteSheet/sprites.tpsheet
+- Assets/Main/Images/Tiles/Tiles.tpsheet
+- Assets/Resources/Sprites/Enemy.tpsheet
+- Assets/Resources/Sprites/Player.tpsheet
+textureFileNames:
+- Assets/codeandweb.com/Example/SpriteSheet/sprites.png
+- Assets/Main/Images/Tiles/Tiles.png
+- Assets/Resources/Sprites/Enemy.png
+- Assets/Resources/Sprites/Player.png
+normalmapFileNames:
+- Assets/codeandweb.com/Example/SpriteSheet/sprites_n.png
+- 
+- 
+- 
+enableDebugOutput: 0

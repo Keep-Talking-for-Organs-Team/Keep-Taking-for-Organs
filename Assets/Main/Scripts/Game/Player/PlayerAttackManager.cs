@@ -73,6 +73,25 @@ namespace KeepTalkingForOrgansGame {
             BulletsLeft = defaultBulletsAmount;
         }
 
+        void Start () {
+            if (GameSceneManager.current != null && GameSceneManager.current.operatorManager != null) {
+
+                int[] dividers = GameSceneManager.current.operatorManager.differentBulletsAmountIntervalDividers;
+
+                if (dividers != null) {
+                    int amount = 0;
+
+                    for (int i = 0 ; i < dividers.Length; i++) {
+                        if (GameSceneManager.current.EnemiesSpawnedCount >= dividers[i]) {
+                            amount = i + 1;
+                        }
+                    }
+
+                    BulletsLeft = amount;
+                }
+            }
+        }
+
         void FixedUpdate () {
             RaycastHit2D hit = Physics2D.Raycast(targetDetectStartPoint.position, _player.FacingDirection, rangedDistance, targetDetectLayerMask);
 
@@ -108,10 +127,7 @@ namespace KeepTalkingForOrgansGame {
             if (_animManager != null)
                 _animManager.ClearRangedAttackableLine();
 
-            if (IsAttackable(AttackMethod.Melee)) {
-                CurrentTarget.IsTargetedByPlayer();
-            }
-            else if (IsAttackable(AttackMethod.Ranged)) {
+            if (IsAttackable(AttackMethod.Ranged)) {
                 CurrentTarget.IsTargetedByPlayer();
 
                 if (_animManager != null)
@@ -184,43 +200,54 @@ namespace KeepTalkingForOrgansGame {
 
 
         bool IsAttackable (AttackMethod atkMethod) {
+
+            bool isReady = _lastestAttackStartTimeOfAttackMethods[atkMethod] == 0 || Time.time - _lastestAttackStartTimeOfAttackMethods[atkMethod] > _cooldownTimeOfAttackMethods[atkMethod];
+
+            if (atkMethod == AttackMethod.Melee)
+                return isReady;
+
+
             if (CurrentTarget == null)
                 return false;
 
-            bool isReady = _lastestAttackStartTimeOfAttackMethods[atkMethod] == 0 || Time.time - _lastestAttackStartTimeOfAttackMethods[atkMethod] > _cooldownTimeOfAttackMethods[atkMethod];
             bool isInRange = false;
             bool hasBullets = true;
 
-            if (atkMethod == AttackMethod.Melee) {
-                isInRange = ((Vector2) (CurrentTarget.transform.position - transform.position)).sqrMagnitude < Mathf.Pow(meleeDistance, 2);
-            }
-            else if (atkMethod == AttackMethod.Ranged) {
-                isInRange = ((Vector2) (CurrentTarget.transform.position - transform.position)).sqrMagnitude < Mathf.Pow(rangedDistance, 2);
+            if (atkMethod == AttackMethod.Ranged) {
+                isInRange = IsInRange(atkMethod, CurrentTarget.transform.position);
                 hasBullets = BulletsLeft > 0;
             }
 
-            return isInRange && isReady && hasBullets;
+            return isReady && isInRange && hasBullets;
+        }
+
+        bool IsInRange (AttackMethod atkMethod, Vector2 targetPos) {
+            float rangeDistance = 0f;
+
+            if (atkMethod == AttackMethod.Melee)
+                rangeDistance = meleeDistance;
+            else if (atkMethod == AttackMethod.Ranged)
+                rangeDistance = rangedDistance;
+
+            return (targetPos - (Vector2) transform.position).sqrMagnitude < rangeDistance * rangeDistance;
         }
 
         void Attack (AttackMethod atkMethod) {
 
             _lastestAttackStartTimeOfAttackMethods[atkMethod] = Time.time;
-            CurrentTarget.Attacked(atkMethod);
 
             if (atkMethod == AttackMethod.Melee) {
-                GameSceneManager.current.operatorManager.PlayMeleeAttackOverlayFX();
-
-                AkSoundEngine.PostEvent("Play_Player_Saber" , gameObject);
+                _player.OnMeleeAttack();
             }
             else if (atkMethod == AttackMethod.Ranged) {
                 if (BulletsLeft > 0) {
                     BulletsLeft--;
                 }
-
-                GameSceneManager.current.operatorManager.PlayRangedAttackOverlayFX();
-
-                AkSoundEngine.PostEvent("Play_Player_Gunshot" , gameObject);
+                _player.OnRangedAttack();
             }
+
+            if (CurrentTarget != null && IsInRange(atkMethod, CurrentTarget.transform.position))
+                CurrentTarget.Attacked(atkMethod);
         }
 
 
