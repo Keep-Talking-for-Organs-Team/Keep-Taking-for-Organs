@@ -23,6 +23,9 @@ namespace KeepTalkingForOrgansGame {
 
         public bool isMapViewer = false;
 
+        [Header("Options")]
+        public bool playStoryPagesAtStart = true;
+
         [Header("Properties")]
         public float screenFadeDuration = 1f;
         public Ease  screenFadeEase;

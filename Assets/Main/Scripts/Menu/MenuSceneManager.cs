@@ -15,28 +15,33 @@ namespace KeepTalkingForOrgansGame {
 
         public enum Stage {
             MainMenu,
-            LevelSelecting
+            LevelSelecting,
+            StoryPages,
+            Credits
         }
 
-
         [Header("REFS")]
+        public StoryPagesManager storyPagesManager;
         public GameObject mainMenuStage;
         public GameObject levelSelectingStage;
+        public GameObject creditsStage;
         public GameObject settingsPanel;
 
 
         public Stage CurrentStage {get; private set;} = Stage.MainMenu;
 
 
-        Dictionary<Stage, GameObject> stages = new Dictionary<Stage, GameObject>();
+        Dictionary<Stage, GameObject> _stages = new Dictionary<Stage, GameObject>();
 
 
         protected override void Awake () {
             base.Awake();
 
-            stages = new Dictionary<Stage, GameObject>() {
+            _stages = new Dictionary<Stage, GameObject>() {
                 { Stage.MainMenu, mainMenuStage },
-                { Stage.LevelSelecting, levelSelectingStage }
+                { Stage.LevelSelecting, levelSelectingStage },
+                { Stage.Credits, creditsStage },
+                { Stage.StoryPages, storyPagesManager.gameObject }
             };
 
             AkSoundEngine.SetState("Game", "NotInGame");
@@ -48,6 +53,11 @@ namespace KeepTalkingForOrgansGame {
             // Intro
             GlobalManager.current.ClearLoadingDisplay();
 
+            if (GlobalManager.current.playStoryPagesAtStart && !StoryPagesManager.hasPlayed) {
+                CurrentStage = Stage.StoryPages;
+                storyPagesManager.gameObject.SetActive(true);
+            }
+
             if (GlobalManager.current.blackScreenOverlay.blocksRaycasts) {
                 GlobalManager.current.FadeScreenIn();
             }
@@ -55,26 +65,29 @@ namespace KeepTalkingForOrgansGame {
 
         void Update () {
 
-            if (Input.GetButtonDown("Menu")) {
-                if (GlobalManager.current.IsInTransition)
-                    return;
+            if (CurrentStage != Stage.StoryPages) {
 
-                if (!settingsPanel.activeSelf) {
-                    OpenSettingsPanel();
+                if (Input.GetButtonDown("Menu")) {
+                    if (GlobalManager.current.IsInTransition)
+                        return;
+
+                    if (!settingsPanel.activeSelf) {
+                        OpenSettingsPanel();
+                    }
+                    else {
+                        CloseSettingsPanel();
+                    }
+
                 }
-                else {
-                    CloseSettingsPanel();
+
+                if (Input.GetButtonDown("Cancel")) {
+                    if (GlobalManager.current.IsInTransition)
+                        return;
+
+                    BackToPreviousStage();
                 }
 
             }
-
-            if (Input.GetButtonDown("Cancel")) {
-                if (GlobalManager.current.IsInTransition)
-                    return;
-
-                BackToPreviousStage();
-            }
-
         }
 
 
@@ -110,22 +123,22 @@ namespace KeepTalkingForOrgansGame {
 
         }
 
+
+        public void WatchStory () {
+            _stages[CurrentStage].SetActive(false);
+            CurrentStage = Stage.StoryPages;
+            _stages[CurrentStage].SetActive(true);
+        }
+
+        public void GoToCredits () {
+            SwitchStage(Stage.Credits);
+        }
+
         public void BackToPreviousStage () {
 
             Stage prevStage = Stage.MainMenu;
 
-            foreach (Stage stage in stages.Keys) {
-                if (stage == CurrentStage) {
-
-                    if (CurrentStage != prevStage) {
-                        SwitchStage(prevStage);
-                    }
-                    break;
-                }
-                else {
-                    prevStage = stage;
-                }
-            }
+            SwitchStage(prevStage);
         }
 
         public void OpenSettingsPanel () {
@@ -136,6 +149,11 @@ namespace KeepTalkingForOrgansGame {
         public void CloseSettingsPanel () {
             settingsPanel.SetActive(false);
             AkSoundEngine.PostEvent("Play_LeaveMenu", gameObject);
+        }
+
+
+        public void OnStoryPagesEnded () {
+            SwitchStage(Stage.MainMenu);
         }
 
         public void OnQuitGameButtonClicked () {
@@ -150,12 +168,12 @@ namespace KeepTalkingForOrgansGame {
 
             GlobalManager.current.FadeScreenOut( () => {
 
-                foreach (Stage stage in stages.Keys) {
+                foreach (Stage stage in _stages.Keys) {
                     if (stage == newStage) {
-                        stages[stage].SetActive(true);
+                        _stages[stage].SetActive(true);
                     }
                     else {
-                        stages[stage].SetActive(false);
+                        _stages[stage].SetActive(false);
                     }
                 }
 

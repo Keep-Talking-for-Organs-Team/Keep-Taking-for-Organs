@@ -14,7 +14,6 @@ namespace KeepTalkingForOrgansGame {
 
         [Header("Properties")]
         public float drawnPathLinesWidth = 0.023f;
-        public Color drawnPathLinesColor = Color.white;
 
         [Header("REFS")]
         public Camera      cam;

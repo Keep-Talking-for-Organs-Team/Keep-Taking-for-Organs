@@ -45,11 +45,8 @@ namespace KeepTalkingForOrgansGame {
         public GameObject     missionFailedMessages;
         public Text           howDiedMessageText;
         public SeedDisplay    seedDisplay;
-        // public Text           seedInfoText;
         public CanvasGroup    attackedOverlayFX;
         public CanvasGroup    killedEnemyOverlayFX;
-        public CanvasGroup    meleeAttackOverlayFX;
-        public CanvasGroup    rangedAttackOverlayFX;
         public CanvasGroup    outOfAmmoOverlayFX;
         public LineFactory    playerRangedAttackableLineFactory;
 
@@ -102,8 +99,6 @@ namespace KeepTalkingForOrgansGame {
 
             attackedOverlayFX.alpha = 0f;
             killedEnemyOverlayFX.alpha = 0f;
-            meleeAttackOverlayFX.alpha = 0f;
-            rangedAttackOverlayFX.alpha = 0f;
             outOfAmmoOverlayFX.alpha = 0f;
 
             RandomSeed = Random.Range(0, 10000);
@@ -196,17 +191,6 @@ namespace KeepTalkingForOrgansGame {
                 .SetEase(killedEnemyOverlayFXEase);
         }
 
-        public void PlayMeleeAttackOverlayFX () {
-            meleeAttackOverlayFX.DOFade(0f, attackedOverlayFXDuration)
-                .From(1f)
-                .SetEase(attackedOverlayFXEase);
-        }
-
-        public void PlayRangedAttackOverlayFX () {
-            rangedAttackOverlayFX.DOFade(0f, attackedOverlayFXDuration)
-                .From(1f)
-                .SetEase(attackedOverlayFXEase);
-        }
 
         public void PlayOutOfAmmoOverlayFX () {
             outOfAmmoOverlayFX.DOFade(0f, attackedOverlayFXDuration)

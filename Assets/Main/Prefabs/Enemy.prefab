@@ -136,8 +136,8 @@ MonoBehaviour:
   fadeOutDuration: 1
   fadeOutEase: 0
   attackWordShowingDuration: 0.78
-  idleFPS: 6.7
-  movingFPS: 8.7
+  idleFPS: 8.7
+  movingFPS: 13.7
   bodySR: {fileID: 4423601871196682348}
   suspectingText: {fileID: 1975541602766672295}
   alertText: {fileID: 5907474910042945820}

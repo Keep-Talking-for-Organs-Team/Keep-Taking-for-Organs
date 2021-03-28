@@ -30,7 +30,7 @@ namespace KeepTalkingForOrgansGame {
         public bool IsInPlayersSight {get; private set;} = false;
 
         public Vector2 FacingDirection => transform.rotation * defaultDir;
-        public bool IsAlwaysShowed => (GameSceneManager.current.showAllEnemies || (_attackManager != null ? _attackManager.HasAttackedPlayer : false));
+        public bool IsAlwaysShowed => (GameSceneManager.current.operatorManager.showAllEnemies || (_attackManager != null ? _attackManager.HasAttackedPlayer : false));
         public bool IsActable => (GameSceneManager.current != null && GameSceneManager.current.operatorManager != null) ? GameSceneManager.current.operatorManager.IsMissionOnGoing && !IsDead : false;
         public bool IsDead {
             get => _isDead;
@@ -66,7 +66,7 @@ namespace KeepTalkingForOrgansGame {
         }
 
         void Start () {
-            if (!GameSceneManager.current.showAllEnemies) {
+            if (!GameSceneManager.current.operatorManager.showAllEnemies) {
                 Hide();
             }
         }

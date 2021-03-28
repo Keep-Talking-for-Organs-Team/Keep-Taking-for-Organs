@@ -3,32 +3,32 @@ guid: 31b0f459c8aedf543b4ecafe894c6b12
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2757742746535441858
-    second: tiles_0001
+      213: -6232636625079679930
+    second: bush
   - first:
-      213: -8258668176032497837
-    second: tiles_0002
+      213: 7887673399913949077
+    second: floor
   - first:
-      213: -2681830950123342383
-    second: tiles_0003
+      213: 7750278065651193936
+    second: trap
   - first:
-      213: -3985045868150822027
-    second: tiles_0004
+      213: 2868539044483428322
+    second: wall_0
   - first:
-      213: -6574372553631880881
-    second: tiles_0005
+      213: -5107677499478342438
+    second: wall_1
   - first:
-      213: -8286389421951684545
-    second: tiles_0006
+      213: 8655947114880906436
+    second: wall_2L
   - first:
-      213: 4354107235825833605
-    second: tiles_0007
+      213: 8101999920966641841
+    second: wall_2P
   - first:
-      213: -2521619011396125642
-    second: tiles_0008
+      213: 6933618418553894829
+    second: wall_3
   - first:
-      213: 4825197279077603869
-    second: wall_inner
+      213: -282635231382982036
+    second: wall_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -69,7 +69,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -150,11 +150,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tiles_0001
+      name: bush
       rect:
         serializedVersion: 2
-        x: 1
-        y: 411
+        x: 0
+        y: 28
         width: 100
         height: 100
       alignment: 0
@@ -164,18 +164,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e3a48da45978ab9d0800000000000000
-      internalID: -2757742746535441858
+      spriteID: 644490ce20a3189a0800000000000000
+      internalID: -6232636625079679930
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_0002
+      name: floor
       rect:
         serializedVersion: 2
-        x: 103
-        y: 411
+        x: 100
+        y: 28
         width: 100
         height: 100
       alignment: 0
@@ -185,18 +185,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 35f72c9dc01536d80800000000000000
-      internalID: -8258668176032497837
+      spriteID: 5972b22aa25a67d60800000000000000
+      internalID: 7887673399913949077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_0003
+      name: trap
       rect:
         serializedVersion: 2
-        x: 1
-        y: 309
+        x: 200
+        y: 28
         width: 100
         height: 100
       alignment: 0
@@ -206,18 +206,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1d5ff36b5f838cad0800000000000000
-      internalID: -2681830950123342383
+      spriteID: 05814a586d48e8b60800000000000000
+      internalID: 7750278065651193936
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_0004
+      name: wall_0
       rect:
         serializedVersion: 2
-        x: 103
-        y: 309
+        x: 300
+        y: 28
         width: 100
         height: 100
       alignment: 0
@@ -227,18 +227,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 57b6b3785e542b8c0800000000000000
-      internalID: -3985045868150822027
+      spriteID: 2efe5c210191fc720800000000000000
+      internalID: 2868539044483428322
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_0005
+      name: wall_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 207
+        x: 400
+        y: 28
         width: 100
         height: 100
       alignment: 0
@@ -248,18 +248,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f49a1b7bef223c4a0800000000000000
-      internalID: -6574372553631880881
+      spriteID: ad486583062ed19b0800000000000000
+      internalID: -5107677499478342438
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_0006
+      name: wall_2L
       rect:
         serializedVersion: 2
-        x: 103
-        y: 207
+        x: 500
+        y: 28
         width: 100
         height: 100
       alignment: 0
@@ -269,18 +269,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f30f30259b4d00d80800000000000000
-      internalID: -8286389421951684545
+      spriteID: 4c43b013a0a102870800000000000000
+      internalID: 8655947114880906436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_0007
+      name: wall_2P
       rect:
         serializedVersion: 2
-        x: 1
-        y: 105
+        x: 600
+        y: 28
         width: 100
         height: 100
       alignment: 0
@@ -290,18 +290,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5865b514675ec6c30800000000000000
-      internalID: 4354107235825833605
+      spriteID: 1b8a57b7006107070800000000000000
+      internalID: 8101999920966641841
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tiles_0008
+      name: wall_3
       rect:
         serializedVersion: 2
-        x: 1
-        y: 3
+        x: 700
+        y: 28
         width: 100
         height: 100
       alignment: 0
@@ -311,18 +311,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 63cbcd68ed8610dd0800000000000000
-      internalID: -2521619011396125642
+      spriteID: da7b20e3739293060800000000000000
+      internalID: 6933618418553894829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: wall_inner
+      name: wall_4
       rect:
         serializedVersion: 2
-        x: 103
-        y: 105
+        x: 800
+        y: 28
         width: 100
         height: 100
       alignment: 0
@@ -332,8 +332,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d1a1a9e3c5b86f240800000000000000
-      internalID: 4825197279077603869
+      spriteID: c62386821c0e31cf0800000000000000
+      internalID: -282635231382982036
       vertices: []
       indices: 
       edges: []

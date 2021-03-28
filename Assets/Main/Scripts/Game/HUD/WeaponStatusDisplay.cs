@@ -23,6 +23,7 @@ namespace KeepTalkingForOrgansGame {
         public Transform  bulletIconsParent;
 
         [Header("Prefabs")]
+        public GameObject noAmmoMessagePrefab;
         public GameObject bulletIconPrefab;
 
 
@@ -70,6 +71,10 @@ namespace KeepTalkingForOrgansGame {
                 return;
 
             ClearBulletIcons();
+
+            if (bulletsCount == 0) {
+                Instantiate(noAmmoMessagePrefab, bulletIconsParent);
+            }
             for (int i = 0 ; i < bulletsCount ; i++) {
                 GameObject bulletIcon = Instantiate(bulletIconPrefab, bulletIconsParent);
                 bulletIcon.GetComponent<RectTransform>().SetAnchoredPosX( ((bulletsCount - 1) / 2f - i) * bulletsIconIntervalDistance );

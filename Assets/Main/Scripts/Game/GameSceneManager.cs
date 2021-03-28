@@ -16,7 +16,6 @@ namespace KeepTalkingForOrgansGame {
         public float overrideViewSpanMaxSegmentGapAngle;
         public bool  activeHideSpriteAtRuntime = true;
         public bool  enableRandomCamRotation = true;
-        public bool  showAllEnemies = false;
 
         [Header("Properties")]
         public float attackedOverlayFXDuration = 1f;

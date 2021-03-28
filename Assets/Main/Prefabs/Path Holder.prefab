@@ -75,5 +75,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTailToHead: 0
+  headTurnSide: 0
+  tailTurnSide: 0
+  drawnPathLinesWidth: 0.023
+  drawnPathLinesColor: {r: 1, g: 1, b: 1, a: 0.29803923}
   gizmosColor: {r: 1, g: 1, b: 1, a: 1}
   gizmosSphereSize: 0.33
