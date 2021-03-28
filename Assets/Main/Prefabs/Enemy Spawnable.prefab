@@ -99,7 +99,7 @@ MonoBehaviour:
     distance: 7
     fov: 60
   patrollingEnemyVisionSpanProps:
-    distance: 6.5
+    distance: 5.5
     fov: 50
   visionAreaLinesWidthOnMap: 0.023
   visionAreaLinesColorOnMap: {r: 1, g: 0.46000293, b: 0.07058823, a: 0.59607846}

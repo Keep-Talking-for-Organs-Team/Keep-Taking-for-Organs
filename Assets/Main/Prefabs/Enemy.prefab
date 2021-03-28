@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunType: 0
-  laserGunAttackDistance: 5
+  laserGunAttackDistance: 4.5
   electricGunAttackDistance: 3.3
   attackCooldownTime: 1.5
   gunFXDuration: 0.67
