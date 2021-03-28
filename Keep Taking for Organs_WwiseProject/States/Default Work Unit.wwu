@@ -6,11 +6,19 @@
 				<StateGroup Name="Game" ID="{8B0EEB86-129E-4213-A442-1E626888DB3B}">
 					<ChildrenList>
 						<State Name="None" ID="{751C51BD-3DBA-4EB7-8F99-B0D5BF9B6EC1}"/>
+						<State Name="Over" ID="{DFBF54AF-FFEB-47A6-99AA-E6FF0F362890}"/>
+						<State Name="Normal" ID="{E0FF5FAD-973A-4651-B12E-A905A100E60F}"/>
+						<State Name="NotInGame" ID="{C590EADB-41A7-4AA9-98FB-25C48600B7AE}"/>
+						<State Name="Success" ID="{DA23A11C-B56F-4A9A-A897-962B5D0B914D}"/>
 					</ChildrenList>
 				</StateGroup>
 				<StateGroup Name="Music_Stage" ID="{F585700E-E06C-4A4A-BCDF-0A4E579360DE}">
 					<ChildrenList>
 						<State Name="None" ID="{40C2E678-AF7F-4FB4-8FAA-735E5E31079D}"/>
+						<State Name="lv0" ID="{EECFBE1E-66CD-42F1-8DE5-83A8A9E461C5}"/>
+						<State Name="lv1" ID="{B84D6BED-D335-49C2-9E64-3AD65CE18F58}"/>
+						<State Name="lv2" ID="{ED426C7B-9CE6-4B4F-BE4C-A0096A2A975C}"/>
+						<State Name="Title" ID="{0649B958-C44A-4092-B2A4-0F17F26BD845}"/>
 					</ChildrenList>
 				</StateGroup>
 			</ChildrenList>

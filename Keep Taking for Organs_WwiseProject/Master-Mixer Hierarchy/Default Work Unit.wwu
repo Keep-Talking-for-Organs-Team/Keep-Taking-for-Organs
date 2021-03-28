@@ -6,6 +6,9 @@
 				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
 					<PropertyList>
 						<Property Name="BusVolume" Type="Real64">
+							<ValueList>
+								<Value>-25</Value>
+							</ValueList>
 							<RTPCList>
 								<RTPC Name="" ID="{E2CDC4AA-2044-41DA-A435-BAE6E13AE593}" ShortID="811712693">
 									<ReferenceList>
@@ -43,6 +46,9 @@
 						<Bus Name="SFX" ID="{723A4983-C9F9-43A9-9681-40BF2BB53375}">
 							<PropertyList>
 								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>-6</Value>
+									</ValueList>
 									<RTPCList>
 										<RTPC Name="" ID="{1AD1A355-DAE0-4D03-B7D8-5399CFB7B0F8}" ShortID="890475506">
 											<ReferenceList>

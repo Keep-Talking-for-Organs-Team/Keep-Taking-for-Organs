@@ -93,6 +93,17 @@
 								</Action>
 							</ChildrenList>
 						</Event>
+						<Event Name="Play_Clear" ID="{849A2627-047D-4698-B507-E8625C8393CC}">
+							<ChildrenList>
+								<Action Name="" ID="{CBE6E4F7-B3F2-4510-BF88-5F808A4C6A5C}" ShortID="109880745">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Clear" ID="{5F95F41E-2842-4564-AC75-51AE337A0CF5}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Game SFX" ID="{CE74475E-7709-4268-AF07-B32ED828BCA4}" ShortID="1035306733">
@@ -125,13 +136,6 @@
 									</ReferenceList>
 								</Action>
 								<Action Name="" ID="{10A432FE-CC7F-448E-B791-F3635D59A36C}" ShortID="2121739">
-									<PropertyList>
-										<Property Name="Inclusion" Type="bool">
-											<ValueList>
-												<Value>False</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Player_Saber_02" ID="{C23FD4B2-D183-4A36-B67D-0C095ACFEDC1}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
@@ -312,7 +316,7 @@
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="MainTest" ID="{B5E3E4E5-F116-4352-B23C-6B6DA9BC4DAB}" WorkUnitID="{A9184E8C-7D9E-4DE0-96BD-87B0AAAB6346}"/>
+											<ObjectRef Name="Game" ID="{48903E5C-58BB-4C55-92F6-7585D68D7E98}" WorkUnitID="{A9184E8C-7D9E-4DE0-96BD-87B0AAAB6346}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

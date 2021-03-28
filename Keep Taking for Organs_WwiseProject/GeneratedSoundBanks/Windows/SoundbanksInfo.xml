@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="40082882">
+		<SoundBank Id="1355168291" Language="SFX" Hash="801362743">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -21,7 +21,7 @@
 				<GameParameter Id="4179668891" Name="Master_Volumn" ObjectPath="\Game Parameters\Default Work Unit\Master_Volumn"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="1661994096" Language="SFX" Hash="3515694609">
+		<SoundBank Id="1661994096" Language="SFX" Hash="1578251667">
 			<ObjectPath>\SoundBanks\Default Work Unit\SoundBank</ObjectPath>
 			<ShortName>SoundBank</ShortName>
 			<Path>SoundBank.bnk</Path>
@@ -82,7 +82,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2932040671" Name="Play_Music" ObjectPath="\Events\Default Work Unit\Music\Play_Music" DurationType="OneShot" DurationMin="221.631256" DurationMax="221.631256">
+				<Event Id="2932040671" Name="Play_Music" ObjectPath="\Events\Default Work Unit\Music\Play_Music" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="630342208" Language="SFX">
 							<ShortName>Main.wav</ShortName>
@@ -114,7 +114,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3877648163" Name="Play_Player_Saber" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Player_Saber" DurationType="OneShot" DurationMin="0.751156" DurationMax="0.907845">
+				<Event Id="3877648163" Name="Play_Player_Saber" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Player_Saber" DurationType="OneShot" DurationMin="0.498449" DurationMax="0.602424">
 					<IncludedMemoryFiles>
 						<File Id="312680083" Language="SFX">
 							<ShortName>ROBOT DIE.wav</ShortName>
@@ -182,7 +182,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2964532456" Name="Play_SelectStage" ObjectPath="\Events\Default Work Unit\UI SFX\Play_SelectStage" DurationType="OneShot" DurationMin="0.226580" DurationMax="0.226580">
+				<Event Id="2964532456" Name="Play_SelectStage" ObjectPath="\Events\Default Work Unit\UI SFX\Play_SelectStage" DurationType="OneShot" DurationMin="0.223977" DurationMax="0.223977">
 					<IncludedMemoryFiles>
 						<File Id="373278986" Language="SFX">
 							<ShortName>540478__breviceps__metallic-file-select.wav</ShortName>

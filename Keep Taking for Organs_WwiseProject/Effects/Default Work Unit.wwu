@@ -41,6 +41,20 @@
 						<Property Name="GainBand2" Type="Real32" Value="2"/>
 					</PropertyList>
 				</Effect>
+				<Effect Name="New_Wwise_Delay" ID="{A9601FA6-2099-4930-95B3-45CECC6C9482}" PluginName="Wwise Delay" CompanyID="0" PluginID="106" PluginType="3">
+					<PropertyList>
+						<Property Name="DelayTime" Type="Real32" Value="0.13"/>
+						<Property Name="Feedback" Type="Real32" Value="8.5"/>
+						<Property Name="WetDryMix" Type="Real32" Value="25.5"/>
+					</PropertyList>
+				</Effect>
+				<Effect Name="New_Wwise_Delay_01" ID="{A589A3CC-5EC1-4BE3-A59B-FD0F35B84B07}" PluginName="Wwise Delay" CompanyID="0" PluginID="106" PluginType="3">
+					<PropertyList>
+						<Property Name="DelayTime" Type="Real32" Value="0.28"/>
+						<Property Name="Feedback" Type="Real32" Value="8"/>
+						<Property Name="WetDryMix" Type="Real32" Value="20.5"/>
+					</PropertyList>
+				</Effect>
 			</ChildrenList>
 		</WorkUnit>
 	</Effects>

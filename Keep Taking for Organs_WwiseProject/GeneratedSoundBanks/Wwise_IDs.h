@@ -50,6 +50,10 @@ namespace AK
             namespace STATE
             {
                 static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID NORMAL = 1160234136U;
+                static const AkUniqueID NOTINGAME = 1114736519U;
+                static const AkUniqueID OVER = 3677122663U;
+                static const AkUniqueID SUCCESS = 3625060726U;
             } // namespace STATE
         } // namespace GAME
 
@@ -59,7 +63,11 @@ namespace AK
 
             namespace STATE
             {
+                static const AkUniqueID LV0 = 964811741U;
+                static const AkUniqueID LV1 = 964811740U;
+                static const AkUniqueID LV2 = 964811743U;
                 static const AkUniqueID NONE = 748895195U;
+                static const AkUniqueID TITLE = 3705726509U;
             } // namespace STATE
         } // namespace MUSIC_STAGE
 
