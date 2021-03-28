@@ -15,12 +15,17 @@ namespace KeepTalkingForOrgansGame {
         [Header("Properties")]
         public float drawnPathLinesWidth = 0.023f;
 
+        [Header("Info Messages")]
+        public string infoGoalIconMessageNormal;
+        public string infoGoalIconMessageFinal;
+
         [Header("REFS")]
         public Camera      cam;
         public GameObject  randomSeedInputPanel;
         public GameObject  switchableInfoPanel;
         public SeedDisplay seedDisplay;
         public LineFactory pathLineFactory;
+        public Text        infoGoalIconMessageText;
 
 
         public int RandomSeed {
@@ -68,6 +73,12 @@ namespace KeepTalkingForOrgansGame {
             cam.enabled = true;
 
             randomSeedInputPanel.SetActive(true);
+
+            if (LevelSelector.currentLevelNumber == 2)
+                infoGoalIconMessageText.text = infoGoalIconMessageFinal;
+            else
+                infoGoalIconMessageText.text = infoGoalIconMessageNormal;
+
 
             GlobalManager.current.FadeScreenIn();
         }
