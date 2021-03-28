@@ -23,22 +23,6 @@ namespace KeepTalkingForOrgansGame {
             Gun
         }
 
-        public enum AttitudeState {
-            Standing,
-            Crouching
-        }
-
-        public enum VisibilityState {
-            Visible,
-            Invisible
-        }
-
-        public enum ActionState {
-            Idle,
-            Dead,
-            Aiming,
-            None
-        }
 
 
         [Header("Properties")]
@@ -58,11 +42,7 @@ namespace KeepTalkingForOrgansGame {
         [Header("REFS")]
         public SpriteRenderer bodySR;
         public SpriteRenderer facingArrowSR;
-        public Text deathText;
-        public Text aimText;
-        public Text aimingProcessText;
-        public Text meleeText;
-        public Text rangedText;
+        public SpriteRenderer[] shootableIconSRs;
 
 
         public bool IsActionAnimPlaying => (CurrentState == State.Melee || CurrentState == State.Gun);
@@ -75,7 +55,6 @@ namespace KeepTalkingForOrgansGame {
                 }
             }
         }
-        public ActionState CurrentActionState {get; private set;} = ActionState.None;
 
         Dictionary<State, Sprite[]> _spritesOfState = new Dictionary<State, Sprite[]>();
 
@@ -94,14 +73,8 @@ namespace KeepTalkingForOrgansGame {
 
             LoadSprites();
 
-            PlayAction(ActionState.Idle);
         }
 
-        void ShutAll () {
-            deathText.enabled = false;
-            aimText.enabled = false;
-            aimingProcessText.enabled = false;
-        }
 
         void Update () {
 
@@ -112,46 +85,28 @@ namespace KeepTalkingForOrgansGame {
                 facingArrowSR.enabled = true;
             }
 
-            // Attackable Instructions
-            meleeText.enabled = false;
-            rangedText.enabled = false;
-
-            // if (_player.IsControllable && _player.IsFacingControllable && _attackManager != null) {
-            //     PlayerAttackManager.AttackMethod atkMethod = _attackManager.AvailableAttackMethod;
-            //
-            //     if (atkMethod == PlayerAttackManager.AttackMethod.Melee) {
-            //         meleeText.enabled = true;
-            //     }
-            //     else if (atkMethod == PlayerAttackManager.AttackMethod.Ranged) {
-            //         rangedText.enabled = true;
-            //     }
-            // }
-
         }
 
 
-        public void PlayAction (ActionState state) {
 
-            CurrentActionState = state;
-
-            ShutAll();
-
-            // if (state == ActionState.Dead) {
-            //     deathText.enabled = true;
-            // }
-            // else if (state == ActionState.Aiming) {
-            //     aimText.enabled = true;
-            //     aimingProcessText.enabled = true;
-            //     aimingProcessText.text = "0%";
-            // }
-        }
-
-        public void ClearRangedAttackableLine () {
+        public void ClearRangedAttackable () {
             GameSceneManager.current.operatorManager.playerRangedAttackableLineFactory.ClearLines();
+
+            if (shootableIconSRs != null) {
+                foreach (SpriteRenderer sr in shootableIconSRs) {
+                    sr.enabled = false;
+                }
+            }
         }
 
-        public void DrawRangedAttackableLine (Vector2 startPoint, Vector2 targetPoint) {
+        public void DrawRangedAttackable (Vector2 startPoint, Vector2 targetPoint) {
             GameSceneManager.current.operatorManager.playerRangedAttackableLineFactory.GetLine(startPoint, targetPoint, rangedAttackableLineWidth, rangedAttackableLineColor);
+
+            if (shootableIconSRs != null) {
+                foreach (SpriteRenderer sr in shootableIconSRs) {
+                    sr.enabled = true;
+                }
+            }
         }
 
 
@@ -170,6 +125,10 @@ namespace KeepTalkingForOrgansGame {
 
         public void OnStopHiding () {
             bodySR.SetOpacity(1f);
+        }
+
+        public void OnDie () {
+            bodySR.color = Color.red;
         }
 
 

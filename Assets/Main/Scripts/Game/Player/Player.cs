@@ -53,7 +53,7 @@ namespace KeepTalkingForOrgansGame {
         }
 
         public bool IsMovable => GameSceneManager.current.operatorManager.IsMissionOnGoing && !IsDead && (_animManager != null ? !_animManager.IsActionAnimPlaying : true);
-        public bool IsControllable => GameSceneManager.current.operatorManager.IsMissionOnGoing && !IsDead && Time.timeScale > 0 && !GameSceneManager.current.inGameMenu.activeSelf;
+        public bool IsControllable => GameSceneManager.current.operatorManager.IsMissionOnGoing && !IsDead && Time.timeScale > 0 && !GameSceneManager.current.inGameMenu.activeSelf && (_animManager != null ? !_animManager.IsActionAnimPlaying : true);
         public bool IsFacingControllable => IsControllable;
 
 
@@ -138,7 +138,7 @@ namespace KeepTalkingForOrgansGame {
                 IsDead = true;
 
                 if (_animManager != null) {
-                    _animManager.PlayAction(PlayerAnimManager.ActionState.Dead);
+                    _animManager.OnDie();
                 }
 
                 GameSceneManager.current.operatorManager.MissionFailed(reason);

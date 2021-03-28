@@ -9,7 +9,7 @@ namespace KeepTalkingForOrgansGame {
     public class FixRotationToMainCam : MonoBehaviour {
 
 
-        void Update () {
+        void LateUpdate () {
             if (GameSceneManager.current != null) {
 
                 if (GlobalManager.current.isMapViewer) {
@@ -24,7 +24,7 @@ namespace KeepTalkingForOrgansGame {
 
                     if (manager != null)
                         transform.rotation = manager.cam.transform.rotation;
-                        
+
                 }
 
             }

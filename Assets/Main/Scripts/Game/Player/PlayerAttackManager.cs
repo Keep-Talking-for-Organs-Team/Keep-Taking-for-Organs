@@ -125,13 +125,13 @@ namespace KeepTalkingForOrgansGame {
         void Update () {
 
             if (_animManager != null)
-                _animManager.ClearRangedAttackableLine();
+                _animManager.ClearRangedAttackable();
 
             if (IsAttackable(AttackMethod.Ranged)) {
                 CurrentTarget.IsTargetedByPlayer();
 
                 if (_animManager != null)
-                    _animManager.DrawRangedAttackableLine(transform.position, CurrentTarget.transform.position);
+                    _animManager.DrawRangedAttackable(transform.position, CurrentTarget.transform.position);
             }
 
             HUDManager hudManager = GameSceneManager.current.operatorManager.hudManager;
@@ -200,6 +200,10 @@ namespace KeepTalkingForOrgansGame {
 
 
         bool IsAttackable (AttackMethod atkMethod) {
+
+            if (!_player.IsControllable)
+                return false;
+
 
             bool isReady = _lastestAttackStartTimeOfAttackMethods[atkMethod] == 0 || Time.time - _lastestAttackStartTimeOfAttackMethods[atkMethod] > _cooldownTimeOfAttackMethods[atkMethod];
 
