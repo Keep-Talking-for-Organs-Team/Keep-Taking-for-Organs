@@ -55,7 +55,7 @@ namespace KeepTalkingForOrgansGame {
 
             if (GlobalManager.current.playStoryPagesAtStart && !StoryPagesManager.hasPlayed) {
                 CurrentStage = Stage.StoryPages;
-                storyPagesManager.gameObject.SetActive(true);
+                _stages[CurrentStage].SetActive(true);
             }
 
             if (GlobalManager.current.blackScreenOverlay.blocksRaycasts) {
