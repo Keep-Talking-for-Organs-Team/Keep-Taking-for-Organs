@@ -102,13 +102,18 @@
 							<PropertyList>
 								<Property Name="Pitch" Type="int32">
 									<ValueList>
-										<Value>330</Value>
+										<Value>380</Value>
 									</ValueList>
-								</Property>
-								<Property Name="Volume" Type="Real64">
-									<ValueList>
-										<Value>-2</Value>
-									</ValueList>
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{EA56B44F-29A8-4659-BCD3-8A30352698D9}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="202"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
 								</Property>
 							</PropertyList>
 							<ReferenceList>
@@ -728,6 +733,49 @@
 								<ActiveSource Name="enter" ID="{AD3D833B-873E-41E9-A03F-3ED9EB0EDEF6}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
+						<Sound Name="Player_Death_01" ID="{8DCB1B4A-B6F0-412B-BE05-49986E7843EF}" ShortID="1059547636">
+							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>-450</Value>
+									</ValueList>
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{BC7CA908-2E41-4012-BC06-C566E0CECFA3}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="126"/>
+													<Property Name="Min" Type="Real64" Value="-101"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E5E149B8-AAE6-4984-B720-C9BA9DADA28F}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="SFX" ID="{723A4983-C9F9-43A9-9681-40BF2BB53375}" WorkUnitID="{A668200A-0C10-4055-998F-C7BBF666E94C}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="icu" ID="{61A4CDBC-751B-43BA-9602-DFF537787D2E}">
+									<PropertyList>
+										<Property Name="TrimBegin" Type="Real64" Value="1.106"/>
+									</PropertyList>
+									<Language>SFX</Language>
+									<AudioFile>icu.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="796556713"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="icu" ID="{61A4CDBC-751B-43BA-9602-DFF537787D2E}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
 					</ChildrenList>
 				</ActorMixer>
 				<ActorMixer Name="UISFX" ID="{7BA2D219-9810-405F-91B5-68A7D3868BA4}" ShortID="353657022">
@@ -890,11 +938,6 @@
 						</Sound>
 						<Sound Name="ESCMenu" ID="{57350665-0D43-4642-A012-9A06BBDB7311}" ShortID="324539610">
 							<PropertyList>
-								<Property Name="Pitch" Type="int32">
-									<ValueList>
-										<Value>-180</Value>
-									</ValueList>
-								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-11</Value>
@@ -1015,6 +1058,11 @@
 						</Sound>
 						<Sound Name="LeaveMenu" ID="{DEDAD3E0-7010-4F82-A70C-A5E9946CEB6B}" ShortID="154484498">
 							<PropertyList>
+								<Property Name="Pitch" Type="int32">
+									<ValueList>
+										<Value>150</Value>
+									</ValueList>
+								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
 										<Value>-12</Value>

@@ -90,7 +90,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 212552149d463c4c84b85baf50cd0631
     GuidInternal: 
-    m_lastTime: -8585846459554097892
+    m_lastTime: -8585846203580536515
     List:
     - name: Game SFX
       guid: 5e4774ce09776842af07b32ed828bca4
@@ -113,6 +113,20 @@ MonoBehaviour:
       - ElementName: Music
         ObjectType: 4
       Path: Default Work Unit\Music
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_Clear
+      guid: 27269a847d049846b507e8625c8393cc
+      id: 414444541
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: UI SFX
+        ObjectType: 4
+      - ElementName: Play_Clear
+        ObjectType: 3
+      Path: Default Work Unit\UI SFX\Play_Clear
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -184,8 +198,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\UI SFX\Play_ESCMenu
       maxAttenuation: 0
-      maxDuration: 1.664354
-      minDuration: 1.664354
+      maxDuration: 1.5
+      minDuration: 1.5
     - name: Play_Get_Organ
       guid: bc2d3560411b9f449e551982f31b68d7
       id: 2614804272
@@ -212,8 +226,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\UI SFX\Play_LeaveMenu
       maxAttenuation: 0
-      maxDuration: 1.5
-      minDuration: 1.5
+      maxDuration: 1.375506
+      minDuration: 1.375506
     - name: Play_Music
       guid: 9bf1f5290825ea45b8b81f1fbec2f286
       id: 2932040671
@@ -226,8 +240,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Music\Play_Music
       maxAttenuation: 0
-      maxDuration: 221.63126
-      minDuration: 221.63126
+      maxDuration: -1
+      minDuration: -1
     - name: Play_Player_Death
       guid: 258989e5e78cb841b2c4e3feba8709ca
       id: 1835085974
@@ -240,8 +254,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_Player_Death
       maxAttenuation: 0
-      maxDuration: 4.877228
-      minDuration: 4.877228
+      maxDuration: 8.112958
+      minDuration: 7.115974
     - name: Play_Player_Footstep
       guid: ab10d02b7bb6934bba173c21dfdc4d58
       id: 1724675634
@@ -394,8 +408,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\UI SFX\Play_SelectStage
       maxAttenuation: 0
-      maxDuration: 0.22658
-      minDuration: 0.22658
+      maxDuration: 0.223977
+      minDuration: 0.223977
     - name: Play_Start
       guid: f2ed2cda841b4a42b330d31eea4c7bf3
       id: 2230670290
@@ -535,7 +549,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 4dfeee53dfb74b489f60cd5e4529ee4f
     GuidInternal: 
-    m_lastTime: -8585853609248730342
+    m_lastTime: -8585846442884958015
     List:
     - name: Game
       guid: 86eb0e8b9e121342a4421e626888db3b
@@ -553,6 +567,30 @@ MonoBehaviour:
         PathAndIcons:
         - ElementName: None
           ObjectType: 8
+      - name: Normal
+        guid: ad5fffe03a975146b12ea905a100e60f
+        id: 1160234136
+        PathAndIcons:
+        - ElementName: Normal
+          ObjectType: 8
+      - name: NotInGame
+        guid: dbea90c5a741a94a98fb25c48600b7ae
+        id: 1114736519
+        PathAndIcons:
+        - ElementName: NotInGame
+          ObjectType: 8
+      - name: Over
+        guid: af54bfdfebffa64799aae6ff0f362890
+        id: 3677122663
+        PathAndIcons:
+        - ElementName: Over
+          ObjectType: 8
+      - name: Success
+        guid: 1ca123da6fb59a4aa897962b5d0b914d
+        id: 3625060726
+        PathAndIcons:
+        - ElementName: Success
+          ObjectType: 8
       ValueGuids: []
       ValueIcons: []
       valuesInternal: []
@@ -566,11 +604,35 @@ MonoBehaviour:
         ObjectType: 9
       Path: Default Work Unit\Music_Stage
       values:
+      - name: lv0
+        guid: 1ebecfeecd66f1428de583a8a9e461c5
+        id: 964811741
+        PathAndIcons:
+        - ElementName: lv0
+          ObjectType: 8
+      - name: lv1
+        guid: ed6b4db835d3c2499e643ad65ce18f58
+        id: 964811740
+        PathAndIcons:
+        - ElementName: lv1
+          ObjectType: 8
+      - name: lv2
+        guid: 7b6c42ede69c4f4bbe4ca0096a2a975c
+        id: 964811743
+        PathAndIcons:
+        - ElementName: lv2
+          ObjectType: 8
       - name: None
         guid: 78e6c2407fafb44f8faa735e5e31079d
         id: 748895195
         PathAndIcons:
         - ElementName: None
+          ObjectType: 8
+      - name: Title
+        guid: 58b949064ac49240b2a40f17f26bd845
+        id: 3705726509
+        PathAndIcons:
+        - ElementName: Title
           ObjectType: 8
       ValueGuids: []
       ValueIcons: []

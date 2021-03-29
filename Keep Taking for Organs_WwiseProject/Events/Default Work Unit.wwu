@@ -164,6 +164,13 @@
 										</Reference>
 									</ReferenceList>
 								</Action>
+								<Action Name="" ID="{316F4D32-ECD2-4D1C-91F8-001D961DC571}" ShortID="634158999">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Death_01" ID="{8DCB1B4A-B6F0-412B-BE05-49986E7843EF}" WorkUnitID="{999EF07D-8C9A-484A-A3CC-BD5BD5439028}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="Play_Robot_Move" ID="{489EC087-6B22-4560-9913-2C6B29C75916}">
@@ -312,11 +319,11 @@
 							<ChildrenList>
 								<Action Name="" ID="{24D33C76-C92B-44A0-983F-814946F71DF6}" ShortID="362080057">
 									<PropertyList>
-										<Property Name="FadeTime" Type="Real64" Value="1"/>
+										<Property Name="FadeInCurve" Type="int16" Value="7"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Game" ID="{48903E5C-58BB-4C55-92F6-7585D68D7E98}" WorkUnitID="{A9184E8C-7D9E-4DE0-96BD-87B0AAAB6346}"/>
+											<ObjectRef Name="Music" ID="{CB8D9AFF-0949-4BD6-8F7D-5ADE7A5F9E38}" WorkUnitID="{A9184E8C-7D9E-4DE0-96BD-87B0AAAB6346}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

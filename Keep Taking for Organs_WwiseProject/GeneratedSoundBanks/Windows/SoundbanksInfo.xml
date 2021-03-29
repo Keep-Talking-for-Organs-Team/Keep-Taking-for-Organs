@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Language="SFX" Hash="801362743">
+		<SoundBank Id="1355168291" Language="SFX" Hash="2345939210">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -21,7 +21,7 @@
 				<GameParameter Id="4179668891" Name="Master_Volumn" ObjectPath="\Game Parameters\Default Work Unit\Master_Volumn"/>
 			</GameParameters>
 		</SoundBank>
-		<SoundBank Id="1661994096" Language="SFX" Hash="1578251667">
+		<SoundBank Id="1661994096" Language="SFX" Hash="2973819179">
 			<ObjectPath>\SoundBanks\Default Work Unit\SoundBank</ObjectPath>
 			<ShortName>SoundBank</ShortName>
 			<Path>SoundBank.bnk</Path>
@@ -58,7 +58,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1762940376" Name="Play_ESCMenu" ObjectPath="\Events\Default Work Unit\UI SFX\Play_ESCMenu" DurationType="OneShot" DurationMin="1.664354" DurationMax="1.664354">
+				<Event Id="1762940376" Name="Play_ESCMenu" ObjectPath="\Events\Default Work Unit\UI SFX\Play_ESCMenu" DurationType="OneShot" DurationMin="1.500000" DurationMax="1.500000">
 					<IncludedMemoryFiles>
 						<File Id="141084209" Language="SFX">
 							<ShortName>140510__blackstalian__click-sfx8.wav</ShortName>
@@ -74,7 +74,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2784792558" Name="Play_LeaveMenu" ObjectPath="\Events\Default Work Unit\UI SFX\Play_LeaveMenu" DurationType="OneShot" DurationMin="1.500000" DurationMax="1.500000">
+				<Event Id="2784792558" Name="Play_LeaveMenu" ObjectPath="\Events\Default Work Unit\UI SFX\Play_LeaveMenu" DurationType="OneShot" DurationMin="1.375506" DurationMax="1.375506">
 					<IncludedMemoryFiles>
 						<File Id="141084209" Language="SFX">
 							<ShortName>140510__blackstalian__click-sfx8.wav</ShortName>
@@ -84,13 +84,125 @@
 				</Event>
 				<Event Id="2932040671" Name="Play_Music" ObjectPath="\Events\Default Work Unit\Music\Play_Music" DurationType="Infinite">
 					<IncludedMemoryFiles>
+						<File Id="143430451" Language="SFX">
+							<ShortName>MainTHeme.wav</ShortName>
+							<Path>SFX\MainTHeme_D79FB2B7.wem</Path>
+						</File>
+						<File Id="149792444" Language="SFX">
+							<ShortName>Main3.wav</ShortName>
+							<Path>SFX\Main3_D79FB2B7.wem</Path>
+						</File>
 						<File Id="630342208" Language="SFX">
 							<ShortName>Main.wav</ShortName>
 							<Path>SFX\Main_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
+					<SwitchContainers>
+						<SwitchContainer SwitchValue="{EECFBE1E-66CD-42F1-8DE5-83A8A9E461C5}">
+							<Children>
+								<SwitchContainer SwitchValue="{8B0EEB86-129E-4213-A442-1E626888DB3B}">
+									<Media>
+										<File Id="149792444"/>
+										<File Id="630342208"/>
+									</Media>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{B84D6BED-D335-49C2-9E64-3AD65CE18F58}">
+							<Children>
+								<SwitchContainer SwitchValue="{8B0EEB86-129E-4213-A442-1E626888DB3B}">
+									<Media>
+										<File Id="149792444"/>
+										<File Id="630342208"/>
+									</Media>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{ED426C7B-9CE6-4B4F-BE4C-A0096A2A975C}">
+							<Children>
+								<SwitchContainer SwitchValue="{8B0EEB86-129E-4213-A442-1E626888DB3B}">
+									<Media>
+										<File Id="149792444"/>
+										<File Id="630342208"/>
+									</Media>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{40C2E678-AF7F-4FB4-8FAA-735E5E31079D}">
+							<Children>
+								<SwitchContainer SwitchValue="{8B0EEB86-129E-4213-A442-1E626888DB3B}">
+									<Media>
+										<File Id="143430451"/>
+									</Media>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{0649B958-C44A-4092-B2A4-0F17F26BD845}">
+							<Children>
+								<SwitchContainer SwitchValue="{8B0EEB86-129E-4213-A442-1E626888DB3B}">
+									<Media>
+										<File Id="143430451"/>
+									</Media>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{EECFBE1E-66CD-42F1-8DE5-83A8A9E461C5}">
+							<Children>
+								<SwitchContainer SwitchValue="{DA23A11C-B56F-4A9A-A897-962B5D0B914D}">
+									<Media>
+										<File Id="143430451"/>
+									</Media>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{EECFBE1E-66CD-42F1-8DE5-83A8A9E461C5}">
+							<Children>
+								<SwitchContainer SwitchValue="{DFBF54AF-FFEB-47A6-99AA-E6FF0F362890}">
+									<Media>
+										<File Id="630342208"/>
+									</Media>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{B84D6BED-D335-49C2-9E64-3AD65CE18F58}">
+							<Children>
+								<SwitchContainer SwitchValue="{DFBF54AF-FFEB-47A6-99AA-E6FF0F362890}">
+									<Media>
+										<File Id="630342208"/>
+									</Media>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{ED426C7B-9CE6-4B4F-BE4C-A0096A2A975C}">
+							<Children>
+								<SwitchContainer SwitchValue="{DFBF54AF-FFEB-47A6-99AA-E6FF0F362890}">
+									<Media>
+										<File Id="630342208"/>
+									</Media>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{ED426C7B-9CE6-4B4F-BE4C-A0096A2A975C}">
+							<Children>
+								<SwitchContainer SwitchValue="{DA23A11C-B56F-4A9A-A897-962B5D0B914D}">
+									<Media>
+										<File Id="143430451"/>
+									</Media>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+						<SwitchContainer SwitchValue="{B84D6BED-D335-49C2-9E64-3AD65CE18F58}">
+							<Children>
+								<SwitchContainer SwitchValue="{DA23A11C-B56F-4A9A-A897-962B5D0B914D}">
+									<Media>
+										<File Id="143430451"/>
+									</Media>
+								</SwitchContainer>
+							</Children>
+						</SwitchContainer>
+					</SwitchContainers>
 				</Event>
-				<Event Id="1835085974" Name="Play_Player_Death" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Player_Death" DurationType="OneShot" DurationMin="4.877228" DurationMax="4.877228">
+				<Event Id="1835085974" Name="Play_Player_Death" ObjectPath="\Events\Default Work Unit\Game SFX\Play_Player_Death" DurationType="OneShot" DurationMin="7.115974" DurationMax="8.112958">
 					<IncludedMemoryFiles>
 						<File Id="796556713" Language="SFX">
 							<ShortName>icu.wav</ShortName>
@@ -218,6 +330,26 @@
 				<Event Id="2005445724" Name="Stop_Player_Footstep" ObjectPath="\Events\Default Work Unit\Game SFX\Stop_Player_Footstep" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 				<Event Id="2672046660" Name="Stop_Robot_Move" ObjectPath="\Events\Default Work Unit\Game SFX\Stop_Robot_Move" MaxAttenuation="0.000000" DurationType="OneShot" DurationMin="0.000000" DurationMax="0.000000"/>
 			</IncludedEvents>
+			<StateGroups>
+				<StateGroup Id="702482391" Name="Game" ObjectPath="\States\Default Work Unit\Game">
+					<States>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\Game\None"/>
+						<State Id="3677122663" Name="Over" ObjectPath="\States\Default Work Unit\Game\Over"/>
+						<State Id="1160234136" Name="Normal" ObjectPath="\States\Default Work Unit\Game\Normal"/>
+						<State Id="1114736519" Name="NotInGame" ObjectPath="\States\Default Work Unit\Game\NotInGame"/>
+						<State Id="3625060726" Name="Success" ObjectPath="\States\Default Work Unit\Game\Success"/>
+					</States>
+				</StateGroup>
+				<StateGroup Id="4044678609" Name="Music_Stage" ObjectPath="\States\Default Work Unit\Music_Stage">
+					<States>
+						<State Id="748895195" Name="None" ObjectPath="\States\Default Work Unit\Music_Stage\None"/>
+						<State Id="964811741" Name="lv0" ObjectPath="\States\Default Work Unit\Music_Stage\lv0"/>
+						<State Id="964811740" Name="lv1" ObjectPath="\States\Default Work Unit\Music_Stage\lv1"/>
+						<State Id="964811743" Name="lv2" ObjectPath="\States\Default Work Unit\Music_Stage\lv2"/>
+						<State Id="3705726509" Name="Title" ObjectPath="\States\Default Work Unit\Music_Stage\Title"/>
+					</States>
+				</StateGroup>
+			</StateGroups>
 		</SoundBank>
 	</SoundBanks>
 </SoundBanksInfo>
