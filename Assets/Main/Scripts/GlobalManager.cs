@@ -21,6 +21,9 @@ namespace KeepTalkingForOrgansGame {
             public const string LEVEL_NUMBER_SELECTED = "LevelNum";
         }
 
+        public static bool isMusicPlayed = false;
+
+
         public bool isMapViewer = false;
 
         [Header("Options")]
@@ -78,6 +81,11 @@ namespace KeepTalkingForOrgansGame {
             }
 
             AssignAudioSettings();
+
+            if (!isMusicPlayed) {
+                AkSoundEngine.PostEvent("Play_Music" , gameObject);
+                isMusicPlayed = true;
+            }
         }
 
         void Update () {
@@ -135,6 +143,10 @@ namespace KeepTalkingForOrgansGame {
         public void QuitGame () {
             AkSoundEngine.PostEvent("Stop_AllSFX" , gameObject);
             Application.Quit();
+        }
+
+        public void PostAudioEvent (string name) {
+            AkSoundEngine.PostEvent(name, gameObject);
         }
 
 

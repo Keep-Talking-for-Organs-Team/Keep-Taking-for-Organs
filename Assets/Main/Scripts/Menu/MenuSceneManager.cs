@@ -125,20 +125,28 @@ namespace KeepTalkingForOrgansGame {
 
 
         public void WatchStory () {
+            if (CurrentStage == Stage.StoryPages)
+                return;
+
             _stages[CurrentStage].SetActive(false);
             CurrentStage = Stage.StoryPages;
             _stages[CurrentStage].SetActive(true);
+
+            GlobalManager.current.PostAudioEvent("Play_SelectStage");
         }
 
         public void GoToCredits () {
             SwitchStage(Stage.Credits);
+
+            GlobalManager.current.PostAudioEvent("Play_SelectStage");
         }
 
         public void BackToPreviousStage () {
 
             Stage prevStage = Stage.MainMenu;
-
             SwitchStage(prevStage);
+
+            GlobalManager.current.PostAudioEvent("Play_ESCLeave");
         }
 
         public void OpenSettingsPanel () {
@@ -157,7 +165,11 @@ namespace KeepTalkingForOrgansGame {
         }
 
         public void OnQuitGameButtonClicked () {
-            GlobalManager.current.QuitGame();
+            GlobalManager.current.FadeScreenOut( () => {
+                GlobalManager.current.QuitGame();
+            } );
+
+            GlobalManager.current.PostAudioEvent("Play_ESCLeave");
         }
 
 

@@ -74,22 +74,23 @@ namespace KeepTalkingForOrgansGame {
         }
 
         void Start () {
-            if (GameSceneManager.current != null && GameSceneManager.current.operatorManager != null) {
-
-                int[] dividers = GameSceneManager.current.operatorManager.differentBulletsAmountIntervalDividers;
-
-                if (dividers != null) {
-                    int amount = 0;
-
-                    for (int i = 0 ; i < dividers.Length; i++) {
-                        if (GameSceneManager.current.EnemiesSpawnedCount >= dividers[i]) {
-                            amount = i + 1;
-                        }
-                    }
-
-                    BulletsLeft = amount;
-                }
-            }
+            // bullet amount old way
+            // if (GameSceneManager.current != null && GameSceneManager.current.operatorManager != null) {
+            //
+            //     int[] dividers = GameSceneManager.current.operatorManager.differentBulletsAmountIntervalDividers;
+            //
+            //     if (dividers != null) {
+            //         int amount = 0;
+            //
+            //         for (int i = 0 ; i < dividers.Length; i++) {
+            //             if (GameSceneManager.current.EnemiesSpawnedCount >= dividers[i]) {
+            //                 amount = i + 1;
+            //             }
+            //         }
+            //
+            //         BulletsLeft = amount;
+            //     }
+            // }
         }
 
         void FixedUpdate () {

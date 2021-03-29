@@ -77,6 +77,8 @@ namespace KeepTalkingForOrgansGame {
             if (_currentPlayingStoryLine != null)
                 StopCoroutine(_currentPlayingStoryLine);
 
+            GlobalManager.current.PostAudioEvent("Play_Tab");
+
             OnEnded();
         }
 

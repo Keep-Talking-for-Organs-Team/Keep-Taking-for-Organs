@@ -163,24 +163,28 @@ namespace KeepTalkingForOrgansGame {
 
         public void OpenInGameMenu () {
             inGameMenu.SetActive(true);
-            AkSoundEngine.PostEvent("Play_ESCMenu" , gameObject);
+            GlobalManager.current.PostAudioEvent("Play_ESCMenu");
         }
 
         public void CloseInGameMenu () {
             inGameMenu.SetActive(false);
-            AkSoundEngine.PostEvent("Play_LeaveMenu" , gameObject);
+            GlobalManager.current.PostAudioEvent("Play_LeaveMenu");
         }
 
         public void RestartLevel () {
             GlobalManager.current.FadeScreenOut( () => {
                 GlobalManager.ReloadScene();
             } );
+
+            GlobalManager.current.PostAudioEvent("Play_Tab");
         }
 
         public void BackToMainMenu () {
             GlobalManager.current.FadeScreenOut( () => {
                 GlobalManager.BackToMenuScene();
             } );
+
+            GlobalManager.current.PostAudioEvent("Play_ESCLeave");
         }
 
     }

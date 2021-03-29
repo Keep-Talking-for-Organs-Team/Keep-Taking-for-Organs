@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -75,9 +77,6 @@ namespace KeepTalkingForOrgansGame {
                 _randSeed = value;
                 if (seedDisplay != null)
                     seedDisplay.UpdateSeed(_randSeed);
-                // if (seedInfoText != null) {
-                //     seedInfoText.text = "SEED: " + _randSeed;
-                // }
             }
         }
 
@@ -119,7 +118,41 @@ namespace KeepTalkingForOrgansGame {
                 cam.transform.rotation = Quaternion.AngleAxis(Random.Range(0, 4) * 90f, Vector3.forward);
 
             _gameSceneManager.GenerateEnemies(RandomSeed);
-            GeneratePlayer();
+
+            // #region Calculate Player's Bullets Amount & Generate Player ********************************************
+            Dictionary<PathHolder, int> enemiesCountOfPath = new Dictionary<PathHolder, int>();
+
+            foreach (Transform enemyTrans in _gameSceneManager.enemiesParent) {
+                EnemyPatrolManager enemyPatrolManager = enemyTrans.gameObject.GetComponent<EnemyPatrolManager>();
+
+                if (enemyPatrolManager != null) {
+                    PathHolder path = enemyPatrolManager.path;
+
+                    if (path != null) {
+                        if (enemiesCountOfPath.ContainsKey(path))
+                            enemiesCountOfPath[path] += 1;
+                        else
+                            enemiesCountOfPath.Add(path, 1);
+                    }
+                }
+            }
+
+            int bulletsAmount = 0;
+            int commonEnemiesCount = _gameSceneManager.enemiesParent.childCount;
+
+            foreach (PathHolder path in enemiesCountOfPath.Keys) {
+                int enemiesCountOfThisPath = enemiesCountOfPath[path];
+
+                if (enemiesCountOfThisPath > 1) {
+                    bulletsAmount += enemiesCountOfThisPath - 1;
+                    commonEnemiesCount -= enemiesCountOfThisPath;
+                }
+            }
+
+            bulletsAmount += commonEnemiesCount / 7;
+            GeneratePlayer(bulletsAmount);
+            // #endregion ===========================================================================================
+
             UpdateTimerDisplay();
 
             GlobalManager.current.FadeScreenIn( () => {
@@ -148,7 +181,6 @@ namespace KeepTalkingForOrgansGame {
                 }
                 else if (Input.GetButtonDown("Menu")) {
                     _gameSceneManager.BackToMainMenu();
-                    AkSoundEngine.PostEvent("Play_ESCLeave" , gameObject);
                 }
             }
 
@@ -165,6 +197,7 @@ namespace KeepTalkingForOrgansGame {
             IsMissionEnded = true;
             PlayMissionEndedOverlayFX(true);
 
+            GlobalManager.current.PostAudioEvent("Play_Clear");
             AkSoundEngine.SetState("Game", "Success");
         }
 
@@ -220,13 +253,20 @@ namespace KeepTalkingForOrgansGame {
         }
 
 
-        void GeneratePlayer () {
+        void GeneratePlayer (int initBulletsAmount = -1) {
             if (playerSpawnPointsParent.childCount > 0) {
 
                 int playerSpawnPointIndex = Random.Range(0, playerSpawnPointsParent.childCount);
                 Transform playerSpawnPointTrans = playerSpawnPointsParent.GetChild(playerSpawnPointIndex);
 
-                Player player = Instantiate(playerPrefab, playerSpawnPointTrans.position, cam.transform.rotation, transform).GetComponent<Player>();
+                GameObject playerGO = Instantiate(playerPrefab, playerSpawnPointTrans.position, cam.transform.rotation, transform);
+
+                if (initBulletsAmount != -1) {
+                    PlayerAttackManager playerAttackManager = playerGO.GetComponent<PlayerAttackManager>();
+
+                    if (playerAttackManager != null)
+                        playerAttackManager.BulletsLeft = initBulletsAmount;
+                }
 
                 Destroy(playerSpawnPointsParent.gameObject);
             }

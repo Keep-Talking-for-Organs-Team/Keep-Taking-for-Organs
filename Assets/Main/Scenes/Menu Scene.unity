@@ -1337,7 +1337,6 @@ GameObject:
   - component: {fileID: 517849015}
   - component: {fileID: 517849017}
   - component: {fileID: 517849019}
-  - component: {fileID: 517849018}
   - component: {fileID: 517849020}
   m_Layer: 0
   m_Name: WwiseGlobal
@@ -1412,36 +1411,6 @@ MonoBehaviour:
   unloadTriggerList: 
   bankNameInternal: 
   valueGuidInternal: 
---- !u!114 &517849018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 517849014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa2844dc59cc14d48b2c526509e7d072, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: f7e1664c
-  useOtherObject: 0
-  actionOnEventType: 0
-  curveInterpolation: 4
-  enableActionOnEvent: 0
-  data:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 3657e18b716793642bd4f54cfa99e1b0,
-      type: 2}
-  useCallbacks: 0
-  Callbacks: []
-  playingId: 0
-  soundEmitterObject: {fileID: 0}
-  transitionDuration: 0
-  eventIdInternal: 0
-  valueGuidInternal: 
-  m_callbackDataInternal: {fileID: 0}
 --- !u!114 &517849019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1456,7 +1425,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_listeners:
     initialListenerList: []
-    useDefaultListeners: 1
+    useDefaultListeners: 0
   isEnvironmentAware: 0
   isStaticObject: 0
   m_positionOffsetData:
@@ -1549,11 +1518,6 @@ PrefabInstance:
         type: 3}
       propertyPath: playStoryPagesAtStart
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3880245682808395220, guid: 0601c10befdc25344816a4dbce5b7605,
-        type: 3}
-      propertyPath: audioSettings.masterVolume
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3880245682808395221, guid: 0601c10befdc25344816a4dbce5b7605,
         type: 3}
@@ -4025,7 +3989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f59403b1d82ca014db5e075c1bbedd9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durationPerPage: 4
+  durationPerPage: 4.8
   pageImg: {fileID: 930841727}
 --- !u!4 &1600454954
 Transform:
