@@ -55,6 +55,12 @@
 						<Property Name="WetDryMix" Type="Real32" Value="20.5"/>
 					</PropertyList>
 				</Effect>
+				<Effect Name="New_Wwise_Peak_Limiter" ID="{1122AB07-EAFA-46A4-946C-C6FDBA595F91}" PluginName="Wwise Peak Limiter" CompanyID="0" PluginID="110" PluginType="3">
+					<PropertyList>
+						<Property Name="Ratio" Type="Real32" Value="9.8"/>
+						<Property Name="Threshold" Type="Real32" Value="-5.6"/>
+					</PropertyList>
+				</Effect>
 			</ChildrenList>
 		</WorkUnit>
 	</Effects>

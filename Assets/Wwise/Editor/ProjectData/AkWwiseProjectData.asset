@@ -30,7 +30,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 0a2068a6100c5540998fc7bbf666e94c
     GuidInternal: 
-    m_lastTime: -8585846109080742802
+    m_lastTime: -8585845503181008055
     List:
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
@@ -71,7 +71,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 0b02ce3cf7af6b479a0704b2f7c4c423
     GuidInternal: 
-    m_lastTime: -8585853584802412373
+    m_lastTime: -8585845516426017401
     List:
     - name: SoundBank
       guid: cd8b956e648d8145b4c574222042d50b
@@ -90,7 +90,7 @@ MonoBehaviour:
     ParentPath: Default Work Unit
     guid: 212552149d463c4c84b85baf50cd0631
     GuidInternal: 
-    m_lastTime: -8585845923835225890
+    m_lastTime: -8585845516426127101
     List:
     - name: Game SFX
       guid: 5e4774ce09776842af07b32ed828bca4
@@ -142,8 +142,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_Ele_Trap
       maxAttenuation: 0
-      maxDuration: 2.900187
-      minDuration: 2.900187
+      maxDuration: -1
+      minDuration: -1
     - name: Play_End_Hiding
       guid: 13dd929cd922e1449392c0eafaef08f7
       id: 2938009645
@@ -156,8 +156,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_End_Hiding
       maxAttenuation: 0
-      maxDuration: 1.034
-      minDuration: 1.034
+      maxDuration: -1
+      minDuration: -1
     - name: Play_EnterDigit
       guid: 1a4879bfb86e6d46967fc86ab592cd6a
       id: 2865869223
@@ -170,8 +170,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_EnterDigit
       maxAttenuation: 0
-      maxDuration: 0.301859
-      minDuration: 0.301859
+      maxDuration: -1
+      minDuration: -1
     - name: Play_ESCLeave
       guid: 2c51fc3b26c67a4ebd5cded727fd6881
       id: 702431094
@@ -184,8 +184,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\UI SFX\Play_ESCLeave
       maxAttenuation: 0
-      maxDuration: 0.170193
-      minDuration: 0.170193
+      maxDuration: -1
+      minDuration: -1
     - name: Play_ESCMenu
       guid: 47a82f334851bf4e9a108634df64dfc9
       id: 1762940376
@@ -198,8 +198,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\UI SFX\Play_ESCMenu
       maxAttenuation: 0
-      maxDuration: 1.5
-      minDuration: 1.5
+      maxDuration: -1
+      minDuration: -1
     - name: Play_Get_Organ
       guid: bc2d3560411b9f449e551982f31b68d7
       id: 2614804272
@@ -212,8 +212,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_Get_Organ
       maxAttenuation: 0
-      maxDuration: 4
-      minDuration: 4
+      maxDuration: -1
+      minDuration: -1
     - name: Play_LeaveMenu
       guid: 00ee6e33406936499f28abafc56b2542
       id: 2784792558
@@ -226,8 +226,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\UI SFX\Play_LeaveMenu
       maxAttenuation: 0
-      maxDuration: 1.375506
-      minDuration: 1.375506
+      maxDuration: -1
+      minDuration: -1
     - name: Play_Music
       guid: 9bf1f5290825ea45b8b81f1fbec2f286
       id: 2932040671
@@ -254,8 +254,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_Player_Death
       maxAttenuation: 0
-      maxDuration: 8.112958
-      minDuration: 7.115974
+      maxDuration: -1
+      minDuration: -1
     - name: Play_Player_Footstep
       guid: ab10d02b7bb6934bba173c21dfdc4d58
       id: 1724675634
@@ -282,8 +282,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_Player_Gunshot
       maxAttenuation: 0
-      maxDuration: 3.151148
-      minDuration: 2.683676
+      maxDuration: -1
+      minDuration: -1
     - name: Play_Player_Saber
       guid: 0bb95173c781be4dbdd2feaecd3719f2
       id: 3877648163
@@ -296,8 +296,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_Player_Saber
       maxAttenuation: 0
-      maxDuration: 0.602424
-      minDuration: 0.498449
+      maxDuration: -1
+      minDuration: -1
     - name: Play_PlayerAStart
       guid: 94748a745bf84e45bc51a00a52bc492a
       id: 4238984918
@@ -310,8 +310,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\UI SFX\Play_PlayerAStart
       maxAttenuation: 0
-      maxDuration: 0.251406
-      minDuration: 0.251406
+      maxDuration: -1
+      minDuration: -1
     - name: Play_PlayerBStart
       guid: 828bb76913832845a1f95c6bc4a1904e
       id: 1003576063
@@ -324,8 +324,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\UI SFX\Play_PlayerBStart
       maxAttenuation: 0
-      maxDuration: 0.713487
-      minDuration: 0.713487
+      maxDuration: -1
+      minDuration: -1
     - name: Play_PressEnter
       guid: 2532a6e35908d2498ad52bbea428cd50
       id: 392107407
@@ -338,8 +338,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_PressEnter
       maxAttenuation: 0
-      maxDuration: 0.130794
-      minDuration: 0.130794
+      maxDuration: -1
+      minDuration: -1
     - name: Play_Robot_Death
       guid: 217d2a7c9261d24aaf86b8640cf96093
       id: 2426976433
@@ -352,8 +352,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_Robot_Death
       maxAttenuation: 0
-      maxDuration: 1.887
-      minDuration: 1.887
+      maxDuration: -1
+      minDuration: -1
     - name: Play_Robot_EleGun
       guid: 07b9e4dd7d8520478a3576da04593be3
       id: 3233088915
@@ -366,8 +366,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_Robot_EleGun
       maxAttenuation: 0
-      maxDuration: 0.307459
-      minDuration: 0.307459
+      maxDuration: -1
+      minDuration: -1
     - name: Play_Robot_LaserGun
       guid: 4722905021efbe488c7cff1aa997afb3
       id: 2371690888
@@ -380,8 +380,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_Robot_LaserGun
       maxAttenuation: 0
-      maxDuration: 0.832771
-      minDuration: 0.832771
+      maxDuration: -1
+      minDuration: -1
     - name: Play_Robot_Move
       guid: 87c09e48226b604599132c6b29c75916
       id: 841165746
@@ -408,8 +408,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\UI SFX\Play_SelectStage
       maxAttenuation: 0
-      maxDuration: 0.223977
-      minDuration: 0.223977
+      maxDuration: -1
+      minDuration: -1
     - name: Play_Start
       guid: f2ed2cda841b4a42b330d31eea4c7bf3
       id: 2230670290
@@ -422,8 +422,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\UI SFX\Play_Start
       maxAttenuation: 0
-      maxDuration: 4.118813
-      minDuration: 4.118813
+      maxDuration: -1
+      minDuration: -1
     - name: Play_Start_Hiding
       guid: b5e5b4ec0fbf624cbb92138c40c63ae4
       id: 882926292
@@ -436,8 +436,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Play_Start_Hiding
       maxAttenuation: 0
-      maxDuration: 0.83365
-      minDuration: 0.83365
+      maxDuration: -1
+      minDuration: -1
     - name: Play_Tab
       guid: 6aab8b17e158ca44a4c1de8cdad1b933
       id: 2419250855
@@ -450,8 +450,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\UI SFX\Play_Tab
       maxAttenuation: 0
-      maxDuration: 0.421798
-      minDuration: 0.421798
+      maxDuration: -1
+      minDuration: -1
     - name: Stop_AllSFX
       guid: 279e2d53ee13c2498492b0fdd8eb9220
       id: 1217524018
@@ -462,8 +462,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Stop_AllSFX
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Stop_Player_Footstep
       guid: f9c856be17ed254295ad4d345cfd4154
       id: 2005445724
@@ -476,8 +476,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Stop_Player_Footstep
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Stop_Robot_Move
       guid: 8c076c58171675479ae43f9778a33da7
       id: 2672046660
@@ -490,8 +490,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Game SFX\Stop_Robot_Move
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: -1
+      minDuration: -1
     - name: UI SFX
       guid: a006338b57929a4b80ff88d94f47eba4
       id: 3821354766

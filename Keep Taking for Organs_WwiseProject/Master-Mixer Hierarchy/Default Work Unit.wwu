@@ -41,6 +41,9 @@
 						<Reference Name="AudioDevice">
 							<ObjectRef Name="System" ID="{172A979D-7D25-4554-A135-C25218C69250}" WorkUnitID="{01ECAC72-02A9-44CF-887C-D5242575E222}"/>
 						</Reference>
+						<Reference Name="Effect0" PluginName="Wwise Peak Limiter" CompanyID="0" PluginID="110" PluginType="3">
+							<ObjectRef Name="New_Wwise_Peak_Limiter" ID="{1122AB07-EAFA-46A4-946C-C6FDBA595F91}" WorkUnitID="{62D929E2-9340-43D2-8D8F-AB8A8268A134}"/>
+						</Reference>
 					</ReferenceList>
 					<ChildrenList>
 						<Bus Name="SFX" ID="{723A4983-C9F9-43A9-9681-40BF2BB53375}">
