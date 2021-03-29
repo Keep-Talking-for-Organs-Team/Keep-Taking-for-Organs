@@ -1,6 +1,7 @@
 Event	ID	Name			Wwise Object Path	Notes
 	33727574	Play_Player_Gunshot			\Default Work Unit\Game SFX\Play_Player_Gunshot	
 	392107407	Play_PressEnter			\Default Work Unit\Game SFX\Play_PressEnter	
+	414444541	Play_Clear			\Default Work Unit\UI SFX\Play_Clear	
 	702431094	Play_ESCLeave			\Default Work Unit\UI SFX\Play_ESCLeave	
 	841165746	Play_Robot_Move			\Default Work Unit\Game SFX\Play_Robot_Move	
 	882926292	Play_Start_Hiding			\Default Work Unit\Game SFX\Play_Start_Hiding	
@@ -55,12 +56,14 @@ Custom State	ID	Name	State Group	Owner		Notes
 Effect plug-ins	ID	Name	Type				Notes
 	702543456	Tunnel1	Wwise Matrix Reverb			
 	960762675	New_Wwise_Delay	Wwise Delay			
+	1471270119	New_Wwise_Delay_01	Wwise Delay			
+	1588715066	Echoes_Linear	Wwise Delay			
 	3546444380	Big_Garage1	Wwise Matrix Reverb			
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	56970075	Main5theme	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\Main5theme_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Music\Home\Main\Main5theme		22579328
 	126676604	End_Hiding	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\Hide  and Show_7EB8BE6D.wem		\Actor-Mixer Hierarchy\Default Work Unit\GameSFX\End_Hiding		198592
-	141084209	ESCMenu	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\140510__blackstalian__click-sfx8_08BEB9C2.wem		\Actor-Mixer Hierarchy\Default Work Unit\UISFX\ESCMenu		264728
-	143430451	MainTHeme	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\MainTHeme_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Music\Home\Main\MainTHeme		22118528
+	141084209	LeaveMenu	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\140510__blackstalian__click-sfx8_08BEB9C2.wem		\Actor-Mixer Hierarchy\Default Work Unit\UISFX\LeaveMenu		264728
 	149792444	Main3	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\Main3_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Music\Game\lv0\Main3		41932928
 	207849703	Player_Gunshot	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\gun shot_9E1C6B21.wem		\Actor-Mixer Hierarchy\Default Work Unit\GameSFX\Player_Gunshot		318596
 	240279952	Start	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\531511__eponn__menu-beep_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UISFX\Start		790876
@@ -75,10 +78,9 @@ In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
 	549095969	ESCLeave	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\BPLAY_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UISFX\ESCLeave		37384
 	602434379	Robot_EleGun	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\ele gun_810ABAB1.wem		\Actor-Mixer Hierarchy\Default Work Unit\GameSFX\Robot_EleGun		61952
 	612060928	Robot_Move	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\robot move_FB6CFAF3.wem		\Actor-Mixer Hierarchy\Default Work Unit\GameSFX\Robot_Move		255060
-	630342208	Main	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\Main_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Music\Game\lv1\Main		42553328
 	751965073	Get_Organ	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\get organ_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\GameSFX\Get_Organ		705664
 	769722826	Player_Saber_01	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\stab_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\GameSFX\Player_Saber_01		62344
 	796556713	Player_Death	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\icu_752E7539.wem		\Actor-Mixer Hierarchy\Default Work Unit\GameSFX\Player_Death		1133136
-	824892366	PlayerBStart	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\tab_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UISFX\PlayerBStart		110056
+	824892366	Tab	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\tab_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\UISFX\Tab		110056
 	968583479	PressEnter	C:\Users\Kaiwen\Desktop\Keep Talking\Program\Keep Talking\Keep Taking for Organs_WwiseProject\.cache\Windows\SFX\enter_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\GameSFX\PressEnter		24888
 

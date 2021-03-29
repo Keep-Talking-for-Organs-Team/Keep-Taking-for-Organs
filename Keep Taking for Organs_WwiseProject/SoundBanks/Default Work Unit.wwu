@@ -16,6 +16,7 @@
 						<ObjectRef Name="Play_Robot_Move" ID="{489EC087-6B22-4560-9913-2C6B29C75916}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Music" ID="{29F5F19B-2508-45EA-B8B8-1F1FBEC2F286}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_EnterDigit" ID="{BF79481A-6EB8-466D-967F-C86AB592CD6A}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_Clear" ID="{849A2627-047D-4698-B507-E8625C8393CC}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Robot_EleGun" ID="{DDE4B907-857D-4720-8A35-76DA04593BE3}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Stop_Robot_Move" ID="{586C078C-1617-4775-9AE4-3F9778A33DA7}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_Player_Gunshot" ID="{DE47D6F8-EC91-479E-83E4-59652D5CB742}" WorkUnitID="{14522521-469D-4C3C-84B8-5BAF50CD0631}" Origin="Manual" Filter="7"/>

@@ -132,8 +132,8 @@
 						</Effect>
 						<Effect Name="Echoes_Linear" ID="{D20F3717-EBA2-4E3A-84F8-C8BD431563FB}" PluginName="Wwise Delay" CompanyID="0" PluginID="106" PluginType="3">
 							<PropertyList>
-								<Property Name="DelayTime" Type="Real32" Value="0.81"/>
-								<Property Name="Feedback" Type="Real32" Value="61"/>
+								<Property Name="DelayTime" Type="Real32" Value="0.14"/>
+								<Property Name="Feedback" Type="Real32" Value="36.5"/>
 								<Property Name="WetDryMix" Type="Real32" Value="80.5"/>
 							</PropertyList>
 						</Effect>
@@ -699,7 +699,7 @@
 							<PropertyList>
 								<Property Name="HFRatio" Type="Real32" Value="3"/>
 								<Property Name="NumberOfDelays" Type="int32" Value="12"/>
-								<Property Name="ReverbTime" Type="Real32" Value="2.7"/>
+								<Property Name="ReverbTime" Type="Real32" Value="0.8"/>
 								<Property Name="WetLevel" Type="Real32" Value="-23"/>
 							</PropertyList>
 						</Effect>
@@ -757,7 +757,7 @@
 							<PropertyList>
 								<Property Name="HFRatio" Type="Real32" Value="9.5"/>
 								<Property Name="NumberOfDelays" Type="int32" Value="12"/>
-								<Property Name="ReverbTime" Type="Real32" Value="3.4"/>
+								<Property Name="ReverbTime" Type="Real32" Value="1.1"/>
 								<Property Name="WetLevel" Type="Real32" Value="-20"/>
 							</PropertyList>
 						</Effect>
