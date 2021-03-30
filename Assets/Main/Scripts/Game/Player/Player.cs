@@ -12,8 +12,6 @@ namespace KeepTalkingForOrgansGame {
 
     public class Player : SingletonMonoBehaviour<Player> {
 
-
-
         [Header("Options")]
         public bool isInvincible = false;
         public bool mustCrouchToHide = false;
@@ -127,11 +125,30 @@ namespace KeepTalkingForOrgansGame {
                 }
             }
             else if (other.tag == "Exit") {
+
+                Exit exit = other.gameObject.GetComponent<Exit>();
+
+                if (exit != null) {
+                    exit.OnPlayerEnter();
+                }
+
                 if (HasGoal) {
                     GameSceneManager.current.operatorManager.MissionSuccess();
                 }
             }
         }
+
+        void OnTriggerExit2D (Collider2D other) {
+            if (other.tag == "Exit") {
+
+                Exit exit = other.gameObject.GetComponent<Exit>();
+
+                if (exit != null) {
+                    exit.OnPlayerExit();
+                }
+            }
+        }
+
 
         public void Die (OperatorManager.FailedReason reason = OperatorManager.FailedReason.None) {
             if (!isInvincible) {

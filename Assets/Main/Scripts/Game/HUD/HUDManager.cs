@@ -19,7 +19,10 @@ namespace KeepTalkingForOrgansGame {
 
 
         public void UpdateTimerDisplay (float timerTime) {
-            timerDisplayText.text = TimerTimeDisplay.FromSeconds(timerTime).MinSecDisplay;
+            if (timerTime < 0)
+                timerDisplayText.text = "-- : --";
+            else
+                timerDisplayText.text = TimerTimeDisplay.FromSeconds(timerTime).MinSecDisplay;
         }
 
         public void UpdateWeaponStatusDisplay (PlayerAttackManager.AttackMethod atkMethod, float cooldownTimeRemainedRate, int bulletsCount = 0) {

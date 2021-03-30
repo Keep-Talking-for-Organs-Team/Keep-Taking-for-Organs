@@ -19,6 +19,11 @@ namespace KeepTalkingForOrgansGame {
 
         /// ============================================= ///
 
+        [Header("Options")]
+        public bool      showDebugLines;
+        public Color     debugLinesColor = Color.blue;
+        public bool      showVisionEdgeLines;
+
         [Header("Properties")]
         public SpanProps spanProps;
         public float     cutInObstacleDistance;
@@ -30,8 +35,6 @@ namespace KeepTalkingForOrgansGame {
         [Header("Parameters")]
         public LayerMask visionLayerMask;
         public int       edgeResolveIterations;
-        public bool      showDebugLines;
-        public bool      showVisionEdgeLines;
 
         [Header("Output Shows")]
         public int segmentCountShows;
@@ -126,7 +129,7 @@ namespace KeepTalkingForOrgansGame {
 
                 ViewCastInfo cast = ViewCast(direction);
 
-                if (i > 0 && !IsBothNotCastToObstacle(prevCast, cast) && !IsCastedToSameSideOfObstacle(prevCast, cast)) {
+                if (i > 0 && !IsBothNotCastToObstacle(prevCast, cast) && !IsCastedToSameSideOfObstacleInSmallDistance(prevCast, cast)) {
 
                     List<EdgeInfo> edges = FindEdges(prevCast, cast);
 
@@ -156,17 +159,18 @@ namespace KeepTalkingForOrgansGame {
 
                 // == Debug Draw Lines ==
                 if (showDebugLines) {
-                    Debug.DrawLine(transform.TransformPoint(vertices[0]), transform.TransformPoint(vertices[prevHitPointIndex]), Color.blue);
-                    Debug.DrawLine(transform.TransformPoint(vertices[0]), transform.TransformPoint(vertices[hitPointIndex]), Color.blue);
+                    Debug.DrawLine(transform.TransformPoint(vertices[0]), transform.TransformPoint(vertices[prevHitPointIndex]), debugLinesColor);
+                    Debug.DrawLine(transform.TransformPoint(vertices[0]), transform.TransformPoint(vertices[hitPointIndex]), debugLinesColor);
                 }
 
+                // draw triangles
                 if (i > 0) {
                     triangles.Add(0);
                     triangles.Add(prevHitPointIndex);
                     triangles.Add(hitPointIndex);
 
                     // Add cut in rectangle
-                    if (casts[i].collider != null && IsCastedToSameSideOfObstacle(casts[i - 1], casts[i]) && cutInObstacleDistance > Mathf.Epsilon) {
+                    if (casts[i].collider != null && IsCastedToSameLine(casts[i - 1], casts[i]) && cutInObstacleDistance > Mathf.Epsilon) {
 
                         AddWorldPositionToVerticesList(vertices, casts[i - 1].point - casts[i - 1].normal * cutInObstacleDistance);
                         AddWorldPositionToVerticesList(vertices, casts[i].point - casts[i].normal * cutInObstacleDistance);
@@ -220,10 +224,10 @@ namespace KeepTalkingForOrgansGame {
 
                 ViewCastInfo cast = ViewCast( (castA.direction + castB.direction).normalized );
 
-                if (IsBothNotCastToObstacle(cast, castA) || IsCastedToSameSideOfObstacle(cast, castA)) {
+                if (IsBothNotCastToObstacle(cast, castA) || IsCastedToSameSideOfObstacleInSmallDistance(cast, castA)) {
                     castA = cast;
                 }
-                else if (IsBothNotCastToObstacle(cast, castB) || IsCastedToSameSideOfObstacle(cast, castB)) {
+                else if (IsBothNotCastToObstacle(cast, castB) || IsCastedToSameSideOfObstacleInSmallDistance(cast, castB)) {
                     castB = cast;
                 }
                 else {
@@ -242,11 +246,15 @@ namespace KeepTalkingForOrgansGame {
             return castA.collider == null && castB.collider == null;
         }
 
-        bool IsCastedToSameSideOfObstacle (ViewCastInfo castA, ViewCastInfo castB) {
+        bool IsCastedToSameLine (ViewCastInfo castA, ViewCastInfo castB) {
 
-            if (castA.normal == castB.normal && Mathf.Abs(Vector2.Dot(castB.point - castA.point, castA.normal)) < SAME_SIDE_CHECK_DOT_VALUE_TOLERANCE) {
+            return ( castA.normal == castB.normal ) && ( Mathf.Abs(Vector2.Dot(castB.point - castA.point, castA.normal)) < SAME_SIDE_CHECK_DOT_VALUE_TOLERANCE );
+        }
 
+        bool IsCastedToSameSideOfObstacleInSmallDistance (ViewCastInfo castA, ViewCastInfo castB) {
+            if (IsCastedToSameLine(castA, castB)) {
                 if (castA.collider == castB.collider || castA.collider.Distance(castB.collider).distance <= 0) {
+                    // same colliders or adjacent colliders
                     return true;
                 }
             }

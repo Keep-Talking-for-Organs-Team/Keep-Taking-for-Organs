@@ -139,28 +139,6 @@ namespace KeepTalkingForOrgansGame {
             hudManager.UpdateWeaponStatusDisplay(AttackMethod.Melee, GetCurrentCooldownTimeRemainedRate(AttackMethod.Melee));
             hudManager.UpdateWeaponStatusDisplay(AttackMethod.Ranged, GetCurrentCooldownTimeRemainedRate(AttackMethod.Ranged), BulletsLeft);
 
-
-            // temp HUD display
-            // string[] lines = GameSceneManager.current.hudInfoText.text.Split('\n');
-            // for (int i = 0 ; i < lines.Length ; i++) {
-            //
-            //     string[] parts = lines[i].Split(':');
-            //
-            //     if (parts.Length >= 2) {
-            //         if (i == 0) {
-            //             lines[i] = parts[0] + ": " + GetCurrentCooldownTimeLeft(AttackMethod.Melee).ToString("0.0");
-            //         }
-            //         else if (i == 1) {
-            //             lines[i] = parts[0] + ": " + GetCurrentCooldownTimeLeft(AttackMethod.Ranged).ToString("0.0");
-            //         }
-            //         else if (i == 2) {
-            //             lines[i] = parts[0] + ":" + (BulletsLeft >= 0 ? BulletsLeft.ToString() : "Inf");
-            //         }
-            //     }
-            // }
-            //
-            // GameSceneManager.current.hudInfoText.text = string.Join("\n", lines);
-
         }
 
 
@@ -199,6 +177,11 @@ namespace KeepTalkingForOrgansGame {
             return _lastestAttackStartTimeOfAttackMethods[atkMethod] == 0 || Time.time - _lastestAttackStartTimeOfAttackMethods[atkMethod] > _cooldownTimeOfAttackMethods[atkMethod];
         }
 
+        public void RemoveWeaponsCooldown () {
+            _cooldownTimeOfAttackMethods[AttackMethod.Melee] = 0f;
+            _cooldownTimeOfAttackMethods[AttackMethod.Ranged] = 0f;
+        }
+
 
         bool IsAttackable (AttackMethod atkMethod) {
 
@@ -220,7 +203,7 @@ namespace KeepTalkingForOrgansGame {
 
             if (atkMethod == AttackMethod.Ranged) {
                 isInRange = IsInRange(atkMethod, CurrentTarget.transform.position);
-                hasBullets = BulletsLeft > 0;
+                hasBullets = BulletsLeft != 0;
             }
 
             return isReady && isInRange && hasBullets;

@@ -252,6 +252,10 @@ namespace KeepTalkingForOrgansGame {
             showAllEnemies = true;
         }
 
+        public void RemoveTimeLimit () {
+            timeLimit = -1;
+        }
+
 
         void GeneratePlayer (int initBulletsAmount = -1) {
             if (playerSpawnPointsParent.childCount > 0) {
@@ -278,7 +282,7 @@ namespace KeepTalkingForOrgansGame {
         void UpdateTimerDisplay () {
             if (hudManager.timerDisplayText != null) {
                 if (timeLimit < 0) {
-                    hudManager.timerDisplayText.enabled = false;
+                    hudManager.UpdateTimerDisplay(-1f);
                 }
                 else {
                     hudManager.UpdateTimerDisplay(MissionTimeRemained);

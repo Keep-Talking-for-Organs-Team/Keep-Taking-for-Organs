@@ -145,6 +145,33 @@ namespace KeepTalkingForOrgansGame {
 
                         if (operatorManager != null && operatorManager.enabled)
                             operatorManager.RemoveFog();
+
+                    }
+                    else if (handler.actionName == "No Time Limit") {
+
+                        if (operatorManager != null && operatorManager.enabled)
+                            operatorManager.RemoveTimeLimit();
+
+                    }
+                    else if (handler.actionName == "Test") {
+
+                        if (Player.current != null) {
+
+                            Player.current.isInvincible = true;
+                            Player.current.maxAngularSpeed = Mathf.Infinity;
+
+                            var playerMoveManager = Player.current.GetComponent<PlayerMoveManager>();
+                            if (playerMoveManager != null) {
+                                playerMoveManager.walkSpeed = 15f;
+                            }
+
+                            var playerAttackManager = Player.current.GetComponent<PlayerAttackManager>();
+                            if (playerAttackManager != null) {
+                                playerAttackManager.BulletsLeft = -1;
+                                playerAttackManager.RemoveWeaponsCooldown();
+                            }
+                        }
+
                     }
 
                     handler.IsActiveSecretCode = false;
