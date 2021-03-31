@@ -60,7 +60,7 @@ namespace KeepTalkingForOrgansGame {
         public bool IsMissionEnded {get; private set;} = false;
         public bool IsMissionOnGoing => IsMissionStarted && !IsMissionEnded;
         public float MissionTimePassed => !IsMissionStarted ? 0f : Time.time - _missionStartTime;
-        public float MissionTimeRemained => timeLimit - MissionTimePassed;
+        public float MissionTimeRemained => Mathf.Max(timeLimit - MissionTimePassed, 0f);
 
         public Sprite[] EnemyFlyingAnimSprites {
             get {
