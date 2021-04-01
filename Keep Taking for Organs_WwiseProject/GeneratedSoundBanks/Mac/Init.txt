@@ -1,5 +1,31 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	702482391	Game			\Default Work Unit\Game	
+	4044678609	Music_Stage			\Default Work Unit\Music_Stage	
+
+State	ID	Name	State Group			Notes
+	748895195	None	Game			
+	1114736519	NotInGame	Game			
+	1160234136	Normal	Game			
+	3625060726	Success	Game			
+	3677122663	Over	Game			
+	748895195	None	Music_Stage			
+	964811740	lv1	Music_Stage			
+	964811741	lv0	Music_Stage			
+	964811743	lv2	Music_Stage			
+	3705726509	Title	Music_Stage			
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	1006694112	Music_Volumn			\Default Work Unit\Music_Volumn	
+	1564184904	SFX_Volumn			\Default Work Unit\SFX_Volumn	
+	4179668891	Master_Volumn			\Default Work Unit\Master_Volumn	
+
 Audio Bus	ID	Name			Wwise Object Path	Notes
+	393239870	SFX			\Default Work Unit\Master Audio Bus\SFX	
 	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+	3991942870	Music			\Default Work Unit\Master Audio Bus\Music	
+
+Effect plug-ins	ID	Name	Type				Notes
+	3970951098	New_Wwise_Peak_Limiter	Wwise Peak Limiter			
 
 Audio Devices	ID	Name	Type				Notes
 	2317455096	No_Output	No Output			
