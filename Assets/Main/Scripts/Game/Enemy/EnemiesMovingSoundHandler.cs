@@ -47,11 +47,11 @@ namespace KeepTalkingForOrgansGame {
 
 
         void Play () {
-            AkSoundEngine.PostEvent("Play_Robot_Move" , gameObject);
+            GlobalManager.current.PostAudioEvent("Play_Robot_Move");
         }
 
         void Stop () {
-            AkSoundEngine.PostEvent("Stop_Robot_Move" , gameObject);
+            GlobalManager.current.PostAudioEvent("Stop_Robot_Move");
         }
 
     }

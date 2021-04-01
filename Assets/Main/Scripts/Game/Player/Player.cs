@@ -121,7 +121,7 @@ namespace KeepTalkingForOrgansGame {
 
                     GameSceneManager.current.operatorManager.OnPlayerGetGoal();
 
-                    AkSoundEngine.PostEvent("Play_Get_Organ", gameObject);
+                    GlobalManager.current.PostAudioEvent("Play_Get_Organ");
                 }
             }
             else if (other.tag == "Exit") {
@@ -160,7 +160,7 @@ namespace KeepTalkingForOrgansGame {
 
                 GameSceneManager.current.operatorManager.MissionFailed(reason);
 
-                AkSoundEngine.PostEvent("Play_Player_Death" , gameObject);
+                GlobalManager.current.PostAudioEvent("Play_Player_Death");
             }
 
         }
@@ -201,7 +201,7 @@ namespace KeepTalkingForOrgansGame {
             GameSceneManager.current.operatorManager.PlayAttackedOverlayFX();
 
             GameObject lightningFX = Instantiate(lightningFXPrefab, transform.position, Quaternion.identity, transform);
-            AkSoundEngine.PostEvent("Play_Ele_Trap" , gameObject);
+            GlobalManager.current.PostAudioEvent("Play_Ele_Trap");
 
             yield return new WaitForSeconds(lightningFXDuration);
 
@@ -212,28 +212,28 @@ namespace KeepTalkingForOrgansGame {
 
 
         public void OnStartWalking () {
-            AkSoundEngine.PostEvent("Play_Player_Footstep" , gameObject);
+            GlobalManager.current.PostAudioEvent("Play_Player_Footstep");
 
             if (_animManager != null)
                 _animManager.OnStartWalking();
         }
 
         public void OnStopWalking () {
-            AkSoundEngine.PostEvent("Stop_Player_Footstep" , gameObject);
+            GlobalManager.current.PostAudioEvent("Stop_Player_Footstep");
 
             if (_animManager != null)
                 _animManager.OnStopWalking();
         }
 
         public void OnStartHiding () {
-            AkSoundEngine.PostEvent("Play_Start_Hiding" , gameObject);
+            GlobalManager.current.PostAudioEvent("Play_Start_Hiding");
 
             if (_animManager != null)
                 _animManager.OnStartHiding();
         }
 
         public void OnStopHiding () {
-            AkSoundEngine.PostEvent("Play_End_Hiding" , gameObject);
+            GlobalManager.current.PostAudioEvent("Play_End_Hiding");
 
             if (_animManager != null)
                 _animManager.OnStopHiding();
@@ -245,7 +245,7 @@ namespace KeepTalkingForOrgansGame {
                 _animManager.CurrentState = PlayerAnimManager.State.Melee;
 
             // GameSceneManager.current.operatorManager.PlayMeleeAttackOverlayFX();
-            AkSoundEngine.PostEvent("Play_Player_Saber" , gameObject);
+            GlobalManager.current.PostAudioEvent("Play_Player_Saber");
         }
 
         public void OnRangedAttack () {
@@ -253,7 +253,7 @@ namespace KeepTalkingForOrgansGame {
                 _animManager.CurrentState = PlayerAnimManager.State.Gun;
 
             // GameSceneManager.current.operatorManager.PlayRangedAttackOverlayFX();
-            AkSoundEngine.PostEvent("Play_Player_Gunshot" , gameObject);
+            GlobalManager.current.PostAudioEvent("Play_Player_Gunshot");
         }
 
     }

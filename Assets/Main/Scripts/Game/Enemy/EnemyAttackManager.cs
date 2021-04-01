@@ -75,11 +75,11 @@ namespace KeepTalkingForOrgansGame {
 
             if (gunType == GunType.Laser) {
                 gunFX = Instantiate(laserGunFX, transform.position, transform.rotation);
-                AkSoundEngine.PostEvent("Play_Robot_LaserGun", gameObject);
+                GlobalManager.current.PostAudioEvent("Play_Robot_LaserGun");
             }
             else if (gunType == GunType.Electric) {
                 gunFX = Instantiate(electricGunFX, transform.position, transform.rotation, transform);
-                AkSoundEngine.PostEvent("Play_Robot_EleGun", gameObject);
+                GlobalManager.current.PostAudioEvent("Play_Robot_EleGun");
             }
 
             DOTween.Sequence()

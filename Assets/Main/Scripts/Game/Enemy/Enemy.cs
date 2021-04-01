@@ -227,7 +227,7 @@ namespace KeepTalkingForOrgansGame {
             if (GameSceneManager.current != null && GameSceneManager.current.operatorManager != null)
                 GameSceneManager.current.operatorManager.PlayKilledEnemyOverlayFX();
 
-            AkSoundEngine.PostEvent("Play_Robot_Death" , gameObject);
+            GlobalManager.current.PostAudioEvent("Play_Robot_Death");
         }
 
     }

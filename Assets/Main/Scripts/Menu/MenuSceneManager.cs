@@ -26,7 +26,7 @@ namespace KeepTalkingForOrgansGame {
         public GameObject levelSelectingStage;
         public GameObject creditsStage;
         public GameObject settingsPanel;
-        
+
 
         public Stage CurrentStage {get; private set;} = Stage.MainMenu;
 
@@ -95,7 +95,7 @@ namespace KeepTalkingForOrgansGame {
             if (GlobalManager.current.IsInTransition)
                 return;
 
-            AkSoundEngine.PostEvent("Play_PlayerBStart" , gameObject);
+            GlobalManager.current.PostAudioEvent("Play_PlayerBStart");
 
             GlobalManager.current.isMapViewer = true;
             SwitchStage(Stage.LevelSelecting);
@@ -105,7 +105,7 @@ namespace KeepTalkingForOrgansGame {
             if (GlobalManager.current.IsInTransition)
                 return;
 
-            AkSoundEngine.PostEvent("Play_PlayerAStart" , gameObject);
+            GlobalManager.current.PostAudioEvent("Play_PlayerAStart");
 
             GlobalManager.current.isMapViewer = false;
             SwitchStage(Stage.LevelSelecting);
@@ -115,7 +115,7 @@ namespace KeepTalkingForOrgansGame {
             if (GlobalManager.current.IsInTransition)
                 return;
 
-            AkSoundEngine.PostEvent("Play_Start" , gameObject);
+            GlobalManager.current.PostAudioEvent("Play_Start");
 
             GlobalManager.current.FadeScreenOut( () => {
                 GlobalManager.StartLevel(GlobalManager.current.CurrentLevelName);
@@ -151,12 +151,12 @@ namespace KeepTalkingForOrgansGame {
 
         public void OpenSettingsPanel () {
             settingsPanel.SetActive(true);
-            AkSoundEngine.PostEvent("Play_ESCMenu", gameObject);
+            GlobalManager.current.PostAudioEvent("Play_ESCMenu");
         }
 
         public void CloseSettingsPanel () {
             settingsPanel.SetActive(false);
-            AkSoundEngine.PostEvent("Play_LeaveMenu", gameObject);
+            GlobalManager.current.PostAudioEvent("Play_LeaveMenu");
         }
 
 
