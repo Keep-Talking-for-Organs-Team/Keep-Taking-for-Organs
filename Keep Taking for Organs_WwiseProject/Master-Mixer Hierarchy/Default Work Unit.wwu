@@ -7,7 +7,7 @@
 					<PropertyList>
 						<Property Name="BusVolume" Type="Real64">
 							<ValueList>
-								<Value>-20</Value>
+								<Value>-11</Value>
 							</ValueList>
 							<RTPCList>
 								<RTPC Name="" ID="{E2CDC4AA-2044-41DA-A435-BAE6E13AE593}" ShortID="811712693">
@@ -28,7 +28,7 @@
 											</Point>
 											<Point>
 												<XPos>100</XPos>
-												<YPos>12</YPos>
+												<YPos>6</YPos>
 												<Flags>37</Flags>
 											</Point>
 										</PointList>
