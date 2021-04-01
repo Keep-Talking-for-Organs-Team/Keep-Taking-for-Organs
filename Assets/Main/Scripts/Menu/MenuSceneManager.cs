@@ -26,7 +26,7 @@ namespace KeepTalkingForOrgansGame {
         public GameObject levelSelectingStage;
         public GameObject creditsStage;
         public GameObject settingsPanel;
-
+        
 
         public Stage CurrentStage {get; private set;} = Stage.MainMenu;
 

@@ -15,6 +15,7 @@ namespace KeepTalkingForOrgansGame {
 
         public const float minDeltaAngle = 0.187f;
         public static class PlayerPrefsKeys {
+            public const string GAME_VERSION  = "GameVer";
             public const string MASTER_VOLUME = "MasterVol";
             public const string SFX_VOLUME    = "SFXVol";
             public const string MUSIC_VOLUME  = "MusicVol";
@@ -64,6 +65,13 @@ namespace KeepTalkingForOrgansGame {
             DOTween.showUnityEditorReport = true;
             DOTween.defaultTimeScaleIndependent = true;
 
+
+            // Clear PlayerPrefs if below v1.0.0
+            if (!PlayerPrefs.HasKey(PlayerPrefsKeys.GAME_VERSION)) {
+                PlayerPrefs.DeleteAll();
+            }
+
+            PlayerPrefs.SetString(PlayerPrefsKeys.GAME_VERSION, Application.version);
 
             // Load PlayerPrefs
             if (PlayerPrefs.HasKey(PlayerPrefsKeys.MASTER_VOLUME))
