@@ -10,10 +10,11 @@ namespace KeepTalkingForOrgansGame {
         public GameObject[] bindedObjects;
 
         string _prefix = "";
+        bool   _hasPrefixSet = false;
         int    _seed = -1;
 
         void Awake () {
-            _prefix = disaplayText.text;
+            SetPrefix();
         }
 
         void OnEnable () {
@@ -26,6 +27,8 @@ namespace KeepTalkingForOrgansGame {
         }
 
         void UpdateDisplay () {
+            SetPrefix();
+
             if (_seed == -1)
                 disaplayText.text = "";
             else
@@ -38,6 +41,13 @@ namespace KeepTalkingForOrgansGame {
                 else {
                     binded.SetActive(true);
                 }
+            }
+        }
+
+        void SetPrefix () {
+            if (!_hasPrefixSet) {
+                _prefix = disaplayText.text;
+                _hasPrefixSet = true;
             }
         }
 
