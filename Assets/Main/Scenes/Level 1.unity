@@ -724,6 +724,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1709362619983017242, guid: e531d48ca1040f94e98290af63b8bfe5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2854455124478714039, guid: e531d48ca1040f94e98290af63b8bfe5,
         type: 3}
       propertyPath: m_IsActive
@@ -35537,11 +35542,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Tiles.Array.data[18].second.m_TileObjectToInstantiateIndex
       value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 6568613407368652516, guid: e531d48ca1040f94e98290af63b8bfe5,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6621695881789230931, guid: e531d48ca1040f94e98290af63b8bfe5,
         type: 3}
