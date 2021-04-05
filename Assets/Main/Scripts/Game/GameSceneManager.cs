@@ -117,22 +117,16 @@ namespace KeepTalkingForOrgansGame {
 
             if (Input.GetButtonDown("Info")) {
 
-                if (operatorManager != null && operatorManager.enabled)
-                    operatorManager.switchableInfoPanel.SetActive(true);
-
-                if (mapViewerManager != null && mapViewerManager.enabled)
-                    mapViewerManager.switchableInfoPanel.SetActive(true);
-
-                AkSoundEngine.PostEvent("Play_Tab" , gameObject);
-
-            }
-            else if (Input.GetButtonUp("Info")) {
+                bool isOpenning = false;
 
                 if (operatorManager != null && operatorManager.enabled)
-                    operatorManager.switchableInfoPanel.SetActive(false);
+                    isOpenning = operatorManager.ToggleInfoPanel();
 
                 if (mapViewerManager != null && mapViewerManager.enabled)
-                    mapViewerManager.switchableInfoPanel.SetActive(false);
+                    isOpenning = mapViewerManager.ToggleInfoPanel();
+
+                if (isOpenning)
+                    AkSoundEngine.PostEvent("Play_Tab" , gameObject);
 
             }
 

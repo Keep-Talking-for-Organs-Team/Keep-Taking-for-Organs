@@ -84,6 +84,12 @@ namespace KeepTalkingForOrgansGame {
         }
 
 
+        public bool ToggleInfoPanel () {
+            bool isOpenning = !switchableInfoPanel.activeSelf;
+            switchableInfoPanel.SetActive(!switchableInfoPanel.activeSelf);
+            return isOpenning;
+        }
+
         public void OnInputingRandomSeed () {
             AkSoundEngine.PostEvent("Play_EnterDigit" , gameObject);
         }

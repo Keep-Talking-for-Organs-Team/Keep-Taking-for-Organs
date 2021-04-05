@@ -187,6 +187,12 @@ namespace KeepTalkingForOrgansGame {
         }
 
 
+        public bool ToggleInfoPanel () {
+            bool isOpenning = !switchableInfoPanel.activeSelf;
+            switchableInfoPanel.SetActive(!switchableInfoPanel.activeSelf);
+            return isOpenning;
+        }
+
         public void StartMission () {
 
             _missionStartTime = Time.time;

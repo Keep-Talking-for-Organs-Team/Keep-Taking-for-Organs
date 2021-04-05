@@ -7,6 +7,7 @@ namespace KeepTalkingForOrgansGame {
 
         [Header("REFS")]
         public Text disaplayText;
+        public GameObject[] bindedObjects;
 
         string _prefix = "";
         int    _seed = -1;
@@ -21,6 +22,7 @@ namespace KeepTalkingForOrgansGame {
 
         public void UpdateSeed (int seed) {
             _seed = seed;
+            UpdateDisplay();
         }
 
         void UpdateDisplay () {
@@ -28,6 +30,15 @@ namespace KeepTalkingForOrgansGame {
                 disaplayText.text = "";
             else
                 disaplayText.text = _prefix + _seed;
+
+            foreach (GameObject binded in bindedObjects) {
+                if (disaplayText.text == "") {
+                    binded.SetActive(false);
+                }
+                else {
+                    binded.SetActive(true);
+                }
+            }
         }
 
     }
